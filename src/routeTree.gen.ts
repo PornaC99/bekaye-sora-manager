@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VentesRouteImport } from './routes/ventes'
 import { Route as StatistiquesRouteImport } from './routes/statistiques'
 import { Route as SortiesStockRouteImport } from './routes/sorties-stock'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SalairesRouteImport } from './routes/salaires'
 import { Route as RapportsRouteImport } from './routes/rapports'
 import { Route as ProduitsRouteImport } from './routes/produits'
@@ -40,6 +41,11 @@ const StatistiquesRoute = StatistiquesRouteImport.update({
 const SortiesStockRoute = SortiesStockRouteImport.update({
   id: '/sorties-stock',
   path: '/sorties-stock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SalairesRoute = SalairesRouteImport.update({
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/produits': typeof ProduitsRoute
   '/rapports': typeof RapportsRoute
   '/salaires': typeof SalairesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByTo {
   '/produits': typeof ProduitsRoute
   '/rapports': typeof RapportsRoute
   '/salaires': typeof SalairesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
@@ -167,6 +175,7 @@ export interface FileRoutesById {
   '/produits': typeof ProduitsRoute
   '/rapports': typeof RapportsRoute
   '/salaires': typeof SalairesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
@@ -188,6 +197,7 @@ export interface FileRouteTypes {
     | '/produits'
     | '/rapports'
     | '/salaires'
+    | '/sitemap.xml'
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
     | '/produits'
     | '/rapports'
     | '/salaires'
+    | '/sitemap.xml'
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
@@ -226,6 +237,7 @@ export interface FileRouteTypes {
     | '/produits'
     | '/rapports'
     | '/salaires'
+    | '/sitemap.xml'
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
@@ -246,6 +258,7 @@ export interface RootRouteChildren {
   ProduitsRoute: typeof ProduitsRoute
   RapportsRoute: typeof RapportsRoute
   SalairesRoute: typeof SalairesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SortiesStockRoute: typeof SortiesStockRoute
   StatistiquesRoute: typeof StatistiquesRoute
   VentesRoute: typeof VentesRoute
@@ -272,6 +285,13 @@ declare module '@tanstack/react-router' {
       path: '/sorties-stock'
       fullPath: '/sorties-stock'
       preLoaderRoute: typeof SortiesStockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/salaires': {
@@ -390,6 +410,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProduitsRoute: ProduitsRoute,
   RapportsRoute: RapportsRoute,
   SalairesRoute: SalairesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SortiesStockRoute: SortiesStockRoute,
   StatistiquesRoute: StatistiquesRoute,
   VentesRoute: VentesRoute,
