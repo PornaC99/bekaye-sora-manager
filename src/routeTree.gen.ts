@@ -9,8 +9,110 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VentesRouteImport } from './routes/ventes'
+import { Route as StatistiquesRouteImport } from './routes/statistiques'
+import { Route as SortiesStockRouteImport } from './routes/sorties-stock'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SalairesRouteImport } from './routes/salaires'
+import { Route as RapportsRouteImport } from './routes/rapports'
+import { Route as ProduitsRouteImport } from './routes/produits'
+import { Route as ParametresRouteImport } from './routes/parametres'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as InventaireRouteImport } from './routes/inventaire'
+import { Route as FournisseursRouteImport } from './routes/fournisseurs'
+import { Route as EntreesStockRouteImport } from './routes/entrees-stock'
+import { Route as EmployesRouteImport } from './routes/employes'
+import { Route as DepensesRouteImport } from './routes/depenses'
+import { Route as ClientsRouteImport } from './routes/clients'
+import { Route as CategoriesRouteImport } from './routes/categories'
+import { Route as CaisseRouteImport } from './routes/caisse'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VentesRoute = VentesRouteImport.update({
+  id: '/ventes',
+  path: '/ventes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatistiquesRoute = StatistiquesRouteImport.update({
+  id: '/statistiques',
+  path: '/statistiques',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SortiesStockRoute = SortiesStockRouteImport.update({
+  id: '/sorties-stock',
+  path: '/sorties-stock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalairesRoute = SalairesRouteImport.update({
+  id: '/salaires',
+  path: '/salaires',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RapportsRoute = RapportsRouteImport.update({
+  id: '/rapports',
+  path: '/rapports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProduitsRoute = ProduitsRouteImport.update({
+  id: '/produits',
+  path: '/produits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParametresRoute = ParametresRouteImport.update({
+  id: '/parametres',
+  path: '/parametres',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventaireRoute = InventaireRouteImport.update({
+  id: '/inventaire',
+  path: '/inventaire',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FournisseursRoute = FournisseursRouteImport.update({
+  id: '/fournisseurs',
+  path: '/fournisseurs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntreesStockRoute = EntreesStockRouteImport.update({
+  id: '/entrees-stock',
+  path: '/entrees-stock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployesRoute = EmployesRouteImport.update({
+  id: '/employes',
+  path: '/employes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DepensesRoute = DepensesRouteImport.update({
+  id: '/depenses',
+  path: '/depenses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientsRoute = ClientsRouteImport.update({
+  id: '/clients',
+  path: '/clients',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategoriesRoute = CategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaisseRoute = CaisseRouteImport.update({
+  id: '/caisse',
+  path: '/caisse',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +121,270 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/caisse': typeof CaisseRoute
+  '/categories': typeof CategoriesRoute
+  '/clients': typeof ClientsRoute
+  '/depenses': typeof DepensesRoute
+  '/employes': typeof EmployesRoute
+  '/entrees-stock': typeof EntreesStockRoute
+  '/fournisseurs': typeof FournisseursRoute
+  '/inventaire': typeof InventaireRoute
+  '/notifications': typeof NotificationsRoute
+  '/parametres': typeof ParametresRoute
+  '/produits': typeof ProduitsRoute
+  '/rapports': typeof RapportsRoute
+  '/salaires': typeof SalairesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sorties-stock': typeof SortiesStockRoute
+  '/statistiques': typeof StatistiquesRoute
+  '/ventes': typeof VentesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/caisse': typeof CaisseRoute
+  '/categories': typeof CategoriesRoute
+  '/clients': typeof ClientsRoute
+  '/depenses': typeof DepensesRoute
+  '/employes': typeof EmployesRoute
+  '/entrees-stock': typeof EntreesStockRoute
+  '/fournisseurs': typeof FournisseursRoute
+  '/inventaire': typeof InventaireRoute
+  '/notifications': typeof NotificationsRoute
+  '/parametres': typeof ParametresRoute
+  '/produits': typeof ProduitsRoute
+  '/rapports': typeof RapportsRoute
+  '/salaires': typeof SalairesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sorties-stock': typeof SortiesStockRoute
+  '/statistiques': typeof StatistiquesRoute
+  '/ventes': typeof VentesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/caisse': typeof CaisseRoute
+  '/categories': typeof CategoriesRoute
+  '/clients': typeof ClientsRoute
+  '/depenses': typeof DepensesRoute
+  '/employes': typeof EmployesRoute
+  '/entrees-stock': typeof EntreesStockRoute
+  '/fournisseurs': typeof FournisseursRoute
+  '/inventaire': typeof InventaireRoute
+  '/notifications': typeof NotificationsRoute
+  '/parametres': typeof ParametresRoute
+  '/produits': typeof ProduitsRoute
+  '/rapports': typeof RapportsRoute
+  '/salaires': typeof SalairesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sorties-stock': typeof SortiesStockRoute
+  '/statistiques': typeof StatistiquesRoute
+  '/ventes': typeof VentesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/caisse'
+    | '/categories'
+    | '/clients'
+    | '/depenses'
+    | '/employes'
+    | '/entrees-stock'
+    | '/fournisseurs'
+    | '/inventaire'
+    | '/notifications'
+    | '/parametres'
+    | '/produits'
+    | '/rapports'
+    | '/salaires'
+    | '/sitemap.xml'
+    | '/sorties-stock'
+    | '/statistiques'
+    | '/ventes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/caisse'
+    | '/categories'
+    | '/clients'
+    | '/depenses'
+    | '/employes'
+    | '/entrees-stock'
+    | '/fournisseurs'
+    | '/inventaire'
+    | '/notifications'
+    | '/parametres'
+    | '/produits'
+    | '/rapports'
+    | '/salaires'
+    | '/sitemap.xml'
+    | '/sorties-stock'
+    | '/statistiques'
+    | '/ventes'
+  id:
+    | '__root__'
+    | '/'
+    | '/caisse'
+    | '/categories'
+    | '/clients'
+    | '/depenses'
+    | '/employes'
+    | '/entrees-stock'
+    | '/fournisseurs'
+    | '/inventaire'
+    | '/notifications'
+    | '/parametres'
+    | '/produits'
+    | '/rapports'
+    | '/salaires'
+    | '/sitemap.xml'
+    | '/sorties-stock'
+    | '/statistiques'
+    | '/ventes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CaisseRoute: typeof CaisseRoute
+  CategoriesRoute: typeof CategoriesRoute
+  ClientsRoute: typeof ClientsRoute
+  DepensesRoute: typeof DepensesRoute
+  EmployesRoute: typeof EmployesRoute
+  EntreesStockRoute: typeof EntreesStockRoute
+  FournisseursRoute: typeof FournisseursRoute
+  InventaireRoute: typeof InventaireRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ParametresRoute: typeof ParametresRoute
+  ProduitsRoute: typeof ProduitsRoute
+  RapportsRoute: typeof RapportsRoute
+  SalairesRoute: typeof SalairesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SortiesStockRoute: typeof SortiesStockRoute
+  StatistiquesRoute: typeof StatistiquesRoute
+  VentesRoute: typeof VentesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/ventes': {
+      id: '/ventes'
+      path: '/ventes'
+      fullPath: '/ventes'
+      preLoaderRoute: typeof VentesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/statistiques': {
+      id: '/statistiques'
+      path: '/statistiques'
+      fullPath: '/statistiques'
+      preLoaderRoute: typeof StatistiquesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sorties-stock': {
+      id: '/sorties-stock'
+      path: '/sorties-stock'
+      fullPath: '/sorties-stock'
+      preLoaderRoute: typeof SortiesStockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salaires': {
+      id: '/salaires'
+      path: '/salaires'
+      fullPath: '/salaires'
+      preLoaderRoute: typeof SalairesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rapports': {
+      id: '/rapports'
+      path: '/rapports'
+      fullPath: '/rapports'
+      preLoaderRoute: typeof RapportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produits': {
+      id: '/produits'
+      path: '/produits'
+      fullPath: '/produits'
+      preLoaderRoute: typeof ProduitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parametres': {
+      id: '/parametres'
+      path: '/parametres'
+      fullPath: '/parametres'
+      preLoaderRoute: typeof ParametresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventaire': {
+      id: '/inventaire'
+      path: '/inventaire'
+      fullPath: '/inventaire'
+      preLoaderRoute: typeof InventaireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fournisseurs': {
+      id: '/fournisseurs'
+      path: '/fournisseurs'
+      fullPath: '/fournisseurs'
+      preLoaderRoute: typeof FournisseursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entrees-stock': {
+      id: '/entrees-stock'
+      path: '/entrees-stock'
+      fullPath: '/entrees-stock'
+      preLoaderRoute: typeof EntreesStockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employes': {
+      id: '/employes'
+      path: '/employes'
+      fullPath: '/employes'
+      preLoaderRoute: typeof EmployesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/depenses': {
+      id: '/depenses'
+      path: '/depenses'
+      fullPath: '/depenses'
+      preLoaderRoute: typeof DepensesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clients': {
+      id: '/clients'
+      path: '/clients'
+      fullPath: '/clients'
+      preLoaderRoute: typeof ClientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categories': {
+      id: '/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/caisse': {
+      id: '/caisse'
+      path: '/caisse'
+      fullPath: '/caisse'
+      preLoaderRoute: typeof CaisseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +397,24 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CaisseRoute: CaisseRoute,
+  CategoriesRoute: CategoriesRoute,
+  ClientsRoute: ClientsRoute,
+  DepensesRoute: DepensesRoute,
+  EmployesRoute: EmployesRoute,
+  EntreesStockRoute: EntreesStockRoute,
+  FournisseursRoute: FournisseursRoute,
+  InventaireRoute: InventaireRoute,
+  NotificationsRoute: NotificationsRoute,
+  ParametresRoute: ParametresRoute,
+  ProduitsRoute: ProduitsRoute,
+  RapportsRoute: RapportsRoute,
+  SalairesRoute: SalairesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SortiesStockRoute: SortiesStockRoute,
+  StatistiquesRoute: StatistiquesRoute,
+  VentesRoute: VentesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
