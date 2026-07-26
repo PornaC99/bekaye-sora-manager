@@ -27,6 +27,9 @@ import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as CaisseRouteImport } from './routes/caisse'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProduitsIndexRouteImport } from './routes/produits.index'
+import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
+import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
 
 const VentesRoute = VentesRouteImport.update({
   id: '/ventes',
@@ -118,6 +121,21 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProduitsIndexRoute = ProduitsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProduitsRoute,
+} as any)
+const ProduitsMouvementsRoute = ProduitsMouvementsRouteImport.update({
+  id: '/mouvements',
+  path: '/mouvements',
+  getParentRoute: () => ProduitsRoute,
+} as any)
+const ProduitsProduitIdRoute = ProduitsProduitIdRouteImport.update({
+  id: '/$produitId',
+  path: '/$produitId',
+  getParentRoute: () => ProduitsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -131,13 +149,16 @@ export interface FileRoutesByFullPath {
   '/inventaire': typeof InventaireRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
-  '/produits': typeof ProduitsRoute
+  '/produits': typeof ProduitsRouteWithChildren
   '/rapports': typeof RapportsRoute
   '/salaires': typeof SalairesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
+  '/produits/$produitId': typeof ProduitsProduitIdRoute
+  '/produits/mouvements': typeof ProduitsMouvementsRoute
+  '/produits/': typeof ProduitsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -151,13 +172,15 @@ export interface FileRoutesByTo {
   '/inventaire': typeof InventaireRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
-  '/produits': typeof ProduitsRoute
   '/rapports': typeof RapportsRoute
   '/salaires': typeof SalairesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
+  '/produits/$produitId': typeof ProduitsProduitIdRoute
+  '/produits/mouvements': typeof ProduitsMouvementsRoute
+  '/produits': typeof ProduitsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -172,13 +195,16 @@ export interface FileRoutesById {
   '/inventaire': typeof InventaireRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
-  '/produits': typeof ProduitsRoute
+  '/produits': typeof ProduitsRouteWithChildren
   '/rapports': typeof RapportsRoute
   '/salaires': typeof SalairesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
+  '/produits/$produitId': typeof ProduitsProduitIdRoute
+  '/produits/mouvements': typeof ProduitsMouvementsRoute
+  '/produits/': typeof ProduitsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -201,6 +227,9 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/produits/$produitId'
+    | '/produits/mouvements'
+    | '/produits/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -214,13 +243,15 @@ export interface FileRouteTypes {
     | '/inventaire'
     | '/notifications'
     | '/parametres'
-    | '/produits'
     | '/rapports'
     | '/salaires'
     | '/sitemap.xml'
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/produits/$produitId'
+    | '/produits/mouvements'
+    | '/produits'
   id:
     | '__root__'
     | '/'
@@ -241,6 +272,9 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/produits/$produitId'
+    | '/produits/mouvements'
+    | '/produits/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -255,7 +289,7 @@ export interface RootRouteChildren {
   InventaireRoute: typeof InventaireRoute
   NotificationsRoute: typeof NotificationsRoute
   ParametresRoute: typeof ParametresRoute
-  ProduitsRoute: typeof ProduitsRoute
+  ProduitsRoute: typeof ProduitsRouteWithChildren
   RapportsRoute: typeof RapportsRoute
   SalairesRoute: typeof SalairesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -392,8 +426,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/produits/': {
+      id: '/produits/'
+      path: '/'
+      fullPath: '/produits/'
+      preLoaderRoute: typeof ProduitsIndexRouteImport
+      parentRoute: typeof ProduitsRoute
+    }
+    '/produits/mouvements': {
+      id: '/produits/mouvements'
+      path: '/mouvements'
+      fullPath: '/produits/mouvements'
+      preLoaderRoute: typeof ProduitsMouvementsRouteImport
+      parentRoute: typeof ProduitsRoute
+    }
+    '/produits/$produitId': {
+      id: '/produits/$produitId'
+      path: '/$produitId'
+      fullPath: '/produits/$produitId'
+      preLoaderRoute: typeof ProduitsProduitIdRouteImport
+      parentRoute: typeof ProduitsRoute
+    }
   }
 }
+
+interface ProduitsRouteChildren {
+  ProduitsProduitIdRoute: typeof ProduitsProduitIdRoute
+  ProduitsMouvementsRoute: typeof ProduitsMouvementsRoute
+  ProduitsIndexRoute: typeof ProduitsIndexRoute
+}
+
+const ProduitsRouteChildren: ProduitsRouteChildren = {
+  ProduitsProduitIdRoute: ProduitsProduitIdRoute,
+  ProduitsMouvementsRoute: ProduitsMouvementsRoute,
+  ProduitsIndexRoute: ProduitsIndexRoute,
+}
+
+const ProduitsRouteWithChildren = ProduitsRoute._addFileChildren(
+  ProduitsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -407,7 +478,7 @@ const rootRouteChildren: RootRouteChildren = {
   InventaireRoute: InventaireRoute,
   NotificationsRoute: NotificationsRoute,
   ParametresRoute: ParametresRoute,
-  ProduitsRoute: ProduitsRoute,
+  ProduitsRoute: ProduitsRouteWithChildren,
   RapportsRoute: RapportsRoute,
   SalairesRoute: SalairesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
@@ -418,3 +489,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
