@@ -1,22 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-import { PagePlaceholder } from "@/components/layout/page";
-
-const TITLE = "Entrées de stock";
-const DESCRIPTION = "Enregistrez les réceptions de marchandises et les approvisionnements.";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/entrees-stock")({
-  head: () => ({
-    meta: [
-      { title: `${TITLE} — Bekaye Sora Business Manager` },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: `${TITLE} — Bekaye Sora Business Manager` },
-      { property: "og:description", content: DESCRIPTION },
-    ],
-  }),
-  component: Page,
+  component: () => <Outlet />,
 });
-
-function Page() {
-  return <PagePlaceholder eyebrow="Stock" title={TITLE} description={DESCRIPTION} />;
-}
