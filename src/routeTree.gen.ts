@@ -31,6 +31,7 @@ import { Route as ProduitsIndexRouteImport } from './routes/produits.index'
 import { Route as EntreesStockIndexRouteImport } from './routes/entrees-stock.index'
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
+import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
 
 const VentesRoute = VentesRouteImport.update({
   id: '/ventes',
@@ -142,6 +143,11 @@ const ProduitsProduitIdRoute = ProduitsProduitIdRouteImport.update({
   path: '/$produitId',
   getParentRoute: () => ProduitsRoute,
 } as any)
+const EntreesStockEntreeIdRoute = EntreesStockEntreeIdRouteImport.update({
+  id: '/$entreeId',
+  path: '/$entreeId',
+  getParentRoute: () => EntreesStockRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -162,6 +168,7 @@ export interface FileRoutesByFullPath {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
+  '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/entrees-stock/': typeof EntreesStockIndexRoute
@@ -184,6 +191,7 @@ export interface FileRoutesByTo {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
+  '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/entrees-stock': typeof EntreesStockIndexRoute
@@ -209,6 +217,7 @@ export interface FileRoutesById {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
+  '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/entrees-stock/': typeof EntreesStockIndexRoute
@@ -235,6 +244,7 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/entrees-stock/$entreeId'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/entrees-stock/'
@@ -257,6 +267,7 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/entrees-stock/$entreeId'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/entrees-stock'
@@ -281,6 +292,7 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/entrees-stock/$entreeId'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/entrees-stock/'
@@ -464,14 +476,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProduitsProduitIdRouteImport
       parentRoute: typeof ProduitsRoute
     }
+    '/entrees-stock/$entreeId': {
+      id: '/entrees-stock/$entreeId'
+      path: '/$entreeId'
+      fullPath: '/entrees-stock/$entreeId'
+      preLoaderRoute: typeof EntreesStockEntreeIdRouteImport
+      parentRoute: typeof EntreesStockRoute
+    }
   }
 }
 
 interface EntreesStockRouteChildren {
+  EntreesStockEntreeIdRoute: typeof EntreesStockEntreeIdRoute
   EntreesStockIndexRoute: typeof EntreesStockIndexRoute
 }
 
 const EntreesStockRouteChildren: EntreesStockRouteChildren = {
+  EntreesStockEntreeIdRoute: EntreesStockEntreeIdRoute,
   EntreesStockIndexRoute: EntreesStockIndexRoute,
 }
 
