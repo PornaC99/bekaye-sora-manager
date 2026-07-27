@@ -31,6 +31,7 @@ import { Route as ProduitsIndexRouteImport } from './routes/produits.index'
 import { Route as EntreesStockIndexRouteImport } from './routes/entrees-stock.index'
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
+import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-stock.historique'
 import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
 
 const VentesRoute = VentesRouteImport.update({
@@ -143,6 +144,11 @@ const ProduitsProduitIdRoute = ProduitsProduitIdRouteImport.update({
   path: '/$produitId',
   getParentRoute: () => ProduitsRoute,
 } as any)
+const EntreesStockHistoriqueRoute = EntreesStockHistoriqueRouteImport.update({
+  id: '/historique',
+  path: '/historique',
+  getParentRoute: () => EntreesStockRoute,
+} as any)
 const EntreesStockEntreeIdRoute = EntreesStockEntreeIdRouteImport.update({
   id: '/$entreeId',
   path: '/$entreeId',
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
+  '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/entrees-stock/': typeof EntreesStockIndexRoute
@@ -192,6 +199,7 @@ export interface FileRoutesByTo {
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
+  '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/entrees-stock': typeof EntreesStockIndexRoute
@@ -218,6 +226,7 @@ export interface FileRoutesById {
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
+  '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/entrees-stock/': typeof EntreesStockIndexRoute
@@ -245,6 +254,7 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/ventes'
     | '/entrees-stock/$entreeId'
+    | '/entrees-stock/historique'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/entrees-stock/'
@@ -268,6 +278,7 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/ventes'
     | '/entrees-stock/$entreeId'
+    | '/entrees-stock/historique'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/entrees-stock'
@@ -293,6 +304,7 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/ventes'
     | '/entrees-stock/$entreeId'
+    | '/entrees-stock/historique'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/entrees-stock/'
@@ -476,6 +488,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProduitsProduitIdRouteImport
       parentRoute: typeof ProduitsRoute
     }
+    '/entrees-stock/historique': {
+      id: '/entrees-stock/historique'
+      path: '/historique'
+      fullPath: '/entrees-stock/historique'
+      preLoaderRoute: typeof EntreesStockHistoriqueRouteImport
+      parentRoute: typeof EntreesStockRoute
+    }
     '/entrees-stock/$entreeId': {
       id: '/entrees-stock/$entreeId'
       path: '/$entreeId'
@@ -488,11 +507,13 @@ declare module '@tanstack/react-router' {
 
 interface EntreesStockRouteChildren {
   EntreesStockEntreeIdRoute: typeof EntreesStockEntreeIdRoute
+  EntreesStockHistoriqueRoute: typeof EntreesStockHistoriqueRoute
   EntreesStockIndexRoute: typeof EntreesStockIndexRoute
 }
 
 const EntreesStockRouteChildren: EntreesStockRouteChildren = {
   EntreesStockEntreeIdRoute: EntreesStockEntreeIdRoute,
+  EntreesStockHistoriqueRoute: EntreesStockHistoriqueRoute,
   EntreesStockIndexRoute: EntreesStockIndexRoute,
 }
 
