@@ -138,3 +138,96 @@ export function enregistrerMouvement(input: {
   };
   setState({ mouvements: [mouvement, ...state.mouvements] });
 }
+
+/* ------------------------------------------------------------------ */
+/* Réceptions fournisseurs (module Entrées de stock)                    */
+/* ------------------------------------------------------------------ */
+
+export type LigneReception = {
+  produitId: string;
+  quantite: number;
+  prixAchat: number;
+  prixVente: number;
+  dateExpiration: string | null;
+};
+
+export type MetaReception = {
+  reference: string;
+  fournisseur: string;
+  utilisateur: string;
+  date: string;
+};
+
+/** Applique une réception : stock +, prix mis à jour, mouvements et achats historisés. */
+export function appliquerReception(lignes: LigneReception[], meta: MetaReception) {
+  const produits = state.produits.map((produit) => {
+    const ligne = lignes.find((l) => l.produitId === produit.id);
+    if (!ligne) return produit;
+    return {
+      ...produit,
+      stock: produit.stock + ligne.quantite,
+      prixAchat: ligne.prixAchat || produit.prixAchat,
+      prixVente: ligne.prixVente || produit.prixVente,
+      dateExpiration: ligne.dateExpiration ?? produit.dateExpiration,
+      dateModification: new Date().toISOString(),
+    };
+  });
+
+  const mouvements: MouvementStock[] = lignes.map((ligne, index) => ({
+    id: `M-${Date.now()}-${index}`,
+    produitId: ligne.produitId,
+    date: meta.date,
+    type: "entree",
+    utilisateur: meta.utilisateur,
+    quantite: ligne.quantite,
+    observation: `Réception ${meta.reference} — ${meta.fournisseur}`,
+  }));
+
+  const achats: LigneHistorique[] = lignes.map((ligne, index) => ({
+    id: `A-${meta.reference}-${index}`,
+    produitId: ligne.produitId,
+    date: meta.date,
+    reference: meta.reference,
+    tiers: meta.fournisseur,
+    quantite: ligne.quantite,
+    montant: ligne.quantite * ligne.prixAchat,
+  }));
+
+  setState({
+    produits,
+    mouvements: [...mouvements, ...state.mouvements],
+    achats: [...achats, ...state.achats],
+  });
+}
+
+/** Annule l'effet d'une réception (suppression ou modification d'une entrée). */
+export function annulerReception(lignes: LigneReception[], meta: MetaReception) {
+  const produits = state.produits.map((produit) => {
+    const ligne = lignes.find((l) => l.produitId === produit.id);
+    if (!ligne) return produit;
+    return {
+      ...produit,
+      stock: Math.max(0, produit.stock - ligne.quantite),
+      dateModification: new Date().toISOString(),
+    };
+  });
+
+  const mouvements: MouvementStock[] = lignes.map((ligne, index) => ({
+    id: `M-${Date.now()}-annul-${index}`,
+    produitId: ligne.produitId,
+    date: new Date().toISOString(),
+    type: "sortie",
+    utilisateur: meta.utilisateur,
+    quantite: ligne.quantite,
+    observation: `Annulation de la réception ${meta.reference}`,
+  }));
+
+  setState({
+    produits,
+    mouvements: [...mouvements, ...state.mouvements],
+    achats: state.achats.filter((a) => a.reference !== meta.reference),
+  });
+}
+
+export const lireProduits = () => state.produits;
+
