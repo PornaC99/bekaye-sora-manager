@@ -28,6 +28,7 @@ import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as CaisseRouteImport } from './routes/caisse'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProduitsIndexRouteImport } from './routes/produits.index'
+import { Route as EntreesStockIndexRouteImport } from './routes/entrees-stock.index'
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
 
@@ -126,6 +127,11 @@ const ProduitsIndexRoute = ProduitsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ProduitsRoute,
 } as any)
+const EntreesStockIndexRoute = EntreesStockIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EntreesStockRoute,
+} as any)
 const ProduitsMouvementsRoute = ProduitsMouvementsRouteImport.update({
   id: '/mouvements',
   path: '/mouvements',
@@ -144,7 +150,7 @@ export interface FileRoutesByFullPath {
   '/clients': typeof ClientsRoute
   '/depenses': typeof DepensesRoute
   '/employes': typeof EmployesRoute
-  '/entrees-stock': typeof EntreesStockRoute
+  '/entrees-stock': typeof EntreesStockRouteWithChildren
   '/fournisseurs': typeof FournisseursRoute
   '/inventaire': typeof InventaireRoute
   '/notifications': typeof NotificationsRoute
@@ -158,6 +164,7 @@ export interface FileRoutesByFullPath {
   '/ventes': typeof VentesRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
+  '/entrees-stock/': typeof EntreesStockIndexRoute
   '/produits/': typeof ProduitsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -167,7 +174,6 @@ export interface FileRoutesByTo {
   '/clients': typeof ClientsRoute
   '/depenses': typeof DepensesRoute
   '/employes': typeof EmployesRoute
-  '/entrees-stock': typeof EntreesStockRoute
   '/fournisseurs': typeof FournisseursRoute
   '/inventaire': typeof InventaireRoute
   '/notifications': typeof NotificationsRoute
@@ -180,6 +186,7 @@ export interface FileRoutesByTo {
   '/ventes': typeof VentesRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
+  '/entrees-stock': typeof EntreesStockIndexRoute
   '/produits': typeof ProduitsIndexRoute
 }
 export interface FileRoutesById {
@@ -190,7 +197,7 @@ export interface FileRoutesById {
   '/clients': typeof ClientsRoute
   '/depenses': typeof DepensesRoute
   '/employes': typeof EmployesRoute
-  '/entrees-stock': typeof EntreesStockRoute
+  '/entrees-stock': typeof EntreesStockRouteWithChildren
   '/fournisseurs': typeof FournisseursRoute
   '/inventaire': typeof InventaireRoute
   '/notifications': typeof NotificationsRoute
@@ -204,6 +211,7 @@ export interface FileRoutesById {
   '/ventes': typeof VentesRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
+  '/entrees-stock/': typeof EntreesStockIndexRoute
   '/produits/': typeof ProduitsIndexRoute
 }
 export interface FileRouteTypes {
@@ -229,6 +237,7 @@ export interface FileRouteTypes {
     | '/ventes'
     | '/produits/$produitId'
     | '/produits/mouvements'
+    | '/entrees-stock/'
     | '/produits/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -238,7 +247,6 @@ export interface FileRouteTypes {
     | '/clients'
     | '/depenses'
     | '/employes'
-    | '/entrees-stock'
     | '/fournisseurs'
     | '/inventaire'
     | '/notifications'
@@ -251,6 +259,7 @@ export interface FileRouteTypes {
     | '/ventes'
     | '/produits/$produitId'
     | '/produits/mouvements'
+    | '/entrees-stock'
     | '/produits'
   id:
     | '__root__'
@@ -274,6 +283,7 @@ export interface FileRouteTypes {
     | '/ventes'
     | '/produits/$produitId'
     | '/produits/mouvements'
+    | '/entrees-stock/'
     | '/produits/'
   fileRoutesById: FileRoutesById
 }
@@ -284,7 +294,7 @@ export interface RootRouteChildren {
   ClientsRoute: typeof ClientsRoute
   DepensesRoute: typeof DepensesRoute
   EmployesRoute: typeof EmployesRoute
-  EntreesStockRoute: typeof EntreesStockRoute
+  EntreesStockRoute: typeof EntreesStockRouteWithChildren
   FournisseursRoute: typeof FournisseursRoute
   InventaireRoute: typeof InventaireRoute
   NotificationsRoute: typeof NotificationsRoute
@@ -433,6 +443,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProduitsIndexRouteImport
       parentRoute: typeof ProduitsRoute
     }
+    '/entrees-stock/': {
+      id: '/entrees-stock/'
+      path: '/'
+      fullPath: '/entrees-stock/'
+      preLoaderRoute: typeof EntreesStockIndexRouteImport
+      parentRoute: typeof EntreesStockRoute
+    }
     '/produits/mouvements': {
       id: '/produits/mouvements'
       path: '/mouvements'
@@ -449,6 +466,18 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface EntreesStockRouteChildren {
+  EntreesStockIndexRoute: typeof EntreesStockIndexRoute
+}
+
+const EntreesStockRouteChildren: EntreesStockRouteChildren = {
+  EntreesStockIndexRoute: EntreesStockIndexRoute,
+}
+
+const EntreesStockRouteWithChildren = EntreesStockRoute._addFileChildren(
+  EntreesStockRouteChildren,
+)
 
 interface ProduitsRouteChildren {
   ProduitsProduitIdRoute: typeof ProduitsProduitIdRoute
@@ -473,7 +502,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClientsRoute: ClientsRoute,
   DepensesRoute: DepensesRoute,
   EmployesRoute: EmployesRoute,
-  EntreesStockRoute: EntreesStockRoute,
+  EntreesStockRoute: EntreesStockRouteWithChildren,
   FournisseursRoute: FournisseursRoute,
   InventaireRoute: InventaireRoute,
   NotificationsRoute: NotificationsRoute,
