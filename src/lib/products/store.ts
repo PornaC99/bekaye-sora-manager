@@ -309,6 +309,48 @@ export function retournerVente(
   setState({ produits, mouvements: [...mouvements, ...state.mouvements] });
 }
 
+/* ------------------------------------------------------------------ */
+/* Inventaire (module Inventaire Intelligent)                           */
+/* ------------------------------------------------------------------ */
+
+export type LigneAjustementInventaire = { produitId: string; stockPhysique: number };
+
+export type MetaInventaire = { reference: string; utilisateur: string; date: string };
+
+/** Corrige le stock système selon les quantités comptées et historise chaque écart. */
+export function appliquerInventaire(
+  lignes: LigneAjustementInventaire[],
+  meta: MetaInventaire,
+) {
+  const mouvements: MouvementStock[] = [];
+
+  const produits = state.produits.map((produit) => {
+    const ligne = lignes.find((l) => l.produitId === produit.id);
+    if (!ligne) return produit;
+    const delta = ligne.stockPhysique - produit.stock;
+    if (delta === 0) return produit;
+    mouvements.push({
+      id: `M-${Date.now()}-i${mouvements.length}`,
+      produitId: produit.id,
+      date: meta.date,
+      type: delta > 0 ? "entree" : "sortie",
+      utilisateur: meta.utilisateur,
+      quantite: Math.abs(delta),
+      observation: `Ajustement inventaire ${meta.reference}`,
+    });
+    return {
+      ...produit,
+      stock: Math.max(0, ligne.stockPhysique),
+      dateModification: new Date().toISOString(),
+    };
+  });
+
+  setState({ produits, mouvements: [...mouvements, ...state.mouvements] });
+  return mouvements.length;
+}
+
 export const lireProduits = () => state.produits;
+export const lireMouvements = () => state.mouvements;
+export const lireVentesProduits = () => state.ventes;
 
 
