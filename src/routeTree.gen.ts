@@ -84,11 +84,15 @@ import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
 import { Route as AdministrationUtilisateursRouteImport } from './routes/administration.utilisateurs'
 import { Route as AdministrationSecuriteRouteImport } from './routes/administration.securite'
 import { Route as AdministrationSauvegardesRouteImport } from './routes/administration.sauvegardes'
+import { Route as AdministrationPreferencesRouteImport } from './routes/administration.preferences'
 import { Route as AdministrationPersonnalisationRouteImport } from './routes/administration.personnalisation'
 import { Route as AdministrationNotificationsRouteImport } from './routes/administration.notifications'
+import { Route as AdministrationMaintenanceRouteImport } from './routes/administration.maintenance'
 import { Route as AdministrationMagasinsRouteImport } from './routes/administration.magasins'
 import { Route as AdministrationEntreprisesRouteImport } from './routes/administration.entreprises'
+import { Route as AdministrationDonneesRouteImport } from './routes/administration.donnees'
 import { Route as AdministrationAuditRouteImport } from './routes/administration.audit'
+import { Route as AdministrationAProposRouteImport } from './routes/administration.a-propos'
 import { Route as FournisseursCommandesIndexRouteImport } from './routes/fournisseurs.commandes.index'
 import { Route as FournisseursCommandesCommandeIdRouteImport } from './routes/fournisseurs.commandes.$commandeId'
 
@@ -471,6 +475,12 @@ const AdministrationSauvegardesRoute =
     path: '/sauvegardes',
     getParentRoute: () => AdministrationRoute,
   } as any)
+const AdministrationPreferencesRoute =
+  AdministrationPreferencesRouteImport.update({
+    id: '/preferences',
+    path: '/preferences',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
 const AdministrationPersonnalisationRoute =
   AdministrationPersonnalisationRouteImport.update({
     id: '/personnalisation',
@@ -481,6 +491,12 @@ const AdministrationNotificationsRoute =
   AdministrationNotificationsRouteImport.update({
     id: '/notifications',
     path: '/notifications',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
+const AdministrationMaintenanceRoute =
+  AdministrationMaintenanceRouteImport.update({
+    id: '/maintenance',
+    path: '/maintenance',
     getParentRoute: () => AdministrationRoute,
   } as any)
 const AdministrationMagasinsRoute = AdministrationMagasinsRouteImport.update({
@@ -494,9 +510,19 @@ const AdministrationEntreprisesRoute =
     path: '/entreprises',
     getParentRoute: () => AdministrationRoute,
   } as any)
+const AdministrationDonneesRoute = AdministrationDonneesRouteImport.update({
+  id: '/donnees',
+  path: '/donnees',
+  getParentRoute: () => AdministrationRoute,
+} as any)
 const AdministrationAuditRoute = AdministrationAuditRouteImport.update({
   id: '/audit',
   path: '/audit',
+  getParentRoute: () => AdministrationRoute,
+} as any)
+const AdministrationAProposRoute = AdministrationAProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
   getParentRoute: () => AdministrationRoute,
 } as any)
 const FournisseursCommandesIndexRoute =
@@ -533,11 +559,15 @@ export interface FileRoutesByFullPath {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
+  '/administration/a-propos': typeof AdministrationAProposRoute
   '/administration/audit': typeof AdministrationAuditRoute
+  '/administration/donnees': typeof AdministrationDonneesRoute
   '/administration/entreprises': typeof AdministrationEntreprisesRoute
   '/administration/magasins': typeof AdministrationMagasinsRoute
+  '/administration/maintenance': typeof AdministrationMaintenanceRoute
   '/administration/notifications': typeof AdministrationNotificationsRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/preferences': typeof AdministrationPreferencesRoute
   '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
   '/administration/securite': typeof AdministrationSecuriteRoute
   '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
@@ -606,11 +636,15 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
+  '/administration/a-propos': typeof AdministrationAProposRoute
   '/administration/audit': typeof AdministrationAuditRoute
+  '/administration/donnees': typeof AdministrationDonneesRoute
   '/administration/entreprises': typeof AdministrationEntreprisesRoute
   '/administration/magasins': typeof AdministrationMagasinsRoute
+  '/administration/maintenance': typeof AdministrationMaintenanceRoute
   '/administration/notifications': typeof AdministrationNotificationsRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/preferences': typeof AdministrationPreferencesRoute
   '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
   '/administration/securite': typeof AdministrationSecuriteRoute
   '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
@@ -691,11 +725,15 @@ export interface FileRoutesById {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
+  '/administration/a-propos': typeof AdministrationAProposRoute
   '/administration/audit': typeof AdministrationAuditRoute
+  '/administration/donnees': typeof AdministrationDonneesRoute
   '/administration/entreprises': typeof AdministrationEntreprisesRoute
   '/administration/magasins': typeof AdministrationMagasinsRoute
+  '/administration/maintenance': typeof AdministrationMaintenanceRoute
   '/administration/notifications': typeof AdministrationNotificationsRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/preferences': typeof AdministrationPreferencesRoute
   '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
   '/administration/securite': typeof AdministrationSecuriteRoute
   '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
@@ -777,11 +815,15 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/administration/a-propos'
     | '/administration/audit'
+    | '/administration/donnees'
     | '/administration/entreprises'
     | '/administration/magasins'
+    | '/administration/maintenance'
     | '/administration/notifications'
     | '/administration/personnalisation'
+    | '/administration/preferences'
     | '/administration/sauvegardes'
     | '/administration/securite'
     | '/administration/utilisateurs'
@@ -850,11 +892,15 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sorties-stock'
     | '/statistiques'
+    | '/administration/a-propos'
     | '/administration/audit'
+    | '/administration/donnees'
     | '/administration/entreprises'
     | '/administration/magasins'
+    | '/administration/maintenance'
     | '/administration/notifications'
     | '/administration/personnalisation'
+    | '/administration/preferences'
     | '/administration/sauvegardes'
     | '/administration/securite'
     | '/administration/utilisateurs'
@@ -934,11 +980,15 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/administration/a-propos'
     | '/administration/audit'
+    | '/administration/donnees'
     | '/administration/entreprises'
     | '/administration/magasins'
+    | '/administration/maintenance'
     | '/administration/notifications'
     | '/administration/personnalisation'
+    | '/administration/preferences'
     | '/administration/sauvegardes'
     | '/administration/securite'
     | '/administration/utilisateurs'
@@ -1548,6 +1598,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdministrationSauvegardesRouteImport
       parentRoute: typeof AdministrationRoute
     }
+    '/administration/preferences': {
+      id: '/administration/preferences'
+      path: '/preferences'
+      fullPath: '/administration/preferences'
+      preLoaderRoute: typeof AdministrationPreferencesRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
     '/administration/personnalisation': {
       id: '/administration/personnalisation'
       path: '/personnalisation'
@@ -1560,6 +1617,13 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/administration/notifications'
       preLoaderRoute: typeof AdministrationNotificationsRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/maintenance': {
+      id: '/administration/maintenance'
+      path: '/maintenance'
+      fullPath: '/administration/maintenance'
+      preLoaderRoute: typeof AdministrationMaintenanceRouteImport
       parentRoute: typeof AdministrationRoute
     }
     '/administration/magasins': {
@@ -1576,11 +1640,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdministrationEntreprisesRouteImport
       parentRoute: typeof AdministrationRoute
     }
+    '/administration/donnees': {
+      id: '/administration/donnees'
+      path: '/donnees'
+      fullPath: '/administration/donnees'
+      preLoaderRoute: typeof AdministrationDonneesRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
     '/administration/audit': {
       id: '/administration/audit'
       path: '/audit'
       fullPath: '/administration/audit'
       preLoaderRoute: typeof AdministrationAuditRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/a-propos': {
+      id: '/administration/a-propos'
+      path: '/a-propos'
+      fullPath: '/administration/a-propos'
+      preLoaderRoute: typeof AdministrationAProposRouteImport
       parentRoute: typeof AdministrationRoute
     }
     '/fournisseurs/commandes/': {
@@ -1601,11 +1679,15 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdministrationRouteChildren {
+  AdministrationAProposRoute: typeof AdministrationAProposRoute
   AdministrationAuditRoute: typeof AdministrationAuditRoute
+  AdministrationDonneesRoute: typeof AdministrationDonneesRoute
   AdministrationEntreprisesRoute: typeof AdministrationEntreprisesRoute
   AdministrationMagasinsRoute: typeof AdministrationMagasinsRoute
+  AdministrationMaintenanceRoute: typeof AdministrationMaintenanceRoute
   AdministrationNotificationsRoute: typeof AdministrationNotificationsRoute
   AdministrationPersonnalisationRoute: typeof AdministrationPersonnalisationRoute
+  AdministrationPreferencesRoute: typeof AdministrationPreferencesRoute
   AdministrationSauvegardesRoute: typeof AdministrationSauvegardesRoute
   AdministrationSecuriteRoute: typeof AdministrationSecuriteRoute
   AdministrationUtilisateursRoute: typeof AdministrationUtilisateursRoute
@@ -1613,11 +1695,15 @@ interface AdministrationRouteChildren {
 }
 
 const AdministrationRouteChildren: AdministrationRouteChildren = {
+  AdministrationAProposRoute: AdministrationAProposRoute,
   AdministrationAuditRoute: AdministrationAuditRoute,
+  AdministrationDonneesRoute: AdministrationDonneesRoute,
   AdministrationEntreprisesRoute: AdministrationEntreprisesRoute,
   AdministrationMagasinsRoute: AdministrationMagasinsRoute,
+  AdministrationMaintenanceRoute: AdministrationMaintenanceRoute,
   AdministrationNotificationsRoute: AdministrationNotificationsRoute,
   AdministrationPersonnalisationRoute: AdministrationPersonnalisationRoute,
+  AdministrationPreferencesRoute: AdministrationPreferencesRoute,
   AdministrationSauvegardesRoute: AdministrationSauvegardesRoute,
   AdministrationSecuriteRoute: AdministrationSecuriteRoute,
   AdministrationUtilisateursRoute: AdministrationUtilisateursRoute,
