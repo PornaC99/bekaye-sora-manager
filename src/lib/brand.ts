@@ -5,8 +5,13 @@ import bouteilleAsset from "@/assets/lotion-501.png.asset.json";
  * Identité visuelle officielle Bekaye Sora Collection.
  * Rouge profond, blanc, doré, noir doux.
  */
-export const LOGO_URL = logoAsset.url;
+/** URL absolue : nécessaire pour les fenêtres d'impression (PDF) ouvertes en blank. */
+export const LOGO_URL =
+  typeof window !== "undefined"
+    ? new URL(logoAsset.url, window.location.origin).href
+    : logoAsset.url;
 export const BOUTEILLE_501_URL = bouteilleAsset.url;
+
 
 export const MARQUE = {
   nom: "Bekaye Sora Collection",
