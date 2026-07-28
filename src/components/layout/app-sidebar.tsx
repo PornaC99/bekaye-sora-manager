@@ -1,6 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
+import { useRoleActuel } from "@/hooks/use-role";
+import { peutAcceder } from "@/lib/access/roles";
 import { cn } from "@/lib/utils";
 import { BRAND, navSections } from "@/lib/navigation";
 import { BrandMark } from "./brand-mark";
@@ -8,10 +10,18 @@ import { useShell } from "./shell-context";
 
 function NavLinks({ onNavigate, compact }: { onNavigate?: () => void; compact?: boolean }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { role } = useRoleActuel();
+
+  const sections = navSections
+    .map((section) => ({
+      ...section,
+      items: section.items.filter((item) => peutAcceder(role, item.to)),
+    }))
+    .filter((section) => section.items.length > 0);
 
   return (
     <nav className="flex flex-col gap-5 px-3 pb-6">
-      {navSections.map((section) => (
+      {sections.map((section) => (
         <div key={section.label} className="flex flex-col gap-1">
           {!compact && (
             <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
