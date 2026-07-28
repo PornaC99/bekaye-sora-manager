@@ -102,6 +102,7 @@ function ChargesPage() {
         <SectionCard
           title="Historique des dépenses"
           description={`${filtrees.length} ligne(s) · ${formatFCFA(total)}`}
+          className="min-w-0"
           bodyClassName="px-0 pb-0 pt-0"
         >
           <div className="flex flex-wrap gap-2 border-b border-border px-5 py-4">
