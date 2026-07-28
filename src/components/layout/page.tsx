@@ -15,21 +15,25 @@ export function PageHeader({
   actions?: ReactNode;
 }) {
   return (
-    <header className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 sm:flex sm:flex-wrap sm:items-center sm:justify-between">
+    <header className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4">
       <div className="min-w-0">
         {eyebrow && (
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
             {eyebrow}
           </p>
         )}
-        <h1 className="mt-1 truncate text-2xl font-semibold text-foreground sm:text-3xl">
+        <h1 className="mt-1 text-balance break-words text-xl font-semibold text-foreground sm:truncate sm:text-3xl">
           {title}
         </h1>
         {description && (
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{description}</p>
         )}
       </div>
-      {actions && <div className="shrink-0">{actions}</div>}
+      {actions && (
+        <div className="flex w-full flex-wrap gap-2 sm:w-auto sm:shrink-0 [&>*]:flex-1 sm:[&>*]:flex-none">
+          {actions}
+        </div>
+      )}
     </header>
   );
 }
