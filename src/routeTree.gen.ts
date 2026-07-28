@@ -41,6 +41,7 @@ import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
 import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique'
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
+import { Route as MobileNotificationsRouteImport } from './routes/mobile.notifications'
 import { Route as MobileConnexionRouteImport } from './routes/mobile.connexion'
 import { Route as InventaireHistoriqueRouteImport } from './routes/inventaire.historique'
 import { Route as InventaireAnalyseRouteImport } from './routes/inventaire.analyse'
@@ -228,6 +229,11 @@ const ProduitsProduitIdRoute = ProduitsProduitIdRouteImport.update({
   path: '/$produitId',
   getParentRoute: () => ProduitsRoute,
 } as any)
+const MobileNotificationsRoute = MobileNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => MobileRoute,
+} as any)
 const MobileConnexionRoute = MobileConnexionRouteImport.update({
   id: '/connexion',
   path: '/connexion',
@@ -407,6 +413,7 @@ export interface FileRoutesByFullPath {
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/mobile/connexion': typeof MobileConnexionRoute
+  '/mobile/notifications': typeof MobileNotificationsRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -458,6 +465,7 @@ export interface FileRoutesByTo {
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/mobile/connexion': typeof MobileConnexionRoute
+  '/mobile/notifications': typeof MobileNotificationsRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -519,6 +527,7 @@ export interface FileRoutesById {
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/mobile/connexion': typeof MobileConnexionRoute
+  '/mobile/notifications': typeof MobileNotificationsRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -581,6 +590,7 @@ export interface FileRouteTypes {
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/mobile/connexion'
+    | '/mobile/notifications'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -632,6 +642,7 @@ export interface FileRouteTypes {
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/mobile/connexion'
+    | '/mobile/notifications'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -692,6 +703,7 @@ export interface FileRouteTypes {
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/mobile/connexion'
+    | '/mobile/notifications'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -956,6 +968,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/produits/$produitId'
       preLoaderRoute: typeof ProduitsProduitIdRouteImport
       parentRoute: typeof ProduitsRoute
+    }
+    '/mobile/notifications': {
+      id: '/mobile/notifications'
+      path: '/notifications'
+      fullPath: '/mobile/notifications'
+      preLoaderRoute: typeof MobileNotificationsRouteImport
+      parentRoute: typeof MobileRoute
     }
     '/mobile/connexion': {
       id: '/mobile/connexion'
@@ -1265,11 +1284,13 @@ const InventaireRouteWithChildren = InventaireRoute._addFileChildren(
 
 interface MobileRouteChildren {
   MobileConnexionRoute: typeof MobileConnexionRoute
+  MobileNotificationsRoute: typeof MobileNotificationsRoute
   MobileIndexRoute: typeof MobileIndexRoute
 }
 
 const MobileRouteChildren: MobileRouteChildren = {
   MobileConnexionRoute: MobileConnexionRoute,
+  MobileNotificationsRoute: MobileNotificationsRoute,
   MobileIndexRoute: MobileIndexRoute,
 }
 
