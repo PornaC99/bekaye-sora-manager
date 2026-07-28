@@ -98,7 +98,7 @@ function ChargesPage() {
         }
       />
 
-      <div className="grid gap-4 xl:grid-cols-[1.6fr_1fr]">
+      <div className="flex flex-col gap-4">
         <SectionCard
           title="Historique des dépenses"
           description={`${filtrees.length} ligne(s) · ${formatFCFA(total)}`}
