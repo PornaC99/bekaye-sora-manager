@@ -45,7 +45,7 @@ function ouvrir(html: string, imprimer: boolean) {
   if (!fenetre) return false;
   fenetre.document.write(
     imprimer
-      ? html.replace("</body>", "<script>window.onload=()=>window.print()<\/script></body>")
+      ? html.replace("</body>", "<script>window.onload=()=>window.print()</script></body>")
       : html,
   );
   fenetre.document.close();

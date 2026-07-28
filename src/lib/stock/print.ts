@@ -88,7 +88,7 @@ export function imprimerEntree(entree: EntreeStock, produits: Produit[]) {
     <div>Signature du livreur</div>
     <div>Signature du responsable</div>
   </div>
-  <script>window.onload = () => { window.print(); };<\/script>
+  <script>window.onload = () => { window.print(); };</script>
 </body></html>`;
 
   const fenetre = window.open("", "_blank", "width=900,height=1000");
