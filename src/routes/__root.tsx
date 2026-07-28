@@ -139,6 +139,11 @@ function RootComponent() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const estMobile = pathname === "/mobile" || pathname.startsWith("/mobile/");
   const estAuth = pathname === "/auth" || pathname === "/reset-password";
+  // Le sous-arbre protégé est rendu uniquement côté client (comme les routes
+  // `_authenticated`, en ssr:false) : sinon le serveur affiche l'écran de
+  // chargement du TenantGate et l'hydratation échoue.
+  const [hydrate, setHydrate] = useState(false);
+  useEffect(() => setHydrate(true), []);
 
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event) => {
@@ -155,14 +160,15 @@ function RootComponent() {
       {estMobile || estAuth ? (
         /* Coques autonomes : application mobile du Directeur et pages d'authentification. */
         <Outlet />
-      ) : (
+      ) : hydrate ? (
         <TenantGate>
           <AppShell>
             {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
             <Outlet />
           </AppShell>
         </TenantGate>
-      )}
+      ) : null}
+
 
       <Toaster position="top-right" richColors />
     </QueryClientProvider>
