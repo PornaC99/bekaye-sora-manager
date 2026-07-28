@@ -18,6 +18,7 @@ import { Route as RapportsRouteImport } from './routes/rapports'
 import { Route as ProduitsRouteImport } from './routes/produits'
 import { Route as ParametresRouteImport } from './routes/parametres'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as NexusiaRouteImport } from './routes/nexusia'
 import { Route as MobileRouteImport } from './routes/mobile'
 import { Route as InventaireRouteImport } from './routes/inventaire'
 import { Route as FournisseursRouteImport } from './routes/fournisseurs'
@@ -32,6 +33,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as VentesIndexRouteImport } from './routes/ventes.index'
 import { Route as RapportsIndexRouteImport } from './routes/rapports.index'
 import { Route as ProduitsIndexRouteImport } from './routes/produits.index'
+import { Route as NexusiaIndexRouteImport } from './routes/nexusia.index'
 import { Route as MobileIndexRouteImport } from './routes/mobile.index'
 import { Route as InventaireIndexRouteImport } from './routes/inventaire.index'
 import { Route as FournisseursIndexRouteImport } from './routes/fournisseurs.index'
@@ -46,6 +48,14 @@ import { Route as RapportsPerformanceRouteImport } from './routes/rapports.perfo
 import { Route as RapportsComparaisonRouteImport } from './routes/rapports.comparaison'
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
+import { Route as NexusiaRechercheRouteImport } from './routes/nexusia.recherche'
+import { Route as NexusiaRapportsRouteImport } from './routes/nexusia.rapports'
+import { Route as NexusiaProduitsRouteImport } from './routes/nexusia.produits'
+import { Route as NexusiaObjectifsRouteImport } from './routes/nexusia.objectifs'
+import { Route as NexusiaFinancesRouteImport } from './routes/nexusia.finances'
+import { Route as NexusiaEmployesRouteImport } from './routes/nexusia.employes'
+import { Route as NexusiaDecisionRouteImport } from './routes/nexusia.decision'
+import { Route as NexusiaClientsRouteImport } from './routes/nexusia.clients'
 import { Route as MobileRechercheRouteImport } from './routes/mobile.recherche'
 import { Route as MobileRapportsRouteImport } from './routes/mobile.rapports'
 import { Route as MobileProduitsRouteImport } from './routes/mobile.produits'
@@ -141,6 +151,11 @@ const NotificationsRoute = NotificationsRouteImport.update({
   path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NexusiaRoute = NexusiaRouteImport.update({
+  id: '/nexusia',
+  path: '/nexusia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MobileRoute = MobileRouteImport.update({
   id: '/mobile',
   path: '/mobile',
@@ -211,6 +226,11 @@ const ProduitsIndexRoute = ProduitsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ProduitsRoute,
 } as any)
+const NexusiaIndexRoute = NexusiaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => NexusiaRoute,
+} as any)
 const MobileIndexRoute = MobileIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -280,6 +300,46 @@ const ProduitsProduitIdRoute = ProduitsProduitIdRouteImport.update({
   id: '/$produitId',
   path: '/$produitId',
   getParentRoute: () => ProduitsRoute,
+} as any)
+const NexusiaRechercheRoute = NexusiaRechercheRouteImport.update({
+  id: '/recherche',
+  path: '/recherche',
+  getParentRoute: () => NexusiaRoute,
+} as any)
+const NexusiaRapportsRoute = NexusiaRapportsRouteImport.update({
+  id: '/rapports',
+  path: '/rapports',
+  getParentRoute: () => NexusiaRoute,
+} as any)
+const NexusiaProduitsRoute = NexusiaProduitsRouteImport.update({
+  id: '/produits',
+  path: '/produits',
+  getParentRoute: () => NexusiaRoute,
+} as any)
+const NexusiaObjectifsRoute = NexusiaObjectifsRouteImport.update({
+  id: '/objectifs',
+  path: '/objectifs',
+  getParentRoute: () => NexusiaRoute,
+} as any)
+const NexusiaFinancesRoute = NexusiaFinancesRouteImport.update({
+  id: '/finances',
+  path: '/finances',
+  getParentRoute: () => NexusiaRoute,
+} as any)
+const NexusiaEmployesRoute = NexusiaEmployesRouteImport.update({
+  id: '/employes',
+  path: '/employes',
+  getParentRoute: () => NexusiaRoute,
+} as any)
+const NexusiaDecisionRoute = NexusiaDecisionRouteImport.update({
+  id: '/decision',
+  path: '/decision',
+  getParentRoute: () => NexusiaRoute,
+} as any)
+const NexusiaClientsRoute = NexusiaClientsRouteImport.update({
+  id: '/clients',
+  path: '/clients',
+  getParentRoute: () => NexusiaRoute,
 } as any)
 const MobileRechercheRoute = MobileRechercheRouteImport.update({
   id: '/recherche',
@@ -550,6 +610,7 @@ export interface FileRoutesByFullPath {
   '/fournisseurs': typeof FournisseursRouteWithChildren
   '/inventaire': typeof InventaireRouteWithChildren
   '/mobile': typeof MobileRouteWithChildren
+  '/nexusia': typeof NexusiaRouteWithChildren
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/produits': typeof ProduitsRouteWithChildren
@@ -606,6 +667,14 @@ export interface FileRoutesByFullPath {
   '/mobile/produits': typeof MobileProduitsRoute
   '/mobile/rapports': typeof MobileRapportsRoute
   '/mobile/recherche': typeof MobileRechercheRoute
+  '/nexusia/clients': typeof NexusiaClientsRoute
+  '/nexusia/decision': typeof NexusiaDecisionRoute
+  '/nexusia/employes': typeof NexusiaEmployesRoute
+  '/nexusia/finances': typeof NexusiaFinancesRoute
+  '/nexusia/objectifs': typeof NexusiaObjectifsRoute
+  '/nexusia/produits': typeof NexusiaProduitsRoute
+  '/nexusia/rapports': typeof NexusiaRapportsRoute
+  '/nexusia/recherche': typeof NexusiaRechercheRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/rapports/comparaison': typeof RapportsComparaisonRoute
@@ -620,6 +689,7 @@ export interface FileRoutesByFullPath {
   '/fournisseurs/': typeof FournisseursIndexRoute
   '/inventaire/': typeof InventaireIndexRoute
   '/mobile/': typeof MobileIndexRoute
+  '/nexusia/': typeof NexusiaIndexRoute
   '/produits/': typeof ProduitsIndexRoute
   '/rapports/': typeof RapportsIndexRoute
   '/ventes/': typeof VentesIndexRoute
@@ -683,6 +753,14 @@ export interface FileRoutesByTo {
   '/mobile/produits': typeof MobileProduitsRoute
   '/mobile/rapports': typeof MobileRapportsRoute
   '/mobile/recherche': typeof MobileRechercheRoute
+  '/nexusia/clients': typeof NexusiaClientsRoute
+  '/nexusia/decision': typeof NexusiaDecisionRoute
+  '/nexusia/employes': typeof NexusiaEmployesRoute
+  '/nexusia/finances': typeof NexusiaFinancesRoute
+  '/nexusia/objectifs': typeof NexusiaObjectifsRoute
+  '/nexusia/produits': typeof NexusiaProduitsRoute
+  '/nexusia/rapports': typeof NexusiaRapportsRoute
+  '/nexusia/recherche': typeof NexusiaRechercheRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/rapports/comparaison': typeof RapportsComparaisonRoute
@@ -697,6 +775,7 @@ export interface FileRoutesByTo {
   '/fournisseurs': typeof FournisseursIndexRoute
   '/inventaire': typeof InventaireIndexRoute
   '/mobile': typeof MobileIndexRoute
+  '/nexusia': typeof NexusiaIndexRoute
   '/produits': typeof ProduitsIndexRoute
   '/rapports': typeof RapportsIndexRoute
   '/ventes': typeof VentesIndexRoute
@@ -716,6 +795,7 @@ export interface FileRoutesById {
   '/fournisseurs': typeof FournisseursRouteWithChildren
   '/inventaire': typeof InventaireRouteWithChildren
   '/mobile': typeof MobileRouteWithChildren
+  '/nexusia': typeof NexusiaRouteWithChildren
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/produits': typeof ProduitsRouteWithChildren
@@ -772,6 +852,14 @@ export interface FileRoutesById {
   '/mobile/produits': typeof MobileProduitsRoute
   '/mobile/rapports': typeof MobileRapportsRoute
   '/mobile/recherche': typeof MobileRechercheRoute
+  '/nexusia/clients': typeof NexusiaClientsRoute
+  '/nexusia/decision': typeof NexusiaDecisionRoute
+  '/nexusia/employes': typeof NexusiaEmployesRoute
+  '/nexusia/finances': typeof NexusiaFinancesRoute
+  '/nexusia/objectifs': typeof NexusiaObjectifsRoute
+  '/nexusia/produits': typeof NexusiaProduitsRoute
+  '/nexusia/rapports': typeof NexusiaRapportsRoute
+  '/nexusia/recherche': typeof NexusiaRechercheRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/rapports/comparaison': typeof RapportsComparaisonRoute
@@ -786,6 +874,7 @@ export interface FileRoutesById {
   '/fournisseurs/': typeof FournisseursIndexRoute
   '/inventaire/': typeof InventaireIndexRoute
   '/mobile/': typeof MobileIndexRoute
+  '/nexusia/': typeof NexusiaIndexRoute
   '/produits/': typeof ProduitsIndexRoute
   '/rapports/': typeof RapportsIndexRoute
   '/ventes/': typeof VentesIndexRoute
@@ -806,6 +895,7 @@ export interface FileRouteTypes {
     | '/fournisseurs'
     | '/inventaire'
     | '/mobile'
+    | '/nexusia'
     | '/notifications'
     | '/parametres'
     | '/produits'
@@ -862,6 +952,14 @@ export interface FileRouteTypes {
     | '/mobile/produits'
     | '/mobile/rapports'
     | '/mobile/recherche'
+    | '/nexusia/clients'
+    | '/nexusia/decision'
+    | '/nexusia/employes'
+    | '/nexusia/finances'
+    | '/nexusia/objectifs'
+    | '/nexusia/produits'
+    | '/nexusia/rapports'
+    | '/nexusia/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/rapports/comparaison'
@@ -876,6 +974,7 @@ export interface FileRouteTypes {
     | '/fournisseurs/'
     | '/inventaire/'
     | '/mobile/'
+    | '/nexusia/'
     | '/produits/'
     | '/rapports/'
     | '/ventes/'
@@ -939,6 +1038,14 @@ export interface FileRouteTypes {
     | '/mobile/produits'
     | '/mobile/rapports'
     | '/mobile/recherche'
+    | '/nexusia/clients'
+    | '/nexusia/decision'
+    | '/nexusia/employes'
+    | '/nexusia/finances'
+    | '/nexusia/objectifs'
+    | '/nexusia/produits'
+    | '/nexusia/rapports'
+    | '/nexusia/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/rapports/comparaison'
@@ -953,6 +1060,7 @@ export interface FileRouteTypes {
     | '/fournisseurs'
     | '/inventaire'
     | '/mobile'
+    | '/nexusia'
     | '/produits'
     | '/rapports'
     | '/ventes'
@@ -971,6 +1079,7 @@ export interface FileRouteTypes {
     | '/fournisseurs'
     | '/inventaire'
     | '/mobile'
+    | '/nexusia'
     | '/notifications'
     | '/parametres'
     | '/produits'
@@ -1027,6 +1136,14 @@ export interface FileRouteTypes {
     | '/mobile/produits'
     | '/mobile/rapports'
     | '/mobile/recherche'
+    | '/nexusia/clients'
+    | '/nexusia/decision'
+    | '/nexusia/employes'
+    | '/nexusia/finances'
+    | '/nexusia/objectifs'
+    | '/nexusia/produits'
+    | '/nexusia/rapports'
+    | '/nexusia/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/rapports/comparaison'
@@ -1041,6 +1158,7 @@ export interface FileRouteTypes {
     | '/fournisseurs/'
     | '/inventaire/'
     | '/mobile/'
+    | '/nexusia/'
     | '/produits/'
     | '/rapports/'
     | '/ventes/'
@@ -1060,6 +1178,7 @@ export interface RootRouteChildren {
   FournisseursRoute: typeof FournisseursRouteWithChildren
   InventaireRoute: typeof InventaireRouteWithChildren
   MobileRoute: typeof MobileRouteWithChildren
+  NexusiaRoute: typeof NexusiaRouteWithChildren
   NotificationsRoute: typeof NotificationsRoute
   ParametresRoute: typeof ParametresRoute
   ProduitsRoute: typeof ProduitsRouteWithChildren
@@ -1134,6 +1253,13 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nexusia': {
+      id: '/nexusia'
+      path: '/nexusia'
+      fullPath: '/nexusia'
+      preLoaderRoute: typeof NexusiaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mobile': {
@@ -1234,6 +1360,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProduitsIndexRouteImport
       parentRoute: typeof ProduitsRoute
     }
+    '/nexusia/': {
+      id: '/nexusia/'
+      path: '/'
+      fullPath: '/nexusia/'
+      preLoaderRoute: typeof NexusiaIndexRouteImport
+      parentRoute: typeof NexusiaRoute
+    }
     '/mobile/': {
       id: '/mobile/'
       path: '/'
@@ -1331,6 +1464,62 @@ declare module '@tanstack/react-router' {
       fullPath: '/produits/$produitId'
       preLoaderRoute: typeof ProduitsProduitIdRouteImport
       parentRoute: typeof ProduitsRoute
+    }
+    '/nexusia/recherche': {
+      id: '/nexusia/recherche'
+      path: '/recherche'
+      fullPath: '/nexusia/recherche'
+      preLoaderRoute: typeof NexusiaRechercheRouteImport
+      parentRoute: typeof NexusiaRoute
+    }
+    '/nexusia/rapports': {
+      id: '/nexusia/rapports'
+      path: '/rapports'
+      fullPath: '/nexusia/rapports'
+      preLoaderRoute: typeof NexusiaRapportsRouteImport
+      parentRoute: typeof NexusiaRoute
+    }
+    '/nexusia/produits': {
+      id: '/nexusia/produits'
+      path: '/produits'
+      fullPath: '/nexusia/produits'
+      preLoaderRoute: typeof NexusiaProduitsRouteImport
+      parentRoute: typeof NexusiaRoute
+    }
+    '/nexusia/objectifs': {
+      id: '/nexusia/objectifs'
+      path: '/objectifs'
+      fullPath: '/nexusia/objectifs'
+      preLoaderRoute: typeof NexusiaObjectifsRouteImport
+      parentRoute: typeof NexusiaRoute
+    }
+    '/nexusia/finances': {
+      id: '/nexusia/finances'
+      path: '/finances'
+      fullPath: '/nexusia/finances'
+      preLoaderRoute: typeof NexusiaFinancesRouteImport
+      parentRoute: typeof NexusiaRoute
+    }
+    '/nexusia/employes': {
+      id: '/nexusia/employes'
+      path: '/employes'
+      fullPath: '/nexusia/employes'
+      preLoaderRoute: typeof NexusiaEmployesRouteImport
+      parentRoute: typeof NexusiaRoute
+    }
+    '/nexusia/decision': {
+      id: '/nexusia/decision'
+      path: '/decision'
+      fullPath: '/nexusia/decision'
+      preLoaderRoute: typeof NexusiaDecisionRouteImport
+      parentRoute: typeof NexusiaRoute
+    }
+    '/nexusia/clients': {
+      id: '/nexusia/clients'
+      path: '/clients'
+      fullPath: '/nexusia/clients'
+      preLoaderRoute: typeof NexusiaClientsRouteImport
+      parentRoute: typeof NexusiaRoute
     }
     '/mobile/recherche': {
       id: '/mobile/recherche'
@@ -1870,6 +2059,33 @@ const MobileRouteChildren: MobileRouteChildren = {
 const MobileRouteWithChildren =
   MobileRoute._addFileChildren(MobileRouteChildren)
 
+interface NexusiaRouteChildren {
+  NexusiaClientsRoute: typeof NexusiaClientsRoute
+  NexusiaDecisionRoute: typeof NexusiaDecisionRoute
+  NexusiaEmployesRoute: typeof NexusiaEmployesRoute
+  NexusiaFinancesRoute: typeof NexusiaFinancesRoute
+  NexusiaObjectifsRoute: typeof NexusiaObjectifsRoute
+  NexusiaProduitsRoute: typeof NexusiaProduitsRoute
+  NexusiaRapportsRoute: typeof NexusiaRapportsRoute
+  NexusiaRechercheRoute: typeof NexusiaRechercheRoute
+  NexusiaIndexRoute: typeof NexusiaIndexRoute
+}
+
+const NexusiaRouteChildren: NexusiaRouteChildren = {
+  NexusiaClientsRoute: NexusiaClientsRoute,
+  NexusiaDecisionRoute: NexusiaDecisionRoute,
+  NexusiaEmployesRoute: NexusiaEmployesRoute,
+  NexusiaFinancesRoute: NexusiaFinancesRoute,
+  NexusiaObjectifsRoute: NexusiaObjectifsRoute,
+  NexusiaProduitsRoute: NexusiaProduitsRoute,
+  NexusiaRapportsRoute: NexusiaRapportsRoute,
+  NexusiaRechercheRoute: NexusiaRechercheRoute,
+  NexusiaIndexRoute: NexusiaIndexRoute,
+}
+
+const NexusiaRouteWithChildren =
+  NexusiaRoute._addFileChildren(NexusiaRouteChildren)
+
 interface ProduitsRouteChildren {
   ProduitsProduitIdRoute: typeof ProduitsProduitIdRoute
   ProduitsMouvementsRoute: typeof ProduitsMouvementsRoute
@@ -1929,6 +2145,7 @@ const rootRouteChildren: RootRouteChildren = {
   FournisseursRoute: FournisseursRouteWithChildren,
   InventaireRoute: InventaireRouteWithChildren,
   MobileRoute: MobileRouteWithChildren,
+  NexusiaRoute: NexusiaRouteWithChildren,
   NotificationsRoute: NotificationsRoute,
   ParametresRoute: ParametresRoute,
   ProduitsRoute: ProduitsRouteWithChildren,
