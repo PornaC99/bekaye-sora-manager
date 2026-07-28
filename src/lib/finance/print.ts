@@ -158,7 +158,7 @@ export function imprimerRapportFinancier(contenu: ContenuRapport) {
     <div>
       <div class="marque-bloc"><img class="logo-marque" src="${LOGO_URL}" alt="Bekaye Sora Collection" /><div><div class="marque">Bekaye Sora <span>Collection</span></div>
       <div class="sous">Cosmétiques 501 — Bamako, Mali · +223 76 12 34 56</div>
-    </div></div>
+    </div></div></div>
     <div style="text-align:right">
       <div style="font-weight:700">Rapport financier</div>
       <div class="sous">Édité le ${aujourdhui}</div>

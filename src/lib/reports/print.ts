@@ -137,7 +137,7 @@ export function imprimerRapportBi(contenu: ContenuRapportBi) {
     <div>
       <div class="marque-bloc"><img class="logo-marque" src="${LOGO_URL}" alt="Bekaye Sora Collection" /><div><div class="marque">Bekaye Sora <span>Collection</span></div>
       <div class="sous">Rapport & analyses · ${periode.label} (${formatPeriode(periode)})</div>
-    </div></div>
+    </div></div></div>
     <div class="sous">Édité le ${aujourdhui}</div>
   </div>
 
