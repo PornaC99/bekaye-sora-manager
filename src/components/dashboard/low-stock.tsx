@@ -6,6 +6,7 @@ import { useDemoVierge } from "@/lib/demo/reset";
 import { SectionCard } from "./section-card";
 
 export function LowStock() {
+  const vierge = useDemoVierge();
   return (
     <SectionCard
       title="Produits bientôt en rupture"
