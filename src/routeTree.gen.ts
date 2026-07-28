@@ -85,6 +85,9 @@ import { Route as AdministrationUtilisateursRouteImport } from './routes/adminis
 import { Route as AdministrationSecuriteRouteImport } from './routes/administration.securite'
 import { Route as AdministrationSauvegardesRouteImport } from './routes/administration.sauvegardes'
 import { Route as AdministrationPersonnalisationRouteImport } from './routes/administration.personnalisation'
+import { Route as AdministrationNotificationsRouteImport } from './routes/administration.notifications'
+import { Route as AdministrationMagasinsRouteImport } from './routes/administration.magasins'
+import { Route as AdministrationEntreprisesRouteImport } from './routes/administration.entreprises'
 import { Route as AdministrationAuditRouteImport } from './routes/administration.audit'
 import { Route as FournisseursCommandesIndexRouteImport } from './routes/fournisseurs.commandes.index'
 import { Route as FournisseursCommandesCommandeIdRouteImport } from './routes/fournisseurs.commandes.$commandeId'
@@ -474,6 +477,23 @@ const AdministrationPersonnalisationRoute =
     path: '/personnalisation',
     getParentRoute: () => AdministrationRoute,
   } as any)
+const AdministrationNotificationsRoute =
+  AdministrationNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
+const AdministrationMagasinsRoute = AdministrationMagasinsRouteImport.update({
+  id: '/magasins',
+  path: '/magasins',
+  getParentRoute: () => AdministrationRoute,
+} as any)
+const AdministrationEntreprisesRoute =
+  AdministrationEntreprisesRouteImport.update({
+    id: '/entreprises',
+    path: '/entreprises',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
 const AdministrationAuditRoute = AdministrationAuditRouteImport.update({
   id: '/audit',
   path: '/audit',
@@ -514,6 +534,9 @@ export interface FileRoutesByFullPath {
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
   '/administration/audit': typeof AdministrationAuditRoute
+  '/administration/entreprises': typeof AdministrationEntreprisesRoute
+  '/administration/magasins': typeof AdministrationMagasinsRoute
+  '/administration/notifications': typeof AdministrationNotificationsRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
   '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
   '/administration/securite': typeof AdministrationSecuriteRoute
@@ -584,6 +607,9 @@ export interface FileRoutesByTo {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/administration/audit': typeof AdministrationAuditRoute
+  '/administration/entreprises': typeof AdministrationEntreprisesRoute
+  '/administration/magasins': typeof AdministrationMagasinsRoute
+  '/administration/notifications': typeof AdministrationNotificationsRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
   '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
   '/administration/securite': typeof AdministrationSecuriteRoute
@@ -666,6 +692,9 @@ export interface FileRoutesById {
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
   '/administration/audit': typeof AdministrationAuditRoute
+  '/administration/entreprises': typeof AdministrationEntreprisesRoute
+  '/administration/magasins': typeof AdministrationMagasinsRoute
+  '/administration/notifications': typeof AdministrationNotificationsRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
   '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
   '/administration/securite': typeof AdministrationSecuriteRoute
@@ -749,6 +778,9 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/ventes'
     | '/administration/audit'
+    | '/administration/entreprises'
+    | '/administration/magasins'
+    | '/administration/notifications'
     | '/administration/personnalisation'
     | '/administration/sauvegardes'
     | '/administration/securite'
@@ -819,6 +851,9 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/administration/audit'
+    | '/administration/entreprises'
+    | '/administration/magasins'
+    | '/administration/notifications'
     | '/administration/personnalisation'
     | '/administration/sauvegardes'
     | '/administration/securite'
@@ -900,6 +935,9 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/ventes'
     | '/administration/audit'
+    | '/administration/entreprises'
+    | '/administration/magasins'
+    | '/administration/notifications'
     | '/administration/personnalisation'
     | '/administration/sauvegardes'
     | '/administration/securite'
@@ -1517,6 +1555,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdministrationPersonnalisationRouteImport
       parentRoute: typeof AdministrationRoute
     }
+    '/administration/notifications': {
+      id: '/administration/notifications'
+      path: '/notifications'
+      fullPath: '/administration/notifications'
+      preLoaderRoute: typeof AdministrationNotificationsRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/magasins': {
+      id: '/administration/magasins'
+      path: '/magasins'
+      fullPath: '/administration/magasins'
+      preLoaderRoute: typeof AdministrationMagasinsRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/entreprises': {
+      id: '/administration/entreprises'
+      path: '/entreprises'
+      fullPath: '/administration/entreprises'
+      preLoaderRoute: typeof AdministrationEntreprisesRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
     '/administration/audit': {
       id: '/administration/audit'
       path: '/audit'
@@ -1543,6 +1602,9 @@ declare module '@tanstack/react-router' {
 
 interface AdministrationRouteChildren {
   AdministrationAuditRoute: typeof AdministrationAuditRoute
+  AdministrationEntreprisesRoute: typeof AdministrationEntreprisesRoute
+  AdministrationMagasinsRoute: typeof AdministrationMagasinsRoute
+  AdministrationNotificationsRoute: typeof AdministrationNotificationsRoute
   AdministrationPersonnalisationRoute: typeof AdministrationPersonnalisationRoute
   AdministrationSauvegardesRoute: typeof AdministrationSauvegardesRoute
   AdministrationSecuriteRoute: typeof AdministrationSecuriteRoute
@@ -1552,6 +1614,9 @@ interface AdministrationRouteChildren {
 
 const AdministrationRouteChildren: AdministrationRouteChildren = {
   AdministrationAuditRoute: AdministrationAuditRoute,
+  AdministrationEntreprisesRoute: AdministrationEntreprisesRoute,
+  AdministrationMagasinsRoute: AdministrationMagasinsRoute,
+  AdministrationNotificationsRoute: AdministrationNotificationsRoute,
   AdministrationPersonnalisationRoute: AdministrationPersonnalisationRoute,
   AdministrationSauvegardesRoute: AdministrationSauvegardesRoute,
   AdministrationSecuriteRoute: AdministrationSecuriteRoute,
