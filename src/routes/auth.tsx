@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BrandMark } from "@/components/layout/brand-mark";
+import { BOUTEILLE_501_URL, LOGO_URL, MARQUE } from "@/lib/brand";
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
@@ -370,6 +371,7 @@ function AuthPage() {
               ? "Pas encore de compte ? Créer un compte"
               : "J'ai déjà un compte — me connecter"}
           </button>
+        </div>
         </div>
       </div>
     </main>
