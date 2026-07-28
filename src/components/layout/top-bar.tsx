@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useQueryClient } from "@tanstack/react-query";
 import { BrandMark } from "./brand-mark";
 import { useShell } from "./shell-context";
+import { ThemeToggle } from "./theme-toggle";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -87,6 +88,8 @@ export function TopBar() {
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
+          <ThemeToggle />
+
           <Link
             to="/notifications"
             aria-label="Notifications"
