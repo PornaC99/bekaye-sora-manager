@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 
@@ -63,8 +64,8 @@ export function PermissionsMatrix({
             </thead>
             <tbody>
               {groupes.map((groupe) => (
-                <>
-                  <tr key={groupe} className="border-t border-border bg-muted/30">
+                <Fragment key={groupe}>
+                  <tr className="border-t border-border bg-muted/30">
                     <td
                       colSpan={ROLES.length + 1}
                       className="px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground"
@@ -88,7 +89,7 @@ export function PermissionsMatrix({
                       ))}
                     </tr>
                   ))}
-                </>
+                </Fragment>
               ))}
             </tbody>
           </table>
