@@ -194,24 +194,61 @@ function AuthPage() {
 
   if (initialisation) {
     return (
-      <main className="grid min-h-screen place-items-center bg-muted/40">
-        <Loader2 className="h-6 w-6 animate-spin text-primary" />
+      <main className="brand-surface-red grid min-h-screen place-items-center">
+        <div className="flex flex-col items-center gap-4">
+          <img
+            src={LOGO_URL}
+            alt="Bekaye Sora Collection"
+            className="h-20 w-20 animate-scale-in rounded-2xl object-cover ring-1 ring-[var(--color-gold)]/50"
+          />
+          <Loader2 className="h-5 w-5 animate-spin text-[var(--color-gold)]" />
+        </div>
       </main>
     );
   }
 
   return (
-    <main className="grid min-h-screen place-items-center bg-muted/40 px-4 py-10">
-      <div className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:p-8">
-        <div className="flex flex-col items-center gap-3 text-center">
-          <BrandMark />
-          <h1 className="font-heading text-2xl font-semibold text-foreground">
-            {mode === "connexion" ? "Connexion à votre espace" : "Créer votre compte"}
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Gestion sécurisée de votre entreprise — propulsé par NEXUSIA.
+    <main className="brand-surface-red relative grid min-h-screen place-items-center overflow-hidden px-4 py-10">
+      {/* Composition bouteille 501 en arrière-plan, légèrement floutée */}
+      <img
+        src={BOUTEILLE_501_URL}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-[58%] object-cover opacity-45 blur-[2px] lg:block"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.18_0.07_23)] via-[oklch(0.2_0.08_23)]/85 to-transparent" />
+      <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-[var(--color-gold)]/10 blur-3xl" />
+
+      <div className="relative z-10 grid w-full max-w-5xl items-center gap-10 lg:grid-cols-[1fr_minmax(0,420px)]">
+        <div className="hidden flex-col gap-6 lg:flex">
+          <img
+            src={LOGO_URL}
+            alt="Bekaye Sora Collection"
+            className="h-28 w-28 rounded-2xl object-cover shadow-2xl ring-1 ring-[var(--color-gold)]/50"
+          />
+          <div>
+            <h2 className="font-display text-4xl font-semibold leading-tight text-white">
+              Pilotez Bekaye Sora
+              <br />
+              en toute simplicité.
+            </h2>
+            <p className="mt-3 max-w-md text-sm text-white/70">{MARQUE.slogan}</p>
+          </div>
+          <div className="brand-gold-line h-px w-48 opacity-80" />
+          <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-gold)]">
+            {MARQUE.signature}
           </p>
         </div>
+
+        <div className="brand-glass w-full rounded-2xl p-6 shadow-[var(--shadow-luxe)] sm:p-8">
+        <div className="flex flex-col items-center gap-3 text-center">
+          <BrandMark taille="lg" />
+          <h1 className="font-display text-2xl font-semibold text-foreground">
+            {mode === "connexion" ? "Connexion à votre espace" : "Créer votre compte"}
+          </h1>
+          <p className="text-sm text-muted-foreground">{MARQUE.slogan}</p>
+        </div>
+
 
         {confirme && (
           <div
