@@ -40,6 +40,7 @@ import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produi
 import { Route as InventaireHistoriqueRouteImport } from './routes/inventaire.historique'
 import { Route as InventaireAnalyseRouteImport } from './routes/inventaire.analyse'
 import { Route as InventaireInventaireIdRouteImport } from './routes/inventaire.$inventaireId'
+import { Route as FournisseursApprovisionnementRouteImport } from './routes/fournisseurs.approvisionnement'
 import { Route as FournisseursAnalyseRouteImport } from './routes/fournisseurs.analyse'
 import { Route as FournisseursFournisseurIdRouteImport } from './routes/fournisseurs.$fournisseurId'
 import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-stock.historique'
@@ -205,6 +206,12 @@ const InventaireInventaireIdRoute = InventaireInventaireIdRouteImport.update({
   path: '/$inventaireId',
   getParentRoute: () => InventaireRoute,
 } as any)
+const FournisseursApprovisionnementRoute =
+  FournisseursApprovisionnementRouteImport.update({
+    id: '/approvisionnement',
+    path: '/approvisionnement',
+    getParentRoute: () => FournisseursRoute,
+  } as any)
 const FournisseursAnalyseRoute = FournisseursAnalyseRouteImport.update({
   id: '/analyse',
   path: '/analyse',
@@ -280,6 +287,7 @@ export interface FileRoutesByFullPath {
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
   '/fournisseurs/analyse': typeof FournisseursAnalyseRoute
+  '/fournisseurs/approvisionnement': typeof FournisseursApprovisionnementRoute
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
@@ -316,6 +324,7 @@ export interface FileRoutesByTo {
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
   '/fournisseurs/analyse': typeof FournisseursAnalyseRoute
+  '/fournisseurs/approvisionnement': typeof FournisseursApprovisionnementRoute
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
@@ -359,6 +368,7 @@ export interface FileRoutesById {
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
   '/fournisseurs/analyse': typeof FournisseursAnalyseRoute
+  '/fournisseurs/approvisionnement': typeof FournisseursApprovisionnementRoute
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
@@ -403,6 +413,7 @@ export interface FileRouteTypes {
     | '/entrees-stock/historique'
     | '/fournisseurs/$fournisseurId'
     | '/fournisseurs/analyse'
+    | '/fournisseurs/approvisionnement'
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
@@ -439,6 +450,7 @@ export interface FileRouteTypes {
     | '/entrees-stock/historique'
     | '/fournisseurs/$fournisseurId'
     | '/fournisseurs/analyse'
+    | '/fournisseurs/approvisionnement'
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
@@ -481,6 +493,7 @@ export interface FileRouteTypes {
     | '/entrees-stock/historique'
     | '/fournisseurs/$fournisseurId'
     | '/fournisseurs/analyse'
+    | '/fournisseurs/approvisionnement'
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
@@ -737,6 +750,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventaireInventaireIdRouteImport
       parentRoute: typeof InventaireRoute
     }
+    '/fournisseurs/approvisionnement': {
+      id: '/fournisseurs/approvisionnement'
+      path: '/approvisionnement'
+      fullPath: '/fournisseurs/approvisionnement'
+      preLoaderRoute: typeof FournisseursApprovisionnementRouteImport
+      parentRoute: typeof FournisseursRoute
+    }
     '/fournisseurs/analyse': {
       id: '/fournisseurs/analyse'
       path: '/analyse'
@@ -841,6 +861,7 @@ const EntreesStockRouteWithChildren = EntreesStockRoute._addFileChildren(
 interface FournisseursRouteChildren {
   FournisseursFournisseurIdRoute: typeof FournisseursFournisseurIdRoute
   FournisseursAnalyseRoute: typeof FournisseursAnalyseRoute
+  FournisseursApprovisionnementRoute: typeof FournisseursApprovisionnementRoute
   FournisseursIndexRoute: typeof FournisseursIndexRoute
   FournisseursCommandesIndexRoute: typeof FournisseursCommandesIndexRoute
 }
@@ -848,6 +869,7 @@ interface FournisseursRouteChildren {
 const FournisseursRouteChildren: FournisseursRouteChildren = {
   FournisseursFournisseurIdRoute: FournisseursFournisseurIdRoute,
   FournisseursAnalyseRoute: FournisseursAnalyseRoute,
+  FournisseursApprovisionnementRoute: FournisseursApprovisionnementRoute,
   FournisseursIndexRoute: FournisseursIndexRoute,
   FournisseursCommandesIndexRoute: FournisseursCommandesIndexRoute,
 }
