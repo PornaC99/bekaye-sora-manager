@@ -384,3 +384,85 @@
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
 }
+
+/* ---------------------------------------------------------------------------
+   Tableaux → cartes empilées sur smartphone (expérience application native)
+--------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .table-cards {
+    overflow-x: visible;
+  }
+
+  .table-cards table,
+  .table-cards tbody,
+  .table-cards tr,
+  .table-cards td {
+    display: block;
+    width: 100%;
+  }
+
+  .table-cards thead {
+    display: none;
+  }
+
+  .table-cards tbody tr {
+    margin-bottom: 0.625rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: var(--card);
+    padding: 0.25rem 0.75rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .table-cards tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .table-cards tbody td {
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border: 0;
+    border-bottom: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+    padding: 0.5rem 0;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .table-cards tbody td:last-child {
+    border-bottom: 0;
+  }
+
+  .table-cards tbody td[data-label]::before {
+    content: attr(data-label);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted-foreground);
+  }
+
+  .table-cards tbody td:not([data-label]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* La cellule d'actions occupe toute la largeur */
+  .table-cards tbody td:has(> [role="menu"]),
+  .table-cards tbody td:has(button):not(:has(> span)) {
+    justify-items: end;
+  }
+
+  .table-cards tbody td > * {
+    justify-self: end;
+    text-align: right;
+    max-width: 100%;
+  }
+
+  .table-cards tbody td:not([data-label]) > * {
+    justify-self: stretch;
+    text-align: left;
+  }
+}
