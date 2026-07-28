@@ -30,6 +30,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as VentesIndexRouteImport } from './routes/ventes.index'
 import { Route as ProduitsIndexRouteImport } from './routes/produits.index'
 import { Route as InventaireIndexRouteImport } from './routes/inventaire.index'
+import { Route as FournisseursIndexRouteImport } from './routes/fournisseurs.index'
 import { Route as EntreesStockIndexRouteImport } from './routes/entrees-stock.index'
 import { Route as ClientsIndexRouteImport } from './routes/clients.index'
 import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
@@ -39,12 +40,14 @@ import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produi
 import { Route as InventaireHistoriqueRouteImport } from './routes/inventaire.historique'
 import { Route as InventaireAnalyseRouteImport } from './routes/inventaire.analyse'
 import { Route as InventaireInventaireIdRouteImport } from './routes/inventaire.$inventaireId'
+import { Route as FournisseursFournisseurIdRouteImport } from './routes/fournisseurs.$fournisseurId'
 import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-stock.historique'
 import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
 import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
 import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
 import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
+import { Route as FournisseursCommandesIndexRouteImport } from './routes/fournisseurs.commandes.index'
 
 const VentesRoute = VentesRouteImport.update({
   id: '/ventes',
@@ -151,6 +154,11 @@ const InventaireIndexRoute = InventaireIndexRouteImport.update({
   path: '/',
   getParentRoute: () => InventaireRoute,
 } as any)
+const FournisseursIndexRoute = FournisseursIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FournisseursRoute,
+} as any)
 const EntreesStockIndexRoute = EntreesStockIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -196,6 +204,12 @@ const InventaireInventaireIdRoute = InventaireInventaireIdRouteImport.update({
   path: '/$inventaireId',
   getParentRoute: () => InventaireRoute,
 } as any)
+const FournisseursFournisseurIdRoute =
+  FournisseursFournisseurIdRouteImport.update({
+    id: '/$fournisseurId',
+    path: '/$fournisseurId',
+    getParentRoute: () => FournisseursRoute,
+  } as any)
 const EntreesStockHistoriqueRoute = EntreesStockHistoriqueRouteImport.update({
   id: '/historique',
   path: '/historique',
@@ -226,6 +240,12 @@ const ClientsClientIdRoute = ClientsClientIdRouteImport.update({
   path: '/$clientId',
   getParentRoute: () => ClientsRoute,
 } as any)
+const FournisseursCommandesIndexRoute =
+  FournisseursCommandesIndexRouteImport.update({
+    id: '/commandes/',
+    path: '/commandes/',
+    getParentRoute: () => FournisseursRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -235,7 +255,7 @@ export interface FileRoutesByFullPath {
   '/depenses': typeof DepensesRoute
   '/employes': typeof EmployesRoute
   '/entrees-stock': typeof EntreesStockRouteWithChildren
-  '/fournisseurs': typeof FournisseursRoute
+  '/fournisseurs': typeof FournisseursRouteWithChildren
   '/inventaire': typeof InventaireRouteWithChildren
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
@@ -252,6 +272,7 @@ export interface FileRoutesByFullPath {
   '/clients/vip': typeof ClientsVipRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
+  '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
@@ -261,9 +282,11 @@ export interface FileRoutesByFullPath {
   '/ventes/retours': typeof VentesRetoursRoute
   '/clients/': typeof ClientsIndexRoute
   '/entrees-stock/': typeof EntreesStockIndexRoute
+  '/fournisseurs/': typeof FournisseursIndexRoute
   '/inventaire/': typeof InventaireIndexRoute
   '/produits/': typeof ProduitsIndexRoute
   '/ventes/': typeof VentesIndexRoute
+  '/fournisseurs/commandes/': typeof FournisseursCommandesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -271,7 +294,6 @@ export interface FileRoutesByTo {
   '/categories': typeof CategoriesRoute
   '/depenses': typeof DepensesRoute
   '/employes': typeof EmployesRoute
-  '/fournisseurs': typeof FournisseursRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/rapports': typeof RapportsRoute
@@ -285,6 +307,7 @@ export interface FileRoutesByTo {
   '/clients/vip': typeof ClientsVipRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
+  '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
@@ -294,9 +317,11 @@ export interface FileRoutesByTo {
   '/ventes/retours': typeof VentesRetoursRoute
   '/clients': typeof ClientsIndexRoute
   '/entrees-stock': typeof EntreesStockIndexRoute
+  '/fournisseurs': typeof FournisseursIndexRoute
   '/inventaire': typeof InventaireIndexRoute
   '/produits': typeof ProduitsIndexRoute
   '/ventes': typeof VentesIndexRoute
+  '/fournisseurs/commandes': typeof FournisseursCommandesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -307,7 +332,7 @@ export interface FileRoutesById {
   '/depenses': typeof DepensesRoute
   '/employes': typeof EmployesRoute
   '/entrees-stock': typeof EntreesStockRouteWithChildren
-  '/fournisseurs': typeof FournisseursRoute
+  '/fournisseurs': typeof FournisseursRouteWithChildren
   '/inventaire': typeof InventaireRouteWithChildren
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
@@ -324,6 +349,7 @@ export interface FileRoutesById {
   '/clients/vip': typeof ClientsVipRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
+  '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
@@ -333,9 +359,11 @@ export interface FileRoutesById {
   '/ventes/retours': typeof VentesRetoursRoute
   '/clients/': typeof ClientsIndexRoute
   '/entrees-stock/': typeof EntreesStockIndexRoute
+  '/fournisseurs/': typeof FournisseursIndexRoute
   '/inventaire/': typeof InventaireIndexRoute
   '/produits/': typeof ProduitsIndexRoute
   '/ventes/': typeof VentesIndexRoute
+  '/fournisseurs/commandes/': typeof FournisseursCommandesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -364,6 +392,7 @@ export interface FileRouteTypes {
     | '/clients/vip'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
+    | '/fournisseurs/$fournisseurId'
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
@@ -373,9 +402,11 @@ export interface FileRouteTypes {
     | '/ventes/retours'
     | '/clients/'
     | '/entrees-stock/'
+    | '/fournisseurs/'
     | '/inventaire/'
     | '/produits/'
     | '/ventes/'
+    | '/fournisseurs/commandes/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -383,7 +414,6 @@ export interface FileRouteTypes {
     | '/categories'
     | '/depenses'
     | '/employes'
-    | '/fournisseurs'
     | '/notifications'
     | '/parametres'
     | '/rapports'
@@ -397,6 +427,7 @@ export interface FileRouteTypes {
     | '/clients/vip'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
+    | '/fournisseurs/$fournisseurId'
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
@@ -406,9 +437,11 @@ export interface FileRouteTypes {
     | '/ventes/retours'
     | '/clients'
     | '/entrees-stock'
+    | '/fournisseurs'
     | '/inventaire'
     | '/produits'
     | '/ventes'
+    | '/fournisseurs/commandes'
   id:
     | '__root__'
     | '/'
@@ -435,6 +468,7 @@ export interface FileRouteTypes {
     | '/clients/vip'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
+    | '/fournisseurs/$fournisseurId'
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
@@ -444,9 +478,11 @@ export interface FileRouteTypes {
     | '/ventes/retours'
     | '/clients/'
     | '/entrees-stock/'
+    | '/fournisseurs/'
     | '/inventaire/'
     | '/produits/'
     | '/ventes/'
+    | '/fournisseurs/commandes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -457,7 +493,7 @@ export interface RootRouteChildren {
   DepensesRoute: typeof DepensesRoute
   EmployesRoute: typeof EmployesRoute
   EntreesStockRoute: typeof EntreesStockRouteWithChildren
-  FournisseursRoute: typeof FournisseursRoute
+  FournisseursRoute: typeof FournisseursRouteWithChildren
   InventaireRoute: typeof InventaireRouteWithChildren
   NotificationsRoute: typeof NotificationsRoute
   ParametresRoute: typeof ParametresRoute
@@ -619,6 +655,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventaireIndexRouteImport
       parentRoute: typeof InventaireRoute
     }
+    '/fournisseurs/': {
+      id: '/fournisseurs/'
+      path: '/'
+      fullPath: '/fournisseurs/'
+      preLoaderRoute: typeof FournisseursIndexRouteImport
+      parentRoute: typeof FournisseursRoute
+    }
     '/entrees-stock/': {
       id: '/entrees-stock/'
       path: '/'
@@ -682,6 +725,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventaireInventaireIdRouteImport
       parentRoute: typeof InventaireRoute
     }
+    '/fournisseurs/$fournisseurId': {
+      id: '/fournisseurs/$fournisseurId'
+      path: '/$fournisseurId'
+      fullPath: '/fournisseurs/$fournisseurId'
+      preLoaderRoute: typeof FournisseursFournisseurIdRouteImport
+      parentRoute: typeof FournisseursRoute
+    }
     '/entrees-stock/historique': {
       id: '/entrees-stock/historique'
       path: '/historique'
@@ -724,6 +774,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClientsClientIdRouteImport
       parentRoute: typeof ClientsRoute
     }
+    '/fournisseurs/commandes/': {
+      id: '/fournisseurs/commandes/'
+      path: '/commandes'
+      fullPath: '/fournisseurs/commandes/'
+      preLoaderRoute: typeof FournisseursCommandesIndexRouteImport
+      parentRoute: typeof FournisseursRoute
+    }
   }
 }
 
@@ -760,6 +817,22 @@ const EntreesStockRouteChildren: EntreesStockRouteChildren = {
 
 const EntreesStockRouteWithChildren = EntreesStockRoute._addFileChildren(
   EntreesStockRouteChildren,
+)
+
+interface FournisseursRouteChildren {
+  FournisseursFournisseurIdRoute: typeof FournisseursFournisseurIdRoute
+  FournisseursIndexRoute: typeof FournisseursIndexRoute
+  FournisseursCommandesIndexRoute: typeof FournisseursCommandesIndexRoute
+}
+
+const FournisseursRouteChildren: FournisseursRouteChildren = {
+  FournisseursFournisseurIdRoute: FournisseursFournisseurIdRoute,
+  FournisseursIndexRoute: FournisseursIndexRoute,
+  FournisseursCommandesIndexRoute: FournisseursCommandesIndexRoute,
+}
+
+const FournisseursRouteWithChildren = FournisseursRoute._addFileChildren(
+  FournisseursRouteChildren,
 )
 
 interface InventaireRouteChildren {
@@ -819,7 +892,7 @@ const rootRouteChildren: RootRouteChildren = {
   DepensesRoute: DepensesRoute,
   EmployesRoute: EmployesRoute,
   EntreesStockRoute: EntreesStockRouteWithChildren,
-  FournisseursRoute: FournisseursRoute,
+  FournisseursRoute: FournisseursRouteWithChildren,
   InventaireRoute: InventaireRouteWithChildren,
   NotificationsRoute: NotificationsRoute,
   ParametresRoute: ParametresRoute,
