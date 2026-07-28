@@ -49,6 +49,7 @@ import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock
 import { Route as EmployesPresenceRouteImport } from './routes/employes.presence'
 import { Route as EmployesPermissionsRouteImport } from './routes/employes.permissions'
 import { Route as EmployesPerformanceRouteImport } from './routes/employes.performance'
+import { Route as EmployesJournalRouteImport } from './routes/employes.journal'
 import { Route as EmployesCongesRouteImport } from './routes/employes.conges'
 import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
@@ -259,6 +260,11 @@ const EmployesPerformanceRoute = EmployesPerformanceRouteImport.update({
   path: '/performance',
   getParentRoute: () => EmployesRoute,
 } as any)
+const EmployesJournalRoute = EmployesJournalRouteImport.update({
+  id: '/journal',
+  path: '/journal',
+  getParentRoute: () => EmployesRoute,
+} as any)
 const EmployesCongesRoute = EmployesCongesRouteImport.update({
   id: '/conges',
   path: '/conges',
@@ -321,6 +327,7 @@ export interface FileRoutesByFullPath {
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/employes/conges': typeof EmployesCongesRoute
+  '/employes/journal': typeof EmployesJournalRoute
   '/employes/performance': typeof EmployesPerformanceRoute
   '/employes/permissions': typeof EmployesPermissionsRoute
   '/employes/presence': typeof EmployesPresenceRoute
@@ -363,6 +370,7 @@ export interface FileRoutesByTo {
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/employes/conges': typeof EmployesCongesRoute
+  '/employes/journal': typeof EmployesJournalRoute
   '/employes/performance': typeof EmployesPerformanceRoute
   '/employes/permissions': typeof EmployesPermissionsRoute
   '/employes/presence': typeof EmployesPresenceRoute
@@ -413,6 +421,7 @@ export interface FileRoutesById {
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/employes/conges': typeof EmployesCongesRoute
+  '/employes/journal': typeof EmployesJournalRoute
   '/employes/performance': typeof EmployesPerformanceRoute
   '/employes/permissions': typeof EmployesPermissionsRoute
   '/employes/presence': typeof EmployesPresenceRoute
@@ -464,6 +473,7 @@ export interface FileRouteTypes {
     | '/clients/statistiques'
     | '/clients/vip'
     | '/employes/conges'
+    | '/employes/journal'
     | '/employes/performance'
     | '/employes/permissions'
     | '/employes/presence'
@@ -506,6 +516,7 @@ export interface FileRouteTypes {
     | '/clients/statistiques'
     | '/clients/vip'
     | '/employes/conges'
+    | '/employes/journal'
     | '/employes/performance'
     | '/employes/permissions'
     | '/employes/presence'
@@ -555,6 +566,7 @@ export interface FileRouteTypes {
     | '/clients/statistiques'
     | '/clients/vip'
     | '/employes/conges'
+    | '/employes/journal'
     | '/employes/performance'
     | '/employes/permissions'
     | '/employes/presence'
@@ -884,6 +896,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployesPerformanceRouteImport
       parentRoute: typeof EmployesRoute
     }
+    '/employes/journal': {
+      id: '/employes/journal'
+      path: '/journal'
+      fullPath: '/employes/journal'
+      preLoaderRoute: typeof EmployesJournalRouteImport
+      parentRoute: typeof EmployesRoute
+    }
     '/employes/conges': {
       id: '/employes/conges'
       path: '/conges'
@@ -957,6 +976,7 @@ const ClientsRouteWithChildren =
 
 interface EmployesRouteChildren {
   EmployesCongesRoute: typeof EmployesCongesRoute
+  EmployesJournalRoute: typeof EmployesJournalRoute
   EmployesPerformanceRoute: typeof EmployesPerformanceRoute
   EmployesPermissionsRoute: typeof EmployesPermissionsRoute
   EmployesPresenceRoute: typeof EmployesPresenceRoute
@@ -965,6 +985,7 @@ interface EmployesRouteChildren {
 
 const EmployesRouteChildren: EmployesRouteChildren = {
   EmployesCongesRoute: EmployesCongesRoute,
+  EmployesJournalRoute: EmployesJournalRoute,
   EmployesPerformanceRoute: EmployesPerformanceRoute,
   EmployesPermissionsRoute: EmployesPermissionsRoute,
   EmployesPresenceRoute: EmployesPresenceRoute,
