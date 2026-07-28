@@ -108,7 +108,7 @@ export function useNexusia() {
       {
         cle: "finance",
         titre: "Résumé financier",
-        phrase: `Trésorerie de ${formatFCFA(finances.tresorerie.solde)} avec ${formatFCFA(finances.kpis.creancesEnCours ?? 0)} en attente de règlement.`,
+        phrase: `Trésorerie de ${formatFCFA(finances.tresorerie.solde)} avec ${formatFCFA(finances.kpis.creances)} en attente de règlement.`,
         evolution: variation(mois.kpis.benefice, mois.kpisPrecedents.benefice),
         lignes: [
           { label: "Encaissements", valeur: formatFCFA(finances.tresorerie.entrees) },
@@ -252,7 +252,7 @@ export function useNexusia() {
       });
     }
 
-    const ecartCaisse = finances.kpis.montantCaisse ?? 0;
+    const ecartCaisse = finances.kpis.montantCaisse;
     if (ecartCaisse < 0) {
       alertes.push({
         id: "caisse",
