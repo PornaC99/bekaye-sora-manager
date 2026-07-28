@@ -1,12 +1,21 @@
 import { useSyncExternalStore } from "react";
 
-import { achatsDemo, mouvementsDemo, produitsDemo, ventesDemo } from "./demo-data";
+import {
+  insererProduit,
+  listerProduits,
+  majChampsProduit,
+  majProduit,
+  supprimerProduitDb,
+} from "@/lib/db/catalogue";
+import { signalerErreur } from "@/lib/db/errors";
+
+import { achatsDemo, mouvementsDemo, ventesDemo } from "./demo-data";
 import type { LigneHistorique, MouvementStock, Produit, ProduitFormValues } from "./types";
 
 /**
- * Store local du module Produits.
- * Isolé volontairement : le jour où Lovable Cloud est activé, il suffit de
- * remplacer les fonctions ci-dessous par des requêtes (mêmes signatures).
+ * Store du module Produits.
+ * Les produits sont persistés dans Supabase (RLS par entreprise) ; l'état local
+ * sert de cache réactif mis à jour de façon optimiste puis confirmé par la base.
  */
 
 type State = {
@@ -14,13 +23,17 @@ type State = {
   mouvements: MouvementStock[];
   ventes: LigneHistorique[];
   achats: LigneHistorique[];
+  chargement: boolean;
+  erreur: string | null;
 };
 
 let state: State = {
-  produits: produitsDemo,
+  produits: [],
   mouvements: mouvementsDemo,
   ventes: ventesDemo,
   achats: achatsDemo,
+  chargement: true,
+  erreur: null,
 };
 
 const listeners = new Set<() => void>();
@@ -30,8 +43,27 @@ function setState(next: Partial<State>) {
   listeners.forEach((l) => l());
 }
 
+let hydratation: Promise<void> | null = null;
+
+/** Charge les produits depuis Supabase (une seule fois, puis à la demande). */
+export function chargerProduits(force = false): Promise<void> {
+  if (hydratation && !force) return hydratation;
+  hydratation = (async () => {
+    setState({ chargement: true, erreur: null });
+    try {
+      const produits = await listerProduits();
+      setState({ produits, chargement: false });
+    } catch (erreur) {
+      setState({ chargement: false, erreur: (erreur as Error).message });
+      signalerErreur("Chargement des produits impossible", erreur);
+    }
+  })();
+  return hydratation;
+}
+
 function subscribe(listener: () => void) {
   listeners.add(listener);
+  void chargerProduits();
   return () => listeners.delete(listener);
 }
 
@@ -45,6 +77,7 @@ export function useProduit(id: string) {
   const { produits } = useProductsStore();
   return produits.find((p) => p.id === id) ?? null;
 }
+
 
 function nextId() {
   const max = state.produits.reduce((acc, p) => {
