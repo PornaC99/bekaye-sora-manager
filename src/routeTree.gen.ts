@@ -40,6 +40,7 @@ import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
 import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique'
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
+import { Route as MobileConnexionRouteImport } from './routes/mobile.connexion'
 import { Route as InventaireHistoriqueRouteImport } from './routes/inventaire.historique'
 import { Route as InventaireAnalyseRouteImport } from './routes/inventaire.analyse'
 import { Route as InventaireInventaireIdRouteImport } from './routes/inventaire.$inventaireId'
@@ -221,6 +222,11 @@ const ProduitsProduitIdRoute = ProduitsProduitIdRouteImport.update({
   path: '/$produitId',
   getParentRoute: () => ProduitsRoute,
 } as any)
+const MobileConnexionRoute = MobileConnexionRouteImport.update({
+  id: '/connexion',
+  path: '/connexion',
+  getParentRoute: () => MobileRoute,
+} as any)
 const InventaireHistoriqueRoute = InventaireHistoriqueRouteImport.update({
   id: '/historique',
   path: '/historique',
@@ -361,7 +367,7 @@ export interface FileRoutesByFullPath {
   '/entrees-stock': typeof EntreesStockRouteWithChildren
   '/fournisseurs': typeof FournisseursRouteWithChildren
   '/inventaire': typeof InventaireRouteWithChildren
-  '/mobile': typeof MobileRoute
+  '/mobile': typeof MobileRouteWithChildren
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/produits': typeof ProduitsRouteWithChildren
@@ -394,6 +400,7 @@ export interface FileRoutesByFullPath {
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
+  '/mobile/connexion': typeof MobileConnexionRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -413,7 +420,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
-  '/mobile': typeof MobileRoute
+  '/mobile': typeof MobileRouteWithChildren
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/rapports': typeof RapportsRoute
@@ -444,6 +451,7 @@ export interface FileRoutesByTo {
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
+  '/mobile/connexion': typeof MobileConnexionRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -470,7 +478,7 @@ export interface FileRoutesById {
   '/entrees-stock': typeof EntreesStockRouteWithChildren
   '/fournisseurs': typeof FournisseursRouteWithChildren
   '/inventaire': typeof InventaireRouteWithChildren
-  '/mobile': typeof MobileRoute
+  '/mobile': typeof MobileRouteWithChildren
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/produits': typeof ProduitsRouteWithChildren
@@ -503,6 +511,7 @@ export interface FileRoutesById {
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
+  '/mobile/connexion': typeof MobileConnexionRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -563,6 +572,7 @@ export interface FileRouteTypes {
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
+    | '/mobile/connexion'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -613,6 +623,7 @@ export interface FileRouteTypes {
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
+    | '/mobile/connexion'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -671,6 +682,7 @@ export interface FileRouteTypes {
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
+    | '/mobile/connexion'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -697,7 +709,7 @@ export interface RootRouteChildren {
   EntreesStockRoute: typeof EntreesStockRouteWithChildren
   FournisseursRoute: typeof FournisseursRouteWithChildren
   InventaireRoute: typeof InventaireRouteWithChildren
-  MobileRoute: typeof MobileRoute
+  MobileRoute: typeof MobileRouteWithChildren
   NotificationsRoute: typeof NotificationsRoute
   ParametresRoute: typeof ParametresRoute
   ProduitsRoute: typeof ProduitsRouteWithChildren
@@ -927,6 +939,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/produits/$produitId'
       preLoaderRoute: typeof ProduitsProduitIdRouteImport
       parentRoute: typeof ProduitsRoute
+    }
+    '/mobile/connexion': {
+      id: '/mobile/connexion'
+      path: '/connexion'
+      fullPath: '/mobile/connexion'
+      preLoaderRoute: typeof MobileConnexionRouteImport
+      parentRoute: typeof MobileRoute
     }
     '/inventaire/historique': {
       id: '/inventaire/historique'
@@ -1227,6 +1246,17 @@ const InventaireRouteWithChildren = InventaireRoute._addFileChildren(
   InventaireRouteChildren,
 )
 
+interface MobileRouteChildren {
+  MobileConnexionRoute: typeof MobileConnexionRoute
+}
+
+const MobileRouteChildren: MobileRouteChildren = {
+  MobileConnexionRoute: MobileConnexionRoute,
+}
+
+const MobileRouteWithChildren =
+  MobileRoute._addFileChildren(MobileRouteChildren)
+
 interface ProduitsRouteChildren {
   ProduitsProduitIdRoute: typeof ProduitsProduitIdRoute
   ProduitsMouvementsRoute: typeof ProduitsMouvementsRoute
@@ -1268,7 +1298,7 @@ const rootRouteChildren: RootRouteChildren = {
   EntreesStockRoute: EntreesStockRouteWithChildren,
   FournisseursRoute: FournisseursRouteWithChildren,
   InventaireRoute: InventaireRouteWithChildren,
-  MobileRoute: MobileRoute,
+  MobileRoute: MobileRouteWithChildren,
   NotificationsRoute: NotificationsRoute,
   ParametresRoute: ParametresRoute,
   ProduitsRoute: ProduitsRouteWithChildren,
