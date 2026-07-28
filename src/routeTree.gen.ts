@@ -43,6 +43,7 @@ import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-sto
 import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
 import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
+import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
 import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
 
 const VentesRoute = VentesRouteImport.update({
@@ -215,6 +216,11 @@ const ClientsStatistiquesRoute = ClientsStatistiquesRouteImport.update({
   path: '/statistiques',
   getParentRoute: () => ClientsRoute,
 } as any)
+const ClientsAnalyseRoute = ClientsAnalyseRouteImport.update({
+  id: '/analyse',
+  path: '/analyse',
+  getParentRoute: () => ClientsRoute,
+} as any)
 const ClientsClientIdRoute = ClientsClientIdRouteImport.update({
   id: '/$clientId',
   path: '/$clientId',
@@ -241,6 +247,7 @@ export interface FileRoutesByFullPath {
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
   '/clients/$clientId': typeof ClientsClientIdRoute
+  '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
@@ -273,6 +280,7 @@ export interface FileRoutesByTo {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
+  '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
@@ -311,6 +319,7 @@ export interface FileRoutesById {
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
   '/clients/$clientId': typeof ClientsClientIdRoute
+  '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
@@ -350,6 +359,7 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/ventes'
     | '/clients/$clientId'
+    | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
     | '/entrees-stock/$entreeId'
@@ -382,6 +392,7 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/clients/$clientId'
+    | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
     | '/entrees-stock/$entreeId'
@@ -419,6 +430,7 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/ventes'
     | '/clients/$clientId'
+    | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
     | '/entrees-stock/$entreeId'
@@ -698,6 +710,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClientsStatistiquesRouteImport
       parentRoute: typeof ClientsRoute
     }
+    '/clients/analyse': {
+      id: '/clients/analyse'
+      path: '/analyse'
+      fullPath: '/clients/analyse'
+      preLoaderRoute: typeof ClientsAnalyseRouteImport
+      parentRoute: typeof ClientsRoute
+    }
     '/clients/$clientId': {
       id: '/clients/$clientId'
       path: '/$clientId'
@@ -710,6 +729,7 @@ declare module '@tanstack/react-router' {
 
 interface ClientsRouteChildren {
   ClientsClientIdRoute: typeof ClientsClientIdRoute
+  ClientsAnalyseRoute: typeof ClientsAnalyseRoute
   ClientsStatistiquesRoute: typeof ClientsStatistiquesRoute
   ClientsVipRoute: typeof ClientsVipRoute
   ClientsIndexRoute: typeof ClientsIndexRoute
@@ -717,6 +737,7 @@ interface ClientsRouteChildren {
 
 const ClientsRouteChildren: ClientsRouteChildren = {
   ClientsClientIdRoute: ClientsClientIdRoute,
+  ClientsAnalyseRoute: ClientsAnalyseRoute,
   ClientsStatistiquesRoute: ClientsStatistiquesRoute,
   ClientsVipRoute: ClientsVipRoute,
   ClientsIndexRoute: ClientsIndexRoute,

@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from "react";
 
 import { appliquerVente, retournerVente } from "@/lib/products/store";
+import { enregistrerAchatClient } from "@/lib/clients/store";
 import { notificationsDemo, retoursDemo, sessionsDemo, ventesDemo } from "./demo-data";
 import {
   MODE_PAIEMENT_LABEL,
