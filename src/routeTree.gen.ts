@@ -81,6 +81,7 @@ import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
 import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
 import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
+import { Route as AdministrationPersonnalisationRouteImport } from './routes/administration.personnalisation'
 import { Route as FournisseursCommandesIndexRouteImport } from './routes/fournisseurs.commandes.index'
 import { Route as FournisseursCommandesCommandeIdRouteImport } from './routes/fournisseurs.commandes.$commandeId'
 
@@ -446,6 +447,12 @@ const ClientsClientIdRoute = ClientsClientIdRouteImport.update({
   path: '/$clientId',
   getParentRoute: () => ClientsRoute,
 } as any)
+const AdministrationPersonnalisationRoute =
+  AdministrationPersonnalisationRouteImport.update({
+    id: '/personnalisation',
+    path: '/personnalisation',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
 const FournisseursCommandesIndexRoute =
   FournisseursCommandesIndexRouteImport.update({
     id: '/commandes/',
@@ -480,6 +487,7 @@ export interface FileRoutesByFullPath {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
+  '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
@@ -545,6 +553,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
+  '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
@@ -622,6 +631,7 @@ export interface FileRoutesById {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
+  '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
@@ -700,6 +710,7 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/administration/personnalisation'
     | '/clients/$clientId'
     | '/clients/analyse'
     | '/clients/statistiques'
@@ -765,6 +776,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sorties-stock'
     | '/statistiques'
+    | '/administration/personnalisation'
     | '/clients/$clientId'
     | '/clients/analyse'
     | '/clients/statistiques'
@@ -841,6 +853,7 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/administration/personnalisation'
     | '/clients/$clientId'
     | '/clients/analyse'
     | '/clients/statistiques'
@@ -1426,6 +1439,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClientsClientIdRouteImport
       parentRoute: typeof ClientsRoute
     }
+    '/administration/personnalisation': {
+      id: '/administration/personnalisation'
+      path: '/personnalisation'
+      fullPath: '/administration/personnalisation'
+      preLoaderRoute: typeof AdministrationPersonnalisationRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
     '/fournisseurs/commandes/': {
       id: '/fournisseurs/commandes/'
       path: '/commandes'
@@ -1444,10 +1464,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdministrationRouteChildren {
+  AdministrationPersonnalisationRoute: typeof AdministrationPersonnalisationRoute
   AdministrationIndexRoute: typeof AdministrationIndexRoute
 }
 
 const AdministrationRouteChildren: AdministrationRouteChildren = {
+  AdministrationPersonnalisationRoute: AdministrationPersonnalisationRoute,
   AdministrationIndexRoute: AdministrationIndexRoute,
 }
 
