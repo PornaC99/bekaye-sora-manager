@@ -2,6 +2,8 @@ import { supabase } from "@/integrations/supabase/client";
 import type { Produit, ProduitFormValues } from "@/lib/products/types";
 import type { Fournisseur, FournisseurFormValues } from "@/lib/suppliers/types";
 
+import { publier } from "@/lib/core/notifications";
+
 import { exigerEntreprise } from "./tenant";
 
 /* ------------------------------------------------------------------ */
@@ -52,6 +54,13 @@ export async function creerCategorie(values: {
     .select("id")
     .single();
   if (error) throw error;
+  publier({
+    module: "produits",
+    ton: "succes",
+    titre: "Nouvelle catégorie",
+    message: `La catégorie « ${values.nom.trim()} » a été créée.`,
+    lien: "/categories",
+  });
   return data.id;
 }
 
@@ -61,11 +70,24 @@ export async function majCategorie(
 ) {
   const { error } = await supabase.from("categories").update(values).eq("id", id);
   if (error) throw error;
+  publier({
+    module: "produits",
+    titre: "Catégorie modifiée",
+    message: `La catégorie « ${values.nom ?? "sans nom"} » a été mise à jour.`,
+    lien: "/categories",
+  });
 }
 
 export async function supprimerCategorie(id: string) {
   const { error } = await supabase.from("categories").delete().eq("id", id);
   if (error) throw error;
+  publier({
+    module: "produits",
+    ton: "alerte",
+    titre: "Catégorie supprimée",
+    message: "Une catégorie a été supprimée du catalogue.",
+    lien: "/categories",
+  });
 }
 
 /** Retourne l'id d'une catégorie à partir de son nom, en la créant si besoin. */
@@ -140,6 +162,12 @@ export async function insererFournisseur(id: string, values: FournisseurFormValu
     .from("fournisseurs")
     .insert({ id, entreprise_id, ...versLigneFournisseur(values) });
   if (error) throw error;
+  publier({
+    module: "fournisseurs",
+    ton: "succes",
+    titre: "Nouveau fournisseur",
+    message: `${values.nom} a été ajouté à la liste des fournisseurs.`,
+  });
 }
 
 export async function majFournisseur(id: string, values: FournisseurFormValues) {
@@ -148,11 +176,22 @@ export async function majFournisseur(id: string, values: FournisseurFormValues) 
     .update(versLigneFournisseur(values))
     .eq("id", id);
   if (error) throw error;
+  publier({
+    module: "fournisseurs",
+    titre: "Fournisseur modifié",
+    message: `La fiche de ${values.nom} a été mise à jour.`,
+  });
 }
 
 export async function supprimerFournisseurDb(id: string) {
   const { error } = await supabase.from("fournisseurs").delete().eq("id", id);
   if (error) throw error;
+  publier({
+    module: "fournisseurs",
+    ton: "alerte",
+    titre: "Fournisseur supprimé",
+    message: "Un fournisseur a été retiré de la base.",
+  });
 }
 
 /** Retourne l'id d'un fournisseur à partir de son nom (sans le créer). */
@@ -231,12 +270,23 @@ export async function insererProduit(id: string, values: ProduitFormValues) {
   const ligne = await versLigneProduit(values);
   const { error } = await supabase.from("produits").insert({ id, entreprise_id, ...ligne });
   if (error) throw error;
+  publier({
+    module: "produits",
+    ton: "succes",
+    titre: "Nouveau produit",
+    message: `${values.nom} a été ajouté au catalogue.`,
+  });
 }
 
 export async function majProduit(id: string, values: ProduitFormValues) {
   const ligne = await versLigneProduit(values);
   const { error } = await supabase.from("produits").update(ligne).eq("id", id);
   if (error) throw error;
+  publier({
+    module: "produits",
+    titre: "Produit modifié",
+    message: `La fiche de ${values.nom} a été mise à jour.`,
+  });
 }
 
 export async function majChampsProduit(
@@ -250,4 +300,10 @@ export async function majChampsProduit(
 export async function supprimerProduitDb(id: string) {
   const { error } = await supabase.from("produits").delete().eq("id", id);
   if (error) throw error;
+  publier({
+    module: "produits",
+    ton: "alerte",
+    titre: "Produit supprimé",
+    message: "Un produit a été retiré du catalogue.",
+  });
 }
