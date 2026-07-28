@@ -83,6 +83,7 @@ import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
 import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
 import { Route as AdministrationUtilisateursRouteImport } from './routes/administration.utilisateurs'
 import { Route as AdministrationPersonnalisationRouteImport } from './routes/administration.personnalisation'
+import { Route as AdministrationAuditRouteImport } from './routes/administration.audit'
 import { Route as FournisseursCommandesIndexRouteImport } from './routes/fournisseurs.commandes.index'
 import { Route as FournisseursCommandesCommandeIdRouteImport } from './routes/fournisseurs.commandes.$commandeId'
 
@@ -460,6 +461,11 @@ const AdministrationPersonnalisationRoute =
     path: '/personnalisation',
     getParentRoute: () => AdministrationRoute,
   } as any)
+const AdministrationAuditRoute = AdministrationAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => AdministrationRoute,
+} as any)
 const FournisseursCommandesIndexRoute =
   FournisseursCommandesIndexRouteImport.update({
     id: '/commandes/',
@@ -494,6 +500,7 @@ export interface FileRoutesByFullPath {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
+  '/administration/audit': typeof AdministrationAuditRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
   '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
@@ -561,6 +568,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
+  '/administration/audit': typeof AdministrationAuditRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
   '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
@@ -640,6 +648,7 @@ export interface FileRoutesById {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
+  '/administration/audit': typeof AdministrationAuditRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
   '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
@@ -720,6 +729,7 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/administration/audit'
     | '/administration/personnalisation'
     | '/administration/utilisateurs'
     | '/clients/$clientId'
@@ -787,6 +797,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sorties-stock'
     | '/statistiques'
+    | '/administration/audit'
     | '/administration/personnalisation'
     | '/administration/utilisateurs'
     | '/clients/$clientId'
@@ -865,6 +876,7 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/administration/audit'
     | '/administration/personnalisation'
     | '/administration/utilisateurs'
     | '/clients/$clientId'
@@ -1466,6 +1478,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdministrationPersonnalisationRouteImport
       parentRoute: typeof AdministrationRoute
     }
+    '/administration/audit': {
+      id: '/administration/audit'
+      path: '/audit'
+      fullPath: '/administration/audit'
+      preLoaderRoute: typeof AdministrationAuditRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
     '/fournisseurs/commandes/': {
       id: '/fournisseurs/commandes/'
       path: '/commandes'
@@ -1484,12 +1503,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdministrationRouteChildren {
+  AdministrationAuditRoute: typeof AdministrationAuditRoute
   AdministrationPersonnalisationRoute: typeof AdministrationPersonnalisationRoute
   AdministrationUtilisateursRoute: typeof AdministrationUtilisateursRoute
   AdministrationIndexRoute: typeof AdministrationIndexRoute
 }
 
 const AdministrationRouteChildren: AdministrationRouteChildren = {
+  AdministrationAuditRoute: AdministrationAuditRoute,
   AdministrationPersonnalisationRoute: AdministrationPersonnalisationRoute,
   AdministrationUtilisateursRoute: AdministrationUtilisateursRoute,
   AdministrationIndexRoute: AdministrationIndexRoute,
