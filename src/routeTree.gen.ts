@@ -47,6 +47,7 @@ import { Route as FournisseursFournisseurIdRouteImport } from './routes/fourniss
 import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-stock.historique'
 import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
 import { Route as EmployesPresenceRouteImport } from './routes/employes.presence'
+import { Route as EmployesPermissionsRouteImport } from './routes/employes.permissions'
 import { Route as EmployesCongesRouteImport } from './routes/employes.conges'
 import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
@@ -247,6 +248,11 @@ const EmployesPresenceRoute = EmployesPresenceRouteImport.update({
   path: '/presence',
   getParentRoute: () => EmployesRoute,
 } as any)
+const EmployesPermissionsRoute = EmployesPermissionsRouteImport.update({
+  id: '/permissions',
+  path: '/permissions',
+  getParentRoute: () => EmployesRoute,
+} as any)
 const EmployesCongesRoute = EmployesCongesRouteImport.update({
   id: '/conges',
   path: '/conges',
@@ -309,6 +315,7 @@ export interface FileRoutesByFullPath {
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/employes/conges': typeof EmployesCongesRoute
+  '/employes/permissions': typeof EmployesPermissionsRoute
   '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
@@ -349,6 +356,7 @@ export interface FileRoutesByTo {
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/employes/conges': typeof EmployesCongesRoute
+  '/employes/permissions': typeof EmployesPermissionsRoute
   '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
@@ -397,6 +405,7 @@ export interface FileRoutesById {
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/employes/conges': typeof EmployesCongesRoute
+  '/employes/permissions': typeof EmployesPermissionsRoute
   '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
@@ -446,6 +455,7 @@ export interface FileRouteTypes {
     | '/clients/statistiques'
     | '/clients/vip'
     | '/employes/conges'
+    | '/employes/permissions'
     | '/employes/presence'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
@@ -486,6 +496,7 @@ export interface FileRouteTypes {
     | '/clients/statistiques'
     | '/clients/vip'
     | '/employes/conges'
+    | '/employes/permissions'
     | '/employes/presence'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
@@ -533,6 +544,7 @@ export interface FileRouteTypes {
     | '/clients/statistiques'
     | '/clients/vip'
     | '/employes/conges'
+    | '/employes/permissions'
     | '/employes/presence'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
@@ -846,6 +858,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployesPresenceRouteImport
       parentRoute: typeof EmployesRoute
     }
+    '/employes/permissions': {
+      id: '/employes/permissions'
+      path: '/permissions'
+      fullPath: '/employes/permissions'
+      preLoaderRoute: typeof EmployesPermissionsRouteImport
+      parentRoute: typeof EmployesRoute
+    }
     '/employes/conges': {
       id: '/employes/conges'
       path: '/conges'
@@ -919,12 +938,14 @@ const ClientsRouteWithChildren =
 
 interface EmployesRouteChildren {
   EmployesCongesRoute: typeof EmployesCongesRoute
+  EmployesPermissionsRoute: typeof EmployesPermissionsRoute
   EmployesPresenceRoute: typeof EmployesPresenceRoute
   EmployesIndexRoute: typeof EmployesIndexRoute
 }
 
 const EmployesRouteChildren: EmployesRouteChildren = {
   EmployesCongesRoute: EmployesCongesRoute,
+  EmployesPermissionsRoute: EmployesPermissionsRoute,
   EmployesPresenceRoute: EmployesPresenceRoute,
   EmployesIndexRoute: EmployesIndexRoute,
 }
