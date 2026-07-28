@@ -1,12 +1,16 @@
-import { Link, useRouterState } from "@tanstack/react-router";
-import { PanelLeftClose, PanelLeftOpen, X } from "lucide-react";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { LogOut, PanelLeftClose, PanelLeftOpen, User, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { useRoleActuel } from "@/hooks/use-role";
+import { useSession, nomAffiche, initialesUtilisateur } from "@/hooks/use-session";
+import { supabase } from "@/integrations/supabase/client";
 import { peutAcceder } from "@/lib/access/roles";
 import { cn } from "@/lib/utils";
 import { BRAND, navSections } from "@/lib/navigation";
 import { BrandMark } from "./brand-mark";
+import { ThemeToggle } from "./theme-toggle";
 import { useShell } from "./shell-context";
 
 function NavLinks({ onNavigate, compact }: { onNavigate?: () => void; compact?: boolean }) {
