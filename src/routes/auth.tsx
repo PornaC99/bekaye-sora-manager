@@ -123,7 +123,15 @@ function AuthPage() {
         toast.success("Connexion réussie", { description: "Bienvenue dans votre espace." });
         navigate({ to: "/", replace: true });
       } else {
+        // ⚠️ MODE DÉMONSTRATION : la confirmation d'e-mail est temporairement
+        // désactivée côté backend (auto-confirmation activée), donc `signUp`
+        // renvoie directement une session et l'utilisateur entre sans valider
+        // son adresse. Tout le flux de confirmation ci-dessous (lien de retour,
+        // bannière « confirmation=reussie », renvoi d'e-mail) reste en place.
+        // À RÉACTIVER AVANT LA MISE EN PRODUCTION : désactiver
+        // l'auto-confirmation des e-mails dans les réglages d'authentification.
         const { data, error } = await supabase.auth.signUp({
+
           email,
           password: motDePasse,
           options: {
