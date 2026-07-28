@@ -1,3 +1,4 @@
+import { useDemoVierge } from "@/lib/demo/reset";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -61,9 +62,18 @@ function Trend({ trend, hint }: { trend: number | null; hint: string }) {
 }
 
 export function KpiCards() {
+  const vierge = useDemoVierge();
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-      {kpis.map((kpi) => {
+      {(vierge
+        ? kpis.map((kpi) => ({
+            ...kpi,
+            value: /[0-9]/.test(kpi.value) && kpi.value.includes("FCFA") ? "0 FCFA" : "0",
+            trend: null,
+            hint: "Aucune donnée",
+          }))
+        : kpis
+      ).map((kpi) => {
         const Icon = icons[kpi.icon];
         return (
           <article

@@ -15,6 +15,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AppShell } from "@/components/layout/app-shell";
 import { TenantGate } from "@/components/onboarding/tenant-gate";
 import { reinitialiserTenant } from "@/lib/db/tenant";
+import { initialiserTheme } from "@/hooks/use-theme";
+import { initialiserEtatDemo } from "@/lib/demo/reset";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Toaster } from "@/components/ui/sonner";
@@ -143,7 +145,11 @@ function RootComponent() {
   // `_authenticated`, en ssr:false) : sinon le serveur affiche l'écran de
   // chargement du TenantGate et l'hydratation échoue.
   const [hydrate, setHydrate] = useState(false);
-  useEffect(() => setHydrate(true), []);
+  useEffect(() => {
+    initialiserTheme();
+    initialiserEtatDemo();
+    setHydrate(true);
+  }, []);
 
   // Les liens e-mail Supabase (confirmation, récupération) reviennent sur l'URL
   // du site avec un fragment `#type=...`. On les réoriente vers la bonne page.

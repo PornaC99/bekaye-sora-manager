@@ -3,6 +3,7 @@ import { Download, FileSpreadsheet, FileText, Upload } from "lucide-react";
 import { toast } from "sonner";
 
 import { AdminCard } from "@/components/admin/pieces";
+import { DemoResetCard } from "@/components/admin/demo-reset-card";
 import { Button } from "@/components/ui/button";
 import { journaliser } from "@/lib/admin/store";
 
@@ -47,6 +48,8 @@ function DonneesPage() {
 
   return (
     <div className="flex flex-col gap-5">
+      <DemoResetCard />
+
       <AdminCard
         titre="Importer des données"
         description="Reprenez vos données existantes au format CSV ou Excel."

@@ -2,9 +2,11 @@ import { Link } from "@tanstack/react-router";
 
 import { cn } from "@/lib/utils";
 import { lowStockItems } from "@/lib/dashboard-data";
+import { useDemoVierge } from "@/lib/demo/reset";
 import { SectionCard } from "./section-card";
 
 export function LowStock() {
+  const vierge = useDemoVierge();
   return (
     <SectionCard
       title="Produits bientôt en rupture"
@@ -19,7 +21,7 @@ export function LowStock() {
       }
     >
       <ul className="flex flex-col gap-3">
-        {lowStockItems.map((item) => {
+        {(vierge ? [] : lowStockItems).map((item) => {
           const critique = item.stockActuel < item.stockMinimum;
           return (
             <li

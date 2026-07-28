@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 
 import { cn } from "@/lib/utils";
 import { notifications, type Notification } from "@/lib/dashboard-data";
+import { useDemoVierge } from "@/lib/demo/reset";
 import { SectionCard } from "./section-card";
 
 const config: Record<Notification["type"], { icon: LucideIcon; tone: string }> = {
@@ -20,6 +21,7 @@ const priorityStyles: Record<Notification["priorite"], string> = {
 };
 
 export function RecentNotifications() {
+  const vierge = useDemoVierge();
   return (
     <SectionCard
       title="Notifications récentes"
@@ -34,7 +36,7 @@ export function RecentNotifications() {
       }
     >
       <ul className="flex flex-col gap-3">
-        {notifications.map((notif) => {
+        {(vierge ? [] : notifications).map((notif) => {
           const { icon: Icon, tone } = config[notif.type] ?? { icon: Bell, tone: "bg-muted" };
           return (
             <li

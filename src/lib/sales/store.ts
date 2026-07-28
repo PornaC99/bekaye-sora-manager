@@ -388,3 +388,8 @@ export function enregistrerDepenseCaisse(input: {
     utilisateur: input.utilisateur,
   });
 }
+
+/** Réinitialise l'activité de démonstration (ventes, retours, caisse). */
+export function reinitialiserVentesDemo() {
+  setState({ ventes: [], retours: [], sessions: [], notifications: [] });
+}

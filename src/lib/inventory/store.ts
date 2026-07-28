@@ -175,3 +175,8 @@ export function ajusterStockDepuisInventaire(id: string) {
 export function supprimerInventaire(id: string) {
   setState({ inventaires: state.inventaires.filter((i) => i.id !== id) });
 }
+
+/** Réinitialise les inventaires de démonstration. */
+export function reinitialiserInventairesDemo() {
+  setState({ inventaires: [] });
+}

@@ -234,3 +234,8 @@ export function basculerReglementDette(id: string) {
 export function enregistrerObjectifs(objectifs: ObjectifsFinanciers) {
   setState({ objectifs });
 }
+
+/** Réinitialise l'activité financière de démonstration (les objectifs restent). */
+export function reinitialiserFinancesDemo() {
+  setState({ depenses: [], creances: [], dettes: [], notifications: [] });
+}

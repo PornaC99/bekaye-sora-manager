@@ -1,16 +1,18 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import { categoryBreakdown } from "@/lib/dashboard-data";
+import { useDemoVierge } from "@/lib/demo/reset";
 import { SectionCard } from "./section-card";
 
 export function CategoryChart() {
+  const vierge = useDemoVierge();
   return (
     <SectionCard title="Ventes par catégorie" description="Répartition du mois en cours">
       <div className="h-[190px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
-              data={categoryBreakdown}
+              data={vierge ? [] : categoryBreakdown}
               dataKey="value"
               nameKey="name"
               innerRadius={54}
@@ -19,7 +21,7 @@ export function CategoryChart() {
               stroke="var(--card)"
               strokeWidth={2}
             >
-              {categoryBreakdown.map((slice) => (
+              {(vierge ? [] : categoryBreakdown).map((slice) => (
                 <Cell key={slice.name} fill={slice.color} />
               ))}
             </Pie>
@@ -38,7 +40,7 @@ export function CategoryChart() {
       </div>
 
       <ul className="mt-4 flex flex-col gap-2.5">
-        {categoryBreakdown.map((slice) => (
+        {(vierge ? [] : categoryBreakdown).map((slice) => (
           <li key={slice.name} className="flex min-w-0 items-center gap-2 text-sm">
             <span
               className="h-2.5 w-2.5 shrink-0 rounded-full"
