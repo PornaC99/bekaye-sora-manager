@@ -7,6 +7,7 @@ import {
   majProduit,
   supprimerProduitDb,
 } from "@/lib/db/catalogue";
+import { publierUnique } from "@/lib/core/notifications";
 import { signalerErreur } from "@/lib/db/errors";
 
 import { achatsDemo, mouvementsDemo, ventesDemo } from "./demo-data";
@@ -202,7 +203,41 @@ function persisterStocks(nouveaux: Produit[]): Produit[] {
       signalerErreur("Mise à jour du stock impossible", erreur),
     );
   }
+  surveillerSeuils(avant, nouveaux);
   return nouveaux;
+}
+
+/**
+ * Déclenche automatiquement les alertes de rupture et de stock faible dès
+ * qu'une vente, une réception ou un inventaire modifie les quantités.
+ */
+function surveillerSeuils(avant: Map<string, Produit>, nouveaux: Produit[]) {
+  for (const produit of nouveaux) {
+    const precedent = avant.get(produit.id);
+    if (!precedent || precedent.stock === produit.stock || !produit.actif) continue;
+
+    if (produit.stock === 0 && precedent.stock > 0) {
+      publierUnique(`Rupture de stock — ${produit.nom}`, {
+        module: "produits",
+        ton: "danger",
+        message: `${produit.nom} est en rupture. Lancez une commande fournisseur pour éviter les ventes perdues.`,
+        lien: "/fournisseurs/approvisionnement",
+        titre: "",
+      });
+    } else if (
+      produit.stock > 0 &&
+      produit.stock <= produit.stockMinimum &&
+      precedent.stock > produit.stockMinimum
+    ) {
+      publierUnique(`Stock faible — ${produit.nom}`, {
+        module: "produits",
+        ton: "alerte",
+        message: `${produit.nom} : ${produit.stock} unité(s) restantes (seuil ${produit.stockMinimum}).`,
+        lien: "/produits",
+        titre: "",
+      });
+    }
+  }
 }
 
 export function enregistrerMouvement(input: {
