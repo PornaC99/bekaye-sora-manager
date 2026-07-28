@@ -20,7 +20,7 @@ export function SectionCard({
   return (
     <section
       className={cn(
-        "flex flex-col rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]",
+        "card-luxe flex flex-col rounded-2xl",
         className,
       )}
     >

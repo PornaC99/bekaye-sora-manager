@@ -1,3 +1,4 @@
+import { LOGO_URL } from "@/lib/brand";
 import { formatFCFA } from "@/lib/products/types";
 
 import type { KpisFinanciers, PartDepense, Previsions, ProgressionObjectif } from "./analytics";
@@ -144,14 +145,20 @@ export function imprimerRapportFinancier(contenu: ContenuRapport) {
   td.num, th.num { text-align: right; }
   .vide { font-size: 12px; color: #9ca3af; }
   footer { margin-top: 36px; font-size: 11px; color: #9ca3af; text-align: center; }
+
+  .marque-bloc { display: flex; align-items: center; gap: 12px; }
+  .logo-marque { width: 56px; height: 56px; object-fit: contain; border-radius: 10px; }
+  .entete { border-bottom: 3px solid #A31018 !important; }
+  .marque span { color: #C9A227 !important; }
+  h1 { color: #A31018; }
   @media print { body { padding: 12px; } }
 </style></head>
 <body>
   <div class="entete">
     <div>
-      <div class="marque">Bekaye Sora <span>501</span></div>
+      <div class="marque-bloc"><img class="logo-marque" src="${LOGO_URL}" alt="Bekaye Sora Collection" /><div><div class="marque">Bekaye Sora <span>Collection</span></div>
       <div class="sous">Cosmétiques 501 — Bamako, Mali · +223 76 12 34 56</div>
-    </div>
+    </div></div></div>
     <div style="text-align:right">
       <div style="font-weight:700">Rapport financier</div>
       <div class="sous">Édité le ${aujourdhui}</div>

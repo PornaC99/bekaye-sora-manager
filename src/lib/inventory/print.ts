@@ -1,3 +1,4 @@
+import { LOGO_URL } from "@/lib/brand";
 import { formatDate, formatFCFA } from "@/lib/products/types";
 import {
   ecartLigne,
@@ -19,6 +20,11 @@ const echapper = (valeur: string) =>
   );
 
 const STYLES = `
+  .logo { width: 52px !important; height: 52px !important; border-radius: 10px; object-fit: contain; background: transparent !important; }
+  header { border-bottom: 3px solid #A31018 !important; }
+  h1 { color: #A31018; }
+  .muted-gold { color: #C9A227; }
+
   * { box-sizing: border-box; }
   body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1c1c1e; margin: 32px; }
   header { display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #d92037; padding-bottom: 16px; }
@@ -74,7 +80,7 @@ function rapportHtml(inventaire: Inventaire) {
 <body>
   <header>
     <div class="brand">
-      <div class="logo">BS</div>
+      <img class="logo" src="${LOGO_URL}" alt="Bekaye Sora Collection" />
       <div>
         <strong>Bekaye Sora Business Manager</strong><br />
         <span class="muted">Marque 501 — Cosmétiques</span>

@@ -1,3 +1,4 @@
+import { LOGO_URL } from "@/lib/brand";
 import { formatDate, formatFCFA } from "@/lib/products/types";
 
 import {
@@ -58,8 +59,8 @@ export function imprimerCommande(commande: CommandeAchat, fournisseur: Fournisse
 <body>
   <header>
     <div class="brand">
-      <div class="logo">501</div>
-      <div><strong>Bekaye Sora</strong><div class="muted">Business Manager</div></div>
+      <img class="logo" src="${LOGO_URL}" alt="Bekaye Sora Collection" />
+      <div><strong>Bekaye Sora Collection</strong><div class="muted">Business Manager</div></div>
     </div>
     <div class="muted" style="text-align:right">
       Commande <strong>${echapper(commande.numero)}</strong><br />

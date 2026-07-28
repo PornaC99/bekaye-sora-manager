@@ -1,3 +1,4 @@
+import { LOGO_URL } from "@/lib/brand";
 import QRCode from "qrcode";
 
 import { formatDate, formatFCFA, formatHeure } from "@/lib/products/types";
@@ -17,6 +18,11 @@ const echapper = (valeur: string) =>
   );
 
 const STYLES = `
+  .logo { width: 52px !important; height: 52px !important; border-radius: 10px; object-fit: contain; background: transparent !important; }
+  header { border-bottom: 3px solid #A31018 !important; }
+  h1 { color: #A31018; }
+  .muted-gold { color: #C9A227; }
+
   * { box-sizing: border-box; }
   body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1c1c1e; margin: 32px; }
   header { display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #d92037; padding-bottom: 16px; }
@@ -77,8 +83,8 @@ export async function genererFacture(vente: Vente, options: { imprimer?: boolean
 <body>
   <header>
     <div class="brand">
-      <div class="logo">501</div>
-      <div><strong>Bekaye Sora</strong><div class="muted">Business Manager · 501 — Révélez votre éclat.</div></div>
+      <img class="logo" src="${LOGO_URL}" alt="Bekaye Sora Collection" />
+      <div><strong>Bekaye Sora Collection</strong><div class="muted">Business Manager · 501 — Révélez votre éclat.</div></div>
     </div>
     <div class="muted" style="text-align:right">
       Facture <strong>${echapper(vente.numero)}</strong><br />
@@ -171,8 +177,8 @@ export function imprimerRapportCaisse(session: SessionCaisse) {
 <body>
   <header>
     <div class="brand">
-      <div class="logo">501</div>
-      <div><strong>Bekaye Sora</strong><div class="muted">Business Manager</div></div>
+      <img class="logo" src="${LOGO_URL}" alt="Bekaye Sora Collection" />
+      <div><strong>Bekaye Sora Collection</strong><div class="muted">Business Manager</div></div>
     </div>
     <div class="muted" style="text-align:right">
       Caisse <strong>${echapper(session.numero)}</strong><br />Imprimé le ${formatDate(new Date().toISOString())}

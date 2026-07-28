@@ -1,3 +1,4 @@
+import { LOGO_URL } from "@/lib/brand";
 import { formatFCFA, formatDate, formatHeure } from "@/lib/products/types";
 import type { Produit } from "@/lib/products/types";
 import { montantEntree, sousTotalLigne } from "@/lib/stock/types";
@@ -53,8 +54,8 @@ export function imprimerEntree(entree: EntreeStock, produits: Produit[]) {
 <body>
   <header>
     <div class="brand">
-      <div class="logo">501</div>
-      <div><strong>Bekaye Sora</strong><div class="muted">Business Manager</div></div>
+      <img class="logo" src="${LOGO_URL}" alt="Bekaye Sora Collection" />
+      <div><strong>Bekaye Sora Collection</strong><div class="muted">Business Manager</div></div>
     </div>
     <div class="muted" style="text-align:right">
       Réception <strong>${echapper(entree.numero)}</strong><br />
