@@ -1,12 +1,16 @@
-import { Link, useRouterState } from "@tanstack/react-router";
-import { PanelLeftClose, PanelLeftOpen, X } from "lucide-react";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { LogOut, PanelLeftClose, PanelLeftOpen, User, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { useRoleActuel } from "@/hooks/use-role";
+import { useSession, nomAffiche, initialesUtilisateur } from "@/hooks/use-session";
+import { supabase } from "@/integrations/supabase/client";
 import { peutAcceder } from "@/lib/access/roles";
 import { cn } from "@/lib/utils";
 import { BRAND, navSections } from "@/lib/navigation";
 import { BrandMark } from "./brand-mark";
+import { ThemeToggle } from "./theme-toggle";
 import { useShell } from "./shell-context";
 
 function NavLinks({ onNavigate, compact }: { onNavigate?: () => void; compact?: boolean }) {
@@ -21,11 +25,11 @@ function NavLinks({ onNavigate, compact }: { onNavigate?: () => void; compact?: 
     .filter((section) => section.items.length > 0);
 
   return (
-    <nav className="flex flex-col gap-5 px-3 pb-6">
+    <nav className="flex flex-col gap-3 px-2.5 pb-4 lg:gap-5 lg:px-3 lg:pb-6">
       {sections.map((section) => (
-        <div key={section.label} className="flex flex-col gap-1">
+        <div key={section.label} className="flex flex-col gap-0.5 lg:gap-1">
           {!compact && (
-            <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            <p className="px-3 pb-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
               {section.label}
             </p>
           )}
@@ -39,7 +43,7 @@ function NavLinks({ onNavigate, compact }: { onNavigate?: () => void; compact?: 
                 title={compact ? item.title : undefined}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "tap group relative flex min-h-[44px] items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
+                  "tap group relative flex min-h-[40px] items-center gap-3 rounded-xl px-3 py-2 text-[13px] font-medium transition-colors lg:min-h-[44px] lg:py-2.5 lg:text-sm",
                   compact && "justify-center px-0",
                   active
                     ? "bg-primary-soft text-accent-foreground"
@@ -122,6 +126,20 @@ export function MobileSidebar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [dragX, setDragX] = useState(0);
   const depart = useRef<number | null>(null);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const { user } = useSession();
+  const nom = nomAffiche(user);
+  const initiales = initialesUtilisateur(nom);
+  const identifiant = user?.email ?? "Session locale";
+
+  async function seDeconnecter() {
+    setMobileOpen(false);
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/auth", replace: true });
+  }
 
   /* Fermeture automatique après changement de page */
   useEffect(() => {
@@ -187,11 +205,40 @@ export function MobileSidebar() {
             <X className="h-5 w-5" />
           </button>
         </div>
-        <div className="scrollbar-slim mt-2 flex-1 overflow-y-auto overscroll-contain">
+        <div className="scrollbar-slim flex-1 overflow-y-auto overscroll-contain pt-2">
+          {/* Profil utilisateur déplacé de l'en-tête vers le menu */}
+          <div className="mx-2.5 mb-3 rounded-2xl border border-sidebar-border bg-sidebar-accent/40 p-3">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+                {initiales}
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-semibold text-foreground">{nom}</p>
+                <p className="truncate text-[11px] text-muted-foreground">{identifiant}</p>
+              </div>
+              <ThemeToggle />
+            </div>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <Link
+                to="/parametres"
+                onClick={() => setMobileOpen(false)}
+                className="tap flex min-h-[38px] items-center justify-center gap-1.5 rounded-xl border border-sidebar-border bg-background text-xs font-medium text-foreground"
+              >
+                <User className="h-3.5 w-3.5" /> Mon profil
+              </Link>
+              <button
+                type="button"
+                onClick={() => void seDeconnecter()}
+                className="tap flex min-h-[38px] items-center justify-center gap-1.5 rounded-xl border border-destructive/30 bg-destructive/10 text-xs font-medium text-destructive"
+              >
+                <LogOut className="h-3.5 w-3.5" /> Déconnexion
+              </button>
+            </div>
+          </div>
           <NavLinks onNavigate={() => setMobileOpen(false)} />
         </div>
-        <div className="shrink-0 border-t border-sidebar-border px-5 py-3">
-          <p className="font-display text-xs font-medium text-foreground">{BRAND.slogan}</p>
+        <div className="shrink-0 border-t border-sidebar-border px-5 py-2.5">
+          <p className="font-display text-[11px] font-medium text-foreground">{BRAND.slogan}</p>
         </div>
       </div>
     </div>

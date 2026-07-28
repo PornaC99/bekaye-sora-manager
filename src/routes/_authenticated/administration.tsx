@@ -43,7 +43,7 @@ function AdministrationLayout() {
     <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-5">
       <PageHeader eyebrow="Système" title={TITLE} description={DESCRIPTION} />
 
-      <nav className="flex w-full gap-1 overflow-x-auto rounded-xl border border-border bg-card p-1 shadow-[var(--shadow-card)]">
+      <nav className="no-scrollbar flex w-full gap-1 overflow-x-auto rounded-xl border border-border bg-card p-1 shadow-[var(--shadow-card)]">
         {ONGLETS.map((onglet) => {
           const actif =
             onglet.to === "/administration"
