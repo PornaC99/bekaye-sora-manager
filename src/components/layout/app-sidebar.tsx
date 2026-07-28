@@ -126,6 +126,20 @@ export function MobileSidebar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [dragX, setDragX] = useState(0);
   const depart = useRef<number | null>(null);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const { user } = useSession();
+  const nom = nomAffiche(user);
+  const initiales = initialesUtilisateur(nom);
+  const identifiant = user?.email ?? "Session locale";
+
+  async function seDeconnecter() {
+    setMobileOpen(false);
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/auth", replace: true });
+  }
 
   /* Fermeture automatique après changement de page */
   useEffect(() => {
