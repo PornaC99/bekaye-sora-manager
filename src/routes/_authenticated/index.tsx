@@ -2,16 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { PageHeader } from "@/components/layout/page";
 import { BRAND } from "@/lib/navigation";
-import { KpiCards } from "@/components/dashboard/kpi-cards";
-import { SalesChart } from "@/components/dashboard/sales-chart";
-import { CategoryChart } from "@/components/dashboard/category-chart";
-import { RecentSalesTable } from "@/components/dashboard/recent-sales-table";
-import { TopProducts } from "@/components/dashboard/top-products";
-import { LowStock } from "@/components/dashboard/low-stock";
-import { RecentNotifications } from "@/components/dashboard/recent-notifications";
-import { EmployeeActivityList } from "@/components/dashboard/employee-activity";
-import { MonthlyGoal } from "@/components/dashboard/monthly-goal";
-import { QuickActions } from "@/components/dashboard/quick-actions";
+import { DashboardParRole, DESCRIPTION_ROLE } from "@/components/dashboard/role-dashboards";
+import { useRoleActuel } from "@/hooks/use-role";
+import { LABEL_ROLE } from "@/lib/access/roles";
 
 const DESCRIPTION =
   "Vue d'ensemble de l'activité Bekaye Sora : ventes, stock, caisse et équipe en un seul coup d'œil.";
@@ -29,6 +22,8 @@ export const Route = createFileRoute("/_authenticated/")({
 });
 
 function Dashboard() {
+  const { role } = useRoleActuel();
+
   const today = new Intl.DateTimeFormat("fr-FR", {
     weekday: "long",
     day: "numeric",
@@ -39,9 +34,9 @@ function Dashboard() {
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
       <PageHeader
-        eyebrow="Pilotage"
+        eyebrow={`Pilotage · ${LABEL_ROLE[role]}`}
         title="Tableau de bord"
-        description={DESCRIPTION}
+        description={DESCRIPTION_ROLE[role]}
         actions={
           <div className="rounded-xl border border-border bg-card px-4 py-2.5 text-right shadow-[var(--shadow-card)]">
             <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{today}</p>
@@ -50,28 +45,7 @@ function Dashboard() {
         }
       />
 
-      <KpiCards />
-
-      <div className="grid gap-6 xl:grid-cols-[1.6fr_1fr]">
-        <SalesChart />
-        <CategoryChart />
-      </div>
-
-      <MonthlyGoal />
-
-      <RecentSalesTable />
-
-      <div className="grid gap-6 xl:grid-cols-2">
-        <TopProducts />
-        <LowStock />
-      </div>
-
-      <div className="grid gap-6 xl:grid-cols-2">
-        <RecentNotifications />
-        <EmployeeActivityList />
-      </div>
-
-      <QuickActions />
+      <DashboardParRole role={role} />
     </div>
   );
 }
