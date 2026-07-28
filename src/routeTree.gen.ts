@@ -18,6 +18,7 @@ import { Route as RapportsRouteImport } from './routes/rapports'
 import { Route as ProduitsRouteImport } from './routes/produits'
 import { Route as ParametresRouteImport } from './routes/parametres'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as MobileRouteImport } from './routes/mobile'
 import { Route as InventaireRouteImport } from './routes/inventaire'
 import { Route as FournisseursRouteImport } from './routes/fournisseurs'
 import { Route as EntreesStockRouteImport } from './routes/entrees-stock'
@@ -108,6 +109,11 @@ const ParametresRoute = ParametresRouteImport.update({
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MobileRoute = MobileRouteImport.update({
+  id: '/mobile',
+  path: '/mobile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InventaireRoute = InventaireRouteImport.update({
@@ -355,6 +361,7 @@ export interface FileRoutesByFullPath {
   '/entrees-stock': typeof EntreesStockRouteWithChildren
   '/fournisseurs': typeof FournisseursRouteWithChildren
   '/inventaire': typeof InventaireRouteWithChildren
+  '/mobile': typeof MobileRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/produits': typeof ProduitsRouteWithChildren
@@ -406,6 +413,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
+  '/mobile': typeof MobileRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/rapports': typeof RapportsRoute
@@ -462,6 +470,7 @@ export interface FileRoutesById {
   '/entrees-stock': typeof EntreesStockRouteWithChildren
   '/fournisseurs': typeof FournisseursRouteWithChildren
   '/inventaire': typeof InventaireRouteWithChildren
+  '/mobile': typeof MobileRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/produits': typeof ProduitsRouteWithChildren
@@ -521,6 +530,7 @@ export interface FileRouteTypes {
     | '/entrees-stock'
     | '/fournisseurs'
     | '/inventaire'
+    | '/mobile'
     | '/notifications'
     | '/parametres'
     | '/produits'
@@ -572,6 +582,7 @@ export interface FileRouteTypes {
     | '/'
     | '/caisse'
     | '/categories'
+    | '/mobile'
     | '/notifications'
     | '/parametres'
     | '/rapports'
@@ -627,6 +638,7 @@ export interface FileRouteTypes {
     | '/entrees-stock'
     | '/fournisseurs'
     | '/inventaire'
+    | '/mobile'
     | '/notifications'
     | '/parametres'
     | '/produits'
@@ -685,6 +697,7 @@ export interface RootRouteChildren {
   EntreesStockRoute: typeof EntreesStockRouteWithChildren
   FournisseursRoute: typeof FournisseursRouteWithChildren
   InventaireRoute: typeof InventaireRouteWithChildren
+  MobileRoute: typeof MobileRoute
   NotificationsRoute: typeof NotificationsRoute
   ParametresRoute: typeof ParametresRoute
   ProduitsRoute: typeof ProduitsRouteWithChildren
@@ -759,6 +772,13 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mobile': {
+      id: '/mobile'
+      path: '/mobile'
+      fullPath: '/mobile'
+      preLoaderRoute: typeof MobileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inventaire': {
@@ -1248,6 +1268,7 @@ const rootRouteChildren: RootRouteChildren = {
   EntreesStockRoute: EntreesStockRouteWithChildren,
   FournisseursRoute: FournisseursRouteWithChildren,
   InventaireRoute: InventaireRouteWithChildren,
+  MobileRoute: MobileRoute,
   NotificationsRoute: NotificationsRoute,
   ParametresRoute: ParametresRoute,
   ProduitsRoute: ProduitsRouteWithChildren,
