@@ -140,6 +140,7 @@ function RootComponent() {
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event) => {
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+      reinitialiserTenant();
       router.invalidate();
       if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
     });
@@ -152,11 +153,14 @@ function RootComponent() {
         /* Coques autonomes : application mobile du Directeur et pages d'authentification. */
         <Outlet />
       ) : (
-        <AppShell>
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-        </AppShell>
+        <TenantGate>
+          <AppShell>
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </AppShell>
+        </TenantGate>
       )}
+
       <Toaster position="top-right" richColors />
     </QueryClientProvider>
   );
