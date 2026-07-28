@@ -352,7 +352,6 @@ export function receptionnerCommande(id: string) {
     ),
   });
 
-  const fournisseur = state.fournisseurs.find((f) => f.id === commande.fournisseurId);
   const montant = commande.lignes.reduce((somme, l) => somme + l.quantite * l.prixAchat, 0);
   const comptant = /comptant|esp|cash/i.test(commande.modePaiement);
   if (!comptant) {
@@ -364,7 +363,7 @@ export function receptionnerCommande(id: string) {
       montant,
       reference: commande.numero,
       date: now,
-      echeanceJours: fournisseur?.delaiLivraisonJours ? 30 : 30,
+      echeanceJours: 30,
     });
   }
 
