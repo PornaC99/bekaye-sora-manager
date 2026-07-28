@@ -79,23 +79,28 @@ export function useProduit(id: string) {
 }
 
 
-function nextId() {
-  const max = state.produits.reduce((acc, p) => {
-    const n = Number(p.id.replace(/\D/g, ""));
-    return Number.isFinite(n) && n > acc ? n : acc;
-  }, 0);
-  return `P-${String(max + 1).padStart(3, "0")}`;
-}
+const nouvelId = () =>
+  typeof crypto !== "undefined" && crypto.randomUUID
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
 export function ajouterProduit(values: ProduitFormValues): Produit {
   const now = new Date().toISOString();
   const produit: Produit = {
     ...values,
-    id: nextId(),
+    id: nouvelId(),
     dateAjout: now,
     dateModification: now,
   };
   setState({ produits: [produit, ...state.produits] });
+
+  insererProduit(produit.id, values)
+    .then(() => chargerProduits(true))
+    .catch((erreur) => {
+      setState({ produits: state.produits.filter((p) => p.id !== produit.id) });
+      signalerErreur("Enregistrement du produit impossible", erreur);
+    });
+
   if (produit.stock > 0) {
     enregistrerMouvement({
       produitId: produit.id,
@@ -114,6 +119,14 @@ export function modifierProduit(id: string, values: ProduitFormValues) {
       p.id === id ? { ...p, ...values, dateModification: new Date().toISOString() } : p,
     ),
   });
+
+  majProduit(id, values).catch((erreur) => {
+    if (precedent) {
+      setState({ produits: state.produits.map((p) => (p.id === id ? precedent : p)) });
+    }
+    signalerErreur("Mise à jour du produit impossible", erreur);
+  });
+
   if (precedent && precedent.stock !== values.stock) {
     const delta = values.stock - precedent.stock;
     enregistrerMouvement({
@@ -129,29 +142,50 @@ export function dupliquerProduit(id: string): Produit | null {
   const source = state.produits.find((p) => p.id === id);
   if (!source) return null;
   const now = new Date().toISOString();
-  const copie: Produit = {
+  const valeurs: ProduitFormValues = {
     ...source,
-    id: nextId(),
     nom: `${source.nom} (copie)`,
     codeBarres: `${source.codeBarres.slice(0, 12)}${Math.floor(Math.random() * 10)}`,
-    dateAjout: now,
-    dateModification: now,
   };
+  const copie: Produit = { ...valeurs, id: nouvelId(), dateAjout: now, dateModification: now };
   setState({ produits: [copie, ...state.produits] });
+
+  insererProduit(copie.id, valeurs)
+    .then(() => chargerProduits(true))
+    .catch((erreur) => {
+      setState({ produits: state.produits.filter((p) => p.id !== copie.id) });
+      signalerErreur("Duplication du produit impossible", erreur);
+    });
+
   return copie;
 }
 
 export function supprimerProduit(id: string) {
+  const precedent = state.produits;
   setState({ produits: state.produits.filter((p) => p.id !== id) });
+  supprimerProduitDb(id).catch((erreur) => {
+    setState({ produits: precedent });
+    signalerErreur("Suppression du produit impossible", erreur);
+  });
 }
 
 export function basculerActivation(id: string) {
+  const produit = state.produits.find((p) => p.id === id);
+  if (!produit) return;
+  const actif = !produit.actif;
   setState({
     produits: state.produits.map((p) =>
-      p.id === id ? { ...p, actif: !p.actif, dateModification: new Date().toISOString() } : p,
+      p.id === id ? { ...p, actif, dateModification: new Date().toISOString() } : p,
     ),
   });
+  majChampsProduit(id, { actif }).catch((erreur) => {
+    setState({
+      produits: state.produits.map((p) => (p.id === id ? { ...p, actif: !actif } : p)),
+    });
+    signalerErreur("Modification du statut impossible", erreur);
+  });
 }
+
 
 export function enregistrerMouvement(input: {
   produitId: string;
