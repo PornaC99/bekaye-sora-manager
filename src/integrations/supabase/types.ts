@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      abonnements: {
+        Row: {
+          created_at: string
+          debut: string
+          entreprise_id: string
+          fin: string | null
+          fin_essai: string | null
+          id: string
+          plan_id: string | null
+          reference_paiement: string | null
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          debut?: string
+          entreprise_id: string
+          fin?: string | null
+          fin_essai?: string | null
+          id?: string
+          plan_id?: string | null
+          reference_paiement?: string | null
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          debut?: string
+          entreprise_id?: string
+          fin?: string | null
+          fin_essai?: string | null
+          id?: string
+          plan_id?: string | null
+          reference_paiement?: string | null
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "abonnements_entreprise_id_fkey"
+            columns: ["entreprise_id"]
+            isOneToOne: true
+            referencedRelation: "entreprises"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "abonnements_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       categories: {
         Row: {
           actif: boolean
@@ -1299,6 +1353,57 @@ export type Database = {
           },
         ]
       }
+      plans: {
+        Row: {
+          actif: boolean
+          code: string
+          created_at: string
+          description: string | null
+          devise: string
+          fonctionnalites: Json
+          id: string
+          max_magasins: number
+          max_produits: number
+          max_utilisateurs: number
+          nom: string
+          ordre: number
+          prix_mensuel: number
+          updated_at: string
+        }
+        Insert: {
+          actif?: boolean
+          code: string
+          created_at?: string
+          description?: string | null
+          devise?: string
+          fonctionnalites?: Json
+          id?: string
+          max_magasins?: number
+          max_produits?: number
+          max_utilisateurs?: number
+          nom: string
+          ordre?: number
+          prix_mensuel?: number
+          updated_at?: string
+        }
+        Update: {
+          actif?: boolean
+          code?: string
+          created_at?: string
+          description?: string | null
+          devise?: string
+          fonctionnalites?: Json
+          id?: string
+          max_magasins?: number
+          max_produits?: number
+          max_utilisateurs?: number
+          nom?: string
+          ordre?: number
+          prix_mensuel?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       presences: {
         Row: {
           created_at: string
@@ -1952,6 +2057,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      creer_entreprise: {
+        Args: { _devise?: string; _nom: string; _secteur?: string }
+        Returns: string
+      }
       current_entreprise_id: { Args: never; Returns: string }
       has_role: {
         Args: {
