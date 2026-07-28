@@ -45,6 +45,7 @@ import { Route as MobileProduitsRouteImport } from './routes/mobile.produits'
 import { Route as MobileNotificationsRouteImport } from './routes/mobile.notifications'
 import { Route as MobileEmployesRouteImport } from './routes/mobile.employes'
 import { Route as MobileConnexionRouteImport } from './routes/mobile.connexion'
+import { Route as MobileClientsRouteImport } from './routes/mobile.clients'
 import { Route as MobileAlertesRouteImport } from './routes/mobile.alertes'
 import { Route as InventaireHistoriqueRouteImport } from './routes/inventaire.historique'
 import { Route as InventaireAnalyseRouteImport } from './routes/inventaire.analyse'
@@ -252,6 +253,11 @@ const MobileConnexionRoute = MobileConnexionRouteImport.update({
   path: '/connexion',
   getParentRoute: () => MobileRoute,
 } as any)
+const MobileClientsRoute = MobileClientsRouteImport.update({
+  id: '/clients',
+  path: '/clients',
+  getParentRoute: () => MobileRoute,
+} as any)
 const MobileAlertesRoute = MobileAlertesRouteImport.update({
   id: '/alertes',
   path: '/alertes',
@@ -431,6 +437,7 @@ export interface FileRoutesByFullPath {
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/mobile/alertes': typeof MobileAlertesRoute
+  '/mobile/clients': typeof MobileClientsRoute
   '/mobile/connexion': typeof MobileConnexionRoute
   '/mobile/employes': typeof MobileEmployesRoute
   '/mobile/notifications': typeof MobileNotificationsRoute
@@ -486,6 +493,7 @@ export interface FileRoutesByTo {
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/mobile/alertes': typeof MobileAlertesRoute
+  '/mobile/clients': typeof MobileClientsRoute
   '/mobile/connexion': typeof MobileConnexionRoute
   '/mobile/employes': typeof MobileEmployesRoute
   '/mobile/notifications': typeof MobileNotificationsRoute
@@ -551,6 +559,7 @@ export interface FileRoutesById {
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/mobile/alertes': typeof MobileAlertesRoute
+  '/mobile/clients': typeof MobileClientsRoute
   '/mobile/connexion': typeof MobileConnexionRoute
   '/mobile/employes': typeof MobileEmployesRoute
   '/mobile/notifications': typeof MobileNotificationsRoute
@@ -617,6 +626,7 @@ export interface FileRouteTypes {
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/mobile/alertes'
+    | '/mobile/clients'
     | '/mobile/connexion'
     | '/mobile/employes'
     | '/mobile/notifications'
@@ -672,6 +682,7 @@ export interface FileRouteTypes {
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/mobile/alertes'
+    | '/mobile/clients'
     | '/mobile/connexion'
     | '/mobile/employes'
     | '/mobile/notifications'
@@ -736,6 +747,7 @@ export interface FileRouteTypes {
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/mobile/alertes'
+    | '/mobile/clients'
     | '/mobile/connexion'
     | '/mobile/employes'
     | '/mobile/notifications'
@@ -1031,6 +1043,13 @@ declare module '@tanstack/react-router' {
       path: '/connexion'
       fullPath: '/mobile/connexion'
       preLoaderRoute: typeof MobileConnexionRouteImport
+      parentRoute: typeof MobileRoute
+    }
+    '/mobile/clients': {
+      id: '/mobile/clients'
+      path: '/clients'
+      fullPath: '/mobile/clients'
+      preLoaderRoute: typeof MobileClientsRouteImport
       parentRoute: typeof MobileRoute
     }
     '/mobile/alertes': {
@@ -1341,6 +1360,7 @@ const InventaireRouteWithChildren = InventaireRoute._addFileChildren(
 
 interface MobileRouteChildren {
   MobileAlertesRoute: typeof MobileAlertesRoute
+  MobileClientsRoute: typeof MobileClientsRoute
   MobileConnexionRoute: typeof MobileConnexionRoute
   MobileEmployesRoute: typeof MobileEmployesRoute
   MobileNotificationsRoute: typeof MobileNotificationsRoute
@@ -1350,6 +1370,7 @@ interface MobileRouteChildren {
 
 const MobileRouteChildren: MobileRouteChildren = {
   MobileAlertesRoute: MobileAlertesRoute,
+  MobileClientsRoute: MobileClientsRoute,
   MobileConnexionRoute: MobileConnexionRoute,
   MobileEmployesRoute: MobileEmployesRoute,
   MobileNotificationsRoute: MobileNotificationsRoute,
