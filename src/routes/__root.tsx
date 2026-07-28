@@ -13,6 +13,9 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AppShell } from "@/components/layout/app-shell";
+import { TenantGate } from "@/components/onboarding/tenant-gate";
+import { reinitialiserTenant } from "@/lib/db/tenant";
+
 import { supabase } from "@/integrations/supabase/client";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -140,6 +143,7 @@ function RootComponent() {
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event) => {
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+      reinitialiserTenant();
       router.invalidate();
       if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
     });
@@ -152,11 +156,14 @@ function RootComponent() {
         /* Coques autonomes : application mobile du Directeur et pages d'authentification. */
         <Outlet />
       ) : (
-        <AppShell>
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-        </AppShell>
+        <TenantGate>
+          <AppShell>
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </AppShell>
+        </TenantGate>
       )}
+
       <Toaster position="top-right" richColors />
     </QueryClientProvider>
   );

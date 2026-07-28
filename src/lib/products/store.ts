@@ -1,12 +1,21 @@
 import { useSyncExternalStore } from "react";
 
-import { achatsDemo, mouvementsDemo, produitsDemo, ventesDemo } from "./demo-data";
+import {
+  insererProduit,
+  listerProduits,
+  majChampsProduit,
+  majProduit,
+  supprimerProduitDb,
+} from "@/lib/db/catalogue";
+import { signalerErreur } from "@/lib/db/errors";
+
+import { achatsDemo, mouvementsDemo, ventesDemo } from "./demo-data";
 import type { LigneHistorique, MouvementStock, Produit, ProduitFormValues } from "./types";
 
 /**
- * Store local du module Produits.
- * Isolé volontairement : le jour où Lovable Cloud est activé, il suffit de
- * remplacer les fonctions ci-dessous par des requêtes (mêmes signatures).
+ * Store du module Produits.
+ * Les produits sont persistés dans Supabase (RLS par entreprise) ; l'état local
+ * sert de cache réactif mis à jour de façon optimiste puis confirmé par la base.
  */
 
 type State = {
@@ -14,13 +23,17 @@ type State = {
   mouvements: MouvementStock[];
   ventes: LigneHistorique[];
   achats: LigneHistorique[];
+  chargement: boolean;
+  erreur: string | null;
 };
 
 let state: State = {
-  produits: produitsDemo,
+  produits: [],
   mouvements: mouvementsDemo,
   ventes: ventesDemo,
   achats: achatsDemo,
+  chargement: true,
+  erreur: null,
 };
 
 const listeners = new Set<() => void>();
@@ -30,8 +43,27 @@ function setState(next: Partial<State>) {
   listeners.forEach((l) => l());
 }
 
+let hydratation: Promise<void> | null = null;
+
+/** Charge les produits depuis Supabase (une seule fois, puis à la demande). */
+export function chargerProduits(force = false): Promise<void> {
+  if (hydratation && !force) return hydratation;
+  hydratation = (async () => {
+    setState({ chargement: true, erreur: null });
+    try {
+      const produits = await listerProduits();
+      setState({ produits, chargement: false });
+    } catch (erreur) {
+      setState({ chargement: false, erreur: (erreur as Error).message });
+      signalerErreur("Chargement des produits impossible", erreur);
+    }
+  })();
+  return hydratation;
+}
+
 function subscribe(listener: () => void) {
   listeners.add(listener);
+  void chargerProduits();
   return () => listeners.delete(listener);
 }
 
@@ -46,23 +78,29 @@ export function useProduit(id: string) {
   return produits.find((p) => p.id === id) ?? null;
 }
 
-function nextId() {
-  const max = state.produits.reduce((acc, p) => {
-    const n = Number(p.id.replace(/\D/g, ""));
-    return Number.isFinite(n) && n > acc ? n : acc;
-  }, 0);
-  return `P-${String(max + 1).padStart(3, "0")}`;
-}
+
+const nouvelId = () =>
+  typeof crypto !== "undefined" && crypto.randomUUID
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
 export function ajouterProduit(values: ProduitFormValues): Produit {
   const now = new Date().toISOString();
   const produit: Produit = {
     ...values,
-    id: nextId(),
+    id: nouvelId(),
     dateAjout: now,
     dateModification: now,
   };
   setState({ produits: [produit, ...state.produits] });
+
+  insererProduit(produit.id, values)
+    .then(() => chargerProduits(true))
+    .catch((erreur) => {
+      setState({ produits: state.produits.filter((p) => p.id !== produit.id) });
+      signalerErreur("Enregistrement du produit impossible", erreur);
+    });
+
   if (produit.stock > 0) {
     enregistrerMouvement({
       produitId: produit.id,
@@ -81,6 +119,14 @@ export function modifierProduit(id: string, values: ProduitFormValues) {
       p.id === id ? { ...p, ...values, dateModification: new Date().toISOString() } : p,
     ),
   });
+
+  majProduit(id, values).catch((erreur) => {
+    if (precedent) {
+      setState({ produits: state.produits.map((p) => (p.id === id ? precedent : p)) });
+    }
+    signalerErreur("Mise à jour du produit impossible", erreur);
+  });
+
   if (precedent && precedent.stock !== values.stock) {
     const delta = values.stock - precedent.stock;
     enregistrerMouvement({
@@ -96,28 +142,67 @@ export function dupliquerProduit(id: string): Produit | null {
   const source = state.produits.find((p) => p.id === id);
   if (!source) return null;
   const now = new Date().toISOString();
-  const copie: Produit = {
+  const valeurs: ProduitFormValues = {
     ...source,
-    id: nextId(),
     nom: `${source.nom} (copie)`,
     codeBarres: `${source.codeBarres.slice(0, 12)}${Math.floor(Math.random() * 10)}`,
-    dateAjout: now,
-    dateModification: now,
   };
+  const copie: Produit = { ...valeurs, id: nouvelId(), dateAjout: now, dateModification: now };
   setState({ produits: [copie, ...state.produits] });
+
+  insererProduit(copie.id, valeurs)
+    .then(() => chargerProduits(true))
+    .catch((erreur) => {
+      setState({ produits: state.produits.filter((p) => p.id !== copie.id) });
+      signalerErreur("Duplication du produit impossible", erreur);
+    });
+
   return copie;
 }
 
 export function supprimerProduit(id: string) {
+  const precedent = state.produits;
   setState({ produits: state.produits.filter((p) => p.id !== id) });
+  supprimerProduitDb(id).catch((erreur) => {
+    setState({ produits: precedent });
+    signalerErreur("Suppression du produit impossible", erreur);
+  });
 }
 
 export function basculerActivation(id: string) {
+  const produit = state.produits.find((p) => p.id === id);
+  if (!produit) return;
+  const actif = !produit.actif;
   setState({
     produits: state.produits.map((p) =>
-      p.id === id ? { ...p, actif: !p.actif, dateModification: new Date().toISOString() } : p,
+      p.id === id ? { ...p, actif, dateModification: new Date().toISOString() } : p,
     ),
   });
+  majChampsProduit(id, { actif }).catch((erreur) => {
+    setState({
+      produits: state.produits.map((p) => (p.id === id ? { ...p, actif: !actif } : p)),
+    });
+    signalerErreur("Modification du statut impossible", erreur);
+  });
+}
+
+
+/** Persiste dans Supabase les stocks modifiés localement (réception, vente, inventaire). */
+function persisterStocks(nouveaux: Produit[]): Produit[] {
+  const avant = new Map(state.produits.map((p) => [p.id, p]));
+  for (const produit of nouveaux) {
+    const precedent = avant.get(produit.id);
+    if (!precedent) continue;
+    const champs: { stock?: number; prix_achat?: number; prix_vente?: number } = {};
+    if (precedent.stock !== produit.stock) champs.stock = produit.stock;
+    if (precedent.prixAchat !== produit.prixAchat) champs.prix_achat = produit.prixAchat;
+    if (precedent.prixVente !== produit.prixVente) champs.prix_vente = produit.prixVente;
+    if (Object.keys(champs).length === 0) continue;
+    majChampsProduit(produit.id, champs).catch((erreur) =>
+      signalerErreur("Mise à jour du stock impossible", erreur),
+    );
+  }
+  return nouveaux;
 }
 
 export function enregistrerMouvement(input: {
@@ -194,7 +279,7 @@ export function appliquerReception(lignes: LigneReception[], meta: MetaReception
   }));
 
   setState({
-    produits,
+    produits: persisterStocks(produits),
     mouvements: [...mouvements, ...state.mouvements],
     achats: [...achats, ...state.achats],
   });
@@ -223,7 +308,7 @@ export function annulerReception(lignes: LigneReception[], meta: MetaReception) 
   }));
 
   setState({
-    produits,
+    produits: persisterStocks(produits),
     mouvements: [...mouvements, ...state.mouvements],
     achats: state.achats.filter((a) => a.reference !== meta.reference),
   });
@@ -275,7 +360,7 @@ export function appliquerVente(lignes: LigneVenteProduit[], meta: MetaVente) {
   }));
 
   setState({
-    produits,
+    produits: persisterStocks(produits),
     mouvements: [...mouvements, ...state.mouvements],
     ventes: [...ventes, ...state.ventes],
   });
@@ -306,7 +391,7 @@ export function retournerVente(
     observation: `${meta.motif} — vente ${meta.reference}`,
   }));
 
-  setState({ produits, mouvements: [...mouvements, ...state.mouvements] });
+  setState({ produits: persisterStocks(produits), mouvements: [...mouvements, ...state.mouvements] });
 }
 
 /* ------------------------------------------------------------------ */
@@ -345,7 +430,7 @@ export function appliquerInventaire(
     };
   });
 
-  setState({ produits, mouvements: [...mouvements, ...state.mouvements] });
+  setState({ produits: persisterStocks(produits), mouvements: [...mouvements, ...state.mouvements] });
   return mouvements.length;
 }
 

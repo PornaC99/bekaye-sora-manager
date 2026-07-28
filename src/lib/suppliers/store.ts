@@ -1,8 +1,15 @@
 import { useSyncExternalStore } from "react";
 
 import { appliquerReception, type LigneReception } from "@/lib/products/store";
+import {
+  insererFournisseur,
+  listerFournisseurs,
+  majFournisseur,
+  supprimerFournisseurDb,
+} from "@/lib/db/catalogue";
+import { signalerErreur } from "@/lib/db/errors";
 
-import { commandesDemo, fournisseursDemo, notificationsFournisseursDemo } from "./demo-data";
+import { commandesDemo, notificationsFournisseursDemo } from "./demo-data";
 import {
   montantCommande,
   type CommandeAchat,
@@ -14,21 +21,25 @@ import {
 } from "./types";
 
 /**
- * Store local du module « Fournisseurs & Commandes d'achat ».
- * Isolé volontairement : lors du branchement sur Lovable Cloud, il suffira de
- * remplacer les fonctions ci-dessous par des requêtes (mêmes signatures).
+ * Store du module « Fournisseurs & Commandes d'achat ».
+ * Les fournisseurs sont persistés dans Supabase ; les commandes d'achat suivront
+ * lors de la phase « Stock ».
  */
 
 type State = {
   fournisseurs: Fournisseur[];
   commandes: CommandeAchat[];
   notifications: NotificationFournisseur[];
+  chargement: boolean;
+  erreur: string | null;
 };
 
 let state: State = {
-  fournisseurs: fournisseursDemo,
+  fournisseurs: [],
   commandes: commandesDemo,
   notifications: notificationsFournisseursDemo,
+  chargement: true,
+  erreur: null,
 };
 
 const listeners = new Set<() => void>();
@@ -38,8 +49,26 @@ function setState(next: Partial<State>) {
   listeners.forEach((l) => l());
 }
 
+let hydratation: Promise<void> | null = null;
+
+export function chargerFournisseurs(force = false): Promise<void> {
+  if (hydratation && !force) return hydratation;
+  hydratation = (async () => {
+    setState({ chargement: true, erreur: null });
+    try {
+      const fournisseurs = await listerFournisseurs();
+      setState({ fournisseurs, chargement: false });
+    } catch (erreur) {
+      setState({ chargement: false, erreur: (erreur as Error).message });
+      signalerErreur("Chargement des fournisseurs impossible", erreur);
+    }
+  })();
+  return hydratation;
+}
+
 function subscribe(listener: () => void) {
   listeners.add(listener);
+  void chargerFournisseurs();
   return () => listeners.delete(listener);
 }
 
@@ -68,6 +97,10 @@ export const lireCommandes = () => state.commandes;
 
 let compteur = 0;
 const uid = (prefixe: string) => `${prefixe}-${Date.now()}-${(compteur += 1)}`;
+const nouvelId = () =>
+  typeof crypto !== "undefined" && crypto.randomUUID
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
 function numeroCommandeSuivant() {
   const max = state.commandes.reduce((acc, c) => {
@@ -93,10 +126,18 @@ export function notifierFournisseur(notification: Omit<NotificationFournisseur, 
 export function ajouterFournisseur(values: FournisseurFormValues): Fournisseur {
   const fournisseur: Fournisseur = {
     ...values,
-    id: uid("F"),
+    id: nouvelId(),
     dateCreation: new Date().toISOString(),
   };
   setState({ fournisseurs: [fournisseur, ...state.fournisseurs] });
+
+  insererFournisseur(fournisseur.id, values)
+    .then(() => chargerFournisseurs(true))
+    .catch((erreur) => {
+      setState({ fournisseurs: state.fournisseurs.filter((f) => f.id !== fournisseur.id) });
+      signalerErreur("Enregistrement du fournisseur impossible", erreur);
+    });
+
   notifierFournisseur({
     type: "commande",
     titre: "Nouveau fournisseur",
@@ -106,17 +147,30 @@ export function ajouterFournisseur(values: FournisseurFormValues): Fournisseur {
 }
 
 export function modifierFournisseur(id: string, values: FournisseurFormValues) {
+  const precedent = state.fournisseurs.find((f) => f.id === id);
   setState({
     fournisseurs: state.fournisseurs.map((f) => (f.id === id ? { ...f, ...values } : f)),
+  });
+  majFournisseur(id, values).catch((erreur) => {
+    if (precedent) {
+      setState({ fournisseurs: state.fournisseurs.map((f) => (f.id === id ? precedent : f)) });
+    }
+    signalerErreur("Mise à jour du fournisseur impossible", erreur);
   });
 }
 
 export function supprimerFournisseur(id: string) {
+  const precedents = state.fournisseurs;
   setState({
     fournisseurs: state.fournisseurs.filter((f) => f.id !== id),
     commandes: state.commandes.filter((c) => c.fournisseurId !== id),
   });
+  supprimerFournisseurDb(id).catch((erreur) => {
+    setState({ fournisseurs: precedents });
+    signalerErreur("Suppression du fournisseur impossible", erreur);
+  });
 }
+
 
 export function basculerFavori(id: string) {
   setState({
