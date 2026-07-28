@@ -36,7 +36,6 @@ import { Route as AuthenticatedRapportsRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedProduitsRouteImport } from './routes/_authenticated/produits'
 import { Route as AuthenticatedParametresRouteImport } from './routes/_authenticated/parametres'
 import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated/notifications'
-import { Route as AuthenticatedNexusiaRouteImport } from './routes/_authenticated/nexusia'
 import { Route as AuthenticatedInventaireRouteImport } from './routes/_authenticated/inventaire'
 import { Route as AuthenticatedFournisseursRouteImport } from './routes/_authenticated/fournisseurs'
 import { Route as AuthenticatedEntreesStockRouteImport } from './routes/_authenticated/entrees-stock'
@@ -49,7 +48,6 @@ import { Route as AuthenticatedAdministrationRouteImport } from './routes/_authe
 import { Route as AuthenticatedVentesIndexRouteImport } from './routes/_authenticated/ventes.index'
 import { Route as AuthenticatedRapportsIndexRouteImport } from './routes/_authenticated/rapports.index'
 import { Route as AuthenticatedProduitsIndexRouteImport } from './routes/_authenticated/produits.index'
-import { Route as AuthenticatedNexusiaIndexRouteImport } from './routes/_authenticated/nexusia.index'
 import { Route as AuthenticatedInventaireIndexRouteImport } from './routes/_authenticated/inventaire.index'
 import { Route as AuthenticatedFournisseursIndexRouteImport } from './routes/_authenticated/fournisseurs.index'
 import { Route as AuthenticatedEntreesStockIndexRouteImport } from './routes/_authenticated/entrees-stock.index'
@@ -63,14 +61,6 @@ import { Route as AuthenticatedRapportsPerformanceRouteImport } from './routes/_
 import { Route as AuthenticatedRapportsComparaisonRouteImport } from './routes/_authenticated/rapports.comparaison'
 import { Route as AuthenticatedProduitsMouvementsRouteImport } from './routes/_authenticated/produits.mouvements'
 import { Route as AuthenticatedProduitsProduitIdRouteImport } from './routes/_authenticated/produits.$produitId'
-import { Route as AuthenticatedNexusiaRechercheRouteImport } from './routes/_authenticated/nexusia.recherche'
-import { Route as AuthenticatedNexusiaRapportsRouteImport } from './routes/_authenticated/nexusia.rapports'
-import { Route as AuthenticatedNexusiaProduitsRouteImport } from './routes/_authenticated/nexusia.produits'
-import { Route as AuthenticatedNexusiaObjectifsRouteImport } from './routes/_authenticated/nexusia.objectifs'
-import { Route as AuthenticatedNexusiaFinancesRouteImport } from './routes/_authenticated/nexusia.finances'
-import { Route as AuthenticatedNexusiaEmployesRouteImport } from './routes/_authenticated/nexusia.employes'
-import { Route as AuthenticatedNexusiaDecisionRouteImport } from './routes/_authenticated/nexusia.decision'
-import { Route as AuthenticatedNexusiaClientsRouteImport } from './routes/_authenticated/nexusia.clients'
 import { Route as AuthenticatedInventaireHistoriqueRouteImport } from './routes/_authenticated/inventaire.historique'
 import { Route as AuthenticatedInventaireAnalyseRouteImport } from './routes/_authenticated/inventaire.analyse'
 import { Route as AuthenticatedInventaireInventaireIdRouteImport } from './routes/_authenticated/inventaire.$inventaireId'
@@ -246,11 +236,6 @@ const AuthenticatedNotificationsRoute =
     path: '/notifications',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AuthenticatedNexusiaRoute = AuthenticatedNexusiaRouteImport.update({
-  id: '/nexusia',
-  path: '/nexusia',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedInventaireRoute = AuthenticatedInventaireRouteImport.update({
   id: '/inventaire',
   path: '/inventaire',
@@ -316,12 +301,6 @@ const AuthenticatedProduitsIndexRoute =
     id: '/',
     path: '/',
     getParentRoute: () => AuthenticatedProduitsRoute,
-  } as any)
-const AuthenticatedNexusiaIndexRoute =
-  AuthenticatedNexusiaIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => AuthenticatedNexusiaRoute,
   } as any)
 const AuthenticatedInventaireIndexRoute =
   AuthenticatedInventaireIndexRouteImport.update({
@@ -400,54 +379,6 @@ const AuthenticatedProduitsProduitIdRoute =
     id: '/$produitId',
     path: '/$produitId',
     getParentRoute: () => AuthenticatedProduitsRoute,
-  } as any)
-const AuthenticatedNexusiaRechercheRoute =
-  AuthenticatedNexusiaRechercheRouteImport.update({
-    id: '/recherche',
-    path: '/recherche',
-    getParentRoute: () => AuthenticatedNexusiaRoute,
-  } as any)
-const AuthenticatedNexusiaRapportsRoute =
-  AuthenticatedNexusiaRapportsRouteImport.update({
-    id: '/rapports',
-    path: '/rapports',
-    getParentRoute: () => AuthenticatedNexusiaRoute,
-  } as any)
-const AuthenticatedNexusiaProduitsRoute =
-  AuthenticatedNexusiaProduitsRouteImport.update({
-    id: '/produits',
-    path: '/produits',
-    getParentRoute: () => AuthenticatedNexusiaRoute,
-  } as any)
-const AuthenticatedNexusiaObjectifsRoute =
-  AuthenticatedNexusiaObjectifsRouteImport.update({
-    id: '/objectifs',
-    path: '/objectifs',
-    getParentRoute: () => AuthenticatedNexusiaRoute,
-  } as any)
-const AuthenticatedNexusiaFinancesRoute =
-  AuthenticatedNexusiaFinancesRouteImport.update({
-    id: '/finances',
-    path: '/finances',
-    getParentRoute: () => AuthenticatedNexusiaRoute,
-  } as any)
-const AuthenticatedNexusiaEmployesRoute =
-  AuthenticatedNexusiaEmployesRouteImport.update({
-    id: '/employes',
-    path: '/employes',
-    getParentRoute: () => AuthenticatedNexusiaRoute,
-  } as any)
-const AuthenticatedNexusiaDecisionRoute =
-  AuthenticatedNexusiaDecisionRouteImport.update({
-    id: '/decision',
-    path: '/decision',
-    getParentRoute: () => AuthenticatedNexusiaRoute,
-  } as any)
-const AuthenticatedNexusiaClientsRoute =
-  AuthenticatedNexusiaClientsRouteImport.update({
-    id: '/clients',
-    path: '/clients',
-    getParentRoute: () => AuthenticatedNexusiaRoute,
   } as any)
 const AuthenticatedInventaireHistoriqueRoute =
   AuthenticatedInventaireHistoriqueRouteImport.update({
@@ -686,7 +617,6 @@ export interface FileRoutesByFullPath {
   '/entrees-stock': typeof AuthenticatedEntreesStockRouteWithChildren
   '/fournisseurs': typeof AuthenticatedFournisseursRouteWithChildren
   '/inventaire': typeof AuthenticatedInventaireRouteWithChildren
-  '/nexusia': typeof AuthenticatedNexusiaRouteWithChildren
   '/notifications': typeof AuthenticatedNotificationsRoute
   '/parametres': typeof AuthenticatedParametresRoute
   '/produits': typeof AuthenticatedProduitsRouteWithChildren
@@ -743,14 +673,6 @@ export interface FileRoutesByFullPath {
   '/inventaire/$inventaireId': typeof AuthenticatedInventaireInventaireIdRoute
   '/inventaire/analyse': typeof AuthenticatedInventaireAnalyseRoute
   '/inventaire/historique': typeof AuthenticatedInventaireHistoriqueRoute
-  '/nexusia/clients': typeof AuthenticatedNexusiaClientsRoute
-  '/nexusia/decision': typeof AuthenticatedNexusiaDecisionRoute
-  '/nexusia/employes': typeof AuthenticatedNexusiaEmployesRoute
-  '/nexusia/finances': typeof AuthenticatedNexusiaFinancesRoute
-  '/nexusia/objectifs': typeof AuthenticatedNexusiaObjectifsRoute
-  '/nexusia/produits': typeof AuthenticatedNexusiaProduitsRoute
-  '/nexusia/rapports': typeof AuthenticatedNexusiaRapportsRoute
-  '/nexusia/recherche': typeof AuthenticatedNexusiaRechercheRoute
   '/produits/$produitId': typeof AuthenticatedProduitsProduitIdRoute
   '/produits/mouvements': typeof AuthenticatedProduitsMouvementsRoute
   '/rapports/comparaison': typeof AuthenticatedRapportsComparaisonRoute
@@ -764,7 +686,6 @@ export interface FileRoutesByFullPath {
   '/entrees-stock/': typeof AuthenticatedEntreesStockIndexRoute
   '/fournisseurs/': typeof AuthenticatedFournisseursIndexRoute
   '/inventaire/': typeof AuthenticatedInventaireIndexRoute
-  '/nexusia/': typeof AuthenticatedNexusiaIndexRoute
   '/produits/': typeof AuthenticatedProduitsIndexRoute
   '/rapports/': typeof AuthenticatedRapportsIndexRoute
   '/ventes/': typeof AuthenticatedVentesIndexRoute
@@ -831,14 +752,6 @@ export interface FileRoutesByTo {
   '/inventaire/$inventaireId': typeof AuthenticatedInventaireInventaireIdRoute
   '/inventaire/analyse': typeof AuthenticatedInventaireAnalyseRoute
   '/inventaire/historique': typeof AuthenticatedInventaireHistoriqueRoute
-  '/nexusia/clients': typeof AuthenticatedNexusiaClientsRoute
-  '/nexusia/decision': typeof AuthenticatedNexusiaDecisionRoute
-  '/nexusia/employes': typeof AuthenticatedNexusiaEmployesRoute
-  '/nexusia/finances': typeof AuthenticatedNexusiaFinancesRoute
-  '/nexusia/objectifs': typeof AuthenticatedNexusiaObjectifsRoute
-  '/nexusia/produits': typeof AuthenticatedNexusiaProduitsRoute
-  '/nexusia/rapports': typeof AuthenticatedNexusiaRapportsRoute
-  '/nexusia/recherche': typeof AuthenticatedNexusiaRechercheRoute
   '/produits/$produitId': typeof AuthenticatedProduitsProduitIdRoute
   '/produits/mouvements': typeof AuthenticatedProduitsMouvementsRoute
   '/rapports/comparaison': typeof AuthenticatedRapportsComparaisonRoute
@@ -852,7 +765,6 @@ export interface FileRoutesByTo {
   '/entrees-stock': typeof AuthenticatedEntreesStockIndexRoute
   '/fournisseurs': typeof AuthenticatedFournisseursIndexRoute
   '/inventaire': typeof AuthenticatedInventaireIndexRoute
-  '/nexusia': typeof AuthenticatedNexusiaIndexRoute
   '/produits': typeof AuthenticatedProduitsIndexRoute
   '/rapports': typeof AuthenticatedRapportsIndexRoute
   '/ventes': typeof AuthenticatedVentesIndexRoute
@@ -875,7 +787,6 @@ export interface FileRoutesById {
   '/_authenticated/entrees-stock': typeof AuthenticatedEntreesStockRouteWithChildren
   '/_authenticated/fournisseurs': typeof AuthenticatedFournisseursRouteWithChildren
   '/_authenticated/inventaire': typeof AuthenticatedInventaireRouteWithChildren
-  '/_authenticated/nexusia': typeof AuthenticatedNexusiaRouteWithChildren
   '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
   '/_authenticated/parametres': typeof AuthenticatedParametresRoute
   '/_authenticated/produits': typeof AuthenticatedProduitsRouteWithChildren
@@ -933,14 +844,6 @@ export interface FileRoutesById {
   '/_authenticated/inventaire/$inventaireId': typeof AuthenticatedInventaireInventaireIdRoute
   '/_authenticated/inventaire/analyse': typeof AuthenticatedInventaireAnalyseRoute
   '/_authenticated/inventaire/historique': typeof AuthenticatedInventaireHistoriqueRoute
-  '/_authenticated/nexusia/clients': typeof AuthenticatedNexusiaClientsRoute
-  '/_authenticated/nexusia/decision': typeof AuthenticatedNexusiaDecisionRoute
-  '/_authenticated/nexusia/employes': typeof AuthenticatedNexusiaEmployesRoute
-  '/_authenticated/nexusia/finances': typeof AuthenticatedNexusiaFinancesRoute
-  '/_authenticated/nexusia/objectifs': typeof AuthenticatedNexusiaObjectifsRoute
-  '/_authenticated/nexusia/produits': typeof AuthenticatedNexusiaProduitsRoute
-  '/_authenticated/nexusia/rapports': typeof AuthenticatedNexusiaRapportsRoute
-  '/_authenticated/nexusia/recherche': typeof AuthenticatedNexusiaRechercheRoute
   '/_authenticated/produits/$produitId': typeof AuthenticatedProduitsProduitIdRoute
   '/_authenticated/produits/mouvements': typeof AuthenticatedProduitsMouvementsRoute
   '/_authenticated/rapports/comparaison': typeof AuthenticatedRapportsComparaisonRoute
@@ -954,7 +857,6 @@ export interface FileRoutesById {
   '/_authenticated/entrees-stock/': typeof AuthenticatedEntreesStockIndexRoute
   '/_authenticated/fournisseurs/': typeof AuthenticatedFournisseursIndexRoute
   '/_authenticated/inventaire/': typeof AuthenticatedInventaireIndexRoute
-  '/_authenticated/nexusia/': typeof AuthenticatedNexusiaIndexRoute
   '/_authenticated/produits/': typeof AuthenticatedProduitsIndexRoute
   '/_authenticated/rapports/': typeof AuthenticatedRapportsIndexRoute
   '/_authenticated/ventes/': typeof AuthenticatedVentesIndexRoute
@@ -978,7 +880,6 @@ export interface FileRouteTypes {
     | '/entrees-stock'
     | '/fournisseurs'
     | '/inventaire'
-    | '/nexusia'
     | '/notifications'
     | '/parametres'
     | '/produits'
@@ -1035,14 +936,6 @@ export interface FileRouteTypes {
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
-    | '/nexusia/clients'
-    | '/nexusia/decision'
-    | '/nexusia/employes'
-    | '/nexusia/finances'
-    | '/nexusia/objectifs'
-    | '/nexusia/produits'
-    | '/nexusia/rapports'
-    | '/nexusia/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/rapports/comparaison'
@@ -1056,7 +949,6 @@ export interface FileRouteTypes {
     | '/entrees-stock/'
     | '/fournisseurs/'
     | '/inventaire/'
-    | '/nexusia/'
     | '/produits/'
     | '/rapports/'
     | '/ventes/'
@@ -1123,14 +1015,6 @@ export interface FileRouteTypes {
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
-    | '/nexusia/clients'
-    | '/nexusia/decision'
-    | '/nexusia/employes'
-    | '/nexusia/finances'
-    | '/nexusia/objectifs'
-    | '/nexusia/produits'
-    | '/nexusia/rapports'
-    | '/nexusia/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/rapports/comparaison'
@@ -1144,7 +1028,6 @@ export interface FileRouteTypes {
     | '/entrees-stock'
     | '/fournisseurs'
     | '/inventaire'
-    | '/nexusia'
     | '/produits'
     | '/rapports'
     | '/ventes'
@@ -1166,7 +1049,6 @@ export interface FileRouteTypes {
     | '/_authenticated/entrees-stock'
     | '/_authenticated/fournisseurs'
     | '/_authenticated/inventaire'
-    | '/_authenticated/nexusia'
     | '/_authenticated/notifications'
     | '/_authenticated/parametres'
     | '/_authenticated/produits'
@@ -1224,14 +1106,6 @@ export interface FileRouteTypes {
     | '/_authenticated/inventaire/$inventaireId'
     | '/_authenticated/inventaire/analyse'
     | '/_authenticated/inventaire/historique'
-    | '/_authenticated/nexusia/clients'
-    | '/_authenticated/nexusia/decision'
-    | '/_authenticated/nexusia/employes'
-    | '/_authenticated/nexusia/finances'
-    | '/_authenticated/nexusia/objectifs'
-    | '/_authenticated/nexusia/produits'
-    | '/_authenticated/nexusia/rapports'
-    | '/_authenticated/nexusia/recherche'
     | '/_authenticated/produits/$produitId'
     | '/_authenticated/produits/mouvements'
     | '/_authenticated/rapports/comparaison'
@@ -1245,7 +1119,6 @@ export interface FileRouteTypes {
     | '/_authenticated/entrees-stock/'
     | '/_authenticated/fournisseurs/'
     | '/_authenticated/inventaire/'
-    | '/_authenticated/nexusia/'
     | '/_authenticated/produits/'
     | '/_authenticated/rapports/'
     | '/_authenticated/ventes/'
@@ -1452,13 +1325,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedNotificationsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/nexusia': {
-      id: '/_authenticated/nexusia'
-      path: '/nexusia'
-      fullPath: '/nexusia'
-      preLoaderRoute: typeof AuthenticatedNexusiaRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/_authenticated/inventaire': {
       id: '/_authenticated/inventaire'
       path: '/inventaire'
@@ -1542,13 +1408,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/produits/'
       preLoaderRoute: typeof AuthenticatedProduitsIndexRouteImport
       parentRoute: typeof AuthenticatedProduitsRoute
-    }
-    '/_authenticated/nexusia/': {
-      id: '/_authenticated/nexusia/'
-      path: '/'
-      fullPath: '/nexusia/'
-      preLoaderRoute: typeof AuthenticatedNexusiaIndexRouteImport
-      parentRoute: typeof AuthenticatedNexusiaRoute
     }
     '/_authenticated/inventaire/': {
       id: '/_authenticated/inventaire/'
@@ -1640,62 +1499,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/produits/$produitId'
       preLoaderRoute: typeof AuthenticatedProduitsProduitIdRouteImport
       parentRoute: typeof AuthenticatedProduitsRoute
-    }
-    '/_authenticated/nexusia/recherche': {
-      id: '/_authenticated/nexusia/recherche'
-      path: '/recherche'
-      fullPath: '/nexusia/recherche'
-      preLoaderRoute: typeof AuthenticatedNexusiaRechercheRouteImport
-      parentRoute: typeof AuthenticatedNexusiaRoute
-    }
-    '/_authenticated/nexusia/rapports': {
-      id: '/_authenticated/nexusia/rapports'
-      path: '/rapports'
-      fullPath: '/nexusia/rapports'
-      preLoaderRoute: typeof AuthenticatedNexusiaRapportsRouteImport
-      parentRoute: typeof AuthenticatedNexusiaRoute
-    }
-    '/_authenticated/nexusia/produits': {
-      id: '/_authenticated/nexusia/produits'
-      path: '/produits'
-      fullPath: '/nexusia/produits'
-      preLoaderRoute: typeof AuthenticatedNexusiaProduitsRouteImport
-      parentRoute: typeof AuthenticatedNexusiaRoute
-    }
-    '/_authenticated/nexusia/objectifs': {
-      id: '/_authenticated/nexusia/objectifs'
-      path: '/objectifs'
-      fullPath: '/nexusia/objectifs'
-      preLoaderRoute: typeof AuthenticatedNexusiaObjectifsRouteImport
-      parentRoute: typeof AuthenticatedNexusiaRoute
-    }
-    '/_authenticated/nexusia/finances': {
-      id: '/_authenticated/nexusia/finances'
-      path: '/finances'
-      fullPath: '/nexusia/finances'
-      preLoaderRoute: typeof AuthenticatedNexusiaFinancesRouteImport
-      parentRoute: typeof AuthenticatedNexusiaRoute
-    }
-    '/_authenticated/nexusia/employes': {
-      id: '/_authenticated/nexusia/employes'
-      path: '/employes'
-      fullPath: '/nexusia/employes'
-      preLoaderRoute: typeof AuthenticatedNexusiaEmployesRouteImport
-      parentRoute: typeof AuthenticatedNexusiaRoute
-    }
-    '/_authenticated/nexusia/decision': {
-      id: '/_authenticated/nexusia/decision'
-      path: '/decision'
-      fullPath: '/nexusia/decision'
-      preLoaderRoute: typeof AuthenticatedNexusiaDecisionRouteImport
-      parentRoute: typeof AuthenticatedNexusiaRoute
-    }
-    '/_authenticated/nexusia/clients': {
-      id: '/_authenticated/nexusia/clients'
-      path: '/clients'
-      fullPath: '/nexusia/clients'
-      preLoaderRoute: typeof AuthenticatedNexusiaClientsRouteImport
-      parentRoute: typeof AuthenticatedNexusiaRoute
     }
     '/_authenticated/inventaire/historique': {
       id: '/_authenticated/inventaire/historique'
@@ -2148,33 +1951,6 @@ const AuthenticatedInventaireRouteWithChildren =
     AuthenticatedInventaireRouteChildren,
   )
 
-interface AuthenticatedNexusiaRouteChildren {
-  AuthenticatedNexusiaClientsRoute: typeof AuthenticatedNexusiaClientsRoute
-  AuthenticatedNexusiaDecisionRoute: typeof AuthenticatedNexusiaDecisionRoute
-  AuthenticatedNexusiaEmployesRoute: typeof AuthenticatedNexusiaEmployesRoute
-  AuthenticatedNexusiaFinancesRoute: typeof AuthenticatedNexusiaFinancesRoute
-  AuthenticatedNexusiaObjectifsRoute: typeof AuthenticatedNexusiaObjectifsRoute
-  AuthenticatedNexusiaProduitsRoute: typeof AuthenticatedNexusiaProduitsRoute
-  AuthenticatedNexusiaRapportsRoute: typeof AuthenticatedNexusiaRapportsRoute
-  AuthenticatedNexusiaRechercheRoute: typeof AuthenticatedNexusiaRechercheRoute
-  AuthenticatedNexusiaIndexRoute: typeof AuthenticatedNexusiaIndexRoute
-}
-
-const AuthenticatedNexusiaRouteChildren: AuthenticatedNexusiaRouteChildren = {
-  AuthenticatedNexusiaClientsRoute: AuthenticatedNexusiaClientsRoute,
-  AuthenticatedNexusiaDecisionRoute: AuthenticatedNexusiaDecisionRoute,
-  AuthenticatedNexusiaEmployesRoute: AuthenticatedNexusiaEmployesRoute,
-  AuthenticatedNexusiaFinancesRoute: AuthenticatedNexusiaFinancesRoute,
-  AuthenticatedNexusiaObjectifsRoute: AuthenticatedNexusiaObjectifsRoute,
-  AuthenticatedNexusiaProduitsRoute: AuthenticatedNexusiaProduitsRoute,
-  AuthenticatedNexusiaRapportsRoute: AuthenticatedNexusiaRapportsRoute,
-  AuthenticatedNexusiaRechercheRoute: AuthenticatedNexusiaRechercheRoute,
-  AuthenticatedNexusiaIndexRoute: AuthenticatedNexusiaIndexRoute,
-}
-
-const AuthenticatedNexusiaRouteWithChildren =
-  AuthenticatedNexusiaRoute._addFileChildren(AuthenticatedNexusiaRouteChildren)
-
 interface AuthenticatedProduitsRouteChildren {
   AuthenticatedProduitsProduitIdRoute: typeof AuthenticatedProduitsProduitIdRoute
   AuthenticatedProduitsMouvementsRoute: typeof AuthenticatedProduitsMouvementsRoute
@@ -2234,7 +2010,6 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedEntreesStockRoute: typeof AuthenticatedEntreesStockRouteWithChildren
   AuthenticatedFournisseursRoute: typeof AuthenticatedFournisseursRouteWithChildren
   AuthenticatedInventaireRoute: typeof AuthenticatedInventaireRouteWithChildren
-  AuthenticatedNexusiaRoute: typeof AuthenticatedNexusiaRouteWithChildren
   AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
   AuthenticatedParametresRoute: typeof AuthenticatedParametresRoute
   AuthenticatedProduitsRoute: typeof AuthenticatedProduitsRouteWithChildren
@@ -2257,7 +2032,6 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedEntreesStockRoute: AuthenticatedEntreesStockRouteWithChildren,
   AuthenticatedFournisseursRoute: AuthenticatedFournisseursRouteWithChildren,
   AuthenticatedInventaireRoute: AuthenticatedInventaireRouteWithChildren,
-  AuthenticatedNexusiaRoute: AuthenticatedNexusiaRouteWithChildren,
   AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
   AuthenticatedParametresRoute: AuthenticatedParametresRoute,
   AuthenticatedProduitsRoute: AuthenticatedProduitsRouteWithChildren,
@@ -2317,3 +2091,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
