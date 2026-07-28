@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { KeyRound, Pencil, Plus, ShieldBan, ShieldCheck, Trash2 } from "lucide-react";
+import { History, KeyRound, Pencil, Plus, ShieldBan, ShieldCheck, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { AdminCard, Champ, Pastille } from "@/components/admin/pieces";
@@ -32,6 +32,8 @@ import {
   type Utilisateur,
   type UtilisateurFormValues,
 } from "@/lib/admin/types";
+import { useRoleActuel, simulerRole } from "@/hooks/use-role";
+import { ROLES, type RoleCle } from "@/lib/access/roles";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/administration/utilisateurs")({
@@ -42,13 +44,17 @@ const vide = (roleId: string): UtilisateurFormValues => ({
   nom: "",
   email: "",
   telephone: "",
+  fonction: "",
+  photo: "",
   roleId,
   statut: "invite",
   magasinId: null,
 });
 
 function UtilisateursPage() {
-  const { utilisateurs, roles, magasins } = useAdminStore();
+  const { utilisateurs, roles, magasins, audit } = useAdminStore();
+  const { reel, simule } = useRoleActuel();
+  const [historique, setHistorique] = useState<Utilisateur | null>(null);
   const [ouvert, setOuvert] = useState(false);
   const [edition, setEdition] = useState<Utilisateur | null>(null);
   const [form, setForm] = useState<UtilisateurFormValues>(vide(roles[0]?.id ?? ""));
@@ -72,6 +78,8 @@ function UtilisateursPage() {
       nom: u.nom,
       email: u.email,
       telephone: u.telephone,
+      fonction: u.fonction ?? "",
+      photo: u.photo ?? "",
       roleId: u.roleId,
       statut: u.statut,
       magasinId: u.magasinId,
@@ -106,12 +114,14 @@ function UtilisateursPage() {
         }
       >
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[820px] text-sm">
+          <table className="w-full min-w-[1040px] text-sm">
             <thead>
               <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted-foreground">
                 <th className="pb-2 pr-3 font-medium">Utilisateur</th>
+                <th className="pb-2 pr-3 font-medium">Fonction</th>
                 <th className="pb-2 pr-3 font-medium">Rôle</th>
                 <th className="pb-2 pr-3 font-medium">Magasin</th>
+                <th className="pb-2 pr-3 font-medium">Créé le</th>
                 <th className="pb-2 pr-3 font-medium">Dernière connexion</th>
                 <th className="pb-2 pr-3 font-medium">Statut</th>
                 <th className="pb-2 text-right font-medium">Actions</th>
@@ -121,13 +131,36 @@ function UtilisateursPage() {
               {utilisateurs.map((u) => (
                 <tr key={u.id} className="border-b border-border/60 last:border-0">
                   <td className="py-3 pr-3">
-                    <p className="font-medium text-foreground">{u.nom}</p>
-                    <p className="text-xs text-muted-foreground">{u.email}</p>
+                    <div className="flex items-center gap-3">
+                      {u.photo ? (
+                        <img
+                          src={u.photo}
+                          alt={u.nom}
+                          loading="lazy"
+                          className="h-9 w-9 rounded-full object-cover"
+                        />
+                      ) : (
+                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary-soft text-xs font-semibold text-primary">
+                          {u.nom
+                            .split(/\s+/)
+                            .slice(0, 2)
+                            .map((m) => m[0]?.toUpperCase() ?? "")
+                            .join("")}
+                        </span>
+                      )}
+                      <div className="min-w-0">
+                        <p className="font-medium text-foreground">{u.nom}</p>
+                        <p className="text-xs text-muted-foreground">{u.email}</p>
+                        <p className="text-xs text-muted-foreground">{u.telephone}</p>
+                      </div>
+                    </div>
                   </td>
+                  <td className="py-3 pr-3 text-muted-foreground">{u.fonction || "—"}</td>
                   <td className="py-3 pr-3 text-muted-foreground">{nomRole(u.roleId)}</td>
                   <td className="py-3 pr-3 text-muted-foreground">
                     {magasins.find((m) => m.id === u.magasinId)?.nom ?? "Tous"}
                   </td>
+                  <td className="py-3 pr-3 text-muted-foreground">{formatDateHeure(u.creeLe)}</td>
                   <td className="py-3 pr-3 text-muted-foreground">
                     {u.derniereConnexion ? formatDateHeure(u.derniereConnexion) : "Jamais"}
                   </td>
@@ -150,6 +183,14 @@ function UtilisateursPage() {
                   </td>
                   <td className="py-3">
                     <div className="flex justify-end gap-1">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setHistorique(u)}
+                        title="Consulter l'historique"
+                      >
+                        <History className="h-4 w-4" />
+                      </Button>
                       <Button
                         variant="ghost"
                         size="icon"
@@ -297,6 +338,92 @@ function UtilisateursPage() {
         </div>
       </AdminCard>
 
+      <AdminCard
+        titre="Interface par rôle"
+        description="Prévisualisez l'application telle que la voit chaque profil. Les menus et les pages non autorisés sont automatiquement masqués et bloqués."
+      >
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              simulerRole(null);
+              toast.success("Retour à votre profil réel");
+            }}
+            className={cn(
+              "rounded-lg border px-3 py-2 text-xs font-medium transition",
+              !simule
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border bg-card text-foreground hover:bg-muted",
+            )}
+          >
+            Mon profil réel
+          </button>
+          {ROLES.map((r) => (
+            <button
+              key={r.cle}
+              type="button"
+              title={r.description}
+              onClick={() => {
+                simulerRole(r.cle as RoleCle);
+                toast.success(`Interface affichée en tant que ${r.label}`);
+              }}
+              className={cn(
+                "rounded-lg border px-3 py-2 text-xs font-medium transition",
+                simule === r.cle
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card text-foreground hover:bg-muted",
+              )}
+            >
+              {r.label}
+            </button>
+          ))}
+        </div>
+        <ul className="mt-4 grid gap-2 md:grid-cols-2">
+          {ROLES.map((r) => (
+            <li key={r.cle} className="rounded-xl border border-border bg-background p-3">
+              <p className="text-sm font-medium text-foreground">{r.label}</p>
+              <p className="text-xs text-muted-foreground">{r.description}</p>
+            </li>
+          ))}
+        </ul>
+      </AdminCard>
+
+      <Dialog open={historique !== null} onOpenChange={(o) => !o && setHistorique(null)}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Historique — {historique?.nom}</DialogTitle>
+          </DialogHeader>
+          <div className="max-h-[420px] space-y-2 overflow-y-auto">
+            {audit.filter((e) => e.utilisateur === historique?.nom).length === 0 ? (
+              <p className="py-6 text-center text-sm text-muted-foreground">
+                Aucune activité enregistrée pour cet utilisateur.
+              </p>
+            ) : (
+              audit
+                .filter((e) => e.utilisateur === historique?.nom)
+                .slice(0, 40)
+                .map((e) => (
+                  <div key={e.id} className="rounded-xl border border-border bg-background p-3">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-sm font-medium text-foreground">{e.module}</p>
+                      <p className="text-xs text-muted-foreground">{formatDateHeure(e.date)}</p>
+                    </div>
+                    <p className="mt-1 text-sm text-muted-foreground">{e.details}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {e.appareil} · {e.ip}
+                    </p>
+                  </div>
+                ))
+            )}
+          </div>
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setHistorique(null)}>
+              Fermer
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       <Dialog open={ouvert} onOpenChange={setOuvert}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
@@ -322,6 +449,20 @@ function UtilisateursPage() {
               <Input
                 value={form.telephone}
                 onChange={(e) => setForm((f) => ({ ...f, telephone: e.target.value }))}
+              />
+            </Champ>
+            <Champ label="Fonction">
+              <Input
+                value={form.fonction ?? ""}
+                placeholder="Caissier principal"
+                onChange={(e) => setForm((f) => ({ ...f, fonction: e.target.value }))}
+              />
+            </Champ>
+            <Champ label="Photo (URL)">
+              <Input
+                value={form.photo ?? ""}
+                placeholder="https://…"
+                onChange={(e) => setForm((f) => ({ ...f, photo: e.target.value }))}
               />
             </Champ>
             <Champ label="Rôle">
