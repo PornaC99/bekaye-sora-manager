@@ -1,7 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { Bell, Menu, Search, ChevronDown } from "lucide-react";
 
-import { currentUser, navItems } from "@/lib/navigation";
+import { navItems } from "@/lib/navigation";
+import { useSession, nomAffiche, initialesUtilisateur } from "@/hooks/use-session";
+import { supabase } from "@/integrations/supabase/client";
+import { useQueryClient } from "@tanstack/react-query";
 import { BrandMark } from "./brand-mark";
 import { useShell } from "./shell-context";
 import {
@@ -27,6 +30,18 @@ export function TopBar() {
   const { setMobileOpen } = useShell();
   const [searchOpen, setSearchOpen] = useState(false);
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const { user } = useSession();
+  const nom = nomAffiche(user);
+  const initiales = initialesUtilisateur(nom);
+  const identifiant = user?.email ?? "Session locale";
+
+  async function seDeconnecter() {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/auth", replace: true });
+  }
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur">
@@ -80,23 +95,23 @@ export function TopBar() {
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-2 rounded-lg border border-border py-1 pl-1 pr-2 transition-colors hover:bg-muted">
               <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-primary text-[11px] font-semibold text-primary-foreground">
-                {currentUser.initials}
+                {initiales}
               </span>
               <span className="hidden min-w-0 text-left sm:block">
                 <span className="block truncate text-xs font-semibold leading-tight text-foreground">
-                  {currentUser.name}
+                  {nom}
                 </span>
                 <span className="block truncate text-[10px] text-muted-foreground">
-                  {currentUser.role}
+                  {identifiant}
                 </span>
               </span>
               <ChevronDown className="hidden h-3.5 w-3.5 text-muted-foreground sm:block" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuLabel>
-                <span className="block text-sm font-semibold">{currentUser.name}</span>
+                <span className="block text-sm font-semibold">{nom}</span>
                 <span className="block text-xs font-normal text-muted-foreground">
-                  {currentUser.role}
+                  {identifiant}
                 </span>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
@@ -107,7 +122,9 @@ export function TopBar() {
                 <Link to="/parametres">Paramètres</Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem disabled>Se déconnecter</DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => void seDeconnecter()}>
+                Se déconnecter
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
