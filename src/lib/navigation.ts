@@ -42,6 +42,12 @@ export const navSections: NavSection[] = [
         icon: LayoutDashboard,
         description: "Vue d'ensemble de l'activité de Bekaye Sora.",
       },
+      {
+        title: "NEXUSIA Insight",
+        to: "/nexusia",
+        icon: Brain,
+        description: "Votre copilote de décision intelligent.",
+      },
     ],
   },
   {
