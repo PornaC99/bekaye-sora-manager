@@ -39,6 +39,7 @@ import { Route as EntreesStockIndexRouteImport } from './routes/entrees-stock.in
 import { Route as EmployesIndexRouteImport } from './routes/employes.index'
 import { Route as DepensesIndexRouteImport } from './routes/depenses.index'
 import { Route as ClientsIndexRouteImport } from './routes/clients.index'
+import { Route as AdministrationIndexRouteImport } from './routes/administration.index'
 import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
 import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique'
 import { Route as RapportsPerformanceRouteImport } from './routes/rapports.performance'
@@ -232,6 +233,11 @@ const ClientsIndexRoute = ClientsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ClientsRoute,
+} as any)
+const AdministrationIndexRoute = AdministrationIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdministrationRoute,
 } as any)
 const VentesRetoursRoute = VentesRetoursRouteImport.update({
   id: '/retours',
@@ -455,7 +461,7 @@ const FournisseursCommandesCommandeIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/administration': typeof AdministrationRoute
+  '/administration': typeof AdministrationRouteWithChildren
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
   '/clients': typeof ClientsRouteWithChildren
@@ -515,6 +521,7 @@ export interface FileRoutesByFullPath {
   '/rapports/performance': typeof RapportsPerformanceRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
+  '/administration/': typeof AdministrationIndexRoute
   '/clients/': typeof ClientsIndexRoute
   '/depenses/': typeof DepensesIndexRoute
   '/employes/': typeof EmployesIndexRoute
@@ -530,7 +537,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/administration': typeof AdministrationRoute
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
   '/notifications': typeof NotificationsRoute
@@ -580,6 +586,7 @@ export interface FileRoutesByTo {
   '/rapports/performance': typeof RapportsPerformanceRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
+  '/administration': typeof AdministrationIndexRoute
   '/clients': typeof ClientsIndexRoute
   '/depenses': typeof DepensesIndexRoute
   '/employes': typeof EmployesIndexRoute
@@ -596,7 +603,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/administration': typeof AdministrationRoute
+  '/administration': typeof AdministrationRouteWithChildren
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
   '/clients': typeof ClientsRouteWithChildren
@@ -656,6 +663,7 @@ export interface FileRoutesById {
   '/rapports/performance': typeof RapportsPerformanceRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
+  '/administration/': typeof AdministrationIndexRoute
   '/clients/': typeof ClientsIndexRoute
   '/depenses/': typeof DepensesIndexRoute
   '/employes/': typeof EmployesIndexRoute
@@ -733,6 +741,7 @@ export interface FileRouteTypes {
     | '/rapports/performance'
     | '/ventes/historique'
     | '/ventes/retours'
+    | '/administration/'
     | '/clients/'
     | '/depenses/'
     | '/employes/'
@@ -748,7 +757,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/administration'
     | '/caisse'
     | '/categories'
     | '/notifications'
@@ -798,6 +806,7 @@ export interface FileRouteTypes {
     | '/rapports/performance'
     | '/ventes/historique'
     | '/ventes/retours'
+    | '/administration'
     | '/clients'
     | '/depenses'
     | '/employes'
@@ -873,6 +882,7 @@ export interface FileRouteTypes {
     | '/rapports/performance'
     | '/ventes/historique'
     | '/ventes/retours'
+    | '/administration/'
     | '/clients/'
     | '/depenses/'
     | '/employes/'
@@ -889,7 +899,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdministrationRoute: typeof AdministrationRoute
+  AdministrationRoute: typeof AdministrationRouteWithChildren
   CaisseRoute: typeof CaisseRoute
   CategoriesRoute: typeof CategoriesRoute
   ClientsRoute: typeof ClientsRouteWithChildren
@@ -1121,6 +1131,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/clients/'
       preLoaderRoute: typeof ClientsIndexRouteImport
       parentRoute: typeof ClientsRoute
+    }
+    '/administration/': {
+      id: '/administration/'
+      path: '/'
+      fullPath: '/administration/'
+      preLoaderRoute: typeof AdministrationIndexRouteImport
+      parentRoute: typeof AdministrationRoute
     }
     '/ventes/retours': {
       id: '/ventes/retours'
@@ -1426,6 +1443,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdministrationRouteChildren {
+  AdministrationIndexRoute: typeof AdministrationIndexRoute
+}
+
+const AdministrationRouteChildren: AdministrationRouteChildren = {
+  AdministrationIndexRoute: AdministrationIndexRoute,
+}
+
+const AdministrationRouteWithChildren = AdministrationRoute._addFileChildren(
+  AdministrationRouteChildren,
+)
+
 interface ClientsRouteChildren {
   ClientsClientIdRoute: typeof ClientsClientIdRoute
   ClientsAnalyseRoute: typeof ClientsAnalyseRoute
@@ -1631,7 +1660,7 @@ const VentesRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdministrationRoute: AdministrationRoute,
+  AdministrationRoute: AdministrationRouteWithChildren,
   CaisseRoute: CaisseRoute,
   CategoriesRoute: CategoriesRoute,
   ClientsRoute: ClientsRouteWithChildren,
