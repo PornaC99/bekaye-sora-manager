@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Bell, Menu, Search, ChevronDown } from "lucide-react";
 
+import { useCentreNotifications } from "@/lib/core/notifications";
+
 import { navItems } from "@/lib/navigation";
 import { useSession, nomAffiche, initialesUtilisateur } from "@/hooks/use-session";
 import { supabase } from "@/integrations/supabase/client";
@@ -32,6 +34,8 @@ export function TopBar() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { user } = useSession();
+  const { evenements } = useCentreNotifications();
+  const nonLus = evenements.filter((e) => !e.lu).length;
   const nom = nomAffiche(user);
   const initiales = initialesUtilisateur(nom);
   const identifiant = user?.email ?? "Session locale";
