@@ -262,10 +262,10 @@ function DetailCommande() {
                 <dt className="text-xs text-muted-foreground">Date de réception</dt>
                 <dd className="text-foreground">{formatDateCourt(commande.dateReception)}</dd>
               </div>
-              {commande.notes && (
+              {commande.observation && (
                 <div>
-                  <dt className="text-xs text-muted-foreground">Notes</dt>
-                  <dd className="text-foreground">{commande.notes}</dd>
+                  <dt className="text-xs text-muted-foreground">Observation</dt>
+                  <dd className="text-foreground">{commande.observation}</dd>
                 </div>
               )}
             </dl>
