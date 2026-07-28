@@ -41,6 +41,7 @@ import { Route as ClientsIndexRouteImport } from './routes/clients.index'
 import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
 import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique'
 import { Route as RapportsPerformanceRouteImport } from './routes/rapports.performance'
+import { Route as RapportsComparaisonRouteImport } from './routes/rapports.comparaison'
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
 import { Route as MobileRechercheRouteImport } from './routes/mobile.recherche'
@@ -239,6 +240,11 @@ const VentesHistoriqueRoute = VentesHistoriqueRouteImport.update({
 const RapportsPerformanceRoute = RapportsPerformanceRouteImport.update({
   id: '/performance',
   path: '/performance',
+  getParentRoute: () => RapportsRoute,
+} as any)
+const RapportsComparaisonRoute = RapportsComparaisonRouteImport.update({
+  id: '/comparaison',
+  path: '/comparaison',
   getParentRoute: () => RapportsRoute,
 } as any)
 const ProduitsMouvementsRoute = ProduitsMouvementsRouteImport.update({
@@ -498,6 +504,7 @@ export interface FileRoutesByFullPath {
   '/mobile/recherche': typeof MobileRechercheRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
+  '/rapports/comparaison': typeof RapportsComparaisonRoute
   '/rapports/performance': typeof RapportsPerformanceRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
@@ -561,6 +568,7 @@ export interface FileRoutesByTo {
   '/mobile/recherche': typeof MobileRechercheRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
+  '/rapports/comparaison': typeof RapportsComparaisonRoute
   '/rapports/performance': typeof RapportsPerformanceRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
@@ -635,6 +643,7 @@ export interface FileRoutesById {
   '/mobile/recherche': typeof MobileRechercheRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
+  '/rapports/comparaison': typeof RapportsComparaisonRoute
   '/rapports/performance': typeof RapportsPerformanceRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
@@ -710,6 +719,7 @@ export interface FileRouteTypes {
     | '/mobile/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
+    | '/rapports/comparaison'
     | '/rapports/performance'
     | '/ventes/historique'
     | '/ventes/retours'
@@ -773,6 +783,7 @@ export interface FileRouteTypes {
     | '/mobile/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
+    | '/rapports/comparaison'
     | '/rapports/performance'
     | '/ventes/historique'
     | '/ventes/retours'
@@ -846,6 +857,7 @@ export interface FileRouteTypes {
     | '/mobile/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
+    | '/rapports/comparaison'
     | '/rapports/performance'
     | '/ventes/historique'
     | '/ventes/retours'
@@ -1109,6 +1121,13 @@ declare module '@tanstack/react-router' {
       path: '/performance'
       fullPath: '/rapports/performance'
       preLoaderRoute: typeof RapportsPerformanceRouteImport
+      parentRoute: typeof RapportsRoute
+    }
+    '/rapports/comparaison': {
+      id: '/rapports/comparaison'
+      path: '/comparaison'
+      fullPath: '/rapports/comparaison'
+      preLoaderRoute: typeof RapportsComparaisonRouteImport
       parentRoute: typeof RapportsRoute
     }
     '/produits/mouvements': {
@@ -1560,11 +1579,13 @@ const ProduitsRouteWithChildren = ProduitsRoute._addFileChildren(
 )
 
 interface RapportsRouteChildren {
+  RapportsComparaisonRoute: typeof RapportsComparaisonRoute
   RapportsPerformanceRoute: typeof RapportsPerformanceRoute
   RapportsIndexRoute: typeof RapportsIndexRoute
 }
 
 const RapportsRouteChildren: RapportsRouteChildren = {
+  RapportsComparaisonRoute: RapportsComparaisonRoute,
   RapportsPerformanceRoute: RapportsPerformanceRoute,
   RapportsIndexRoute: RapportsIndexRoute,
 }
