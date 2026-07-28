@@ -259,3 +259,128 @@
   backdrop-filter: blur(14px) saturate(140%);
   border: 1px solid color-mix(in oklab, var(--color-gold) 22%, transparent);
 }
+
+/* ============================================================
+   Expérience mobile native (Android / iOS)
+   ============================================================ */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+
+  /* Défilement inertiel iOS sur tous les conteneurs scrollables */
+  [class*="overflow-auto"],
+  [class*="overflow-x-auto"],
+  [class*="overflow-y-auto"] {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Zones tactiles confortables sur petits écrans */
+  @media (max-width: 767px) {
+    button,
+    [role="button"],
+    a[href],
+    summary {
+      touch-action: manipulation;
+    }
+
+    h1 {
+      font-size: clamp(1.35rem, 5.4vw, 1.75rem);
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: clamp(1.05rem, 4.4vw, 1.35rem);
+      line-height: 1.25;
+    }
+
+    /* Évite le zoom automatique iOS à la mise au point */
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
+  }
+}
+
+/* Pas d'effet de survol « souris » sur écran tactile */
+@media (hover: none) {
+  .card-luxe:hover {
+    transform: none;
+    box-shadow: var(--shadow-luxe);
+    border-color: var(--color-border);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Encoches et barres système */
+@utility safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+@utility safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@utility safe-x {
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Retour visuel au toucher */
+@utility tap {
+  transition:
+    transform 0.14s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.14s ease,
+    opacity 0.14s ease;
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* Défilement horizontal fluide type application mobile */
+@utility swipe-x {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  & > * {
+    scroll-snap-align: start;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Tableaux : défilement horizontal maîtrisé sur mobile */
+@utility table-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}

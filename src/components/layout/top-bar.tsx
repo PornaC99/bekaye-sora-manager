@@ -49,14 +49,14 @@ export function TopBar() {
   }
 
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur">
-      <div className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-3 px-4 sm:px-6">
+    <header className="safe-top safe-x sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur-lg">
+      <div className="grid h-14 grid-cols-[auto_1fr_auto] items-center gap-2 px-3 sm:h-16 sm:gap-3 sm:px-6">
         <div className="flex min-w-0 items-center gap-3">
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Ouvrir le menu"
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border text-foreground transition-colors hover:bg-muted lg:hidden"
+            className="tap grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-border text-foreground transition-colors hover:bg-muted lg:hidden"
           >
             <Menu className="h-4 w-4" />
           </button>
@@ -81,7 +81,7 @@ export function TopBar() {
             type="button"
             onClick={() => setSearchOpen(true)}
             aria-label="Recherche globale"
-            className="grid h-9 w-9 place-items-center rounded-lg border border-border text-foreground transition-colors hover:bg-muted sm:hidden"
+            className="tap grid h-10 w-10 place-items-center rounded-xl border border-border text-foreground transition-colors hover:bg-muted sm:hidden"
           >
             <Search className="h-4 w-4" />
           </button>
@@ -93,7 +93,7 @@ export function TopBar() {
           <Link
             to="/notifications"
             aria-label="Notifications"
-            className="relative grid h-9 w-9 place-items-center rounded-lg border border-border text-foreground transition-colors hover:bg-muted"
+            className="tap relative grid h-10 w-10 place-items-center rounded-xl border border-border text-foreground transition-colors hover:bg-muted sm:h-9 sm:w-9 sm:rounded-lg"
           >
             <Bell className="h-4 w-4" />
             {nonLus > 0 && (
