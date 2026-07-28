@@ -33,17 +33,20 @@ function Dashboard() {
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
+      <BrandBanner action={{ label: "Ouvrir la caisse", to: "/caisse" }} />
+
       <PageHeader
         eyebrow={`Pilotage · ${LABEL_ROLE[role]}`}
         title="Tableau de bord"
         description={DESCRIPTION_ROLE[role]}
         actions={
-          <div className="rounded-xl border border-border bg-card px-4 py-2.5 text-right shadow-[var(--shadow-card)]">
+          <div className="card-luxe px-4 py-2.5 text-right">
             <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{today}</p>
             <p className="mt-0.5 font-display text-xs font-medium text-primary">{BRAND.slogan}</p>
           </div>
         }
       />
+
 
       <DashboardParRole role={role} />
     </div>
