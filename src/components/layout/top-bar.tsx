@@ -50,52 +50,47 @@ export function TopBar() {
 
   return (
     <header className="safe-top safe-x sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur-lg">
-      <div className="grid h-14 grid-cols-[auto_1fr_auto] items-center gap-2 px-3 sm:h-16 sm:gap-3 sm:px-6">
-        <div className="flex min-w-0 items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Ouvrir le menu"
-            className="tap grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-border text-foreground transition-colors hover:bg-muted lg:hidden"
-          >
-            <Menu className="h-4 w-4" />
-          </button>
-          <div className="lg:hidden">
-            <BrandMark />
-          </div>
+      {/* Ligne 1 — mobile : menu + logo + nom + notifications uniquement */}
+      <div className="flex h-14 items-center gap-2 px-3 sm:h-16 sm:gap-3 sm:px-6">
+        <button
+          type="button"
+          onClick={() => setMobileOpen(true)}
+          aria-label="Ouvrir le menu"
+          className="tap grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-border text-foreground transition-colors hover:bg-muted lg:hidden"
+        >
+          <Menu className="h-[18px] w-[18px]" />
+        </button>
+
+        <div className="min-w-0 flex-1 lg:hidden">
+          <BrandMark />
         </div>
 
-        <div className="flex min-w-0 justify-center lg:justify-start">
+        {/* Recherche desktop */}
+        <div className="hidden min-w-0 flex-1 lg:flex">
           <button
             type="button"
             onClick={() => setSearchOpen(true)}
-            className="hidden h-10 w-full max-w-md items-center gap-2 rounded-lg border border-border bg-muted/60 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted sm:flex"
+            className="flex h-10 w-full max-w-md items-center gap-2 rounded-lg border border-border bg-muted/60 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted"
           >
             <Search className="h-4 w-4 shrink-0" />
             <span className="truncate">Rechercher dans l'application…</span>
-            <kbd className="ml-auto hidden rounded border border-border bg-background px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground md:block">
+            <kbd className="ml-auto rounded border border-border bg-background px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
               Ctrl K
             </kbd>
-          </button>
-          <button
-            type="button"
-            onClick={() => setSearchOpen(true)}
-            aria-label="Recherche globale"
-            className="tap grid h-10 w-10 place-items-center rounded-xl border border-border text-foreground transition-colors hover:bg-muted sm:hidden"
-          >
-            <Search className="h-4 w-4" />
           </button>
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
-          <ThemeToggle />
+          <div className="hidden lg:block">
+            <ThemeToggle />
+          </div>
 
           <Link
             to="/notifications"
             aria-label="Notifications"
-            className="tap relative grid h-10 w-10 place-items-center rounded-xl border border-border text-foreground transition-colors hover:bg-muted sm:h-9 sm:w-9 sm:rounded-lg"
+            className="tap relative grid h-10 w-10 place-items-center rounded-xl border border-border text-foreground transition-colors hover:bg-muted lg:h-9 lg:w-9 lg:rounded-lg"
           >
-            <Bell className="h-4 w-4" />
+            <Bell className="h-[18px] w-[18px]" />
             {nonLus > 0 && (
               <span className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full border-2 border-background bg-primary px-1 text-[10px] font-semibold text-primary-foreground">
                 {nonLus > 99 ? "99+" : nonLus}
@@ -103,20 +98,21 @@ export function TopBar() {
             )}
           </Link>
 
+          {/* Profil : desktop uniquement (mobile → menu latéral) */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-2 rounded-lg border border-border py-1 pl-1 pr-2 transition-colors hover:bg-muted">
+            <DropdownMenuTrigger className="hidden items-center gap-2 rounded-lg border border-border py-1 pl-1 pr-2 transition-colors hover:bg-muted lg:flex">
               <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-primary text-[11px] font-semibold text-primary-foreground">
                 {initiales}
               </span>
-              <span className="hidden min-w-0 text-left sm:block">
-                <span className="block truncate text-xs font-semibold leading-tight text-foreground">
+              <span className="min-w-0 text-left">
+                <span className="block max-w-[140px] truncate text-xs font-semibold leading-tight text-foreground">
                   {nom}
                 </span>
-                <span className="block truncate text-[10px] text-muted-foreground">
+                <span className="block max-w-[140px] truncate text-[10px] text-muted-foreground">
                   {identifiant}
                 </span>
               </span>
-              <ChevronDown className="hidden h-3.5 w-3.5 text-muted-foreground sm:block" />
+              <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuLabel>
@@ -139,6 +135,18 @@ export function TopBar() {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
+      </div>
+
+      {/* Ligne 2 — mobile : barre de recherche seule */}
+      <div className="border-t border-border/70 px-3 py-2 lg:hidden">
+        <button
+          type="button"
+          onClick={() => setSearchOpen(true)}
+          className="tap flex h-10 w-full items-center gap-2 rounded-xl border border-border bg-muted/60 px-3 text-sm text-muted-foreground"
+        >
+          <Search className="h-4 w-4 shrink-0" />
+          <span className="truncate">Rechercher…</span>
+        </button>
       </div>
 
       <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
