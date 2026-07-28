@@ -229,5 +229,86 @@ export function annulerReception(lignes: LigneReception[], meta: MetaReception) 
   });
 }
 
+/* ------------------------------------------------------------------ */
+/* Ventes (module Ventes & Caisse)                                      */
+/* ------------------------------------------------------------------ */
+
+export type LigneVenteProduit = { produitId: string; quantite: number; montant: number };
+
+export type MetaVente = {
+  reference: string;
+  client: string;
+  utilisateur: string;
+  date: string;
+};
+
+/** Applique une vente : stock -, mouvements de sortie et historique des ventes. */
+export function appliquerVente(lignes: LigneVenteProduit[], meta: MetaVente) {
+  const produits = state.produits.map((produit) => {
+    const ligne = lignes.find((l) => l.produitId === produit.id);
+    if (!ligne) return produit;
+    return {
+      ...produit,
+      stock: Math.max(0, produit.stock - ligne.quantite),
+      dateModification: new Date().toISOString(),
+    };
+  });
+
+  const mouvements: MouvementStock[] = lignes.map((ligne, index) => ({
+    id: `M-${Date.now()}-v${index}`,
+    produitId: ligne.produitId,
+    date: meta.date,
+    type: "sortie",
+    utilisateur: meta.utilisateur,
+    quantite: ligne.quantite,
+    observation: `Vente ${meta.reference} — ${meta.client}`,
+  }));
+
+  const ventes: LigneHistorique[] = lignes.map((ligne, index) => ({
+    id: `V-${meta.reference}-${index}`,
+    produitId: ligne.produitId,
+    date: meta.date,
+    reference: meta.reference,
+    tiers: meta.client,
+    quantite: ligne.quantite,
+    montant: ligne.montant,
+  }));
+
+  setState({
+    produits,
+    mouvements: [...mouvements, ...state.mouvements],
+    ventes: [...ventes, ...state.ventes],
+  });
+}
+
+/** Réintègre le stock (annulation d'une vente ou retour produit). */
+export function retournerVente(
+  lignes: LigneVenteProduit[],
+  meta: MetaVente & { motif: string },
+) {
+  const produits = state.produits.map((produit) => {
+    const ligne = lignes.find((l) => l.produitId === produit.id);
+    if (!ligne) return produit;
+    return {
+      ...produit,
+      stock: produit.stock + ligne.quantite,
+      dateModification: new Date().toISOString(),
+    };
+  });
+
+  const mouvements: MouvementStock[] = lignes.map((ligne, index) => ({
+    id: `M-${Date.now()}-r${index}`,
+    produitId: ligne.produitId,
+    date: meta.date,
+    type: "entree",
+    utilisateur: meta.utilisateur,
+    quantite: ligne.quantite,
+    observation: `${meta.motif} — vente ${meta.reference}`,
+  }));
+
+  setState({ produits, mouvements: [...mouvements, ...state.mouvements] });
+}
+
 export const lireProduits = () => state.produits;
+
 
