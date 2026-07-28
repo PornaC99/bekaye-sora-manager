@@ -46,6 +46,7 @@ import { Route as FournisseursAnalyseRouteImport } from './routes/fournisseurs.a
 import { Route as FournisseursFournisseurIdRouteImport } from './routes/fournisseurs.$fournisseurId'
 import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-stock.historique'
 import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
+import { Route as EmployesPresenceRouteImport } from './routes/employes.presence'
 import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
 import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
@@ -240,6 +241,11 @@ const EntreesStockEntreeIdRoute = EntreesStockEntreeIdRouteImport.update({
   path: '/$entreeId',
   getParentRoute: () => EntreesStockRoute,
 } as any)
+const EmployesPresenceRoute = EmployesPresenceRouteImport.update({
+  id: '/presence',
+  path: '/presence',
+  getParentRoute: () => EmployesRoute,
+} as any)
 const ClientsVipRoute = ClientsVipRouteImport.update({
   id: '/vip',
   path: '/vip',
@@ -296,6 +302,7 @@ export interface FileRoutesByFullPath {
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
+  '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
@@ -334,6 +341,7 @@ export interface FileRoutesByTo {
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
+  '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
@@ -380,6 +388,7 @@ export interface FileRoutesById {
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
+  '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
@@ -427,6 +436,7 @@ export interface FileRouteTypes {
     | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
+    | '/employes/presence'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
     | '/fournisseurs/$fournisseurId'
@@ -465,6 +475,7 @@ export interface FileRouteTypes {
     | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
+    | '/employes/presence'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
     | '/fournisseurs/$fournisseurId'
@@ -510,6 +521,7 @@ export interface FileRouteTypes {
     | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
+    | '/employes/presence'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
     | '/fournisseurs/$fournisseurId'
@@ -815,6 +827,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EntreesStockEntreeIdRouteImport
       parentRoute: typeof EntreesStockRoute
     }
+    '/employes/presence': {
+      id: '/employes/presence'
+      path: '/presence'
+      fullPath: '/employes/presence'
+      preLoaderRoute: typeof EmployesPresenceRouteImport
+      parentRoute: typeof EmployesRoute
+    }
     '/clients/vip': {
       id: '/clients/vip'
       path: '/vip'
@@ -880,10 +899,12 @@ const ClientsRouteWithChildren =
   ClientsRoute._addFileChildren(ClientsRouteChildren)
 
 interface EmployesRouteChildren {
+  EmployesPresenceRoute: typeof EmployesPresenceRoute
   EmployesIndexRoute: typeof EmployesIndexRoute
 }
 
 const EmployesRouteChildren: EmployesRouteChildren = {
+  EmployesPresenceRoute: EmployesPresenceRoute,
   EmployesIndexRoute: EmployesIndexRoute,
 }
 
