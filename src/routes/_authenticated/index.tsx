@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PageHeader } from "@/components/layout/page";
+import { BrandBanner } from "@/components/brand/brand-banner";
+
 import { BRAND } from "@/lib/navigation";
 import { DashboardParRole, DESCRIPTION_ROLE } from "@/components/dashboard/role-dashboards";
 import { useRoleActuel } from "@/hooks/use-role";
