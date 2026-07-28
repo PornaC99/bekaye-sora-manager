@@ -16,6 +16,7 @@ import {
   BarChart3,
   Bell,
   Settings,
+  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 
@@ -160,6 +161,12 @@ export const navSections: NavSection[] = [
         to: "/notifications",
         icon: Bell,
         description: "Alertes de stock, ventes et rappels.",
+      },
+      {
+        title: "Administration",
+        to: "/administration",
+        icon: ShieldCheck,
+        description: "Entreprise, utilisateurs, sécurité et multi-entreprises.",
       },
       {
         title: "Paramètres",

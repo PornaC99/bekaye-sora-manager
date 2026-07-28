@@ -27,6 +27,7 @@ import { Route as DepensesRouteImport } from './routes/depenses'
 import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as CaisseRouteImport } from './routes/caisse'
+import { Route as AdministrationRouteImport } from './routes/administration'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as VentesIndexRouteImport } from './routes/ventes.index'
 import { Route as RapportsIndexRouteImport } from './routes/rapports.index'
@@ -38,6 +39,7 @@ import { Route as EntreesStockIndexRouteImport } from './routes/entrees-stock.in
 import { Route as EmployesIndexRouteImport } from './routes/employes.index'
 import { Route as DepensesIndexRouteImport } from './routes/depenses.index'
 import { Route as ClientsIndexRouteImport } from './routes/clients.index'
+import { Route as AdministrationIndexRouteImport } from './routes/administration.index'
 import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
 import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique'
 import { Route as RapportsPerformanceRouteImport } from './routes/rapports.performance'
@@ -79,6 +81,18 @@ import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
 import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
 import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
+import { Route as AdministrationUtilisateursRouteImport } from './routes/administration.utilisateurs'
+import { Route as AdministrationSecuriteRouteImport } from './routes/administration.securite'
+import { Route as AdministrationSauvegardesRouteImport } from './routes/administration.sauvegardes'
+import { Route as AdministrationPreferencesRouteImport } from './routes/administration.preferences'
+import { Route as AdministrationPersonnalisationRouteImport } from './routes/administration.personnalisation'
+import { Route as AdministrationNotificationsRouteImport } from './routes/administration.notifications'
+import { Route as AdministrationMaintenanceRouteImport } from './routes/administration.maintenance'
+import { Route as AdministrationMagasinsRouteImport } from './routes/administration.magasins'
+import { Route as AdministrationEntreprisesRouteImport } from './routes/administration.entreprises'
+import { Route as AdministrationDonneesRouteImport } from './routes/administration.donnees'
+import { Route as AdministrationAuditRouteImport } from './routes/administration.audit'
+import { Route as AdministrationAProposRouteImport } from './routes/administration.a-propos'
 import { Route as FournisseursCommandesIndexRouteImport } from './routes/fournisseurs.commandes.index'
 import { Route as FournisseursCommandesCommandeIdRouteImport } from './routes/fournisseurs.commandes.$commandeId'
 
@@ -172,6 +186,11 @@ const CaisseRoute = CaisseRouteImport.update({
   path: '/caisse',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdministrationRoute = AdministrationRouteImport.update({
+  id: '/administration',
+  path: '/administration',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -226,6 +245,11 @@ const ClientsIndexRoute = ClientsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ClientsRoute,
+} as any)
+const AdministrationIndexRoute = AdministrationIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdministrationRoute,
 } as any)
 const VentesRetoursRoute = VentesRetoursRouteImport.update({
   id: '/retours',
@@ -434,6 +458,73 @@ const ClientsClientIdRoute = ClientsClientIdRouteImport.update({
   path: '/$clientId',
   getParentRoute: () => ClientsRoute,
 } as any)
+const AdministrationUtilisateursRoute =
+  AdministrationUtilisateursRouteImport.update({
+    id: '/utilisateurs',
+    path: '/utilisateurs',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
+const AdministrationSecuriteRoute = AdministrationSecuriteRouteImport.update({
+  id: '/securite',
+  path: '/securite',
+  getParentRoute: () => AdministrationRoute,
+} as any)
+const AdministrationSauvegardesRoute =
+  AdministrationSauvegardesRouteImport.update({
+    id: '/sauvegardes',
+    path: '/sauvegardes',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
+const AdministrationPreferencesRoute =
+  AdministrationPreferencesRouteImport.update({
+    id: '/preferences',
+    path: '/preferences',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
+const AdministrationPersonnalisationRoute =
+  AdministrationPersonnalisationRouteImport.update({
+    id: '/personnalisation',
+    path: '/personnalisation',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
+const AdministrationNotificationsRoute =
+  AdministrationNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
+const AdministrationMaintenanceRoute =
+  AdministrationMaintenanceRouteImport.update({
+    id: '/maintenance',
+    path: '/maintenance',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
+const AdministrationMagasinsRoute = AdministrationMagasinsRouteImport.update({
+  id: '/magasins',
+  path: '/magasins',
+  getParentRoute: () => AdministrationRoute,
+} as any)
+const AdministrationEntreprisesRoute =
+  AdministrationEntreprisesRouteImport.update({
+    id: '/entreprises',
+    path: '/entreprises',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
+const AdministrationDonneesRoute = AdministrationDonneesRouteImport.update({
+  id: '/donnees',
+  path: '/donnees',
+  getParentRoute: () => AdministrationRoute,
+} as any)
+const AdministrationAuditRoute = AdministrationAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => AdministrationRoute,
+} as any)
+const AdministrationAProposRoute = AdministrationAProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => AdministrationRoute,
+} as any)
 const FournisseursCommandesIndexRoute =
   FournisseursCommandesIndexRouteImport.update({
     id: '/commandes/',
@@ -449,6 +540,7 @@ const FournisseursCommandesCommandeIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/administration': typeof AdministrationRouteWithChildren
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
   '/clients': typeof ClientsRouteWithChildren
@@ -467,6 +559,18 @@ export interface FileRoutesByFullPath {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
+  '/administration/a-propos': typeof AdministrationAProposRoute
+  '/administration/audit': typeof AdministrationAuditRoute
+  '/administration/donnees': typeof AdministrationDonneesRoute
+  '/administration/entreprises': typeof AdministrationEntreprisesRoute
+  '/administration/magasins': typeof AdministrationMagasinsRoute
+  '/administration/maintenance': typeof AdministrationMaintenanceRoute
+  '/administration/notifications': typeof AdministrationNotificationsRoute
+  '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/preferences': typeof AdministrationPreferencesRoute
+  '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
+  '/administration/securite': typeof AdministrationSecuriteRoute
+  '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
@@ -508,6 +612,7 @@ export interface FileRoutesByFullPath {
   '/rapports/performance': typeof RapportsPerformanceRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
+  '/administration/': typeof AdministrationIndexRoute
   '/clients/': typeof ClientsIndexRoute
   '/depenses/': typeof DepensesIndexRoute
   '/employes/': typeof EmployesIndexRoute
@@ -531,6 +636,18 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
+  '/administration/a-propos': typeof AdministrationAProposRoute
+  '/administration/audit': typeof AdministrationAuditRoute
+  '/administration/donnees': typeof AdministrationDonneesRoute
+  '/administration/entreprises': typeof AdministrationEntreprisesRoute
+  '/administration/magasins': typeof AdministrationMagasinsRoute
+  '/administration/maintenance': typeof AdministrationMaintenanceRoute
+  '/administration/notifications': typeof AdministrationNotificationsRoute
+  '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/preferences': typeof AdministrationPreferencesRoute
+  '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
+  '/administration/securite': typeof AdministrationSecuriteRoute
+  '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
@@ -572,6 +689,7 @@ export interface FileRoutesByTo {
   '/rapports/performance': typeof RapportsPerformanceRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
+  '/administration': typeof AdministrationIndexRoute
   '/clients': typeof ClientsIndexRoute
   '/depenses': typeof DepensesIndexRoute
   '/employes': typeof EmployesIndexRoute
@@ -588,6 +706,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/administration': typeof AdministrationRouteWithChildren
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
   '/clients': typeof ClientsRouteWithChildren
@@ -606,6 +725,18 @@ export interface FileRoutesById {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
+  '/administration/a-propos': typeof AdministrationAProposRoute
+  '/administration/audit': typeof AdministrationAuditRoute
+  '/administration/donnees': typeof AdministrationDonneesRoute
+  '/administration/entreprises': typeof AdministrationEntreprisesRoute
+  '/administration/magasins': typeof AdministrationMagasinsRoute
+  '/administration/maintenance': typeof AdministrationMaintenanceRoute
+  '/administration/notifications': typeof AdministrationNotificationsRoute
+  '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/preferences': typeof AdministrationPreferencesRoute
+  '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
+  '/administration/securite': typeof AdministrationSecuriteRoute
+  '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
@@ -647,6 +778,7 @@ export interface FileRoutesById {
   '/rapports/performance': typeof RapportsPerformanceRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
+  '/administration/': typeof AdministrationIndexRoute
   '/clients/': typeof ClientsIndexRoute
   '/depenses/': typeof DepensesIndexRoute
   '/employes/': typeof EmployesIndexRoute
@@ -664,6 +796,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/administration'
     | '/caisse'
     | '/categories'
     | '/clients'
@@ -682,6 +815,18 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/administration/a-propos'
+    | '/administration/audit'
+    | '/administration/donnees'
+    | '/administration/entreprises'
+    | '/administration/magasins'
+    | '/administration/maintenance'
+    | '/administration/notifications'
+    | '/administration/personnalisation'
+    | '/administration/preferences'
+    | '/administration/sauvegardes'
+    | '/administration/securite'
+    | '/administration/utilisateurs'
     | '/clients/$clientId'
     | '/clients/analyse'
     | '/clients/statistiques'
@@ -723,6 +868,7 @@ export interface FileRouteTypes {
     | '/rapports/performance'
     | '/ventes/historique'
     | '/ventes/retours'
+    | '/administration/'
     | '/clients/'
     | '/depenses/'
     | '/employes/'
@@ -746,6 +892,18 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sorties-stock'
     | '/statistiques'
+    | '/administration/a-propos'
+    | '/administration/audit'
+    | '/administration/donnees'
+    | '/administration/entreprises'
+    | '/administration/magasins'
+    | '/administration/maintenance'
+    | '/administration/notifications'
+    | '/administration/personnalisation'
+    | '/administration/preferences'
+    | '/administration/sauvegardes'
+    | '/administration/securite'
+    | '/administration/utilisateurs'
     | '/clients/$clientId'
     | '/clients/analyse'
     | '/clients/statistiques'
@@ -787,6 +945,7 @@ export interface FileRouteTypes {
     | '/rapports/performance'
     | '/ventes/historique'
     | '/ventes/retours'
+    | '/administration'
     | '/clients'
     | '/depenses'
     | '/employes'
@@ -802,6 +961,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/administration'
     | '/caisse'
     | '/categories'
     | '/clients'
@@ -820,6 +980,18 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/administration/a-propos'
+    | '/administration/audit'
+    | '/administration/donnees'
+    | '/administration/entreprises'
+    | '/administration/magasins'
+    | '/administration/maintenance'
+    | '/administration/notifications'
+    | '/administration/personnalisation'
+    | '/administration/preferences'
+    | '/administration/sauvegardes'
+    | '/administration/securite'
+    | '/administration/utilisateurs'
     | '/clients/$clientId'
     | '/clients/analyse'
     | '/clients/statistiques'
@@ -861,6 +1033,7 @@ export interface FileRouteTypes {
     | '/rapports/performance'
     | '/ventes/historique'
     | '/ventes/retours'
+    | '/administration/'
     | '/clients/'
     | '/depenses/'
     | '/employes/'
@@ -877,6 +1050,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdministrationRoute: typeof AdministrationRouteWithChildren
   CaisseRoute: typeof CaisseRoute
   CategoriesRoute: typeof CategoriesRoute
   ClientsRoute: typeof ClientsRouteWithChildren
@@ -1025,6 +1199,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaisseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/administration': {
+      id: '/administration'
+      path: '/administration'
+      fullPath: '/administration'
+      preLoaderRoute: typeof AdministrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -1101,6 +1282,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/clients/'
       preLoaderRoute: typeof ClientsIndexRouteImport
       parentRoute: typeof ClientsRoute
+    }
+    '/administration/': {
+      id: '/administration/'
+      path: '/'
+      fullPath: '/administration/'
+      preLoaderRoute: typeof AdministrationIndexRouteImport
+      parentRoute: typeof AdministrationRoute
     }
     '/ventes/retours': {
       id: '/ventes/retours'
@@ -1389,6 +1577,90 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClientsClientIdRouteImport
       parentRoute: typeof ClientsRoute
     }
+    '/administration/utilisateurs': {
+      id: '/administration/utilisateurs'
+      path: '/utilisateurs'
+      fullPath: '/administration/utilisateurs'
+      preLoaderRoute: typeof AdministrationUtilisateursRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/securite': {
+      id: '/administration/securite'
+      path: '/securite'
+      fullPath: '/administration/securite'
+      preLoaderRoute: typeof AdministrationSecuriteRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/sauvegardes': {
+      id: '/administration/sauvegardes'
+      path: '/sauvegardes'
+      fullPath: '/administration/sauvegardes'
+      preLoaderRoute: typeof AdministrationSauvegardesRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/preferences': {
+      id: '/administration/preferences'
+      path: '/preferences'
+      fullPath: '/administration/preferences'
+      preLoaderRoute: typeof AdministrationPreferencesRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/personnalisation': {
+      id: '/administration/personnalisation'
+      path: '/personnalisation'
+      fullPath: '/administration/personnalisation'
+      preLoaderRoute: typeof AdministrationPersonnalisationRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/notifications': {
+      id: '/administration/notifications'
+      path: '/notifications'
+      fullPath: '/administration/notifications'
+      preLoaderRoute: typeof AdministrationNotificationsRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/maintenance': {
+      id: '/administration/maintenance'
+      path: '/maintenance'
+      fullPath: '/administration/maintenance'
+      preLoaderRoute: typeof AdministrationMaintenanceRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/magasins': {
+      id: '/administration/magasins'
+      path: '/magasins'
+      fullPath: '/administration/magasins'
+      preLoaderRoute: typeof AdministrationMagasinsRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/entreprises': {
+      id: '/administration/entreprises'
+      path: '/entreprises'
+      fullPath: '/administration/entreprises'
+      preLoaderRoute: typeof AdministrationEntreprisesRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/donnees': {
+      id: '/administration/donnees'
+      path: '/donnees'
+      fullPath: '/administration/donnees'
+      preLoaderRoute: typeof AdministrationDonneesRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/audit': {
+      id: '/administration/audit'
+      path: '/audit'
+      fullPath: '/administration/audit'
+      preLoaderRoute: typeof AdministrationAuditRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
+    '/administration/a-propos': {
+      id: '/administration/a-propos'
+      path: '/a-propos'
+      fullPath: '/administration/a-propos'
+      preLoaderRoute: typeof AdministrationAProposRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
     '/fournisseurs/commandes/': {
       id: '/fournisseurs/commandes/'
       path: '/commandes'
@@ -1405,6 +1677,42 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AdministrationRouteChildren {
+  AdministrationAProposRoute: typeof AdministrationAProposRoute
+  AdministrationAuditRoute: typeof AdministrationAuditRoute
+  AdministrationDonneesRoute: typeof AdministrationDonneesRoute
+  AdministrationEntreprisesRoute: typeof AdministrationEntreprisesRoute
+  AdministrationMagasinsRoute: typeof AdministrationMagasinsRoute
+  AdministrationMaintenanceRoute: typeof AdministrationMaintenanceRoute
+  AdministrationNotificationsRoute: typeof AdministrationNotificationsRoute
+  AdministrationPersonnalisationRoute: typeof AdministrationPersonnalisationRoute
+  AdministrationPreferencesRoute: typeof AdministrationPreferencesRoute
+  AdministrationSauvegardesRoute: typeof AdministrationSauvegardesRoute
+  AdministrationSecuriteRoute: typeof AdministrationSecuriteRoute
+  AdministrationUtilisateursRoute: typeof AdministrationUtilisateursRoute
+  AdministrationIndexRoute: typeof AdministrationIndexRoute
+}
+
+const AdministrationRouteChildren: AdministrationRouteChildren = {
+  AdministrationAProposRoute: AdministrationAProposRoute,
+  AdministrationAuditRoute: AdministrationAuditRoute,
+  AdministrationDonneesRoute: AdministrationDonneesRoute,
+  AdministrationEntreprisesRoute: AdministrationEntreprisesRoute,
+  AdministrationMagasinsRoute: AdministrationMagasinsRoute,
+  AdministrationMaintenanceRoute: AdministrationMaintenanceRoute,
+  AdministrationNotificationsRoute: AdministrationNotificationsRoute,
+  AdministrationPersonnalisationRoute: AdministrationPersonnalisationRoute,
+  AdministrationPreferencesRoute: AdministrationPreferencesRoute,
+  AdministrationSauvegardesRoute: AdministrationSauvegardesRoute,
+  AdministrationSecuriteRoute: AdministrationSecuriteRoute,
+  AdministrationUtilisateursRoute: AdministrationUtilisateursRoute,
+  AdministrationIndexRoute: AdministrationIndexRoute,
+}
+
+const AdministrationRouteWithChildren = AdministrationRoute._addFileChildren(
+  AdministrationRouteChildren,
+)
 
 interface ClientsRouteChildren {
   ClientsClientIdRoute: typeof ClientsClientIdRoute
@@ -1611,6 +1919,7 @@ const VentesRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdministrationRoute: AdministrationRouteWithChildren,
   CaisseRoute: CaisseRoute,
   CategoriesRoute: CategoriesRoute,
   ClientsRoute: ClientsRouteWithChildren,
