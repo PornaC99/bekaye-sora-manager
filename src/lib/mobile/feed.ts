@@ -142,8 +142,9 @@ export function useNotificationsMobile(): NotificationMobile[] {
       liste.push({
         id: `H-${a.id}`,
         date: a.date,
-        titre: a.action,
-        message: `${a.employe} · ${a.details}`,
+        titre: a.description,
+        message: `${a.auteur} · ${a.module}`,
+
         module: "Employés",
         priorite: "normale",
         icone: "employe",
