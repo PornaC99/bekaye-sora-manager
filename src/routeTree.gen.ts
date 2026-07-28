@@ -50,6 +50,7 @@ import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statis
 import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
 import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
 import { Route as FournisseursCommandesIndexRouteImport } from './routes/fournisseurs.commandes.index'
+import { Route as FournisseursCommandesCommandeIdRouteImport } from './routes/fournisseurs.commandes.$commandeId'
 
 const VentesRoute = VentesRouteImport.update({
   id: '/ventes',
@@ -259,6 +260,12 @@ const FournisseursCommandesIndexRoute =
     path: '/commandes/',
     getParentRoute: () => FournisseursRoute,
   } as any)
+const FournisseursCommandesCommandeIdRoute =
+  FournisseursCommandesCommandeIdRouteImport.update({
+    id: '/commandes/$commandeId',
+    path: '/commandes/$commandeId',
+    getParentRoute: () => FournisseursRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -301,6 +308,7 @@ export interface FileRoutesByFullPath {
   '/inventaire/': typeof InventaireIndexRoute
   '/produits/': typeof ProduitsIndexRoute
   '/ventes/': typeof VentesIndexRoute
+  '/fournisseurs/commandes/$commandeId': typeof FournisseursCommandesCommandeIdRoute
   '/fournisseurs/commandes/': typeof FournisseursCommandesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -338,6 +346,7 @@ export interface FileRoutesByTo {
   '/inventaire': typeof InventaireIndexRoute
   '/produits': typeof ProduitsIndexRoute
   '/ventes': typeof VentesIndexRoute
+  '/fournisseurs/commandes/$commandeId': typeof FournisseursCommandesCommandeIdRoute
   '/fournisseurs/commandes': typeof FournisseursCommandesIndexRoute
 }
 export interface FileRoutesById {
@@ -382,6 +391,7 @@ export interface FileRoutesById {
   '/inventaire/': typeof InventaireIndexRoute
   '/produits/': typeof ProduitsIndexRoute
   '/ventes/': typeof VentesIndexRoute
+  '/fournisseurs/commandes/$commandeId': typeof FournisseursCommandesCommandeIdRoute
   '/fournisseurs/commandes/': typeof FournisseursCommandesIndexRoute
 }
 export interface FileRouteTypes {
@@ -427,6 +437,7 @@ export interface FileRouteTypes {
     | '/inventaire/'
     | '/produits/'
     | '/ventes/'
+    | '/fournisseurs/commandes/$commandeId'
     | '/fournisseurs/commandes/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -464,6 +475,7 @@ export interface FileRouteTypes {
     | '/inventaire'
     | '/produits'
     | '/ventes'
+    | '/fournisseurs/commandes/$commandeId'
     | '/fournisseurs/commandes'
   id:
     | '__root__'
@@ -507,6 +519,7 @@ export interface FileRouteTypes {
     | '/inventaire/'
     | '/produits/'
     | '/ventes/'
+    | '/fournisseurs/commandes/$commandeId'
     | '/fournisseurs/commandes/'
   fileRoutesById: FileRoutesById
 }
@@ -820,6 +833,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FournisseursCommandesIndexRouteImport
       parentRoute: typeof FournisseursRoute
     }
+    '/fournisseurs/commandes/$commandeId': {
+      id: '/fournisseurs/commandes/$commandeId'
+      path: '/commandes/$commandeId'
+      fullPath: '/fournisseurs/commandes/$commandeId'
+      preLoaderRoute: typeof FournisseursCommandesCommandeIdRouteImport
+      parentRoute: typeof FournisseursRoute
+    }
   }
 }
 
@@ -863,6 +883,7 @@ interface FournisseursRouteChildren {
   FournisseursAnalyseRoute: typeof FournisseursAnalyseRoute
   FournisseursApprovisionnementRoute: typeof FournisseursApprovisionnementRoute
   FournisseursIndexRoute: typeof FournisseursIndexRoute
+  FournisseursCommandesCommandeIdRoute: typeof FournisseursCommandesCommandeIdRoute
   FournisseursCommandesIndexRoute: typeof FournisseursCommandesIndexRoute
 }
 
@@ -871,6 +892,7 @@ const FournisseursRouteChildren: FournisseursRouteChildren = {
   FournisseursAnalyseRoute: FournisseursAnalyseRoute,
   FournisseursApprovisionnementRoute: FournisseursApprovisionnementRoute,
   FournisseursIndexRoute: FournisseursIndexRoute,
+  FournisseursCommandesCommandeIdRoute: FournisseursCommandesCommandeIdRoute,
   FournisseursCommandesIndexRoute: FournisseursCommandesIndexRoute,
 }
 
