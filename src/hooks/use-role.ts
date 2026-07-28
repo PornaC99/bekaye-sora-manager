@@ -45,11 +45,7 @@ export function simulerRole(role: RoleCle | null) {
 }
 
 export function useRoleActuel() {
-  const simule = useSyncExternalStore(
-    subscribe,
-    getSnapshot,
-    () => null as RoleCle | null,
-  );
+  const simule = useSyncExternalStore(subscribe, getSnapshot, () => null as RoleCle | null);
   const { data, isLoading } = useEntreprise();
   const reel = roleDepuisBase(data?.role);
 
