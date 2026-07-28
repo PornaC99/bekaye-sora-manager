@@ -30,6 +30,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as VentesIndexRouteImport } from './routes/ventes.index'
 import { Route as ProduitsIndexRouteImport } from './routes/produits.index'
 import { Route as EntreesStockIndexRouteImport } from './routes/entrees-stock.index'
+import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
 import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique'
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
@@ -141,6 +142,11 @@ const EntreesStockIndexRoute = EntreesStockIndexRouteImport.update({
   path: '/',
   getParentRoute: () => EntreesStockRoute,
 } as any)
+const VentesRetoursRoute = VentesRetoursRouteImport.update({
+  id: '/retours',
+  path: '/retours',
+  getParentRoute: () => VentesRoute,
+} as any)
 const VentesHistoriqueRoute = VentesHistoriqueRouteImport.update({
   id: '/historique',
   path: '/historique',
@@ -191,6 +197,7 @@ export interface FileRoutesByFullPath {
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
+  '/ventes/retours': typeof VentesRetoursRoute
   '/entrees-stock/': typeof EntreesStockIndexRoute
   '/produits/': typeof ProduitsIndexRoute
   '/ventes/': typeof VentesIndexRoute
@@ -216,6 +223,7 @@ export interface FileRoutesByTo {
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
+  '/ventes/retours': typeof VentesRetoursRoute
   '/entrees-stock': typeof EntreesStockIndexRoute
   '/produits': typeof ProduitsIndexRoute
   '/ventes': typeof VentesIndexRoute
@@ -245,6 +253,7 @@ export interface FileRoutesById {
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
+  '/ventes/retours': typeof VentesRetoursRoute
   '/entrees-stock/': typeof EntreesStockIndexRoute
   '/produits/': typeof ProduitsIndexRoute
   '/ventes/': typeof VentesIndexRoute
@@ -275,6 +284,7 @@ export interface FileRouteTypes {
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
+    | '/ventes/retours'
     | '/entrees-stock/'
     | '/produits/'
     | '/ventes/'
@@ -300,6 +310,7 @@ export interface FileRouteTypes {
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
+    | '/ventes/retours'
     | '/entrees-stock'
     | '/produits'
     | '/ventes'
@@ -328,6 +339,7 @@ export interface FileRouteTypes {
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
+    | '/ventes/retours'
     | '/entrees-stock/'
     | '/produits/'
     | '/ventes/'
@@ -503,6 +515,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EntreesStockIndexRouteImport
       parentRoute: typeof EntreesStockRoute
     }
+    '/ventes/retours': {
+      id: '/ventes/retours'
+      path: '/retours'
+      fullPath: '/ventes/retours'
+      preLoaderRoute: typeof VentesRetoursRouteImport
+      parentRoute: typeof VentesRoute
+    }
     '/ventes/historique': {
       id: '/ventes/historique'
       path: '/historique'
@@ -575,11 +594,13 @@ const ProduitsRouteWithChildren = ProduitsRoute._addFileChildren(
 
 interface VentesRouteChildren {
   VentesHistoriqueRoute: typeof VentesHistoriqueRoute
+  VentesRetoursRoute: typeof VentesRetoursRoute
   VentesIndexRoute: typeof VentesIndexRoute
 }
 
 const VentesRouteChildren: VentesRouteChildren = {
   VentesHistoriqueRoute: VentesHistoriqueRoute,
+  VentesRetoursRoute: VentesRetoursRoute,
   VentesIndexRoute: VentesIndexRoute,
 }
 
