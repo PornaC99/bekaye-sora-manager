@@ -18,6 +18,7 @@ import { Route as RapportsRouteImport } from './routes/rapports'
 import { Route as ProduitsRouteImport } from './routes/produits'
 import { Route as ParametresRouteImport } from './routes/parametres'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as NexusiaRouteImport } from './routes/nexusia'
 import { Route as MobileRouteImport } from './routes/mobile'
 import { Route as InventaireRouteImport } from './routes/inventaire'
 import { Route as FournisseursRouteImport } from './routes/fournisseurs'
@@ -139,6 +140,11 @@ const ParametresRoute = ParametresRouteImport.update({
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NexusiaRoute = NexusiaRouteImport.update({
+  id: '/nexusia',
+  path: '/nexusia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MobileRoute = MobileRouteImport.update({
@@ -550,6 +556,7 @@ export interface FileRoutesByFullPath {
   '/fournisseurs': typeof FournisseursRouteWithChildren
   '/inventaire': typeof InventaireRouteWithChildren
   '/mobile': typeof MobileRouteWithChildren
+  '/nexusia': typeof NexusiaRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/produits': typeof ProduitsRouteWithChildren
@@ -630,6 +637,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
+  '/nexusia': typeof NexusiaRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/salaires': typeof SalairesRoute
@@ -716,6 +724,7 @@ export interface FileRoutesById {
   '/fournisseurs': typeof FournisseursRouteWithChildren
   '/inventaire': typeof InventaireRouteWithChildren
   '/mobile': typeof MobileRouteWithChildren
+  '/nexusia': typeof NexusiaRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/produits': typeof ProduitsRouteWithChildren
@@ -806,6 +815,7 @@ export interface FileRouteTypes {
     | '/fournisseurs'
     | '/inventaire'
     | '/mobile'
+    | '/nexusia'
     | '/notifications'
     | '/parametres'
     | '/produits'
@@ -886,6 +896,7 @@ export interface FileRouteTypes {
     | '/'
     | '/caisse'
     | '/categories'
+    | '/nexusia'
     | '/notifications'
     | '/parametres'
     | '/salaires'
@@ -971,6 +982,7 @@ export interface FileRouteTypes {
     | '/fournisseurs'
     | '/inventaire'
     | '/mobile'
+    | '/nexusia'
     | '/notifications'
     | '/parametres'
     | '/produits'
@@ -1060,6 +1072,7 @@ export interface RootRouteChildren {
   FournisseursRoute: typeof FournisseursRouteWithChildren
   InventaireRoute: typeof InventaireRouteWithChildren
   MobileRoute: typeof MobileRouteWithChildren
+  NexusiaRoute: typeof NexusiaRoute
   NotificationsRoute: typeof NotificationsRoute
   ParametresRoute: typeof ParametresRoute
   ProduitsRoute: typeof ProduitsRouteWithChildren
@@ -1134,6 +1147,13 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nexusia': {
+      id: '/nexusia'
+      path: '/nexusia'
+      fullPath: '/nexusia'
+      preLoaderRoute: typeof NexusiaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mobile': {
@@ -1929,6 +1949,7 @@ const rootRouteChildren: RootRouteChildren = {
   FournisseursRoute: FournisseursRouteWithChildren,
   InventaireRoute: InventaireRouteWithChildren,
   MobileRoute: MobileRouteWithChildren,
+  NexusiaRoute: NexusiaRoute,
   NotificationsRoute: NotificationsRoute,
   ParametresRoute: ParametresRoute,
   ProduitsRoute: ProduitsRouteWithChildren,
