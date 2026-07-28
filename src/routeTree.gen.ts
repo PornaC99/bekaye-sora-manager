@@ -81,6 +81,7 @@ import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
 import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
 import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
+import { Route as AdministrationUtilisateursRouteImport } from './routes/administration.utilisateurs'
 import { Route as AdministrationPersonnalisationRouteImport } from './routes/administration.personnalisation'
 import { Route as FournisseursCommandesIndexRouteImport } from './routes/fournisseurs.commandes.index'
 import { Route as FournisseursCommandesCommandeIdRouteImport } from './routes/fournisseurs.commandes.$commandeId'
@@ -447,6 +448,12 @@ const ClientsClientIdRoute = ClientsClientIdRouteImport.update({
   path: '/$clientId',
   getParentRoute: () => ClientsRoute,
 } as any)
+const AdministrationUtilisateursRoute =
+  AdministrationUtilisateursRouteImport.update({
+    id: '/utilisateurs',
+    path: '/utilisateurs',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
 const AdministrationPersonnalisationRoute =
   AdministrationPersonnalisationRouteImport.update({
     id: '/personnalisation',
@@ -488,6 +495,7 @@ export interface FileRoutesByFullPath {
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
@@ -554,6 +562,7 @@ export interface FileRoutesByTo {
   '/sorties-stock': typeof SortiesStockRoute
   '/statistiques': typeof StatistiquesRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
@@ -632,6 +641,7 @@ export interface FileRoutesById {
   '/statistiques': typeof StatistiquesRoute
   '/ventes': typeof VentesRouteWithChildren
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
@@ -711,6 +721,7 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/ventes'
     | '/administration/personnalisation'
+    | '/administration/utilisateurs'
     | '/clients/$clientId'
     | '/clients/analyse'
     | '/clients/statistiques'
@@ -777,6 +788,7 @@ export interface FileRouteTypes {
     | '/sorties-stock'
     | '/statistiques'
     | '/administration/personnalisation'
+    | '/administration/utilisateurs'
     | '/clients/$clientId'
     | '/clients/analyse'
     | '/clients/statistiques'
@@ -854,6 +866,7 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/ventes'
     | '/administration/personnalisation'
+    | '/administration/utilisateurs'
     | '/clients/$clientId'
     | '/clients/analyse'
     | '/clients/statistiques'
@@ -1439,6 +1452,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClientsClientIdRouteImport
       parentRoute: typeof ClientsRoute
     }
+    '/administration/utilisateurs': {
+      id: '/administration/utilisateurs'
+      path: '/utilisateurs'
+      fullPath: '/administration/utilisateurs'
+      preLoaderRoute: typeof AdministrationUtilisateursRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
     '/administration/personnalisation': {
       id: '/administration/personnalisation'
       path: '/personnalisation'
@@ -1465,11 +1485,13 @@ declare module '@tanstack/react-router' {
 
 interface AdministrationRouteChildren {
   AdministrationPersonnalisationRoute: typeof AdministrationPersonnalisationRoute
+  AdministrationUtilisateursRoute: typeof AdministrationUtilisateursRoute
   AdministrationIndexRoute: typeof AdministrationIndexRoute
 }
 
 const AdministrationRouteChildren: AdministrationRouteChildren = {
   AdministrationPersonnalisationRoute: AdministrationPersonnalisationRoute,
+  AdministrationUtilisateursRoute: AdministrationUtilisateursRoute,
   AdministrationIndexRoute: AdministrationIndexRoute,
 }
 
