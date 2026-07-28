@@ -53,7 +53,7 @@ const vide = (roleId: string): UtilisateurFormValues => ({
 
 function UtilisateursPage() {
   const { utilisateurs, roles, magasins, audit } = useAdminStore();
-  const { reel, simule } = useRoleActuel();
+  const { simule } = useRoleActuel();
   const [historique, setHistorique] = useState<Utilisateur | null>(null);
   const [ouvert, setOuvert] = useState(false);
   const [edition, setEdition] = useState<Utilisateur | null>(null);
