@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { FileText, Printer } from "lucide-react";
 import { toast } from "sonner";
 
-import { NexusHeader, Pastille, SectionCard } from "@/components/nexusia/pieces";
+import { NexusHeader, Pastille, SectionCard, TableauCompact } from "@/components/nexusia/pieces";
 import { useNexusia } from "@/lib/nexusia/insight";
 import { contenuRapport, imprimerRapportNexus } from "@/lib/nexusia/print";
 import { TYPES_RAPPORT, type TypeRapport } from "@/lib/nexusia/types";
