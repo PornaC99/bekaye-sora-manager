@@ -40,6 +40,7 @@ import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produi
 import { Route as InventaireHistoriqueRouteImport } from './routes/inventaire.historique'
 import { Route as InventaireAnalyseRouteImport } from './routes/inventaire.analyse'
 import { Route as InventaireInventaireIdRouteImport } from './routes/inventaire.$inventaireId'
+import { Route as FournisseursAnalyseRouteImport } from './routes/fournisseurs.analyse'
 import { Route as FournisseursFournisseurIdRouteImport } from './routes/fournisseurs.$fournisseurId'
 import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-stock.historique'
 import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
@@ -204,6 +205,11 @@ const InventaireInventaireIdRoute = InventaireInventaireIdRouteImport.update({
   path: '/$inventaireId',
   getParentRoute: () => InventaireRoute,
 } as any)
+const FournisseursAnalyseRoute = FournisseursAnalyseRouteImport.update({
+  id: '/analyse',
+  path: '/analyse',
+  getParentRoute: () => FournisseursRoute,
+} as any)
 const FournisseursFournisseurIdRoute =
   FournisseursFournisseurIdRouteImport.update({
     id: '/$fournisseurId',
@@ -273,6 +279,7 @@ export interface FileRoutesByFullPath {
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
+  '/fournisseurs/analyse': typeof FournisseursAnalyseRoute
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
@@ -308,6 +315,7 @@ export interface FileRoutesByTo {
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
+  '/fournisseurs/analyse': typeof FournisseursAnalyseRoute
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
@@ -350,6 +358,7 @@ export interface FileRoutesById {
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
   '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
+  '/fournisseurs/analyse': typeof FournisseursAnalyseRoute
   '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
@@ -393,6 +402,7 @@ export interface FileRouteTypes {
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
     | '/fournisseurs/$fournisseurId'
+    | '/fournisseurs/analyse'
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
@@ -428,6 +438,7 @@ export interface FileRouteTypes {
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
     | '/fournisseurs/$fournisseurId'
+    | '/fournisseurs/analyse'
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
@@ -469,6 +480,7 @@ export interface FileRouteTypes {
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
     | '/fournisseurs/$fournisseurId'
+    | '/fournisseurs/analyse'
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
@@ -725,6 +737,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventaireInventaireIdRouteImport
       parentRoute: typeof InventaireRoute
     }
+    '/fournisseurs/analyse': {
+      id: '/fournisseurs/analyse'
+      path: '/analyse'
+      fullPath: '/fournisseurs/analyse'
+      preLoaderRoute: typeof FournisseursAnalyseRouteImport
+      parentRoute: typeof FournisseursRoute
+    }
     '/fournisseurs/$fournisseurId': {
       id: '/fournisseurs/$fournisseurId'
       path: '/$fournisseurId'
@@ -821,12 +840,14 @@ const EntreesStockRouteWithChildren = EntreesStockRoute._addFileChildren(
 
 interface FournisseursRouteChildren {
   FournisseursFournisseurIdRoute: typeof FournisseursFournisseurIdRoute
+  FournisseursAnalyseRoute: typeof FournisseursAnalyseRoute
   FournisseursIndexRoute: typeof FournisseursIndexRoute
   FournisseursCommandesIndexRoute: typeof FournisseursCommandesIndexRoute
 }
 
 const FournisseursRouteChildren: FournisseursRouteChildren = {
   FournisseursFournisseurIdRoute: FournisseursFournisseurIdRoute,
+  FournisseursAnalyseRoute: FournisseursAnalyseRoute,
   FournisseursIndexRoute: FournisseursIndexRoute,
   FournisseursCommandesIndexRoute: FournisseursCommandesIndexRoute,
 }
