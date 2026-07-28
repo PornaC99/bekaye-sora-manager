@@ -41,12 +41,17 @@ import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
 import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique'
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
+import { Route as MobileRechercheRouteImport } from './routes/mobile.recherche'
 import { Route as MobileRapportsRouteImport } from './routes/mobile.rapports'
 import { Route as MobileProduitsRouteImport } from './routes/mobile.produits'
+import { Route as MobileParametresRouteImport } from './routes/mobile.parametres'
 import { Route as MobileNotificationsRouteImport } from './routes/mobile.notifications'
+import { Route as MobileFinancesRouteImport } from './routes/mobile.finances'
 import { Route as MobileEmployesRouteImport } from './routes/mobile.employes'
+import { Route as MobileDirectRouteImport } from './routes/mobile.direct'
 import { Route as MobileConnexionRouteImport } from './routes/mobile.connexion'
 import { Route as MobileClientsRouteImport } from './routes/mobile.clients'
+import { Route as MobileAssistantRouteImport } from './routes/mobile.assistant'
 import { Route as MobileAlertesRouteImport } from './routes/mobile.alertes'
 import { Route as InventaireHistoriqueRouteImport } from './routes/inventaire.historique'
 import { Route as InventaireAnalyseRouteImport } from './routes/inventaire.analyse'
@@ -234,6 +239,11 @@ const ProduitsProduitIdRoute = ProduitsProduitIdRouteImport.update({
   path: '/$produitId',
   getParentRoute: () => ProduitsRoute,
 } as any)
+const MobileRechercheRoute = MobileRechercheRouteImport.update({
+  id: '/recherche',
+  path: '/recherche',
+  getParentRoute: () => MobileRoute,
+} as any)
 const MobileRapportsRoute = MobileRapportsRouteImport.update({
   id: '/rapports',
   path: '/rapports',
@@ -244,14 +254,29 @@ const MobileProduitsRoute = MobileProduitsRouteImport.update({
   path: '/produits',
   getParentRoute: () => MobileRoute,
 } as any)
+const MobileParametresRoute = MobileParametresRouteImport.update({
+  id: '/parametres',
+  path: '/parametres',
+  getParentRoute: () => MobileRoute,
+} as any)
 const MobileNotificationsRoute = MobileNotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
   getParentRoute: () => MobileRoute,
 } as any)
+const MobileFinancesRoute = MobileFinancesRouteImport.update({
+  id: '/finances',
+  path: '/finances',
+  getParentRoute: () => MobileRoute,
+} as any)
 const MobileEmployesRoute = MobileEmployesRouteImport.update({
   id: '/employes',
   path: '/employes',
+  getParentRoute: () => MobileRoute,
+} as any)
+const MobileDirectRoute = MobileDirectRouteImport.update({
+  id: '/direct',
+  path: '/direct',
   getParentRoute: () => MobileRoute,
 } as any)
 const MobileConnexionRoute = MobileConnexionRouteImport.update({
@@ -262,6 +287,11 @@ const MobileConnexionRoute = MobileConnexionRouteImport.update({
 const MobileClientsRoute = MobileClientsRouteImport.update({
   id: '/clients',
   path: '/clients',
+  getParentRoute: () => MobileRoute,
+} as any)
+const MobileAssistantRoute = MobileAssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
   getParentRoute: () => MobileRoute,
 } as any)
 const MobileAlertesRoute = MobileAlertesRouteImport.update({
@@ -443,12 +473,17 @@ export interface FileRoutesByFullPath {
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/mobile/alertes': typeof MobileAlertesRoute
+  '/mobile/assistant': typeof MobileAssistantRoute
   '/mobile/clients': typeof MobileClientsRoute
   '/mobile/connexion': typeof MobileConnexionRoute
+  '/mobile/direct': typeof MobileDirectRoute
   '/mobile/employes': typeof MobileEmployesRoute
+  '/mobile/finances': typeof MobileFinancesRoute
   '/mobile/notifications': typeof MobileNotificationsRoute
+  '/mobile/parametres': typeof MobileParametresRoute
   '/mobile/produits': typeof MobileProduitsRoute
   '/mobile/rapports': typeof MobileRapportsRoute
+  '/mobile/recherche': typeof MobileRechercheRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -500,12 +535,17 @@ export interface FileRoutesByTo {
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/mobile/alertes': typeof MobileAlertesRoute
+  '/mobile/assistant': typeof MobileAssistantRoute
   '/mobile/clients': typeof MobileClientsRoute
   '/mobile/connexion': typeof MobileConnexionRoute
+  '/mobile/direct': typeof MobileDirectRoute
   '/mobile/employes': typeof MobileEmployesRoute
+  '/mobile/finances': typeof MobileFinancesRoute
   '/mobile/notifications': typeof MobileNotificationsRoute
+  '/mobile/parametres': typeof MobileParametresRoute
   '/mobile/produits': typeof MobileProduitsRoute
   '/mobile/rapports': typeof MobileRapportsRoute
+  '/mobile/recherche': typeof MobileRechercheRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -567,12 +607,17 @@ export interface FileRoutesById {
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/mobile/alertes': typeof MobileAlertesRoute
+  '/mobile/assistant': typeof MobileAssistantRoute
   '/mobile/clients': typeof MobileClientsRoute
   '/mobile/connexion': typeof MobileConnexionRoute
+  '/mobile/direct': typeof MobileDirectRoute
   '/mobile/employes': typeof MobileEmployesRoute
+  '/mobile/finances': typeof MobileFinancesRoute
   '/mobile/notifications': typeof MobileNotificationsRoute
+  '/mobile/parametres': typeof MobileParametresRoute
   '/mobile/produits': typeof MobileProduitsRoute
   '/mobile/rapports': typeof MobileRapportsRoute
+  '/mobile/recherche': typeof MobileRechercheRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -635,12 +680,17 @@ export interface FileRouteTypes {
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/mobile/alertes'
+    | '/mobile/assistant'
     | '/mobile/clients'
     | '/mobile/connexion'
+    | '/mobile/direct'
     | '/mobile/employes'
+    | '/mobile/finances'
     | '/mobile/notifications'
+    | '/mobile/parametres'
     | '/mobile/produits'
     | '/mobile/rapports'
+    | '/mobile/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -692,12 +742,17 @@ export interface FileRouteTypes {
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/mobile/alertes'
+    | '/mobile/assistant'
     | '/mobile/clients'
     | '/mobile/connexion'
+    | '/mobile/direct'
     | '/mobile/employes'
+    | '/mobile/finances'
     | '/mobile/notifications'
+    | '/mobile/parametres'
     | '/mobile/produits'
     | '/mobile/rapports'
+    | '/mobile/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -758,12 +813,17 @@ export interface FileRouteTypes {
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/mobile/alertes'
+    | '/mobile/assistant'
     | '/mobile/clients'
     | '/mobile/connexion'
+    | '/mobile/direct'
     | '/mobile/employes'
+    | '/mobile/finances'
     | '/mobile/notifications'
+    | '/mobile/parametres'
     | '/mobile/produits'
     | '/mobile/rapports'
+    | '/mobile/recherche'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -1029,6 +1089,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProduitsProduitIdRouteImport
       parentRoute: typeof ProduitsRoute
     }
+    '/mobile/recherche': {
+      id: '/mobile/recherche'
+      path: '/recherche'
+      fullPath: '/mobile/recherche'
+      preLoaderRoute: typeof MobileRechercheRouteImport
+      parentRoute: typeof MobileRoute
+    }
     '/mobile/rapports': {
       id: '/mobile/rapports'
       path: '/rapports'
@@ -1043,6 +1110,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MobileProduitsRouteImport
       parentRoute: typeof MobileRoute
     }
+    '/mobile/parametres': {
+      id: '/mobile/parametres'
+      path: '/parametres'
+      fullPath: '/mobile/parametres'
+      preLoaderRoute: typeof MobileParametresRouteImport
+      parentRoute: typeof MobileRoute
+    }
     '/mobile/notifications': {
       id: '/mobile/notifications'
       path: '/notifications'
@@ -1050,11 +1124,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MobileNotificationsRouteImport
       parentRoute: typeof MobileRoute
     }
+    '/mobile/finances': {
+      id: '/mobile/finances'
+      path: '/finances'
+      fullPath: '/mobile/finances'
+      preLoaderRoute: typeof MobileFinancesRouteImport
+      parentRoute: typeof MobileRoute
+    }
     '/mobile/employes': {
       id: '/mobile/employes'
       path: '/employes'
       fullPath: '/mobile/employes'
       preLoaderRoute: typeof MobileEmployesRouteImport
+      parentRoute: typeof MobileRoute
+    }
+    '/mobile/direct': {
+      id: '/mobile/direct'
+      path: '/direct'
+      fullPath: '/mobile/direct'
+      preLoaderRoute: typeof MobileDirectRouteImport
       parentRoute: typeof MobileRoute
     }
     '/mobile/connexion': {
@@ -1069,6 +1157,13 @@ declare module '@tanstack/react-router' {
       path: '/clients'
       fullPath: '/mobile/clients'
       preLoaderRoute: typeof MobileClientsRouteImport
+      parentRoute: typeof MobileRoute
+    }
+    '/mobile/assistant': {
+      id: '/mobile/assistant'
+      path: '/assistant'
+      fullPath: '/mobile/assistant'
+      preLoaderRoute: typeof MobileAssistantRouteImport
       parentRoute: typeof MobileRoute
     }
     '/mobile/alertes': {
@@ -1379,23 +1474,33 @@ const InventaireRouteWithChildren = InventaireRoute._addFileChildren(
 
 interface MobileRouteChildren {
   MobileAlertesRoute: typeof MobileAlertesRoute
+  MobileAssistantRoute: typeof MobileAssistantRoute
   MobileClientsRoute: typeof MobileClientsRoute
   MobileConnexionRoute: typeof MobileConnexionRoute
+  MobileDirectRoute: typeof MobileDirectRoute
   MobileEmployesRoute: typeof MobileEmployesRoute
+  MobileFinancesRoute: typeof MobileFinancesRoute
   MobileNotificationsRoute: typeof MobileNotificationsRoute
+  MobileParametresRoute: typeof MobileParametresRoute
   MobileProduitsRoute: typeof MobileProduitsRoute
   MobileRapportsRoute: typeof MobileRapportsRoute
+  MobileRechercheRoute: typeof MobileRechercheRoute
   MobileIndexRoute: typeof MobileIndexRoute
 }
 
 const MobileRouteChildren: MobileRouteChildren = {
   MobileAlertesRoute: MobileAlertesRoute,
+  MobileAssistantRoute: MobileAssistantRoute,
   MobileClientsRoute: MobileClientsRoute,
   MobileConnexionRoute: MobileConnexionRoute,
+  MobileDirectRoute: MobileDirectRoute,
   MobileEmployesRoute: MobileEmployesRoute,
+  MobileFinancesRoute: MobileFinancesRoute,
   MobileNotificationsRoute: MobileNotificationsRoute,
+  MobileParametresRoute: MobileParametresRoute,
   MobileProduitsRoute: MobileProduitsRoute,
   MobileRapportsRoute: MobileRapportsRoute,
+  MobileRechercheRoute: MobileRechercheRoute,
   MobileIndexRoute: MobileIndexRoute,
 }
 
