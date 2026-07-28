@@ -466,3 +466,13 @@
     text-align: left;
   }
 }
+
+@media (max-width: 767px) {
+  /* Aucun texte tronqué dans les cartes de tableau */
+  .table-cards tbody td .truncate,
+  .table-cards tbody td.truncate {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+  }
+}
