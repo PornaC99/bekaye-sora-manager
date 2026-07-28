@@ -12,7 +12,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0001",
     date: j(0, 9),
-    montant: 5000,
+    montant: 2000,
     categorie: "transport",
     modePaiement: "especes",
     description: "Livraison de commandes clients — quartier Badalabougou",
@@ -24,7 +24,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0002",
     date: j(-1, 16),
-    montant: 12000,
+    montant: 6000,
     categorie: "marketing",
     modePaiement: "orange_money",
     description: "Campagne de publicité WhatsApp et affiches boutique",
@@ -36,7 +36,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0003",
     date: j(-2, 11),
-    montant: 8500,
+    montant: 4000,
     categorie: "internet",
     modePaiement: "orange_money",
     description: "Recharge forfait internet boutique",
@@ -48,7 +48,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0004",
     date: j(-3, 8),
-    montant: 60000,
+    montant: 25000,
     categorie: "loyer",
     modePaiement: "virement",
     description: "Loyer mensuel du magasin principal",
@@ -60,7 +60,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0005",
     date: j(-4, 15),
-    montant: 18000,
+    montant: 7000,
     categorie: "electricite",
     modePaiement: "especes",
     description: "Facture EDM du mois",
@@ -72,7 +72,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0006",
     date: j(-6, 12),
-    montant: 9000,
+    montant: 3000,
     categorie: "transport",
     modePaiement: "especes",
     description: "Carburant véhicule de livraison",
@@ -84,7 +84,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0007",
     date: j(-8, 10),
-    montant: 25000,
+    montant: 8000,
     categorie: "impots",
     modePaiement: "virement",
     description: "Acompte de patente trimestrielle",
@@ -96,7 +96,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0008",
     date: j(-11, 14),
-    montant: 7000,
+    montant: 3000,
     categorie: "autres",
     modePaiement: "especes",
     description: "Produits d'entretien et fournitures de boutique",
@@ -108,7 +108,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0009",
     date: j(-14, 9),
-    montant: 15000,
+    montant: 7000,
     categorie: "marketing",
     modePaiement: "wave",
     description: "Séance photo produits pour les réseaux sociaux",
@@ -120,7 +120,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0010",
     date: j(-18, 11),
-    montant: 6000,
+    montant: 2500,
     categorie: "transport",
     modePaiement: "especes",
     description: "Transport de marchandises depuis le port",
@@ -132,7 +132,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0011",
     date: j(-26, 8),
-    montant: 60000,
+    montant: 25000,
     categorie: "loyer",
     modePaiement: "virement",
     description: "Loyer du mois précédent",
@@ -144,7 +144,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0012",
     date: j(-29, 17),
-    montant: 17000,
+    montant: 6500,
     categorie: "electricite",
     modePaiement: "especes",
     description: "Facture EDM du mois précédent",
@@ -156,7 +156,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0013",
     date: j(-35, 10),
-    montant: 11000,
+    montant: 4500,
     categorie: "autres",
     modePaiement: "especes",
     description: "Réparation de la climatisation du magasin",
@@ -168,7 +168,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0014",
     date: j(-44, 9),
-    montant: 10000,
+    montant: 5000,
     categorie: "marketing",
     modePaiement: "orange_money",
     description: "Distribution de flyers marché de Médina",
@@ -180,7 +180,7 @@ export const depensesDemo: Depense[] = [
   {
     id: "D-0015",
     date: j(-58, 8),
-    montant: 60000,
+    montant: 25000,
     categorie: "loyer",
     modePaiement: "virement",
     description: "Loyer du magasin",
