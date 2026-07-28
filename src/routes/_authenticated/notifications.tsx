@@ -43,10 +43,7 @@ function Page() {
   const { evenements } = useCentreNotifications();
   const [filtre, setFiltre] = useState<ModuleSysteme | "tous">("tous");
 
-  const modules = useMemo(
-    () => Array.from(new Set(evenements.map((e) => e.module))),
-    [evenements],
-  );
+  const modules = useMemo(() => Array.from(new Set(evenements.map((e) => e.module))), [evenements]);
   const liste = evenements.filter((e) => filtre === "tous" || e.module === filtre);
   const nonLus = evenements.filter((e) => !e.lu).length;
 
@@ -89,8 +86,8 @@ function Page() {
           </span>
           <h2 className="mt-4 text-base font-semibold text-foreground">Aucune notification</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Les évènements des modules apparaîtront ici dès la première opération (vente,
-            réception, inventaire, salaire, dépense…).
+            Les évènements des modules apparaîtront ici dès la première opération (vente, réception,
+            inventaire, salaire, dépense…).
           </p>
         </section>
       ) : (

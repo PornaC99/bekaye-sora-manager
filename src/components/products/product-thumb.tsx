@@ -21,12 +21,7 @@ export function ProductThumb({
       )}
     >
       {src ? (
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          className="h-full w-full object-cover"
-        />
+        <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover" />
       ) : (
         <ImageIcon className={cn("h-4 w-4 text-muted-foreground", iconClassName)} />
       )}

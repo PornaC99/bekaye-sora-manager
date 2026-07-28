@@ -236,7 +236,9 @@ export function SupplierFormDialog({
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             Annuler
           </Button>
-          <Button onClick={valider}>{fournisseur ? "Enregistrer" : "Ajouter le fournisseur"}</Button>
+          <Button onClick={valider}>
+            {fournisseur ? "Enregistrer" : "Ajouter le fournisseur"}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

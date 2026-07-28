@@ -71,17 +71,33 @@ function AnalysePage() {
 
       <SuppliersKpiCards
         cartes={[
-          { label: "Achats cumulés", value: formatFCFA(totalAchats), hint: `${commandes.length} commande(s)`, icon: TrendingUp, tone: "primary" },
-          { label: "Délai moyen global", value: delaiGlobal !== null ? `${delaiGlobal.toFixed(1)} j` : "—", hint: "Entre commande et réception", icon: Timer, tone: "warning" },
-          { label: "Fournisseur principal", value: kpis.principal?.nom ?? "—", hint: formatFCFA(kpis.montantPrincipal), icon: Truck, tone: "success" },
+          {
+            label: "Achats cumulés",
+            value: formatFCFA(totalAchats),
+            hint: `${commandes.length} commande(s)`,
+            icon: TrendingUp,
+            tone: "primary",
+          },
+          {
+            label: "Délai moyen global",
+            value: delaiGlobal !== null ? `${delaiGlobal.toFixed(1)} j` : "—",
+            hint: "Entre commande et réception",
+            icon: Timer,
+            tone: "warning",
+          },
+          {
+            label: "Fournisseur principal",
+            value: kpis.principal?.nom ?? "—",
+            hint: formatFCFA(kpis.montantPrincipal),
+            icon: Truck,
+            tone: "success",
+          },
         ]}
       />
 
       <section className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
         <div className="border-b border-border px-5 py-4">
-          <h2 className="font-display text-base font-semibold text-foreground">
-            Top fournisseurs
-          </h2>
+          <h2 className="font-display text-base font-semibold text-foreground">Top fournisseurs</h2>
           <p className="text-xs text-muted-foreground">
             Montant total, nombre de commandes, délai moyen et respect des délais.
           </p>

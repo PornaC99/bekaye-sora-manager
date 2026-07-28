@@ -89,7 +89,12 @@ export function StatTile({
       </p>
       <p className="mt-1.5 font-display text-xl font-semibold text-foreground">{valeur}</p>
       {detail && (
-        <p className={cn("mt-1 inline-flex rounded-md border px-1.5 py-0.5 text-[11px]", TON_CLASSE[ton])}>
+        <p
+          className={cn(
+            "mt-1 inline-flex rounded-md border px-1.5 py-0.5 text-[11px]",
+            TON_CLASSE[ton],
+          )}
+        >
           {detail}
         </p>
       )}
@@ -116,7 +121,9 @@ export function ListeInsights({
   items: { id: string; titre: string; message: string; ton: TonInsight; badge?: string }[];
 }) {
   if (items.length === 0) {
-    return <p className="text-sm text-muted-foreground">Aucun élément à signaler pour le moment.</p>;
+    return (
+      <p className="text-sm text-muted-foreground">Aucun élément à signaler pour le moment.</p>
+    );
   }
   return (
     <ul className="flex flex-col gap-3">
@@ -222,7 +229,10 @@ export function BarresComparaison({
           <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
           <XAxis dataKey="label" {...AXES} interval={0} angle={-12} height={44} textAnchor="end" />
           <YAxis {...AXES} width={64} tickFormatter={(v) => `${Math.round(Number(v) / 1000)}k`} />
-          <Tooltip contentStyle={INFOBULLE} formatter={(v: number) => [formatFCFA(Number(v)), nom]} />
+          <Tooltip
+            contentStyle={INFOBULLE}
+            formatter={(v: number) => [formatFCFA(Number(v)), nom]}
+          />
           <Bar dataKey={cle} name={nom} fill={couleur} radius={[6, 6, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>

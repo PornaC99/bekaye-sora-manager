@@ -104,7 +104,9 @@ function FournisseursPage() {
           .toLowerCase()
           .includes(q);
       })
-      .sort((a, b) => totalAchatsFournisseur(b.id, commandes) - totalAchatsFournisseur(a.id, commandes));
+      .sort(
+        (a, b) => totalAchatsFournisseur(b.id, commandes) - totalAchatsFournisseur(a.id, commandes),
+      );
   }, [fournisseurs, commandes, recherche, filtre]);
 
   function enregistrer(values: FournisseurFormValues) {
@@ -149,12 +151,48 @@ function FournisseursPage() {
 
       <SuppliersKpiCards
         cartes={[
-          { label: "Total fournisseurs", value: String(kpis.total), hint: `${kpis.actifs} actif(s)`, icon: Truck, tone: "primary" },
-          { label: "Fournisseurs actifs", value: String(kpis.actifs), hint: "Disponibles pour commander", icon: CheckCircle2, tone: "success" },
-          { label: "Commandes en attente", value: String(kpis.enAttente), hint: `${kpis.retards} en retard`, icon: ClipboardList, tone: kpis.retards ? "danger" : "warning" },
-          { label: "Commandes reçues", value: String(kpis.recues), hint: "Stock déjà mis à jour", icon: CheckCircle2, tone: "success" },
-          { label: "Achats du mois", value: formatFCFA(kpis.achatsMois), hint: "Toutes commandes confondues", icon: Wallet, tone: "primary" },
-          { label: "Fournisseur principal", value: kpis.principal?.nom ?? "—", hint: formatFCFA(kpis.montantPrincipal), icon: Trophy, tone: "warning" },
+          {
+            label: "Total fournisseurs",
+            value: String(kpis.total),
+            hint: `${kpis.actifs} actif(s)`,
+            icon: Truck,
+            tone: "primary",
+          },
+          {
+            label: "Fournisseurs actifs",
+            value: String(kpis.actifs),
+            hint: "Disponibles pour commander",
+            icon: CheckCircle2,
+            tone: "success",
+          },
+          {
+            label: "Commandes en attente",
+            value: String(kpis.enAttente),
+            hint: `${kpis.retards} en retard`,
+            icon: ClipboardList,
+            tone: kpis.retards ? "danger" : "warning",
+          },
+          {
+            label: "Commandes reçues",
+            value: String(kpis.recues),
+            hint: "Stock déjà mis à jour",
+            icon: CheckCircle2,
+            tone: "success",
+          },
+          {
+            label: "Achats du mois",
+            value: formatFCFA(kpis.achatsMois),
+            hint: "Toutes commandes confondues",
+            icon: Wallet,
+            tone: "primary",
+          },
+          {
+            label: "Fournisseur principal",
+            value: kpis.principal?.nom ?? "—",
+            hint: formatFCFA(kpis.montantPrincipal),
+            icon: Trophy,
+            tone: "warning",
+          },
         ]}
       />
 

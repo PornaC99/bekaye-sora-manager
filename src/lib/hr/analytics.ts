@@ -113,9 +113,8 @@ export function calculerKpisRh(input: {
   return {
     totalEmployes: input.employes.length,
     actifs: input.employes.filter((e) => e.statut === "actif").length,
-    presentsAujourdhui: presencesJour.filter(
-      (p) => p.statut === "present" || p.statut === "retard",
-    ).length,
+    presentsAujourdhui: presencesJour.filter((p) => p.statut === "present" || p.statut === "retard")
+      .length,
     enConge: input.employes.filter((e) => e.statut === "conge").length,
     retardsAujourdhui: presencesJour.filter((p) => p.statut === "retard").length,
     masseSalariale: bulletinsMois.reduce((acc, b) => acc + salaireNet(b), 0),

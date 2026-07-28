@@ -261,7 +261,11 @@ export function deciderConge(
 
 export function supprimerConge(id: string) {
   setState({ conges: state.conges.filter((c) => c.id !== id) });
-  journaliser({ type: "suppression", module: "Congés", description: "Demande de congé supprimée." });
+  journaliser({
+    type: "suppression",
+    module: "Congés",
+    description: "Demande de congé supprimée.",
+  });
 }
 
 /* ------------------------------------------------------------------ */
@@ -288,7 +292,12 @@ export function payerBulletin(id: string, modePaiement: BulletinPaie["modePaieme
   setState({
     bulletins: state.bulletins.map((b) =>
       b.id === id
-        ? { ...b, statut: "paye", modePaiement, datePaiement: new Date().toISOString().slice(0, 10) }
+        ? {
+            ...b,
+            statut: "paye",
+            modePaiement,
+            datePaiement: new Date().toISOString().slice(0, 10),
+          }
         : b,
     ),
   });

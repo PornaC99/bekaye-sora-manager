@@ -186,12 +186,9 @@ export function supprimerFournisseur(id: string) {
   });
 }
 
-
 export function basculerFavori(id: string) {
   setState({
-    fournisseurs: state.fournisseurs.map((f) =>
-      f.id === id ? { ...f, favori: !f.favori } : f,
-    ),
+    fournisseurs: state.fournisseurs.map((f) => (f.id === id ? { ...f, favori: !f.favori } : f)),
   });
 }
 

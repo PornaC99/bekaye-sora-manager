@@ -22,10 +22,7 @@ export function ResultsSummary({ inventaire }: { inventaire: Inventaire }) {
   ];
 
   return (
-    <SectionCard
-      title="Résultats de l'inventaire"
-      description="Synthèse du comptage en cours."
-    >
+    <SectionCard title="Résultats de l'inventaire" description="Synthèse du comptage en cours.">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((item) => (
           <div key={item.label} className="rounded-xl border border-border bg-muted/30 p-4">

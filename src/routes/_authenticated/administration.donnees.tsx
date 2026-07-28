@@ -56,7 +56,12 @@ function DonneesPage() {
             <article key={j.cle} className="rounded-2xl border border-border bg-background p-4">
               <p className="text-sm font-semibold text-foreground">{j.label}</p>
               <p className="mt-1 text-xs text-muted-foreground">{j.description}</p>
-              <Button variant="secondary" size="sm" className="mt-3" onClick={() => importer(j.label)}>
+              <Button
+                variant="secondary"
+                size="sm"
+                className="mt-3"
+                onClick={() => importer(j.label)}
+              >
                 <Upload className="mr-1.5 h-4 w-4" /> Importer un fichier
               </Button>
             </article>

@@ -88,9 +88,7 @@ function InventairePage() {
     if (!courant) return [];
     const q = recherche.trim().toLowerCase();
     return courant.lignes
-      .filter((l) =>
-        q ? l.nom.toLowerCase().includes(q) || l.codeBarres.includes(q) : true,
-      )
+      .filter((l) => (q ? l.nom.toLowerCase().includes(q) || l.codeBarres.includes(q) : true))
       .filter((l) =>
         filtre === "comptes"
           ? l.stockPhysique !== null
@@ -201,8 +199,7 @@ function InventairePage() {
               size="sm"
               onClick={() =>
                 toast("Scanner bientôt disponible", {
-                  description:
-                    "Compatible douchette code-barres, caméra du téléphone et QR Code.",
+                  description: "Compatible douchette code-barres, caméra du téléphone et QR Code.",
                 })
               }
             >

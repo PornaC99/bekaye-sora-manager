@@ -42,7 +42,15 @@ export const Route = createFileRoute("/_authenticated/fournisseurs/$fournisseurI
   component: FicheFournisseur,
 });
 
-function Info({ label, valeur, icone: Icone }: { label: string; valeur: string; icone?: typeof Phone }) {
+function Info({
+  label,
+  valeur,
+  icone: Icone,
+}: {
+  label: string;
+  valeur: string;
+  icone?: typeof Phone;
+}) {
   return (
     <div>
       <p className="text-[11px] uppercase tracking-[0.12em] text-muted-foreground">{label}</p>
@@ -135,7 +143,10 @@ function FicheFournisseur() {
               <Info label="Pays" valeur={fournisseur.pays} />
               <Info label="Contact principal" valeur={fournisseur.contactPrincipal} />
               <Info label="Conditions de paiement" valeur={fournisseur.conditionsPaiement} />
-              <Info label="Délai de livraison" valeur={`${fournisseur.delaiLivraisonJours} jours`} />
+              <Info
+                label="Délai de livraison"
+                valeur={`${fournisseur.delaiLivraisonJours} jours`}
+              />
             </div>
 
             {fournisseur.notes && (

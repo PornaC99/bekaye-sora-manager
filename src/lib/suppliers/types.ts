@@ -132,8 +132,7 @@ export type NotificationFournisseur = {
 /* Calculs                                                              */
 /* ------------------------------------------------------------------ */
 
-export const sousTotalLigneCommande = (ligne: LigneCommande) =>
-  ligne.quantite * ligne.prixAchat;
+export const sousTotalLigneCommande = (ligne: LigneCommande) => ligne.quantite * ligne.prixAchat;
 
 export const remiseLigneCommande = (ligne: LigneCommande) =>
   (sousTotalLigneCommande(ligne) * ligne.remise) / 100;

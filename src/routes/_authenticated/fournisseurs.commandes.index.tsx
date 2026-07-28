@@ -150,7 +150,10 @@ function CommandesPage() {
         }}
         onSupprimer={setASupprimer}
         onImprimer={(c) => {
-          const ok = imprimerCommande(c, fournisseurs.find((f) => f.id === c.fournisseurId) ?? null);
+          const ok = imprimerCommande(
+            c,
+            fournisseurs.find((f) => f.id === c.fournisseurId) ?? null,
+          );
           if (!ok) toast.error("Autorisez les fenêtres pop-up pour imprimer le bon de commande.");
         }}
         onEnvoyer={(c) => {

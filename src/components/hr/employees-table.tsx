@@ -11,11 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { formatFCFA } from "@/lib/products/types";
-import {
-  changerStatutEmploye,
-  reinitialiserMotDePasse,
-  supprimerEmploye,
-} from "@/lib/hr/store";
+import { changerStatutEmploye, reinitialiserMotDePasse, supprimerEmploye } from "@/lib/hr/store";
 import {
   ROLE_LABEL,
   STATUT_EMPLOYE_CLASSE,

@@ -95,7 +95,10 @@ function ObjectifsPage() {
       </div>
 
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,360px)]">
-        <SectionCard title="Suivi des objectifs" description="Progression calculée sur vos données réelles.">
+        <SectionCard
+          title="Suivi des objectifs"
+          description="Progression calculée sur vos données réelles."
+        >
           <ul className="flex flex-col gap-4">
             {suivis.map((s) => (
               <li
@@ -116,7 +119,9 @@ function ObjectifsPage() {
                   </div>
                   <div className="flex shrink-0 items-center gap-2">
                     <Pastille
-                      ton={s.progression >= 100 ? "succes" : s.progression >= 60 ? "info" : "alerte"}
+                      ton={
+                        s.progression >= 100 ? "succes" : s.progression >= 60 ? "info" : "alerte"
+                      }
                     >
                       {s.progression} %
                     </Pastille>

@@ -50,7 +50,11 @@ function CaissePage() {
         description={DESCRIPTION}
         actions={
           session && (
-            <Button variant="outline" className="gap-2" onClick={() => imprimerRapportCaisse(session)}>
+            <Button
+              variant="outline"
+              className="gap-2"
+              onClick={() => imprimerRapportCaisse(session)}
+            >
               <Printer className="h-4 w-4" />
               Rapport de caisse
             </Button>
@@ -138,7 +142,10 @@ function CaissePage() {
             </SectionCard>
 
             <div className="flex flex-col gap-5">
-              <SectionCard title="Fermeture de caisse" description="Comptez le tiroir puis clôturez">
+              <SectionCard
+                title="Fermeture de caisse"
+                description="Comptez le tiroir puis clôturez"
+              >
                 <div className="grid gap-3">
                   <div>
                     <Label className="text-xs text-muted-foreground">Montant réel compté</Label>
@@ -198,7 +205,10 @@ function CaissePage() {
           </div>
         </>
       ) : (
-        <SectionCard title="Ouvrir la caisse" description="Aucune caisse n'est ouverte actuellement">
+        <SectionCard
+          title="Ouvrir la caisse"
+          description="Aucune caisse n'est ouverte actuellement"
+        >
           <div className="grid gap-3 sm:max-w-md">
             <div>
               <Label className="text-xs text-muted-foreground">Fonds de caisse (FCFA)</Label>

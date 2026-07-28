@@ -30,11 +30,10 @@ export const CATEGORIES_DEPENSE: {
   { value: "autres", label: "Autres", couleur: "#94a3b8" },
 ];
 
-export const CATEGORIE_DEPENSE_LABEL: Record<CategorieDepense, string> =
-  CATEGORIES_DEPENSE.reduce(
-    (acc, c) => ({ ...acc, [c.value]: c.label }),
-    {} as Record<CategorieDepense, string>,
-  );
+export const CATEGORIE_DEPENSE_LABEL: Record<CategorieDepense, string> = CATEGORIES_DEPENSE.reduce(
+  (acc, c) => ({ ...acc, [c.value]: c.label }),
+  {} as Record<CategorieDepense, string>,
+);
 
 export const CATEGORIE_DEPENSE_COULEUR: Record<CategorieDepense, string> =
   CATEGORIES_DEPENSE.reduce(

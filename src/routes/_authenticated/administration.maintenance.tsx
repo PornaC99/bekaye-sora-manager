@@ -1,12 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { AdminCard, Pastille, SanteCards } from "@/components/admin/pieces";
-import {
-  DATE_MISE_A_JOUR,
-  EDITEUR,
-  VERSION_LOGICIEL,
-  santeSysteme,
-} from "@/lib/admin/health";
+import { DATE_MISE_A_JOUR, EDITEUR, VERSION_LOGICIEL, santeSysteme } from "@/lib/admin/health";
 import { useAdminStore } from "@/lib/admin/store";
 import { formatDateHeure } from "@/lib/admin/types";
 
@@ -54,7 +49,10 @@ function MaintenancePage() {
         </div>
       </AdminCard>
 
-      <AdminCard titre="Santé du système en temps réel" description="Indicateurs surveillés en continu.">
+      <AdminCard
+        titre="Santé du système en temps réel"
+        description="Indicateurs surveillés en continu."
+      >
         <SanteCards indicateurs={indicateurs} />
       </AdminCard>
     </div>

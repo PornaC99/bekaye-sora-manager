@@ -1,10 +1,4 @@
-import type {
-  ActiviteJournal,
-  BulletinPaie,
-  Conge,
-  Employe,
-  Presence,
-} from "./types";
+import type { ActiviteJournal, BulletinPaie, Conge, Employe, Presence } from "./types";
 
 /** Données de démonstration réalistes du module RH (marque 501, Bamako). */
 
@@ -261,7 +255,9 @@ export const presencesDemo: Presence[] = (() => {
       else if (alea > profil.fiabilite) statut = alea > 0.97 ? "absent" : "retard";
 
       const retardMinutes =
-        statut === "retard" ? Math.round(8 + alea * 40) : Math.max(0, minutesRetard(profil.arrivee));
+        statut === "retard"
+          ? Math.round(8 + alea * 40)
+          : Math.max(0, minutesRetard(profil.arrivee));
       const arrivee =
         statut === "absent" || statut === "conge"
           ? null

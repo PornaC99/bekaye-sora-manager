@@ -46,11 +46,29 @@ const graines: Graine[] = [
     naissance: anniversaire(4, 12, 1990),
     inscription: 420,
     achats: [
-      { jours: 3, produits: [[0, 2], [2, 1]] },
+      {
+        jours: 3,
+        produits: [
+          [0, 2],
+          [2, 1],
+        ],
+      },
       { jours: 21, produits: [[1, 3]] },
-      { jours: 48, produits: [[0, 4], [3, 2]] },
+      {
+        jours: 48,
+        produits: [
+          [0, 4],
+          [3, 2],
+        ],
+      },
       { jours: 76, produits: [[4, 2]] },
-      { jours: 110, produits: [[2, 5], [5, 1]] },
+      {
+        jours: 110,
+        produits: [
+          [2, 5],
+          [5, 1],
+        ],
+      },
       { jours: 150, produits: [[0, 6]] },
     ],
     notes: "Cliente historique, préfère les livraisons le samedi matin.",
@@ -65,12 +83,30 @@ const graines: Graine[] = [
     naissance: null,
     inscription: 640,
     achats: [
-      { jours: 1, produits: [[1, 10], [3, 6]] },
+      {
+        jours: 1,
+        produits: [
+          [1, 10],
+          [3, 6],
+        ],
+      },
       { jours: 14, produits: [[0, 12]] },
-      { jours: 30, produits: [[2, 8], [4, 4]] },
+      {
+        jours: 30,
+        produits: [
+          [2, 8],
+          [4, 4],
+        ],
+      },
       { jours: 62, produits: [[5, 10]] },
       { jours: 95, produits: [[1, 14]] },
-      { jours: 128, produits: [[0, 9], [2, 6]] },
+      {
+        jours: 128,
+        produits: [
+          [0, 9],
+          [2, 6],
+        ],
+      },
       { jours: 170, produits: [[3, 12]] },
     ],
     dette: 45_000,
@@ -87,7 +123,13 @@ const graines: Graine[] = [
     inscription: 260,
     achats: [
       { jours: 6, produits: [[3, 2]] },
-      { jours: 40, produits: [[0, 1], [5, 2]] },
+      {
+        jours: 40,
+        produits: [
+          [0, 1],
+          [5, 2],
+        ],
+      },
       { jours: 88, produits: [[2, 3]] },
     ],
   },
@@ -101,7 +143,13 @@ const graines: Graine[] = [
     naissance: null,
     inscription: 500,
     achats: [
-      { jours: 9, produits: [[4, 8], [1, 5]] },
+      {
+        jours: 9,
+        produits: [
+          [4, 8],
+          [1, 5],
+        ],
+      },
       { jours: 44, produits: [[0, 10]] },
       { jours: 80, produits: [[2, 7]] },
       { jours: 132, produits: [[3, 9]] },
@@ -120,7 +168,13 @@ const graines: Graine[] = [
     inscription: 180,
     achats: [
       { jours: 12, produits: [[5, 1]] },
-      { jours: 55, produits: [[0, 2], [1, 1]] },
+      {
+        jours: 55,
+        produits: [
+          [0, 2],
+          [1, 1],
+        ],
+      },
     ],
   },
   {
@@ -145,7 +199,13 @@ const graines: Graine[] = [
     naissance: anniversaire(6, 18, 1993),
     inscription: 95,
     achats: [
-      { jours: 2, produits: [[0, 3], [4, 1]] },
+      {
+        jours: 2,
+        produits: [
+          [0, 3],
+          [4, 1],
+        ],
+      },
       { jours: 26, produits: [[3, 2]] },
       { jours: 60, produits: [[0, 2]] },
       { jours: 84, produits: [[1, 4]] },
@@ -162,7 +222,13 @@ const graines: Graine[] = [
     inscription: 720,
     achats: [
       { jours: 5, produits: [[2, 15]] },
-      { jours: 33, produits: [[0, 18], [5, 5]] },
+      {
+        jours: 33,
+        produits: [
+          [0, 18],
+          [5, 5],
+        ],
+      },
       { jours: 70, produits: [[1, 12]] },
       { jours: 105, produits: [[4, 10]] },
       { jours: 145, produits: [[3, 16]] },
@@ -206,7 +272,13 @@ const graines: Graine[] = [
     naissance: anniversaire(8, 15, 1991),
     inscription: 220,
     achats: [
-      { jours: 4, produits: [[4, 3], [2, 2]] },
+      {
+        jours: 4,
+        produits: [
+          [4, 3],
+          [2, 2],
+        ],
+      },
       { jours: 29, produits: [[0, 5]] },
       { jours: 63, produits: [[3, 3]] },
       { jours: 99, produits: [[1, 6]] },

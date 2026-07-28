@@ -5,7 +5,15 @@ import { Search } from "lucide-react";
 import { NexusHeader, Pastille, SectionCard } from "@/components/nexusia/pieces";
 import { rechercherGlobal, useNexusia } from "@/lib/nexusia/insight";
 
-const FILTRES = ["Tout", "Produit", "Client", "Employé", "Facture", "Fournisseur", "Rapport"] as const;
+const FILTRES = [
+  "Tout",
+  "Produit",
+  "Client",
+  "Employé",
+  "Facture",
+  "Fournisseur",
+  "Rapport",
+] as const;
 
 export const Route = createFileRoute("/_authenticated/nexusia/recherche")({
   head: () => ({
@@ -76,9 +84,7 @@ function RecherchePage() {
           ))}
         </div>
 
-        <p className="text-xs text-muted-foreground">
-          {resultats.length} résultat(s) trouvé(s).
-        </p>
+        <p className="text-xs text-muted-foreground">{resultats.length} résultat(s) trouvé(s).</p>
 
         <ul className="flex flex-col gap-2">
           {resultats.slice(0, 40).map((r) => (

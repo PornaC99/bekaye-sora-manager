@@ -23,9 +23,7 @@ export function PosCatalog({
     return produits
       .filter((p) => p.actif)
       .filter((p) =>
-        q
-          ? `${p.nom} ${p.codeBarres} ${p.categorie} ${p.marque}`.toLowerCase().includes(q)
-          : true,
+        q ? `${p.nom} ${p.codeBarres} ${p.categorie} ${p.marque}`.toLowerCase().includes(q) : true,
       );
   }, [produits, recherche]);
 

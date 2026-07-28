@@ -1,12 +1,4 @@
-import {
-  Bell,
-  LogIn,
-  PackageX,
-  ShoppingCart,
-  Truck,
-  Wallet,
-  type LucideIcon,
-} from "lucide-react";
+import { Bell, LogIn, PackageX, ShoppingCart, Truck, Wallet, type LucideIcon } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { cn } from "@/lib/utils";

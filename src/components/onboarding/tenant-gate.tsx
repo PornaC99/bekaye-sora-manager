@@ -68,8 +68,8 @@ function OnboardingEntreprise() {
             Créez votre entreprise
           </h1>
           <p className="text-sm text-muted-foreground">
-            Dernière étape avant d'accéder à votre espace de gestion. Vos données seront
-            totalement isolées de celles des autres entreprises.
+            Dernière étape avant d'accéder à votre espace de gestion. Vos données seront totalement
+            isolées de celles des autres entreprises.
           </p>
         </div>
 

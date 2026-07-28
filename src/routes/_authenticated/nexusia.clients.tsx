@@ -82,10 +82,7 @@ function AnalyseClients() {
           />
         </SectionCard>
 
-        <SectionCard
-          title="Segments de clientèle"
-          description="Répartition du fichier client."
-        >
+        <SectionCard title="Segments de clientèle" description="Répartition du fichier client.">
           <ul className="flex flex-col gap-3">
             {[
               { label: "Clients VIP", valeur: analyse.vip, ton: "succes" as const },

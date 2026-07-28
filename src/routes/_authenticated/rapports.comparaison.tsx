@@ -90,8 +90,7 @@ function ComparaisonPage() {
     ventes,
   ]);
 
-  const select =
-    "rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground";
+  const select = "rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground";
 
   return (
     <div className="flex flex-col gap-5">
@@ -109,7 +108,9 @@ function ComparaisonPage() {
             onClick={() => setType(t)}
             className={cn(
               "rounded-lg px-3 py-1.5 text-xs font-medium transition",
-              type === t ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-muted",
+              type === t
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:bg-muted",
             )}
           >
             {t === "mois" ? "Deux mois" : "Deux années"}
@@ -117,7 +118,11 @@ function ComparaisonPage() {
         ))}
         {type === "mois" && (
           <div className="flex items-center gap-2">
-            <select className={select} value={moisA} onChange={(e) => setMoisA(Number(e.target.value))}>
+            <select
+              className={select}
+              value={moisA}
+              onChange={(e) => setMoisA(Number(e.target.value))}
+            >
               {MOIS.map((m, i) => (
                 <option key={m} value={i}>
                   {m}
@@ -125,7 +130,11 @@ function ComparaisonPage() {
               ))}
             </select>
             <span className="text-xs text-muted-foreground">contre</span>
-            <select className={select} value={moisB} onChange={(e) => setMoisB(Number(e.target.value))}>
+            <select
+              className={select}
+              value={moisB}
+              onChange={(e) => setMoisB(Number(e.target.value))}
+            >
               {MOIS.map((m, i) => (
                 <option key={m} value={i}>
                   {m}
@@ -166,11 +175,13 @@ function ComparaisonPage() {
         <SectionCard title="Produits comparés" description="Quantités vendues">
           <MiniTable
             entetes={["Produit", donnees.periodeA.label, donnees.periodeB.label]}
-            lignes={donnees.produitsB.slice(0, 10).map((p) => [
-              p.nom,
-              donnees.produitsA.find((x) => x.produitId === p.produitId)?.quantite ?? 0,
-              p.quantite,
-            ])}
+            lignes={donnees.produitsB
+              .slice(0, 10)
+              .map((p) => [
+                p.nom,
+                donnees.produitsA.find((x) => x.produitId === p.produitId)?.quantite ?? 0,
+                p.quantite,
+              ])}
           />
         </SectionCard>
 

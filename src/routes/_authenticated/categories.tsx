@@ -74,7 +74,12 @@ function Page() {
   const [form, setForm] = useState<FormValues>(VIDE);
   const [aSupprimer, setASupprimer] = useState<Categorie | null>(null);
 
-  const { data: categories = [], isPending, isError, error } = useQuery({
+  const {
+    data: categories = [],
+    isPending,
+    isError,
+    error,
+  } = useQuery({
     queryKey: ["categories"],
     queryFn: listerCategories,
   });
@@ -165,9 +170,7 @@ function Page() {
             <Loader2 className="h-4 w-4 animate-spin" /> Chargement des catégories…
           </div>
         ) : isError ? (
-          <p className="py-12 text-center text-sm text-destructive">
-            {(error as Error).message}
-          </p>
+          <p className="py-12 text-center text-sm text-destructive">{(error as Error).message}</p>
         ) : filtrees.length === 0 ? (
           <p className="py-12 text-center text-sm text-muted-foreground">
             Aucune catégorie pour le moment. Créez la première pour classer vos produits.

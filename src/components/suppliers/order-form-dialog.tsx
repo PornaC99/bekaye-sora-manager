@@ -161,7 +161,9 @@ export function OrderFormDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[92vh] overflow-y-auto sm:max-w-4xl">
         <DialogHeader>
-          <DialogTitle>{commande ? "Modifier la commande" : "Nouvelle commande d'achat"}</DialogTitle>
+          <DialogTitle>
+            {commande ? "Modifier la commande" : "Nouvelle commande d'achat"}
+          </DialogTitle>
           <DialogDescription>
             {commande
               ? `Commande ${commande.numero}`
@@ -172,10 +174,7 @@ export function OrderFormDialog({
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <Label>Fournisseur *</Label>
-            <Select
-              value={values.fournisseurId}
-              onValueChange={(v) => set("fournisseurId", v)}
-            >
+            <Select value={values.fournisseurId} onValueChange={(v) => set("fournisseurId", v)}>
               <SelectTrigger>
                 <SelectValue placeholder="Choisir un fournisseur" />
               </SelectTrigger>
@@ -276,13 +275,13 @@ export function OrderFormDialog({
 
           <div className="divide-y divide-border">
             {values.lignes.map((ligne, index) => (
-              <div key={index} className="grid gap-3 p-4 sm:grid-cols-[minmax(0,2fr)_repeat(3,minmax(0,1fr))_auto]">
+              <div
+                key={index}
+                className="grid gap-3 p-4 sm:grid-cols-[minmax(0,2fr)_repeat(3,minmax(0,1fr))_auto]"
+              >
                 <div>
                   <Label className="text-xs">Produit</Label>
-                  <Select
-                    value={ligne.produitId}
-                    onValueChange={(v) => choisirProduit(index, v)}
-                  >
+                  <Select value={ligne.produitId} onValueChange={(v) => choisirProduit(index, v)}>
                     <SelectTrigger>
                       <SelectValue placeholder="Choisir un produit" />
                     </SelectTrigger>
@@ -301,7 +300,9 @@ export function OrderFormDialog({
                     type="number"
                     min={1}
                     value={ligne.quantite}
-                    onChange={(e) => majLigne(index, { quantite: Math.max(0, Number(e.target.value)) })}
+                    onChange={(e) =>
+                      majLigne(index, { quantite: Math.max(0, Number(e.target.value)) })
+                    }
                   />
                 </div>
                 <div>
@@ -310,7 +311,9 @@ export function OrderFormDialog({
                     type="number"
                     min={0}
                     value={ligne.prixAchat}
-                    onChange={(e) => majLigne(index, { prixAchat: Math.max(0, Number(e.target.value)) })}
+                    onChange={(e) =>
+                      majLigne(index, { prixAchat: Math.max(0, Number(e.target.value)) })
+                    }
                   />
                 </div>
                 <div>
@@ -338,7 +341,8 @@ export function OrderFormDialog({
                     onClick={() =>
                       setValues((v) => ({
                         ...v,
-                        lignes: v.lignes.length > 1 ? v.lignes.filter((_, i) => i !== index) : v.lignes,
+                        lignes:
+                          v.lignes.length > 1 ? v.lignes.filter((_, i) => i !== index) : v.lignes,
                       }))
                     }
                   >

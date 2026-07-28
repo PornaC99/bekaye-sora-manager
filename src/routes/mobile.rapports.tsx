@@ -114,9 +114,7 @@ function RapportsMobile() {
         },
         {
           titre: "Produits les plus rentables",
-          lignes: finances.rentabilites
-            .slice(0, 5)
-            .map((p) => ligne(p.nom, p.benefice)),
+          lignes: finances.rentabilites.slice(0, 5).map((p) => ligne(p.nom, p.benefice)),
         },
       ],
     });

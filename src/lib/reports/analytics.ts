@@ -15,7 +15,8 @@ import { dansPeriode, variation, type Periode } from "./types";
  */
 
 const somme = (valeurs: number[]) => valeurs.reduce((t, v) => t + v, 0);
-const pct = (partie: number, total: number) => (total <= 0 ? 0 : Math.round((partie / total) * 100));
+const pct = (partie: number, total: number) =>
+  total <= 0 ? 0 : Math.round((partie / total) * 100);
 
 export const ventesPeriode = (ventes: Vente[], periode: Periode) =>
   ventes.filter((v) => v.statut !== "annulee" && dansPeriode(v.date, periode));
@@ -24,13 +25,13 @@ export const depensesPeriode = (depenses: Depense[], periode: Periode) =>
   depenses.filter((d) => d.statut !== "annulee" && dansPeriode(d.date, periode));
 
 export const totalCommande = (commande: CommandeAchat) =>
-  somme(
-    commande.lignes.map((l) => l.prixAchat * l.quantite * (1 - (l.remise || 0) / 100)),
-  );
+  somme(commande.lignes.map((l) => l.prixAchat * l.quantite * (1 - (l.remise || 0) / 100)));
 
 export function coutVente(vente: Vente, produits: Produit[]) {
   return somme(
-    vente.lignes.map((l) => (produits.find((p) => p.id === l.produitId)?.prixAchat ?? 0) * l.quantite),
+    vente.lignes.map(
+      (l) => (produits.find((p) => p.id === l.produitId)?.prixAchat ?? 0) * l.quantite,
+    ),
   );
 }
 
@@ -275,7 +276,12 @@ export function heuresAffluence(ventes: Vente[]): CreneauHoraire[] {
 
 const JOURS = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
 
-export type JourRentable = { label: string; ventes: number; chiffreAffaires: number; benefice: number };
+export type JourRentable = {
+  label: string;
+  ventes: number;
+  chiffreAffaires: number;
+  benefice: number;
+};
 
 export function joursRentables(ventes: Vente[], produits: Produit[]): JourRentable[] {
   const index = new Map<number, JourRentable>();
@@ -416,8 +422,7 @@ export function analyseClients(clients: Client[], ventes: Vente[], periode: Peri
     vip: clients.filter(estVip).length,
     inactifs: clients.filter(estInactif).length,
     panierMoyen: ventes.length ? Math.round(ca / ventes.length) : 0,
-    frequenceAchat:
-      acheteurs.size > 0 ? Math.round((ventes.length / acheteurs.size) * 10) / 10 : 0,
+    frequenceAchat: acheteurs.size > 0 ? Math.round((ventes.length / acheteurs.size) * 10) / 10 : 0,
     meilleurs: [...clients].sort((a, b) => b.totalDepense - a.totalDepense).slice(0, 8),
   };
 }
@@ -511,7 +516,9 @@ export function previsionsRapport(input: {
 
   const consommation = new Map<string, number>();
   input.ventes
-    .filter((v) => v.statut !== "annulee" && Date.now() - new Date(v.date).getTime() <= 30 * 86_400_000)
+    .filter(
+      (v) => v.statut !== "annulee" && Date.now() - new Date(v.date).getTime() <= 30 * 86_400_000,
+    )
     .forEach((v) =>
       v.lignes.forEach((l) =>
         consommation.set(l.produitId, (consommation.get(l.produitId) ?? 0) + l.quantite),
@@ -529,7 +536,9 @@ export function previsionsRapport(input: {
         besoinEstime: Math.max(0, Math.ceil(parJour * 30 - produit.stock)),
       };
     })
-    .filter((x): x is { produit: Produit; joursRestants: number; besoinEstime: number } => x !== null);
+    .filter(
+      (x): x is { produit: Produit; joursRestants: number; besoinEstime: number } => x !== null,
+    );
 
   return {
     joursEcoules,
@@ -783,7 +792,8 @@ export function resumeExecutif(input: {
     const taux = variation(montant, ancien);
     if (taux > 5 && (!hausse || taux > hausse.taux)) {
       hausse = {
-        label: CATEGORIE_DEPENSE_LABEL[categorie as keyof typeof CATEGORIE_DEPENSE_LABEL] ?? categorie,
+        label:
+          CATEGORIE_DEPENSE_LABEL[categorie as keyof typeof CATEGORIE_DEPENSE_LABEL] ?? categorie,
         taux,
       };
     }

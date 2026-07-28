@@ -36,10 +36,7 @@ function AuditPage() {
       const okFiltre = filtre === "toutes" || a.action === filtre;
       const okRecherche =
         q === "" ||
-        [a.utilisateur, a.module, a.details, a.ip, a.appareil]
-          .join(" ")
-          .toLowerCase()
-          .includes(q);
+        [a.utilisateur, a.module, a.details, a.ip, a.appareil].join(" ").toLowerCase().includes(q);
       return okFiltre && okRecherche;
     });
   }, [audit, filtre, recherche]);

@@ -59,9 +59,7 @@ export function useClient(id: string) {
 
 export function useAchatsClient(clientId: string) {
   const { achats } = useClientsStore();
-  return achats
-    .filter((a) => a.clientId === clientId)
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+  return achats.filter((a) => a.clientId === clientId).sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 export const lireClients = () => state.clients;

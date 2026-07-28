@@ -17,9 +17,7 @@ const jours = (iso: string) => (Date.now() - new Date(iso).getTime()) / JOUR;
 /* ------------------------------------------------------------------ */
 
 export function kpisFournisseurs(fournisseurs: Fournisseur[], commandes: CommandeAchat[]) {
-  const enAttente = commandes.filter(
-    (c) => !["recue", "annulee", "brouillon"].includes(c.statut),
-  );
+  const enAttente = commandes.filter((c) => !["recue", "annulee", "brouillon"].includes(c.statut));
   const recues = commandes.filter((c) => c.statut === "recue");
 
   const debutMois = new Date();
@@ -33,7 +31,10 @@ export function kpisFournisseurs(fournisseurs: Fournisseur[], commandes: Command
   commandes
     .filter((c) => c.statut !== "annulee")
     .forEach((c) =>
-      parFournisseur.set(c.fournisseurId, (parFournisseur.get(c.fournisseurId) ?? 0) + montantCommande(c)),
+      parFournisseur.set(
+        c.fournisseurId,
+        (parFournisseur.get(c.fournisseurId) ?? 0) + montantCommande(c),
+      ),
     );
   const principalId = [...parFournisseur.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
   const principal = fournisseurs.find((f) => f.id === principalId) ?? null;
@@ -273,7 +274,12 @@ export function suggestionsApprovisionnement(
       const besoin = Math.ceil(moyenneJournaliere * (couvertureJours + delai)) - stockUtile;
       const quantiteRecommandee = Math.max(
         0,
-        Math.ceil(Math.max(besoin, produit.stock <= produit.stockMinimum ? produit.stockMinimum * 2 - stockUtile : 0) / 10) * 10,
+        Math.ceil(
+          Math.max(
+            besoin,
+            produit.stock <= produit.stockMinimum ? produit.stockMinimum * 2 - stockUtile : 0,
+          ) / 10,
+        ) * 10,
       );
 
       const priorite: SuggestionAppro["priorite"] =

@@ -79,7 +79,10 @@ export function SalesTable({
           </thead>
           <tbody>
             {ventes.map((vente) => (
-              <tr key={vente.id} className="border-b border-border/70 last:border-0 hover:bg-muted/30">
+              <tr
+                key={vente.id}
+                className="border-b border-border/70 last:border-0 hover:bg-muted/30"
+              >
                 <td className="px-4 py-3 font-medium text-foreground">{vente.numero}</td>
                 <td className="px-4 py-3 text-muted-foreground">{formatDateCourt(vente.date)}</td>
                 <td className="px-4 py-3 text-muted-foreground">{formatHeure(vente.date)}</td>

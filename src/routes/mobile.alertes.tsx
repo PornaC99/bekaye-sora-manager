@@ -25,9 +25,21 @@ export const Route = createFileRoute("/mobile/alertes")({
 });
 
 const NIVEAUX = {
-  critique: { carte: "border-destructive/30 bg-destructive/5", pastille: "bg-destructive/10 text-destructive", label: "Critique" },
-  eleve: { carte: "border-amber-500/30 bg-amber-500/5", pastille: "bg-amber-500/10 text-amber-600", label: "Élevé" },
-  moyen: { carte: "border-primary/25 bg-primary-soft/40", pastille: "bg-primary-soft text-primary", label: "À surveiller" },
+  critique: {
+    carte: "border-destructive/30 bg-destructive/5",
+    pastille: "bg-destructive/10 text-destructive",
+    label: "Critique",
+  },
+  eleve: {
+    carte: "border-amber-500/30 bg-amber-500/5",
+    pastille: "bg-amber-500/10 text-amber-600",
+    label: "Élevé",
+  },
+  moyen: {
+    carte: "border-primary/25 bg-primary-soft/40",
+    pastille: "bg-primary-soft text-primary",
+    label: "À surveiller",
+  },
 } as const;
 
 function AlertesMobile() {
@@ -46,7 +58,10 @@ function AlertesMobile() {
               <MobileCard key={alerte.id} className={cn("border", niveau.carte)}>
                 <div className="flex items-start gap-3">
                   <span
-                    className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-xl", niveau.pastille)}
+                    className={cn(
+                      "grid h-10 w-10 shrink-0 place-items-center rounded-xl",
+                      niveau.pastille,
+                    )}
                   >
                     <Icone className="h-4.5 w-4.5" />
                   </span>

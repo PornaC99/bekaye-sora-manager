@@ -84,9 +84,11 @@ function ClientsPage() {
   const [enEdition, setEnEdition] = useState<Client | null>(null);
   const [aSupprimer, setASupprimer] = useState<Client | null>(null);
   const [reglesOuvertes, setReglesOuvertes] = useState(false);
-  const [promo, setPromo] = useState<{ clients: Client[]; message?: string; titre?: string } | null>(
-    null,
-  );
+  const [promo, setPromo] = useState<{
+    clients: Client[];
+    message?: string;
+    titre?: string;
+  } | null>(null);
 
   const kpis = useMemo(() => kpisClients(clients), [clients]);
   const anniversaires = useMemo(() => clients.filter(anniversaireAujourdhui), [clients]);
@@ -257,8 +259,7 @@ function ClientsPage() {
             </div>
             <ul className="mt-3 space-y-1 text-xs text-muted-foreground">
               <li>
-                Remise VIP :{" "}
-                {regles.remiseActive ? `${regles.remisePourcent} %` : "désactivée"}
+                Remise VIP : {regles.remiseActive ? `${regles.remisePourcent} %` : "désactivée"}
               </li>
               <li>
                 Cadeau :{" "}
@@ -279,7 +280,9 @@ function ClientsPage() {
                 </li>
               ))}
               {notifications.length === 0 && (
-                <li className="text-sm text-muted-foreground">Aucune notification pour l'instant.</li>
+                <li className="text-sm text-muted-foreground">
+                  Aucune notification pour l'instant.
+                </li>
               )}
             </ul>
           </section>

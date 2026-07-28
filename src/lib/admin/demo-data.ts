@@ -415,14 +415,7 @@ export const parametresStocksDemo: ParametresStocks = {
 
 export const parametresFinanciersDemo: ParametresFinanciers = {
   devise: "XOF",
-  categoriesDepenses: [
-    "Loyer",
-    "Salaires",
-    "Transport",
-    "Électricité",
-    "Marketing",
-    "Fournitures",
-  ],
+  categoriesDepenses: ["Loyer", "Salaires", "Transport", "Électricité", "Marketing", "Fournitures"],
   objectifCaMensuel: 12_000_000,
   budgetDepensesMensuel: 4_500_000,
 };

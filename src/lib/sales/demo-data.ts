@@ -1,10 +1,5 @@
 import { produitsDemo } from "@/lib/products/demo-data";
-import type {
-  NotificationVente,
-  Retour,
-  SessionCaisse,
-  Vente,
-} from "./types";
+import type { NotificationVente, Retour, SessionCaisse, Vente } from "./types";
 import { totalVente } from "./types";
 
 export const VENDEURS = ["Aïcha Traoré", "Fatoumata Diallo", "Moussa Koné", "Bekaye Sora"] as const;

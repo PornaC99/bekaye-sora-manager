@@ -230,7 +230,10 @@ function ConseillerPage() {
             </ul>
           </SectionCard>
 
-          <SectionCard title="Notifications intelligentes" description="Ce que le système a repéré.">
+          <SectionCard
+            title="Notifications intelligentes"
+            description="Ce que le système a repéré."
+          >
             <ListeInsights
               items={donnees.notifications.map((n) => ({
                 id: n.id,
@@ -352,9 +355,7 @@ function ConseillerPage() {
                 className="flex items-center justify-between gap-3 rounded-lg border border-border bg-background/60 px-3 py-2 text-sm"
               >
                 <span className="truncate text-foreground">{b.produit.nom}</span>
-                <span className="shrink-0 font-semibold text-primary">
-                  {b.besoinEstime} unités
-                </span>
+                <span className="shrink-0 font-semibold text-primary">{b.besoinEstime} unités</span>
               </div>
             ))}
             {donnees.mois.previsions.besoins.length === 0 && (

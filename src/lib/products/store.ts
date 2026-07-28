@@ -79,7 +79,6 @@ export function useProduit(id: string) {
   return produits.find((p) => p.id === id) ?? null;
 }
 
-
 const nouvelId = () =>
   typeof crypto !== "undefined" && crypto.randomUUID
     ? crypto.randomUUID()
@@ -186,7 +185,6 @@ export function basculerActivation(id: string) {
     signalerErreur("Modification du statut impossible", erreur);
   });
 }
-
 
 /** Persiste dans Supabase les stocks modifiés localement (réception, vente, inventaire). */
 function persisterStocks(nouveaux: Produit[]): Produit[] {
@@ -402,10 +400,7 @@ export function appliquerVente(lignes: LigneVenteProduit[], meta: MetaVente) {
 }
 
 /** Réintègre le stock (annulation d'une vente ou retour produit). */
-export function retournerVente(
-  lignes: LigneVenteProduit[],
-  meta: MetaVente & { motif: string },
-) {
+export function retournerVente(lignes: LigneVenteProduit[], meta: MetaVente & { motif: string }) {
   const produits = state.produits.map((produit) => {
     const ligne = lignes.find((l) => l.produitId === produit.id);
     if (!ligne) return produit;
@@ -426,7 +421,10 @@ export function retournerVente(
     observation: `${meta.motif} — vente ${meta.reference}`,
   }));
 
-  setState({ produits: persisterStocks(produits), mouvements: [...mouvements, ...state.mouvements] });
+  setState({
+    produits: persisterStocks(produits),
+    mouvements: [...mouvements, ...state.mouvements],
+  });
 }
 
 /* ------------------------------------------------------------------ */
@@ -438,10 +436,7 @@ export type LigneAjustementInventaire = { produitId: string; stockPhysique: numb
 export type MetaInventaire = { reference: string; utilisateur: string; date: string };
 
 /** Corrige le stock système selon les quantités comptées et historise chaque écart. */
-export function appliquerInventaire(
-  lignes: LigneAjustementInventaire[],
-  meta: MetaInventaire,
-) {
+export function appliquerInventaire(lignes: LigneAjustementInventaire[], meta: MetaInventaire) {
   const mouvements: MouvementStock[] = [];
 
   const produits = state.produits.map((produit) => {
@@ -465,12 +460,13 @@ export function appliquerInventaire(
     };
   });
 
-  setState({ produits: persisterStocks(produits), mouvements: [...mouvements, ...state.mouvements] });
+  setState({
+    produits: persisterStocks(produits),
+    mouvements: [...mouvements, ...state.mouvements],
+  });
   return mouvements.length;
 }
 
 export const lireProduits = () => state.produits;
 export const lireMouvements = () => state.mouvements;
 export const lireVentesProduits = () => state.ventes;
-
-

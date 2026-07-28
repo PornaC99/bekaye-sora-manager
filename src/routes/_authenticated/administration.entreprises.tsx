@@ -147,7 +147,10 @@ function EntreprisesPage() {
           </DialogHeader>
           <div className="grid gap-4 sm:grid-cols-2">
             <Champ label="Nom de l'entreprise">
-              <Input value={form.nom} onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))} />
+              <Input
+                value={form.nom}
+                onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))}
+              />
             </Champ>
             <Champ label="Secteur d'activité">
               <Input
@@ -156,13 +159,18 @@ function EntreprisesPage() {
               />
             </Champ>
             <Champ label="Pays">
-              <Input value={form.pays} onChange={(e) => setForm((f) => ({ ...f, pays: e.target.value }))} />
+              <Input
+                value={form.pays}
+                onChange={(e) => setForm((f) => ({ ...f, pays: e.target.value }))}
+              />
             </Champ>
             <Champ label="Formule">
               <select
                 className="h-10 rounded-md border border-input bg-background px-3 text-sm"
                 value={form.plan}
-                onChange={(e) => setForm((f) => ({ ...f, plan: e.target.value as Entreprise["plan"] }))}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, plan: e.target.value as Entreprise["plan"] }))
+                }
               >
                 <option value="Essentiel">Essentiel</option>
                 <option value="Business">Business</option>

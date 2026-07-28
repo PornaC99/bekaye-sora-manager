@@ -52,7 +52,13 @@ const INFOBULLE = {
   boxShadow: "var(--shadow-soft)",
 } as const;
 
-const COULEURS = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)", "var(--chart-4)", "var(--chart-5)"];
+const COULEURS = [
+  "var(--chart-1)",
+  "var(--chart-2)",
+  "var(--chart-3)",
+  "var(--chart-4)",
+  "var(--chart-5)",
+];
 
 /* ------------------------------------------------------------------ */
 /* Filtres de période                                                   */
@@ -129,13 +135,7 @@ function Evolution({ valeur }: { valeur: number }) {
   );
 }
 
-export function BiKpiCards({
-  kpis,
-  precedents,
-}: {
-  kpis: KpisRapport;
-  precedents: KpisRapport;
-}) {
+export function BiKpiCards({ kpis, precedents }: { kpis: KpisRapport; precedents: KpisRapport }) {
   const cartes: { label: string; valeur: string; evolution?: number }[] = [
     {
       label: "Chiffre d'affaires",
@@ -204,7 +204,11 @@ export function EvolutionCharts({ serie }: { serie: PointRapport[] }) {
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
               <XAxis dataKey="label" {...AXES} />
-              <YAxis {...AXES} width={70} tickFormatter={(v: number) => `${Math.round(v / 1000)}k`} />
+              <YAxis
+                {...AXES}
+                width={70}
+                tickFormatter={(v: number) => `${Math.round(v / 1000)}k`}
+              />
               <Tooltip
                 contentStyle={INFOBULLE}
                 formatter={(v: number) => [formatFCFA(v), "Chiffre d'affaires"]}
@@ -235,10 +239,26 @@ export function EvolutionCharts({ serie }: { serie: PointRapport[] }) {
             <LineChart data={serie} margin={{ left: -20, right: 8, top: 8 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
               <XAxis dataKey="label" {...AXES} />
-              <YAxis {...AXES} width={70} tickFormatter={(v: number) => `${Math.round(v / 1000)}k`} />
+              <YAxis
+                {...AXES}
+                width={70}
+                tickFormatter={(v: number) => `${Math.round(v / 1000)}k`}
+              />
               <Tooltip contentStyle={INFOBULLE} formatter={(v: number) => formatFCFA(v)} />
-              <Line dataKey="benefice" name="Bénéfice" stroke="var(--chart-1)" strokeWidth={2} dot={false} />
-              <Line dataKey="depenses" name="Dépenses" stroke="var(--chart-4)" strokeWidth={2} dot={false} />
+              <Line
+                dataKey="benefice"
+                name="Bénéfice"
+                stroke="var(--chart-1)"
+                strokeWidth={2}
+                dot={false}
+              />
+              <Line
+                dataKey="depenses"
+                name="Dépenses"
+                stroke="var(--chart-4)"
+                strokeWidth={2}
+                dot={false}
+              />
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -250,9 +270,22 @@ export function EvolutionCharts({ serie }: { serie: PointRapport[] }) {
             <AreaChart data={serie} margin={{ left: -20, right: 8, top: 8 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
               <XAxis dataKey="label" {...AXES} />
-              <YAxis {...AXES} width={70} tickFormatter={(v: number) => `${Math.round(v / 1000)}k`} />
-              <Tooltip contentStyle={INFOBULLE} formatter={(v: number) => [formatFCFA(v), "Stock"]} />
-              <Area dataKey="stock" stroke="var(--chart-3)" strokeWidth={2} fill="var(--chart-3)" fillOpacity={0.12} />
+              <YAxis
+                {...AXES}
+                width={70}
+                tickFormatter={(v: number) => `${Math.round(v / 1000)}k`}
+              />
+              <Tooltip
+                contentStyle={INFOBULLE}
+                formatter={(v: number) => [formatFCFA(v), "Stock"]}
+              />
+              <Area
+                dataKey="stock"
+                stroke="var(--chart-3)"
+                strokeWidth={2}
+                fill="var(--chart-3)"
+                fillOpacity={0.12}
+              />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -429,7 +462,12 @@ export function AlertsPanel({ alertes }: { alertes: AlerteRapport[] }) {
         <ul className="flex flex-col gap-3">
           {alertes.map((a) => (
             <li key={a.id} className="flex gap-3 rounded-xl border border-border p-3">
-              <span className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-lg", TON_CLASSE[a.ton])}>
+              <span
+                className={cn(
+                  "grid h-9 w-9 shrink-0 place-items-center rounded-lg",
+                  TON_CLASSE[a.ton],
+                )}
+              >
                 {a.ton === "succes" ? (
                   <TrendingUp className="h-4 w-4" />
                 ) : a.ton === "danger" ? (
@@ -456,7 +494,11 @@ export function AlertsPanel({ alertes }: { alertes: AlerteRapport[] }) {
 
 export function Gauge({ score }: { score: ScorePerformance }) {
   const couleur =
-    score.note >= 80 ? "var(--success)" : score.note >= 60 ? "var(--chart-4)" : "var(--destructive)";
+    score.note >= 80
+      ? "var(--success)"
+      : score.note >= 60
+        ? "var(--chart-4)"
+        : "var(--destructive)";
   const angle = (score.note / 100) * 360;
 
   return (

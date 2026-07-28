@@ -74,9 +74,7 @@ export function ajouterPlanification(input: {
 
 export function basculerPlanification(id: string) {
   setState({
-    planifications: state.planifications.map((p) =>
-      p.id === id ? { ...p, actif: !p.actif } : p,
-    ),
+    planifications: state.planifications.map((p) => (p.id === id ? { ...p, actif: !p.actif } : p)),
   });
 }
 

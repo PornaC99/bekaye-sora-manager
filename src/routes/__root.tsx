@@ -8,7 +8,7 @@ import {
   Scripts,
   useRouterState,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -139,6 +139,11 @@ function RootComponent() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const estMobile = pathname === "/mobile" || pathname.startsWith("/mobile/");
   const estAuth = pathname === "/auth" || pathname === "/reset-password";
+  // Le sous-arbre protégé est rendu uniquement côté client (comme les routes
+  // `_authenticated`, en ssr:false) : sinon le serveur affiche l'écran de
+  // chargement du TenantGate et l'hydratation échoue.
+  const [hydrate, setHydrate] = useState(false);
+  useEffect(() => setHydrate(true), []);
 
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event) => {
@@ -152,8 +157,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {estMobile || estAuth ? (
-        /* Coques autonomes : application mobile du Directeur et pages d'authentification. */
+      {estMobile ? (
+        /* Coque autonome SSR : application mobile publique du Directeur. */
+        <Outlet />
+      ) : !hydrate ? null : estAuth ? (
         <Outlet />
       ) : (
         <TenantGate>
@@ -164,8 +171,10 @@ function RootComponent() {
         </TenantGate>
       )}
 
+
+
+
       <Toaster position="top-right" richColors />
     </QueryClientProvider>
   );
 }
-

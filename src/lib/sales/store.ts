@@ -171,7 +171,6 @@ export function enregistrerVente(values: VenteFormValues): Vente {
     })),
   });
 
-
   // Encaissement partiel : une créance client est ouverte automatiquement
   // dans le module Finances (aucune double saisie).
   const encaisse = vente.paiements.reduce((somme, p) => somme + p.montant, 0);

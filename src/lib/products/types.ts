@@ -45,10 +45,9 @@ export type LigneHistorique = {
   montant: number;
 };
 
-export type ProduitFormValues = Omit<
-  Produit,
-  "id" | "dateAjout" | "dateModification" | "actif"
-> & { actif: boolean };
+export type ProduitFormValues = Omit<Produit, "id" | "dateAjout" | "dateModification" | "actif"> & {
+  actif: boolean;
+};
 
 export const UNITES = ["Pièce", "Carton", "Bouteille", "Sachet", "Lot", "Flacon"] as const;
 
@@ -78,9 +77,11 @@ export const formatDate = (iso: string | null) =>
 
 export const formatDateCourt = (iso: string | null) =>
   iso
-    ? new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" }).format(
-        new Date(iso),
-      )
+    ? new Intl.DateTimeFormat("fr-FR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      }).format(new Date(iso))
     : "—";
 
 export const formatHeure = (iso: string) =>

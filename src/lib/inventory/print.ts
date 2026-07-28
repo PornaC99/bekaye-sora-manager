@@ -45,7 +45,7 @@ function ouvrir(html: string, imprimer: boolean) {
   if (!fenetre) return false;
   fenetre.document.write(
     imprimer
-      ? html.replace("</body>", "<script>window.onload=()=>window.print()<\/script></body>")
+      ? html.replace("</body>", "<script>window.onload=()=>window.print()</script></body>")
       : html,
   );
   fenetre.document.close();
@@ -120,8 +120,7 @@ function rapportHtml(inventaire: Inventaire) {
 }
 
 /** Ouvre le rapport d'inventaire prêt à imprimer. */
-export const imprimerInventaire = (inventaire: Inventaire) =>
-  ouvrir(rapportHtml(inventaire), true);
+export const imprimerInventaire = (inventaire: Inventaire) => ouvrir(rapportHtml(inventaire), true);
 
 /** Export PDF : ouvre le rapport dans une fenêtre « Enregistrer au format PDF ». */
 export const exporterInventairePdf = (inventaire: Inventaire) =>

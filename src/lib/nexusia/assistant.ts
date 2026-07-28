@@ -26,9 +26,18 @@ const sansAccent = (texte: string) =>
 const REGLES: Regle[] = [
   {
     cle: "ca-jour",
-    motsCles: ["chiffre d'affaires aujourd", "ca aujourd", "vendu aujourd", "recette du jour", "journee"],
+    motsCles: [
+      "chiffre d'affaires aujourd",
+      "ca aujourd",
+      "vendu aujourd",
+      "recette du jour",
+      "journee",
+    ],
     construire: (d) => {
-      const evolution = variation(d.jour.kpis.chiffreAffaires, d.jour.kpisPrecedents.chiffreAffaires);
+      const evolution = variation(
+        d.jour.kpis.chiffreAffaires,
+        d.jour.kpisPrecedents.chiffreAffaires,
+      );
       return {
         titre: "Chiffre d'affaires du jour",
         texte: `Aujourd'hui, vous avez réalisé ${formatFCFA(d.jour.kpis.chiffreAffaires)} sur ${d.jour.kpis.nombreVentes} vente(s), soit ${evolution} % par rapport à hier.`,
@@ -52,7 +61,12 @@ const REGLES: Regle[] = [
   },
   {
     cle: "meilleurs-produits",
-    motsCles: ["se vendent le mieux", "meilleurs produits", "produit le plus vendu", "top produits"],
+    motsCles: [
+      "se vendent le mieux",
+      "meilleurs produits",
+      "produit le plus vendu",
+      "top produits",
+    ],
     construire: (d) => ({
       titre: "Produits les plus vendus ce mois",
       texte: `Vos meilleures ventes du mois sont menées par ${d.mois.ventesAnalyse.meilleursProduits[0]?.nom ?? "aucun produit"}.`,
@@ -106,7 +120,11 @@ const REGLES: Regle[] = [
         { label: "Chiffre d'affaires", valeur: formatFCFA(d.mois.kpis.chiffreAffaires) },
         { label: "Dépenses", valeur: formatFCFA(d.mois.kpis.depenses) },
         { label: "Bénéfice", valeur: formatFCFA(d.mois.kpis.benefice) },
-        { label: "Fin de mois estimée", valeur: formatFCFA(d.mois.previsions.caPrevu), ton: "info" },
+        {
+          label: "Fin de mois estimée",
+          valeur: formatFCFA(d.mois.previsions.caPrevu),
+          ton: "info",
+        },
       ],
       conseil: "Comparez cette marge avec votre objectif mensuel pour ajuster vos achats.",
       lien: { to: "/nexusia/finances", label: "Analyse financière" },
@@ -266,8 +284,16 @@ const REGLES: Regle[] = [
       titre: "Situation de trésorerie",
       texte: `Votre solde de trésorerie s'établit à ${formatFCFA(d.finances.tresorerie.solde)}.`,
       points: [
-        { label: "Encaissements", valeur: formatFCFA(d.finances.tresorerie.entrees), ton: "succes" },
-        { label: "Décaissements", valeur: formatFCFA(d.finances.tresorerie.sorties), ton: "alerte" },
+        {
+          label: "Encaissements",
+          valeur: formatFCFA(d.finances.tresorerie.entrees),
+          ton: "succes",
+        },
+        {
+          label: "Décaissements",
+          valeur: formatFCFA(d.finances.tresorerie.sorties),
+          ton: "alerte",
+        },
         { label: "Créances clients", valeur: formatFCFA(d.finances.kpis.creances) },
         { label: "Dettes fournisseurs", valeur: formatFCFA(d.finances.kpis.dettes) },
       ],

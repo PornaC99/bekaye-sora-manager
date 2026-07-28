@@ -104,9 +104,7 @@ function EmployesMobile() {
                     <p className="font-display text-sm font-semibold text-foreground">
                       {formatFCFA(p.chiffreAffaires)}
                     </p>
-                    <p className="text-[10px] text-muted-foreground">
-                      objectif {p.progression} %
-                    </p>
+                    <p className="text-[10px] text-muted-foreground">objectif {p.progression} %</p>
                   </div>
                 </div>
               </MobileCard>

@@ -1,11 +1,6 @@
 import { useSyncExternalStore } from "react";
 
-import {
-  MESSAGE_ACCUEIL,
-  type MessageNexus,
-  type ObjectifNexus,
-  type ReponseNexus,
-} from "./types";
+import { MESSAGE_ACCUEIL, type MessageNexus, type ObjectifNexus, type ReponseNexus } from "./types";
 
 /**
  * Store local du module « NEXUSIA Insight » (conversation + objectifs).

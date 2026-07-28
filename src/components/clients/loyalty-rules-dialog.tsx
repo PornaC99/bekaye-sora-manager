@@ -123,10 +123,7 @@ export function LoyaltyRulesDialog({
                 <Gift className="h-4 w-4 text-primary" />
                 <p className="text-sm font-medium text-foreground">Cadeau après plusieurs achats</p>
               </div>
-              <Switch
-                checked={values.cadeauActif}
-                onCheckedChange={(v) => set("cadeauActif", v)}
-              />
+              <Switch checked={values.cadeauActif} onCheckedChange={(v) => set("cadeauActif", v)} />
             </div>
             {values.cadeauActif && (
               <div className="mt-3 grid gap-3 sm:grid-cols-2">

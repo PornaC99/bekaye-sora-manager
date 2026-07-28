@@ -4,8 +4,16 @@ import type { AlerteFournisseur } from "@/lib/suppliers/analytics";
 import { cn } from "@/lib/utils";
 
 const STYLES = {
-  critique: { classe: "border-destructive/30 bg-destructive/5", icone: ShieldAlert, texte: "text-destructive" },
-  attention: { classe: "border-amber-500/30 bg-amber-500/5", icone: AlertTriangle, texte: "text-amber-600" },
+  critique: {
+    classe: "border-destructive/30 bg-destructive/5",
+    icone: ShieldAlert,
+    texte: "text-destructive",
+  },
+  attention: {
+    classe: "border-amber-500/30 bg-amber-500/5",
+    icone: AlertTriangle,
+    texte: "text-amber-600",
+  },
   info: { classe: "border-border bg-muted/30", icone: Info, texte: "text-muted-foreground" },
 } as const;
 
@@ -18,7 +26,9 @@ export function SupplierAlertsPanel({
 }) {
   return (
     <section className="rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-card)]">
-      <h2 className="font-display text-base font-semibold text-foreground">Alertes intelligentes</h2>
+      <h2 className="font-display text-base font-semibold text-foreground">
+        Alertes intelligentes
+      </h2>
       <p className="mt-0.5 text-xs text-muted-foreground">
         Ruptures, retards de livraison et fournisseurs inactifs détectés automatiquement.
       </p>

@@ -28,7 +28,12 @@ function PerformancePage() {
         description="Une note sur 100 pour chaque domaine clé de l'entreprise."
       />
 
-      <PeriodFilters cle={cle} personnalisee={personnalisee} onChange={setCle} onPersonnalisee={setPersonnalisee} />
+      <PeriodFilters
+        cle={cle}
+        personnalisee={personnalisee}
+        onChange={setCle}
+        onPersonnalisee={setPersonnalisee}
+      />
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {d.scores.map((score) => (

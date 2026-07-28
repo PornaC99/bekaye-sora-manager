@@ -57,7 +57,10 @@ export function InventoryHistoryTable({ inventaires }: { inventaires: Inventaire
           </thead>
           <tbody>
             {inventaires.map((inv) => (
-              <tr key={inv.id} className="border-b border-border/70 last:border-0 hover:bg-muted/30">
+              <tr
+                key={inv.id}
+                className="border-b border-border/70 last:border-0 hover:bg-muted/30"
+              >
                 <td className="px-4 py-3">
                   <Link
                     to="/inventaire/$inventaireId"

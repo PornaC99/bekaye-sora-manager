@@ -79,7 +79,8 @@ export function santeSysteme({
       label: "Dernière sauvegarde",
       valeur: heuresDepuisSauvegarde < 48 ? `il y a ${heuresDepuisSauvegarde} h` : "à planifier",
       detail: derniere ? `${derniere.id} · ${derniere.taille}` : "Aucune sauvegarde réussie",
-      niveau: heuresDepuisSauvegarde <= 24 ? "bon" : heuresDepuisSauvegarde <= 72 ? "moyen" : "critique",
+      niveau:
+        heuresDepuisSauvegarde <= 24 ? "bon" : heuresDepuisSauvegarde <= 72 ? "moyen" : "critique",
       progression: Math.max(0, 100 - heuresDepuisSauvegarde * 2),
     },
     {

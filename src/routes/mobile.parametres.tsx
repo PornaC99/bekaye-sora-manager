@@ -127,9 +127,7 @@ function ParametresMobile() {
             </div>
             <Switch
               checked={preferences.theme === "sombre"}
-              onCheckedChange={(valeur) =>
-                majPreferences({ theme: valeur ? "sombre" : "clair" })
-              }
+              onCheckedChange={(valeur) => majPreferences({ theme: valeur ? "sombre" : "clair" })}
               aria-label="Mode sombre"
             />
           </div>

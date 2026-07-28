@@ -12,13 +12,7 @@ import {
 } from "@/components/ui/select";
 import { CATEGORIES, MARQUES } from "@/lib/products/demo-data";
 
-export type EtatFiltre =
-  | "tous"
-  | "faible"
-  | "rupture"
-  | "expiration"
-  | "actifs"
-  | "desactives";
+export type EtatFiltre = "tous" | "faible" | "rupture" | "expiration" | "actifs" | "desactives";
 
 export const ETATS: { value: EtatFiltre; label: string }[] = [
   { value: "tous", label: "Tous les produits" },

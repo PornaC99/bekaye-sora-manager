@@ -21,7 +21,9 @@ export function SummaryCards({
             <span
               className={cn(
                 "grid h-8 w-8 shrink-0 place-items-center rounded-lg",
-                carte.tone === "primary" ? "bg-primary-soft text-primary" : "bg-muted text-muted-foreground",
+                carte.tone === "primary"
+                  ? "bg-primary-soft text-primary"
+                  : "bg-muted text-muted-foreground",
               )}
             >
               <carte.icon className="h-4 w-4" />

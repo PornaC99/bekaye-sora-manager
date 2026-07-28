@@ -64,11 +64,7 @@ function MouvementsPage() {
         Retour aux produits
       </Link>
 
-      <PageHeader
-        eyebrow="Catalogue"
-        title="Historique des mouvements"
-        description={DESCRIPTION}
-      />
+      <PageHeader eyebrow="Catalogue" title="Historique des mouvements" description={DESCRIPTION} />
 
       <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-card)] sm:flex-row sm:items-center">
         <div className="relative flex-1">

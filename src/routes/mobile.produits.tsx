@@ -45,9 +45,7 @@ function ProduitsMobile() {
       const statut = statutProduit(p);
       if (filtre !== "tous" && statut !== filtre) return false;
       if (!q) return true;
-      return [p.nom, p.marque, p.categorie, p.codeBarres].some((v) =>
-        v.toLowerCase().includes(q),
-      );
+      return [p.nom, p.marque, p.categorie, p.codeBarres].some((v) => v.toLowerCase().includes(q));
     });
   }, [produits, recherche, filtre]);
 
