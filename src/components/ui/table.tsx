@@ -3,11 +3,46 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
-  ({ className, ...props }, ref) => (
-    <div className="table-scroll relative w-full">
-      <table ref={ref} className={cn("w-full caption-bottom text-sm", className)} {...props} />
-    </div>
-  ),
+  ({ className, ...props }, ref) => {
+    const local = React.useRef<HTMLTableElement | null>(null);
+
+    /* Sur mobile chaque ligne devient une carte : on recopie l'intitulé de colonne
+       dans `data-label` pour que la valeur reste compréhensible sans en-tête. */
+    React.useEffect(() => {
+      const table = local.current;
+      if (!table) return;
+      const appliquer = () => {
+        const entetes = Array.from(table.querySelectorAll("thead th")).map((th) =>
+          (th.textContent ?? "").trim(),
+        );
+        table.querySelectorAll("tbody tr").forEach((tr) => {
+          Array.from(tr.children).forEach((cell, index) => {
+            const label = entetes[index];
+            if (label) cell.setAttribute("data-label", label);
+            else cell.removeAttribute("data-label");
+          });
+        });
+      };
+      appliquer();
+      const observer = new MutationObserver(appliquer);
+      observer.observe(table, { childList: true, subtree: true });
+      return () => observer.disconnect();
+    });
+
+    return (
+      <div className="table-scroll table-cards relative w-full">
+        <table
+          ref={(node) => {
+            local.current = node;
+            if (typeof ref === "function") ref(node);
+            else if (ref) (ref as React.MutableRefObject<HTMLTableElement | null>).current = node;
+          }}
+          className={cn("w-full caption-bottom text-sm", className)}
+          {...props}
+        />
+      </div>
+    );
+  },
 );
 Table.displayName = "Table";
 
