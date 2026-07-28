@@ -7,12 +7,7 @@ import serum from "@/assets/produit-serum.jpg";
 
 import type { LigneHistorique, MouvementStock, Produit } from "./types";
 
-export const CATEGORIES = [
-  "Soins du visage",
-  "Soins du corps",
-  "Hygiène",
-  "Accessoires",
-] as const;
+export const CATEGORIES = ["Soins du visage", "Soins du corps", "Hygiène", "Accessoires"] as const;
 
 export const MARQUES = ["501", "501 Premium", "501 Nature"] as const;
 

@@ -57,7 +57,10 @@ export function AssistantPanel({ conseils }: { conseils: ConseilFinancier[] }) {
               >
                 <div className="flex items-start gap-3">
                   <span
-                    className={cn("grid h-9 w-9 shrink-0 place-items-center rounded-lg", ton.pastille)}
+                    className={cn(
+                      "grid h-9 w-9 shrink-0 place-items-center rounded-lg",
+                      ton.pastille,
+                    )}
                   >
                     <ton.icone className="h-4 w-4" />
                   </span>

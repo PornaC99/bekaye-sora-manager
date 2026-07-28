@@ -59,8 +59,8 @@ export function PagePlaceholder({
               Espace prêt pour le développement
             </h2>
             <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-              Cette page est volontairement vide. Les fonctionnalités de « {title} » seront
-              ajoutées à cet emplacement.
+              Cette page est volontairement vide. Les fonctionnalités de « {title} » seront ajoutées
+              à cet emplacement.
             </p>
           </div>
         </div>

@@ -45,7 +45,12 @@ export const inventairesDemo: Inventaire[] = [
     historique: [
       { id: "HI-1", date: j(12), utilisateur: "Bekaye Sora", action: "Création de l'inventaire" },
       { id: "HI-2", date: j(12, 11), utilisateur: "Bekaye Sora", action: "Comptage terminé" },
-      { id: "HI-3", date: j(12, 12), utilisateur: "Bekaye Sora", action: "Stock ajusté selon l'inventaire" },
+      {
+        id: "HI-3",
+        date: j(12, 12),
+        utilisateur: "Bekaye Sora",
+        action: "Stock ajusté selon l'inventaire",
+      },
     ],
   },
   {
@@ -78,7 +83,12 @@ export const inventairesDemo: Inventaire[] = [
     historique: [
       { id: "HI-6", date: j(72), utilisateur: "Moussa Diallo", action: "Création de l'inventaire" },
       { id: "HI-7", date: j(72, 13), utilisateur: "Moussa Diallo", action: "Comptage terminé" },
-      { id: "HI-8", date: j(72, 14), utilisateur: "Moussa Diallo", action: "Stock ajusté selon l'inventaire" },
+      {
+        id: "HI-8",
+        date: j(72, 14),
+        utilisateur: "Moussa Diallo",
+        action: "Stock ajusté selon l'inventaire",
+      },
     ],
   },
 ];

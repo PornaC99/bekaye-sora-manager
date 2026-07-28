@@ -15,7 +15,11 @@ import {
   exporterInventairePdf,
   imprimerInventaire,
 } from "@/lib/inventory/print";
-import { ajusterStockDepuisInventaire, useInventaire, saisirStockPhysique } from "@/lib/inventory/store";
+import {
+  ajusterStockDepuisInventaire,
+  useInventaire,
+  saisirStockPhysique,
+} from "@/lib/inventory/store";
 import { lignesEnEcart, lignesVerifiees } from "@/lib/inventory/types";
 import { formatDate, formatHeure } from "@/lib/products/types";
 
@@ -25,12 +29,14 @@ export const Route = createFileRoute("/_authenticated/inventaire/$inventaireId")
       { title: "Détail de l'inventaire — Bekaye Sora Business Manager" },
       {
         name: "description",
-        content: "Consultez les produits contrôlés, les écarts et les commentaires d'un inventaire.",
+        content:
+          "Consultez les produits contrôlés, les écarts et les commentaires d'un inventaire.",
       },
       { property: "og:title", content: "Détail de l'inventaire — Bekaye Sora Business Manager" },
       {
         property: "og:description",
-        content: "Consultez les produits contrôlés, les écarts et les commentaires d'un inventaire.",
+        content:
+          "Consultez les produits contrôlés, les écarts et les commentaires d'un inventaire.",
       },
     ],
   }),

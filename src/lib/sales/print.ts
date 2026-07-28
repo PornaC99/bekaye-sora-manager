@@ -9,11 +9,7 @@ import {
   totalVente,
   type Vente,
 } from "@/lib/sales/types";
-import {
-  soldeCaisse,
-  totalParType,
-  type SessionCaisse,
-} from "@/lib/sales/types";
+import { soldeCaisse, totalParType, type SessionCaisse } from "@/lib/sales/types";
 
 const echapper = (valeur: string) =>
   valeur.replace(/[&<>"]/g, (c) =>
@@ -46,7 +42,9 @@ function ouvrir(html: string, imprimer: boolean) {
   const fenetre = window.open("", "_blank", "width=900,height=1000");
   if (!fenetre) return false;
   fenetre.document.write(
-    imprimer ? html.replace("</body>", "<script>window.onload=()=>window.print()<\/script></body>") : html,
+    imprimer
+      ? html.replace("</body>", "<script>window.onload=()=>window.print()<\/script></body>")
+      : html,
   );
   fenetre.document.close();
   return true;

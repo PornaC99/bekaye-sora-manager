@@ -77,11 +77,7 @@ function EntreprisePage() {
             <Input value={form.whatsapp} onChange={(e) => maj("whatsapp", e.target.value)} />
           </Champ>
           <Champ label="Email">
-            <Input
-              type="email"
-              value={form.email}
-              onChange={(e) => maj("email", e.target.value)}
-            />
+            <Input type="email" value={form.email} onChange={(e) => maj("email", e.target.value)} />
           </Champ>
           <Champ label="Site web">
             <Input value={form.siteWeb} onChange={(e) => maj("siteWeb", e.target.value)} />

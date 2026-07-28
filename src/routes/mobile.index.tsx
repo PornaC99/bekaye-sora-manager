@@ -25,12 +25,7 @@ import { useFinances } from "@/lib/finance/use-finance";
 import { formatFCFA, statutProduit } from "@/lib/products/types";
 import { useProductsStore } from "@/lib/products/store";
 import { totalVente } from "@/lib/sales/types";
-import {
-  depuis,
-  useAlertesCritiques,
-  useHorloge,
-  useNotificationsMobile,
-} from "@/lib/mobile/feed";
+import { depuis, useAlertesCritiques, useHorloge, useNotificationsMobile } from "@/lib/mobile/feed";
 import { useMobileSession } from "@/lib/mobile/session";
 import { cn } from "@/lib/utils";
 
@@ -82,9 +77,7 @@ function AccueilMobile() {
   );
 
   const ventesJour = finances.ventes.filter(
-    (v) =>
-      v.statut !== "annulee" &&
-      new Date(v.date).toDateString() === new Date().toDateString(),
+    (v) => v.statut !== "annulee" && new Date(v.date).toDateString() === new Date().toDateString(),
   );
   const dernieres = [...finances.ventes]
     .filter((v) => v.statut !== "annulee")

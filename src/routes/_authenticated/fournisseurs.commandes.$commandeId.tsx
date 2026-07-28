@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
-import {
-  ArrowLeft,
-  CheckCircle2,
-  MessageSquarePlus,
-  Printer,
-  Send,
-  XCircle,
-} from "lucide-react";
+import { ArrowLeft, CheckCircle2, MessageSquarePlus, Printer, Send, XCircle } from "lucide-react";
 import { toast } from "sonner";
 
 import { PageHeader } from "@/components/layout/page";
@@ -161,10 +154,15 @@ function DetailCommande() {
                 </thead>
                 <tbody>
                   {commande.lignes.map((l, i) => (
-                    <tr key={`${l.produitId}-${i}`} className="border-b border-border/60 last:border-0">
+                    <tr
+                      key={`${l.produitId}-${i}`}
+                      className="border-b border-border/60 last:border-0"
+                    >
                       <td className="px-5 py-3 font-medium text-foreground">{l.nom}</td>
                       <td className="px-5 py-3 text-right tabular-nums">{l.quantite}</td>
-                      <td className="px-5 py-3 text-right tabular-nums">{formatFCFA(l.prixAchat)}</td>
+                      <td className="px-5 py-3 text-right tabular-nums">
+                        {formatFCFA(l.prixAchat)}
+                      </td>
                       <td className="px-5 py-3 text-right tabular-nums">{l.remise} %</td>
                       <td className="px-5 py-3 text-right font-semibold tabular-nums">
                         {formatFCFA(totalLigneCommande(l))}

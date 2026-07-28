@@ -210,7 +210,11 @@ export function ProductFormDialog({
               </Field>
 
               <Field label="Unité">
-                <Choix value={values.unite} onChange={(v) => set("unite", v)} options={[...UNITES]} />
+                <Choix
+                  value={values.unite}
+                  onChange={(v) => set("unite", v)}
+                  options={[...UNITES]}
+                />
               </Field>
 
               <Field label="Prix d'achat (FCFA)">
@@ -254,7 +258,10 @@ export function ProductFormDialog({
                   type="date"
                   value={values.dateExpiration ? values.dateExpiration.slice(0, 10) : ""}
                   onChange={(e) =>
-                    set("dateExpiration", e.target.value ? new Date(e.target.value).toISOString() : null)
+                    set(
+                      "dateExpiration",
+                      e.target.value ? new Date(e.target.value).toISOString() : null,
+                    )
                   }
                 />
               </Field>

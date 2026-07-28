@@ -52,10 +52,7 @@ function FicheClient() {
   const [edition, setEdition] = useState(false);
   const [promo, setPromo] = useState(false);
 
-  const analyse = useMemo(
-    () => (client ? analyseClient(client, achats) : null),
-    [client, achats],
-  );
+  const analyse = useMemo(() => (client ? analyseClient(client, achats) : null), [client, achats]);
 
   if (!client || !analyse) {
     return (
@@ -102,9 +99,7 @@ function FicheClient() {
               </p>
               <div className="mt-1 flex flex-wrap items-center gap-2">
                 <StatutClientBadge client={client} />
-                <span className="text-xs text-muted-foreground">
-                  {SEXE_LABEL[client.sexe]}
-                </span>
+                <span className="text-xs text-muted-foreground">{SEXE_LABEL[client.sexe]}</span>
               </div>
             </div>
           </div>

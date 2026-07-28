@@ -44,13 +44,7 @@ export type Recommandation = {
 
 export type AlerteCritique = {
   id: string;
-  categorie:
-    | "stock"
-    | "expiration"
-    | "ventes"
-    | "caisse"
-    | "facture"
-    | "livraison";
+  categorie: "stock" | "expiration" | "ventes" | "caisse" | "facture" | "livraison";
   titre: string;
   message: string;
   gravite: "haute" | "moyenne";
@@ -74,7 +68,11 @@ export type ResultatRecherche = {
 export type TypeRapport = "quotidien" | "hebdomadaire" | "mensuel" | "annuel";
 
 export const TYPES_RAPPORT: { value: TypeRapport; label: string; description: string }[] = [
-  { value: "quotidien", label: "Rapport quotidien", description: "Activité de la journée en cours." },
+  {
+    value: "quotidien",
+    label: "Rapport quotidien",
+    description: "Activité de la journée en cours.",
+  },
   {
     value: "hebdomadaire",
     label: "Rapport hebdomadaire",

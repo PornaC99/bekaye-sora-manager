@@ -40,10 +40,7 @@ function FicheEmploye() {
   const employe = employes.find((e) => e.id === employeId) ?? null;
 
   const performance = useMemo(
-    () =>
-      employe
-        ? calculerPerformances([employe], ventes, presences)[0]
-        : null,
+    () => (employe ? calculerPerformances([employe], ventes, presences)[0] : null),
     [employe, ventes, presences],
   );
 

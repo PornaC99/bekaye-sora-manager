@@ -133,9 +133,15 @@ function PersonnalisationPage() {
         </div>
       </AdminCard>
 
-      <AdminCard titre="Aperçu" description="Prévisualisation de la couleur et de la police choisies.">
+      <AdminCard
+        titre="Aperçu"
+        description="Prévisualisation de la couleur et de la police choisies."
+      >
         <div className="rounded-xl border border-border p-5" style={{ fontFamily: form.police }}>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: form.couleurPrincipale }}>
+          <p
+            className="text-xs font-semibold uppercase tracking-[0.18em]"
+            style={{ color: form.couleurPrincipale }}
+          >
             Bekaye Sora
           </p>
           <h3 className="mt-1 text-2xl font-semibold text-foreground">Business Manager</h3>

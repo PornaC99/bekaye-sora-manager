@@ -30,12 +30,7 @@ import { FOURNISSEURS } from "@/lib/products/demo-data";
 import { useProductsStore } from "@/lib/products/store";
 import { formatDateCourt, formatFCFA, formatHeure } from "@/lib/products/types";
 import { imprimerEntree } from "@/lib/stock/print";
-import {
-  ajouterEntree,
-  modifierEntree,
-  supprimerEntree,
-  useEntreesStore,
-} from "@/lib/stock/store";
+import { ajouterEntree, modifierEntree, supprimerEntree, useEntreesStore } from "@/lib/stock/store";
 import { memeJour, montantEntree, quantiteEntree } from "@/lib/stock/types";
 import type { EntreeFormValues, EntreeStock } from "@/lib/stock/types";
 

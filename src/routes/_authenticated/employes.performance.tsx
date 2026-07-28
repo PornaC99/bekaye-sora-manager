@@ -7,11 +7,7 @@ import {
   PerformancePanel,
 } from "@/components/hr/performance-panel";
 import { PageHeader } from "@/components/layout/page";
-import {
-  calculerPerformances,
-  genererAlertesRh,
-  serieMasseSalariale,
-} from "@/lib/hr/analytics";
+import { calculerPerformances, genererAlertesRh, serieMasseSalariale } from "@/lib/hr/analytics";
 import { useHrStore } from "@/lib/hr/store";
 import { useSalesStore } from "@/lib/sales/store";
 

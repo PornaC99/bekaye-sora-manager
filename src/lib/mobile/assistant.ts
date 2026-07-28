@@ -35,7 +35,9 @@ export function useAssistantDirecteur(): ReponseAssistant[] {
   const { kpis } = useFinances();
 
   return useMemo(() => {
-    const ventesJour = ventes.filter((v) => v.statut !== "annulee" && jour(v.date) === aujourdHui());
+    const ventesJour = ventes.filter(
+      (v) => v.statut !== "annulee" && jour(v.date) === aujourdHui(),
+    );
     const rentaJour = rentabiliteProduits(ventesJour, produits);
     const meilleur = rentaJour[0];
     const performances = calculerPerformances(employes, ventes, presences);

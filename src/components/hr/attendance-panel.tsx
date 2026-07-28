@@ -61,7 +61,7 @@ export function AttendancePanel({
       date,
       arrivee: statut === "absent" || statut === "conge" ? null : (presence?.arrivee ?? null),
       depart: statut === "absent" || statut === "conge" ? null : (presence?.depart ?? null),
-      retardMinutes: statut === "retard" ? (presence?.retardMinutes || 15) : 0,
+      retardMinutes: statut === "retard" ? presence?.retardMinutes || 15 : 0,
       statut,
       methode: "manuel",
     });

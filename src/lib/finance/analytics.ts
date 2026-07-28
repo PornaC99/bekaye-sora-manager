@@ -444,11 +444,7 @@ export function previsionsFinancieres(input: {
 }): Previsions {
   const maintenant = new Date();
   const joursEcoules = maintenant.getDate();
-  const joursDuMois = new Date(
-    maintenant.getFullYear(),
-    maintenant.getMonth() + 1,
-    0,
-  ).getDate();
+  const joursDuMois = new Date(maintenant.getFullYear(), maintenant.getMonth() + 1, 0).getDate();
 
   const ventesMois = input.ventes.filter((v) => estCeMois(v.date));
   const depensesMois = input.depenses.filter((d) => estCeMois(d.date));

@@ -1,13 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import {
-  CheckCircle2,
-  Eye,
-  MoreHorizontal,
-  Pencil,
-  Printer,
-  Send,
-  Trash2,
-} from "lucide-react";
+import { CheckCircle2, Eye, MoreHorizontal, Pencil, Printer, Send, Trash2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -121,7 +113,10 @@ export function OrdersTable({
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem asChild>
-                        <Link to="/fournisseurs/commandes/$commandeId" params={{ commandeId: c.id }}>
+                        <Link
+                          to="/fournisseurs/commandes/$commandeId"
+                          params={{ commandeId: c.id }}
+                        >
                           <Eye className="mr-2 h-4 w-4" /> Voir
                         </Link>
                       </DropdownMenuItem>

@@ -42,10 +42,7 @@ function TableauEcheances({
   const total = lignes.filter((l) => !l.regle).reduce((t, l) => t + l.montant, 0);
 
   return (
-    <SectionCard
-      title={titre}
-      description={`${description} · ${formatFCFA(total)} en attente`}
-    >
+    <SectionCard title={titre} description={`${description} · ${formatFCFA(total)} en attente`}>
       {lignes.length === 0 ? (
         <p className="py-10 text-center text-sm text-muted-foreground">Aucune ligne à suivre.</p>
       ) : (

@@ -134,7 +134,11 @@ function UtilisateursPage() {
                   <td className="py-3 pr-3">
                     <Pastille
                       ton={
-                        u.statut === "actif" ? "succes" : u.statut === "invite" ? "neutre" : "danger"
+                        u.statut === "actif"
+                          ? "succes"
+                          : u.statut === "invite"
+                            ? "neutre"
+                            : "danger"
                       }
                     >
                       {u.statut === "actif"
@@ -146,7 +150,12 @@ function UtilisateursPage() {
                   </td>
                   <td className="py-3">
                     <div className="flex justify-end gap-1">
-                      <Button variant="ghost" size="icon" onClick={() => ouvrirEdition(u)} title="Modifier">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => ouvrirEdition(u)}
+                        title="Modifier"
+                      >
                         <Pencil className="h-4 w-4" />
                       </Button>
                       <Button
@@ -291,11 +300,16 @@ function UtilisateursPage() {
       <Dialog open={ouvert} onOpenChange={setOuvert}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>{edition ? "Modifier l'utilisateur" : "Ajouter un utilisateur"}</DialogTitle>
+            <DialogTitle>
+              {edition ? "Modifier l'utilisateur" : "Ajouter un utilisateur"}
+            </DialogTitle>
           </DialogHeader>
           <div className="grid gap-4 sm:grid-cols-2">
             <Champ label="Nom complet">
-              <Input value={form.nom} onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))} />
+              <Input
+                value={form.nom}
+                onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))}
+              />
             </Champ>
             <Champ label="Email">
               <Input
@@ -328,7 +342,10 @@ function UtilisateursPage() {
                 className="h-10 rounded-md border border-input bg-background px-3 text-sm"
                 value={form.magasinId ?? ""}
                 onChange={(e) =>
-                  setForm((f) => ({ ...f, magasinId: e.target.value === "" ? null : e.target.value }))
+                  setForm((f) => ({
+                    ...f,
+                    magasinId: e.target.value === "" ? null : e.target.value,
+                  }))
                 }
               >
                 <option value="">Tous les magasins</option>
@@ -344,7 +361,10 @@ function UtilisateursPage() {
                 className="h-10 rounded-md border border-input bg-background px-3 text-sm"
                 value={form.statut}
                 onChange={(e) =>
-                  setForm((f) => ({ ...f, statut: e.target.value as UtilisateurFormValues["statut"] }))
+                  setForm((f) => ({
+                    ...f,
+                    statut: e.target.value as UtilisateurFormValues["statut"],
+                  }))
                 }
               >
                 <option value="invite">Invitation envoyée</option>

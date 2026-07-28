@@ -105,9 +105,27 @@ function AssistantPage() {
 
       <SuppliersKpiCards
         cartes={[
-          { label: "Produits à réapprovisionner", value: String(suggestions.length), hint: `Couverture visée : ${couverture} jours`, icon: Sparkles, tone: "primary" },
-          { label: "Priorité haute", value: String(hautes.length), hint: "Rupture imminente ou avérée", icon: TriangleAlert, tone: hautes.length ? "danger" : "success" },
-          { label: "Budget estimé", value: formatFCFA(budget), hint: "Sur la base des prix d'achat actuels", icon: Bot, tone: "warning" },
+          {
+            label: "Produits à réapprovisionner",
+            value: String(suggestions.length),
+            hint: `Couverture visée : ${couverture} jours`,
+            icon: Sparkles,
+            tone: "primary",
+          },
+          {
+            label: "Priorité haute",
+            value: String(hautes.length),
+            hint: "Rupture imminente ou avérée",
+            icon: TriangleAlert,
+            tone: hautes.length ? "danger" : "success",
+          },
+          {
+            label: "Budget estimé",
+            value: formatFCFA(budget),
+            hint: "Sur la base des prix d'achat actuels",
+            icon: Bot,
+            tone: "warning",
+          },
         ]}
       />
 

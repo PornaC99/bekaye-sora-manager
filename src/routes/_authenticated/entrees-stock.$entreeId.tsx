@@ -130,11 +130,7 @@ function DetailEntreePage() {
               <EntryStatusBadge statut={entree.statut} />
             </div>
           </div>
-          <Info
-            label="Observation"
-            value={entree.observation || "—"}
-            className="sm:col-span-2"
-          />
+          <Info label="Observation" value={entree.observation || "—"} className="sm:col-span-2" />
         </div>
       </SectionCard>
 
@@ -240,8 +236,8 @@ function DetailEntreePage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Supprimer cette entrée de stock ?</AlertDialogTitle>
             <AlertDialogDescription>
-              La réception {entree.numero} sera supprimée et les quantités reçues seront retirées
-              du stock des produits concernés.
+              La réception {entree.numero} sera supprimée et les quantités reçues seront retirées du
+              stock des produits concernés.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -264,15 +260,7 @@ function DetailEntreePage() {
   );
 }
 
-function Info({
-  label,
-  value,
-  className,
-}: {
-  label: string;
-  value: string;
-  className?: string;
-}) {
+function Info({ label, value, className }: { label: string; value: string; className?: string }) {
   return (
     <div className={className}>
       <p className="text-[11px] uppercase tracking-[0.12em] text-muted-foreground">{label}</p>

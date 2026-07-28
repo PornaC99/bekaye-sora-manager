@@ -58,7 +58,11 @@ const ENTETES_DEPENSES = [
 export function exporterCsv(depenses: Depense[], nom = "depenses") {
   const lignes = [ENTETES_DEPENSES, ...lignesDepenses(depenses)];
   const contenu = `\uFEFF${lignes.map((l) => l.map(echapper).join(";")).join("\n")}`;
-  telecharger(contenu, `${nom}-${new Date().toISOString().slice(0, 10)}.csv`, "text/csv;charset=utf-8");
+  telecharger(
+    contenu,
+    `${nom}-${new Date().toISOString().slice(0, 10)}.csv`,
+    "text/csv;charset=utf-8",
+  );
 }
 
 /** Export Excel (feuille de calcul XML lisible par Excel et LibreOffice). */
@@ -222,14 +226,24 @@ export function imprimerRapportFinancier(contenu: ContenuRapport) {
   ${tableau(
     ["Indicateur", "Valeur", "Détail"],
     [
-      ["Chiffre d'affaires prévu", formatFCFA(previsions.caPrevu), `${previsions.joursEcoules}/${previsions.joursDuMois} jours écoulés`],
-      ["Bénéfice prévisionnel", formatFCFA(previsions.beneficePrevu), `Réalisé : ${formatFCFA(previsions.beneficeRealise)}`],
+      [
+        "Chiffre d'affaires prévu",
+        formatFCFA(previsions.caPrevu),
+        `${previsions.joursEcoules}/${previsions.joursDuMois} jours écoulés`,
+      ],
+      [
+        "Bénéfice prévisionnel",
+        formatFCFA(previsions.beneficePrevu),
+        `Réalisé : ${formatFCFA(previsions.beneficeRealise)}`,
+      ],
       [
         "Rupture de trésorerie",
         previsions.dateRuptureTresorerie
           ? formatDateCourte(previsions.dateRuptureTresorerie)
           : "Aucun risque détecté",
-        previsions.joursAvantRupture ? `Dans ${previsions.joursAvantRupture} jours` : "Flux net positif",
+        previsions.joursAvantRupture
+          ? `Dans ${previsions.joursAvantRupture} jours`
+          : "Flux net positif",
       ],
     ],
   )}

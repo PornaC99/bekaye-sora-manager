@@ -53,10 +53,18 @@ function RapportsPage() {
         description="Analysez les performances de votre entreprise en temps réel."
         actions={
           <div className="flex flex-wrap gap-2">
-            <button type="button" className={bouton} onClick={() => exporterCsvRapport(tableauExport, "rapport")}>
+            <button
+              type="button"
+              className={bouton}
+              onClick={() => exporterCsvRapport(tableauExport, "rapport")}
+            >
               <Download className="h-4 w-4" /> CSV
             </button>
-            <button type="button" className={bouton} onClick={() => exporterExcelRapport(tableauExport, "rapport")}>
+            <button
+              type="button"
+              className={bouton}
+              onClick={() => exporterExcelRapport(tableauExport, "rapport")}
+            >
               <FileSpreadsheet className="h-4 w-4" /> Excel
             </button>
             <button
@@ -123,8 +131,16 @@ function RapportsPage() {
           />
         </SectionCard>
 
-        <RepartitionPie titre="Meilleures catégories" description="Part du chiffre d'affaires" donnees={d.ventesAnalyse.categories} />
-        <RepartitionPie titre="Meilleures marques" description="Part du chiffre d'affaires" donnees={d.ventesAnalyse.marques} />
+        <RepartitionPie
+          titre="Meilleures catégories"
+          description="Part du chiffre d'affaires"
+          donnees={d.ventesAnalyse.categories}
+        />
+        <RepartitionPie
+          titre="Meilleures marques"
+          description="Part du chiffre d'affaires"
+          donnees={d.ventesAnalyse.marques}
+        />
 
         <SectionCard title="Heures de forte affluence" description="Répartition des ventes">
           <MiniTable
@@ -139,7 +155,12 @@ function RapportsPage() {
             entetes={["Jour", "Ventes", "Chiffre d'affaires", "Bénéfice"]}
             lignes={d.ventesAnalyse.jours
               .filter((j) => j.ventes > 0)
-              .map((j) => [j.label, j.ventes, formatFCFA(j.chiffreAffaires), formatFCFA(j.benefice)])}
+              .map((j) => [
+                j.label,
+                j.ventes,
+                formatFCFA(j.chiffreAffaires),
+                formatFCFA(j.benefice),
+              ])}
           />
         </SectionCard>
 
@@ -168,8 +189,8 @@ function RapportsPage() {
           />
           <p className="mt-3 text-xs text-muted-foreground">
             {d.stocks.prochesRupture.length} produit(s) proches de la rupture ·{" "}
-            {d.stocks.prochePeremption.length} proches de la péremption ·{" "}
-            {d.stocks.expires.length} expiré(s).
+            {d.stocks.prochePeremption.length} proches de la péremption · {d.stocks.expires.length}{" "}
+            expiré(s).
           </p>
         </SectionCard>
 

@@ -199,10 +199,7 @@ export function EmployeeFormDialog({
             />
           </Champ>
           <Champ label="Statut">
-            <Select
-              value={values.statut}
-              onValueChange={(v) => set("statut", v as StatutEmploye)}
-            >
+            <Select value={values.statut} onValueChange={(v) => set("statut", v as StatutEmploye)}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>

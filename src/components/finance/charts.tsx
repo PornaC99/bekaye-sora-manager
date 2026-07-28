@@ -61,9 +61,7 @@ export function PlageSelector({
 }
 
 const abrege = (v: number) =>
-  Math.abs(v) >= 1000000
-    ? `${Math.round(v / 100000) / 10}M`
-    : `${Math.round(v / 1000)}k`;
+  Math.abs(v) >= 1000000 ? `${Math.round(v / 100000) / 10}M` : `${Math.round(v / 1000)}k`;
 
 export function RevenueChart({
   data,

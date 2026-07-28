@@ -31,7 +31,9 @@ function JournalPage() {
         if (employeId !== "tous" && a.employeId !== employeId) return false;
         if (
           recherche &&
-          !`${a.description} ${a.module} ${a.auteur}`.toLowerCase().includes(recherche.toLowerCase())
+          !`${a.description} ${a.module} ${a.auteur}`
+            .toLowerCase()
+            .includes(recherche.toLowerCase())
         )
           return false;
         return true;

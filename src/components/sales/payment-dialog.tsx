@@ -86,7 +86,9 @@ export function PaymentDialog({
         </DialogHeader>
 
         <div className="rounded-xl border border-border bg-muted/40 px-4 py-3 text-center">
-          <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Montant à payer</p>
+          <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+            Montant à payer
+          </p>
           <p className="font-display text-3xl font-semibold text-primary">{formatFCFA(total)}</p>
         </div>
 

@@ -1,11 +1,4 @@
-import {
-  AlertTriangle,
-  CalendarClock,
-  Moon,
-  PackageX,
-  Scale,
-  type LucideIcon,
-} from "lucide-react";
+import { AlertTriangle, CalendarClock, Moon, PackageX, Scale, type LucideIcon } from "lucide-react";
 
 import { SectionCard } from "@/components/dashboard/section-card";
 import type { Alerte } from "@/lib/inventory/insights";

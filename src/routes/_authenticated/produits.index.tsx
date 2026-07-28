@@ -10,7 +10,11 @@ import { DeleteProductDialog } from "@/components/products/delete-product-dialog
 import { ProductFormDialog } from "@/components/products/product-form-dialog";
 import { ProductsGrid } from "@/components/products/products-grid";
 import { ProductsPagination } from "@/components/products/products-pagination";
-import { ProductsEmpty, ProductsError, ProductsLoading } from "@/components/products/products-states";
+import {
+  ProductsEmpty,
+  ProductsError,
+  ProductsLoading,
+} from "@/components/products/products-states";
 import { ProductsTable } from "@/components/products/products-table";
 import {
   FILTRES_INITIAUX,

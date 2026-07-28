@@ -76,7 +76,11 @@ function AnalyseProduits() {
       />
 
       <div className="grid gap-5 xl:grid-cols-[minmax(0,320px)_minmax(0,1fr)]">
-        <SectionCard title="Catalogue analysé" description="Sélectionnez un produit." bodyClassName="p-2">
+        <SectionCard
+          title="Catalogue analysé"
+          description="Sélectionnez un produit."
+          bodyClassName="p-2"
+        >
           <ul className="flex max-h-[560px] flex-col gap-1 overflow-y-auto">
             {donnees.mois.produits.map((p) => {
               const l = lignes.find((x) => x.produitId === p.id);

@@ -123,11 +123,7 @@ export function HrAlertsPanel({ alertes }: { alertes: AlerteRh[] }) {
   );
 }
 
-export function MasseSalarialeChartCard({
-  serie,
-}: {
-  serie: { mois: string; montant: number }[];
-}) {
+export function MasseSalarialeChartCard({ serie }: { serie: { mois: string; montant: number }[] }) {
   const max = Math.max(1, ...serie.map((s) => s.montant));
   return (
     <section className="rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-card)]">

@@ -83,7 +83,10 @@ function tableau(entetes: string[], lignes: (string | number)[][]) {
   return `<table>
     <thead><tr>${entetes.map((e, i) => `<th class="${i > 1 ? "num" : ""}">${e}</th>`).join("")}</tr></thead>
     <tbody>${lignes
-      .map((l) => `<tr>${l.map((c, i) => `<td class="${i > 1 ? "num" : ""}">${c}</td>`).join("")}</tr>`)
+      .map(
+        (l) =>
+          `<tr>${l.map((c, i) => `<td class="${i > 1 ? "num" : ""}">${c}</td>`).join("")}</tr>`,
+      )
       .join("")}</tbody>
   </table>`;
 }
@@ -189,7 +192,11 @@ export function imprimerRapportBi(contenu: ContenuRapportBi) {
   ${tableau(
     ["Indicateur", "Détail", "Montant"],
     [
-      ["Chiffre d'affaires prévu", `${previsions.joursEcoules}/${previsions.joursDuMois} jours écoulés`, formatFCFA(previsions.caPrevu)],
+      [
+        "Chiffre d'affaires prévu",
+        `${previsions.joursEcoules}/${previsions.joursDuMois} jours écoulés`,
+        formatFCFA(previsions.caPrevu),
+      ],
       ["Bénéfice attendu", "Projection au rythme actuel", formatFCFA(previsions.beneficePrevu)],
       ["Dépenses prévues", "Projection au rythme actuel", formatFCFA(previsions.depensesPrevues)],
       ["Produits à risque de rupture", "Sous 10 jours", previsions.risquesRupture.length],

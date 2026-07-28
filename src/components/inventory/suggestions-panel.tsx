@@ -49,12 +49,7 @@ export function SuggestionsPanel({ suggestions }: { suggestions: Suggestion[] })
               <span className={cn("grid h-10 w-10 place-items-center rounded-xl", TONS[s.ton])}>
                 <Icon className="h-5 w-5" strokeWidth={1.9} />
               </span>
-              <span
-                className={cn(
-                  "rounded-md px-2 py-1 text-[11px] font-semibold",
-                  TONS[s.ton],
-                )}
-              >
+              <span className={cn("rounded-md px-2 py-1 text-[11px] font-semibold", TONS[s.ton])}>
                 {s.indicateur}
               </span>
             </div>

@@ -183,7 +183,10 @@ function ProduitDetail() {
         ) : (
           <ul className="divide-y divide-border">
             {mouvementsProduit.map((m) => (
-              <li key={m.id} className="flex flex-wrap items-center justify-between gap-3 px-5 py-3">
+              <li
+                key={m.id}
+                className="flex flex-wrap items-center justify-between gap-3 px-5 py-3"
+              >
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium text-foreground">{m.observation}</p>
                   <p className="text-xs text-muted-foreground">

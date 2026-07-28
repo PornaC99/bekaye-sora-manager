@@ -182,7 +182,10 @@ function MagasinsPage() {
           </DialogHeader>
           <div className="grid gap-4 sm:grid-cols-2">
             <Champ label="Nom du magasin">
-              <Input value={form.nom} onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))} />
+              <Input
+                value={form.nom}
+                onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))}
+              />
             </Champ>
             <Champ label="Responsable">
               <Input

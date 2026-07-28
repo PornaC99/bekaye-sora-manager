@@ -190,13 +190,7 @@ export function MobileSection({
   );
 }
 
-export function MobileCard({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function MobileCard({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <div
       className={cn(

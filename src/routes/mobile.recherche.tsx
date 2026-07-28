@@ -41,7 +41,9 @@ function RechercheMobile() {
     if (terme.length < 2) return null;
     return {
       produits: produits
-        .filter((p) => [p.nom, p.marque, p.categorie, p.codeBarres].some((v) => v.toLowerCase().includes(terme)))
+        .filter((p) =>
+          [p.nom, p.marque, p.categorie, p.codeBarres].some((v) => v.toLowerCase().includes(terme)),
+        )
         .slice(0, 5),
       ventes: ventes
         .filter((v) =>
@@ -51,10 +53,14 @@ function RechercheMobile() {
         )
         .slice(0, 5),
       clients: clients
-        .filter((c) => [c.nom, c.telephone, c.ville, c.numero].some((v) => v.toLowerCase().includes(terme)))
+        .filter((c) =>
+          [c.nom, c.telephone, c.ville, c.numero].some((v) => v.toLowerCase().includes(terme)),
+        )
         .slice(0, 5),
       employes: employes
-        .filter((e) => [e.nom, e.fonction, e.matricule].some((v) => v.toLowerCase().includes(terme)))
+        .filter((e) =>
+          [e.nom, e.fonction, e.matricule].some((v) => v.toLowerCase().includes(terme)),
+        )
         .slice(0, 5),
     };
   }, [q, produits, ventes, clients, employes]);

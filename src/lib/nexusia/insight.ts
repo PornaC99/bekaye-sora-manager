@@ -199,8 +199,7 @@ export function useNexusia() {
       id: "tendance-ca",
       ton: evolutionCa >= 0 ? "succes" : "danger",
       impact: "fort",
-      titre:
-        evolutionCa >= 0 ? "Le chiffre d'affaires progresse" : "Le chiffre d'affaires recule",
+      titre: evolutionCa >= 0 ? "Le chiffre d'affaires progresse" : "Le chiffre d'affaires recule",
       message: `Évolution de ${evolutionCa} % par rapport à la période précédente. Fin de mois estimée à ${formatFCFA(mois.previsions.caPrevu)}.`,
     });
 
@@ -356,11 +355,13 @@ export function useNexusia() {
     ];
 
     const opportunites: string[] = [];
-    mois.ventesAnalyse.meilleursProduits.slice(0, 2).forEach((p) =>
-      opportunites.push(
-        `Renforcer le stock de ${p.nom} : ${p.marge} % de marge et forte demande.`,
-      ),
-    );
+    mois.ventesAnalyse.meilleursProduits
+      .slice(0, 2)
+      .forEach((p) =>
+        opportunites.push(
+          `Renforcer le stock de ${p.nom} : ${p.marge} % de marge et forte demande.`,
+        ),
+      );
     if (mois.clientsAnalyse.inactifs > 0) {
       opportunites.push(
         `Relancer ${mois.clientsAnalyse.inactifs} client(s) inactif(s) par WhatsApp pour récupérer du chiffre d'affaires.`,
@@ -493,7 +494,19 @@ export function useNexusia() {
       suivis,
       index,
     };
-  }, [jour, semaine, mois, annee, finances, clients, fournisseurs, commandes, messages, objectifs, periodes]);
+  }, [
+    jour,
+    semaine,
+    mois,
+    annee,
+    finances,
+    clients,
+    fournisseurs,
+    commandes,
+    messages,
+    objectifs,
+    periodes,
+  ]);
 }
 
 export type DonneesNexusia = ReturnType<typeof useNexusia>;

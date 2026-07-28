@@ -98,7 +98,9 @@ function AnalyseEmployes() {
               <li key={v.employe.id} className="flex flex-col gap-1.5">
                 <div className="flex items-center justify-between gap-3 text-sm">
                   <span className="truncate font-medium text-foreground">{v.employe.nom}</span>
-                  <Pastille ton={v.progression >= 100 ? "succes" : v.progression >= 60 ? "info" : "alerte"}>
+                  <Pastille
+                    ton={v.progression >= 100 ? "succes" : v.progression >= 60 ? "info" : "alerte"}
+                  >
                     {v.progression} %
                   </Pastille>
                 </div>
@@ -123,7 +125,14 @@ function AnalyseEmployes() {
         description="Mois en cours comparé à la semaine écoulée."
       >
         <TableauCompact
-          entetes={["Employé", "Ventes", "Chiffre d'affaires", "Panier moyen", "Présence", "Tendance"]}
+          entetes={[
+            "Employé",
+            "Ventes",
+            "Chiffre d'affaires",
+            "Panier moyen",
+            "Présence",
+            "Tendance",
+          ]}
           lignes={vendeurs.map((v) => {
             const semaine = precedents.find((p) => p.employe.id === v.employe.id);
             const tendance = variation(semaine?.chiffreAffaires ?? 0, v.chiffreAffaires / 4);

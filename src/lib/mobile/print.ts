@@ -16,9 +16,7 @@ export function imprimerRapportDirecteur(input: {
     <section>
       <h2>${titre}</h2>
       <table>
-        ${lignes
-          .map((l) => `<tr><td>${l.label}</td><td class="v">${l.valeur}</td></tr>`)
-          .join("")}
+        ${lignes.map((l) => `<tr><td>${l.label}</td><td class="v">${l.valeur}</td></tr>`).join("")}
       </table>
     </section>`;
 

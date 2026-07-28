@@ -70,7 +70,10 @@ function RapportsPage() {
           >
             <span className="flex items-center gap-2">
               <FileText
-                className={cn("h-4 w-4", t.value === type ? "text-primary" : "text-muted-foreground")}
+                className={cn(
+                  "h-4 w-4",
+                  t.value === type ? "text-primary" : "text-muted-foreground",
+                )}
               />
               <span className="font-display text-sm font-semibold text-foreground">{t.label}</span>
             </span>

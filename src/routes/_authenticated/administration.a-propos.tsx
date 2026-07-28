@@ -11,7 +11,10 @@ export const Route = createFileRoute("/_authenticated/administration/a-propos")(
 function AProposPage() {
   return (
     <div className="flex flex-col gap-5">
-      <AdminCard titre="À propos du logiciel" description="Informations sur l'édition et la licence.">
+      <AdminCard
+        titre="À propos du logiciel"
+        description="Informations sur l'édition et la licence."
+      >
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft">

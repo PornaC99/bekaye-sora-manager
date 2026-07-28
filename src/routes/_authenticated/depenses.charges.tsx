@@ -50,10 +50,7 @@ function ChargesPage() {
       if (categorie !== "toutes" && depense.categorie !== categorie) return false;
       if (statut !== "tous" && depense.statut !== statut) return false;
       if (source !== "toutes" && depense.source !== source) return false;
-      if (
-        terme &&
-        !`${depense.description} ${depense.responsable}`.toLowerCase().includes(terme)
-      )
+      if (terme && !`${depense.description} ${depense.responsable}`.toLowerCase().includes(terme))
         return false;
       return true;
     });

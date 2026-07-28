@@ -58,7 +58,11 @@ function StatistiquesClients() {
   }, [clients]);
   const nouveaux = useMemo(() => nouveauxParMois(clients), [clients]);
   const perdus = useMemo(
-    () => clients.filter(estInactif).sort((a, b) => b.totalDepense - a.totalDepense).slice(0, 6),
+    () =>
+      clients
+        .filter(estInactif)
+        .sort((a, b) => b.totalDepense - a.totalDepense)
+        .slice(0, 6),
     [clients],
   );
   const rentables = useMemo(() => meilleursClients(clients, 6), [clients]);
@@ -103,7 +107,10 @@ function StatistiquesClients() {
           </div>
         </Carte>
 
-        <Carte titre="Répartition par sexe" description="Uniquement si l'information est renseignée">
+        <Carte
+          titre="Répartition par sexe"
+          description="Uniquement si l'information est renseignée"
+        >
           <div className="h-[240px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>

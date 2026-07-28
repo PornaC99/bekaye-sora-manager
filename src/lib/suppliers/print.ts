@@ -15,7 +15,6 @@ const echapper = (valeur: string) =>
     c === "&" ? "&amp;" : c === "<" ? "&lt;" : c === ">" ? "&gt;" : "&quot;",
   );
 
-
 /** Génère et ouvre un « Bon de commande » professionnel prêt à imprimer. */
 export function imprimerCommande(commande: CommandeAchat, fournisseur: Fournisseur | null) {
   const lignes = commande.lignes

@@ -139,7 +139,8 @@ function PreferencesPage() {
               onChange={(e) =>
                 setS((p) => ({
                   ...p,
-                  inventaireAutomatique: e.target.value as ParametresStocks["inventaireAutomatique"],
+                  inventaireAutomatique: e.target
+                    .value as ParametresStocks["inventaireAutomatique"],
                 }))
               }
             >

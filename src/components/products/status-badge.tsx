@@ -8,13 +8,7 @@ const TONES: Record<StatutProduit, string> = {
   desactive: "border-border bg-muted text-muted-foreground",
 };
 
-export function StatusBadge({
-  statut,
-  className,
-}: {
-  statut: StatutProduit;
-  className?: string;
-}) {
+export function StatusBadge({ statut, className }: { statut: StatutProduit; className?: string }) {
   return (
     <span
       className={cn(

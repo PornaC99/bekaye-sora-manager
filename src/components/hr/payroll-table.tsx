@@ -158,9 +158,7 @@ export function PayrollTable({
                   </td>
                   <td className="px-4 py-3 text-right">{formatFCFA(bulletin.salaireBase)}</td>
                   <td className="px-4 py-3 text-right">{formatFCFA(bulletin.primes)}</td>
-                  <td className="px-4 py-3 text-right">
-                    {bulletin.heuresSupplementaires} h
-                  </td>
+                  <td className="px-4 py-3 text-right">{bulletin.heuresSupplementaires} h</td>
                   <td className="px-4 py-3 text-right">− {formatFCFA(bulletin.avances)}</td>
                   <td className="px-4 py-3 text-right">− {formatFCFA(bulletin.retenues)}</td>
                   <td className="px-4 py-3 text-right font-semibold text-foreground">

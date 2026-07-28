@@ -165,7 +165,12 @@ export function EntryFormDialog({
               <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
             </Champ>
             <Champ label="Heure">
-              <Input type="time" value={heure} onChange={(e) => setHeure(e.target.value)} required />
+              <Input
+                type="time"
+                value={heure}
+                onChange={(e) => setHeure(e.target.value)}
+                required
+              />
             </Champ>
             <Champ label="Fournisseur">
               <Select value={fournisseur} onValueChange={setFournisseur}>
@@ -221,9 +226,7 @@ export function EntryFormDialog({
 
           <section className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <h3 className="font-display text-sm font-semibold text-foreground">
-                Produits reçus
-              </h3>
+              <h3 className="font-display text-sm font-semibold text-foreground">Produits reçus</h3>
               <div className="flex items-center gap-2">
                 <Button
                   type="button"

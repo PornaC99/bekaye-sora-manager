@@ -1,8 +1,4 @@
-import type {
-  CommandeAchat,
-  Fournisseur,
-  NotificationFournisseur,
-} from "./types";
+import type { CommandeAchat, Fournisseur, NotificationFournisseur } from "./types";
 
 const j = (n: number) => new Date(Date.now() - n * 86_400_000).toISOString();
 const jPlus = (n: number) => new Date(Date.now() + n * 86_400_000).toISOString();
@@ -143,8 +139,20 @@ export const commandesDemo: CommandeAchat[] = [
     responsable: "Bekaye Sora",
     statut: "recue",
     lignes: [
-      { produitId: "P-001", nom: "Lotion Éclaircissante 501", quantite: 200, prixAchat: 3200, remise: 5 },
-      { produitId: "P-004", nom: "Crème Hydratante 501", quantite: 120, prixAchat: 4100, remise: 0 },
+      {
+        produitId: "P-001",
+        nom: "Lotion Éclaircissante 501",
+        quantite: 200,
+        prixAchat: 3200,
+        remise: 5,
+      },
+      {
+        produitId: "P-004",
+        nom: "Crème Hydratante 501",
+        quantite: 120,
+        prixAchat: 4100,
+        remise: 0,
+      },
     ],
     historique: [
       evt(j(58), "Commande créée"),
@@ -153,7 +161,12 @@ export const commandesDemo: CommandeAchat[] = [
       evt(j(49), "Commande réceptionnée — stock mis à jour"),
     ],
     commentaires: [
-      { id: "K-1", date: j(55), auteur: "Moussa Traoré", texte: "Livraison prévue avec un jour d'avance." },
+      {
+        id: "K-1",
+        date: j(55),
+        auteur: "Moussa Traoré",
+        texte: "Livraison prévue avec un jour d'avance.",
+      },
     ],
   },
   {
@@ -169,7 +182,13 @@ export const commandesDemo: CommandeAchat[] = [
     statut: "recue",
     lignes: [
       { produitId: "P-002", nom: "Savon 501", quantite: 400, prixAchat: 650, remise: 0 },
-      { produitId: "P-011", nom: "Beurre de Karité 501", quantite: 150, prixAchat: 1800, remise: 10 },
+      {
+        produitId: "P-011",
+        nom: "Beurre de Karité 501",
+        quantite: 150,
+        prixAchat: 1800,
+        remise: 10,
+      },
     ],
     historique: [
       evt(j(41), "Commande créée", "Aminata Doumbia"),
@@ -191,7 +210,13 @@ export const commandesDemo: CommandeAchat[] = [
     statut: "recue",
     lignes: [
       { produitId: "P-006", nom: "Sérum Éclat 501", quantite: 90, prixAchat: 6200, remise: 0 },
-      { produitId: "P-008", nom: "Coffret Découverte 501", quantite: 60, prixAchat: 9500, remise: 7 },
+      {
+        produitId: "P-008",
+        nom: "Coffret Découverte 501",
+        quantite: 60,
+        prixAchat: 9500,
+        remise: 7,
+      },
     ],
     historique: [
       evt(j(27), "Commande créée"),
@@ -201,7 +226,12 @@ export const commandesDemo: CommandeAchat[] = [
       evt(j(6), "Commande réceptionnée — stock mis à jour"),
     ],
     commentaires: [
-      { id: "K-2", date: j(12), auteur: "Aïcha Kouassi", texte: "Dossier de dédouanement transmis." },
+      {
+        id: "K-2",
+        date: j(12),
+        auteur: "Aïcha Kouassi",
+        texte: "Dossier de dédouanement transmis.",
+      },
     ],
   },
   {
@@ -216,8 +246,20 @@ export const commandesDemo: CommandeAchat[] = [
     responsable: "Bekaye Sora",
     statut: "expediee",
     lignes: [
-      { produitId: "P-007", nom: "Gel Douche 501 Nature", quantite: 160, prixAchat: 1450, remise: 0 },
-      { produitId: "P-009", nom: "Lait de Toilette 501", quantite: 100, prixAchat: 2300, remise: 5 },
+      {
+        produitId: "P-007",
+        nom: "Gel Douche 501 Nature",
+        quantite: 160,
+        prixAchat: 1450,
+        remise: 0,
+      },
+      {
+        produitId: "P-009",
+        nom: "Lait de Toilette 501",
+        quantite: 100,
+        prixAchat: 2300,
+        remise: 5,
+      },
     ],
     historique: [
       evt(j(14), "Commande créée"),
@@ -226,7 +268,12 @@ export const commandesDemo: CommandeAchat[] = [
       evt(j(6), "Commande expédiée"),
     ],
     commentaires: [
-      { id: "K-3", date: j(4), auteur: "Fatoumata Diallo", texte: "Camion bloqué à Ségou, retard de 2 jours." },
+      {
+        id: "K-3",
+        date: j(4),
+        auteur: "Fatoumata Diallo",
+        texte: "Camion bloqué à Ségou, retard de 2 jours.",
+      },
     ],
   },
   {
@@ -241,8 +288,20 @@ export const commandesDemo: CommandeAchat[] = [
     responsable: "Bekaye Sora",
     statut: "confirmee",
     lignes: [
-      { produitId: "P-001", nom: "Lotion Éclaircissante 501", quantite: 150, prixAchat: 3250, remise: 3 },
-      { produitId: "P-012", nom: "Déodorant Fraîcheur 501", quantite: 120, prixAchat: 1250, remise: 0 },
+      {
+        produitId: "P-001",
+        nom: "Lotion Éclaircissante 501",
+        quantite: 150,
+        prixAchat: 3250,
+        remise: 3,
+      },
+      {
+        produitId: "P-012",
+        nom: "Déodorant Fraîcheur 501",
+        quantite: 120,
+        prixAchat: 1250,
+        remise: 0,
+      },
     ],
     historique: [
       evt(j(6), "Commande créée"),
@@ -263,7 +322,13 @@ export const commandesDemo: CommandeAchat[] = [
     responsable: "Aminata Doumbia",
     statut: "envoyee",
     lignes: [
-      { produitId: "P-011", nom: "Beurre de Karité 501", quantite: 200, prixAchat: 1750, remise: 0 },
+      {
+        produitId: "P-011",
+        nom: "Beurre de Karité 501",
+        quantite: 200,
+        prixAchat: 1750,
+        remise: 0,
+      },
     ],
     historique: [
       evt(j(2), "Commande créée", "Aminata Doumbia"),
@@ -283,7 +348,13 @@ export const commandesDemo: CommandeAchat[] = [
     responsable: "Bekaye Sora",
     statut: "brouillon",
     lignes: [
-      { produitId: "P-010", nom: "Éponge Exfoliante 501", quantite: 250, prixAchat: 450, remise: 0 },
+      {
+        produitId: "P-010",
+        nom: "Éponge Exfoliante 501",
+        quantite: 250,
+        prixAchat: 450,
+        remise: 0,
+      },
       { produitId: "P-003", nom: "Lingettes 501", quantite: 180, prixAchat: 900, remise: 0 },
     ],
     historique: [evt(j(1), "Commande créée")],

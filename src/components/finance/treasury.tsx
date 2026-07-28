@@ -33,7 +33,10 @@ export function TreasuryPanel({
   ];
 
   return (
-    <SectionCard title="Trésorerie" description="Argent entré et sorti depuis le début de l'activité">
+    <SectionCard
+      title="Trésorerie"
+      description="Argent entré et sorti depuis le début de l'activité"
+    >
       <div className="grid gap-3 sm:grid-cols-3">
         {cartes.map((carte) => (
           <div key={carte.label} className="rounded-xl border border-border px-4 py-3">

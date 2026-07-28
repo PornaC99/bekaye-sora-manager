@@ -16,12 +16,7 @@ import type { Produit } from "@/lib/products/types";
 import { VENDEURS } from "@/lib/sales/demo-data";
 import { imprimerFacture } from "@/lib/sales/print";
 import { enregistrerVente, useSalesStore } from "@/lib/sales/store";
-import {
-  memeJourVente,
-  montantEspeces,
-  totalVente,
-  type Paiement,
-} from "@/lib/sales/types";
+import { memeJourVente, montantEspeces, totalVente, type Paiement } from "@/lib/sales/types";
 
 const TITLE = "Ventes";
 const DESCRIPTION = "Enregistrez rapidement toutes les ventes.";

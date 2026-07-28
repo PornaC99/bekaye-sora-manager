@@ -17,16 +17,7 @@ export type Kpi = {
   value: string;
   hint: string;
   trend: number | null;
-  icon:
-    | "revenue"
-    | "month"
-    | "sales"
-    | "stock"
-    | "out"
-    | "low"
-    | "cash"
-    | "clients"
-    | "staff";
+  icon: "revenue" | "month" | "sales" | "stock" | "out" | "low" | "cash" | "clients" | "staff";
   tone: "primary" | "neutral" | "success" | "warning" | "danger";
 };
 

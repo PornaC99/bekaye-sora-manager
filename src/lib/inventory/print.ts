@@ -120,8 +120,7 @@ function rapportHtml(inventaire: Inventaire) {
 }
 
 /** Ouvre le rapport d'inventaire prêt à imprimer. */
-export const imprimerInventaire = (inventaire: Inventaire) =>
-  ouvrir(rapportHtml(inventaire), true);
+export const imprimerInventaire = (inventaire: Inventaire) => ouvrir(rapportHtml(inventaire), true);
 
 /** Export PDF : ouvre le rapport dans une fenêtre « Enregistrer au format PDF ». */
 export const exporterInventairePdf = (inventaire: Inventaire) =>

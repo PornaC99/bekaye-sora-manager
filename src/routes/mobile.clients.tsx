@@ -12,7 +12,8 @@ export const Route = createFileRoute("/mobile/clients")({
       { title: "Clients VIP — Bekaye Sora Mobile" },
       {
         name: "description",
-        content: "Les clientes et clients les plus fidèles de Bekaye Sora et leurs points de fidélité.",
+        content:
+          "Les clientes et clients les plus fidèles de Bekaye Sora et leurs points de fidélité.",
       },
       { property: "og:title", content: "Clients VIP — Bekaye Sora Mobile" },
       {
@@ -62,8 +63,8 @@ function ClientsMobile() {
                       <Phone className="h-3 w-3" /> {client.telephone || "—"} · {client.ville}
                     </p>
                     <p className="mt-0.5 flex items-center gap-1 text-[11px] text-primary">
-                      <Gift className="h-3 w-3" /> {client.points} points ·{" "}
-                      {client.nombreAchats} achat(s)
+                      <Gift className="h-3 w-3" /> {client.points} points · {client.nombreAchats}{" "}
+                      achat(s)
                     </p>
                   </div>
                   <p className="shrink-0 font-display text-sm font-semibold text-foreground">

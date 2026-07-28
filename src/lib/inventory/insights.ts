@@ -12,13 +12,7 @@ export type Alerte = {
 
 export type Suggestion = {
   id: string;
-  categorie:
-    | "commander"
-    | "reduire"
-    | "peremption"
-    | "anomalie"
-    | "rentabilite"
-    | "rupture_prevue";
+  categorie: "commander" | "reduire" | "peremption" | "anomalie" | "rentabilite" | "rupture_prevue";
   titre: string;
   message: string;
   indicateur: string;
@@ -32,9 +26,11 @@ const recent = (iso: string) => Date.now() - new Date(iso).getTime() <= JOURS_30
 /** Quantités vendues sur les 30 derniers jours, par produit. */
 export function ventes30Jours(ventes: LigneHistorique[]) {
   const map = new Map<string, number>();
-  ventes.filter((v) => recent(v.date)).forEach((v) => {
-    map.set(v.produitId, (map.get(v.produitId) ?? 0) + v.quantite);
-  });
+  ventes
+    .filter((v) => recent(v.date))
+    .forEach((v) => {
+      map.set(v.produitId, (map.get(v.produitId) ?? 0) + v.quantite);
+    });
   return map;
 }
 
@@ -135,9 +131,7 @@ export function construireSuggestions(
   const ecarts = ecartsParProduit(inventaires);
   const suggestions: Suggestion[] = [];
 
-  const parVentes = [...produits].sort(
-    (a, b) => (vendus.get(b.id) ?? 0) - (vendus.get(a.id) ?? 0),
-  );
+  const parVentes = [...produits].sort((a, b) => (vendus.get(b.id) ?? 0) - (vendus.get(a.id) ?? 0));
 
   const fort = parVentes[0];
   if (fort && (vendus.get(fort.id) ?? 0) > 0) {

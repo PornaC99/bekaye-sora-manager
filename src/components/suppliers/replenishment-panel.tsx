@@ -6,9 +6,21 @@ import type { SuggestionAppro } from "@/lib/suppliers/analytics";
 import { cn } from "@/lib/utils";
 
 const PRIORITE = {
-  haute: { label: "Priorité haute", classe: "bg-destructive/10 text-destructive", bordure: "border-destructive/30" },
-  moyenne: { label: "Priorité moyenne", classe: "bg-amber-500/10 text-amber-600", bordure: "border-amber-500/30" },
-  basse: { label: "Priorité basse", classe: "bg-success/10 text-success", bordure: "border-success/30" },
+  haute: {
+    label: "Priorité haute",
+    classe: "bg-destructive/10 text-destructive",
+    bordure: "border-destructive/30",
+  },
+  moyenne: {
+    label: "Priorité moyenne",
+    classe: "bg-amber-500/10 text-amber-600",
+    bordure: "border-amber-500/30",
+  },
+  basse: {
+    label: "Priorité basse",
+    classe: "bg-success/10 text-success",
+    bordure: "border-success/30",
+  },
 } as const;
 
 export function ReplenishmentCards({
@@ -45,7 +57,12 @@ export function ReplenishmentCards({
                   Stock actuel : {s.produit.stock} · seuil {s.produit.stockMinimum}
                 </p>
               </div>
-              <span className={cn("shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-semibold", p.classe)}>
+              <span
+                className={cn(
+                  "shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-semibold",
+                  p.classe,
+                )}
+              >
                 {p.label}
               </span>
             </div>
@@ -82,7 +99,9 @@ export function ReplenishmentCards({
               </p>
             </div>
 
-            <p className="rounded-xl bg-muted/40 px-3 py-2 text-xs text-muted-foreground">{s.motif}</p>
+            <p className="rounded-xl bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
+              {s.motif}
+            </p>
 
             <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3">
               <p className="text-sm font-semibold text-foreground">{formatFCFA(s.montantEstime)}</p>
