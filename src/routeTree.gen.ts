@@ -48,6 +48,7 @@ import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-sto
 import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
 import { Route as EmployesPresenceRouteImport } from './routes/employes.presence'
 import { Route as EmployesPermissionsRouteImport } from './routes/employes.permissions'
+import { Route as EmployesPerformanceRouteImport } from './routes/employes.performance'
 import { Route as EmployesCongesRouteImport } from './routes/employes.conges'
 import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
@@ -253,6 +254,11 @@ const EmployesPermissionsRoute = EmployesPermissionsRouteImport.update({
   path: '/permissions',
   getParentRoute: () => EmployesRoute,
 } as any)
+const EmployesPerformanceRoute = EmployesPerformanceRouteImport.update({
+  id: '/performance',
+  path: '/performance',
+  getParentRoute: () => EmployesRoute,
+} as any)
 const EmployesCongesRoute = EmployesCongesRouteImport.update({
   id: '/conges',
   path: '/conges',
@@ -315,6 +321,7 @@ export interface FileRoutesByFullPath {
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/employes/conges': typeof EmployesCongesRoute
+  '/employes/performance': typeof EmployesPerformanceRoute
   '/employes/permissions': typeof EmployesPermissionsRoute
   '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
@@ -356,6 +363,7 @@ export interface FileRoutesByTo {
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/employes/conges': typeof EmployesCongesRoute
+  '/employes/performance': typeof EmployesPerformanceRoute
   '/employes/permissions': typeof EmployesPermissionsRoute
   '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
@@ -405,6 +413,7 @@ export interface FileRoutesById {
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
   '/employes/conges': typeof EmployesCongesRoute
+  '/employes/performance': typeof EmployesPerformanceRoute
   '/employes/permissions': typeof EmployesPermissionsRoute
   '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
@@ -455,6 +464,7 @@ export interface FileRouteTypes {
     | '/clients/statistiques'
     | '/clients/vip'
     | '/employes/conges'
+    | '/employes/performance'
     | '/employes/permissions'
     | '/employes/presence'
     | '/entrees-stock/$entreeId'
@@ -496,6 +506,7 @@ export interface FileRouteTypes {
     | '/clients/statistiques'
     | '/clients/vip'
     | '/employes/conges'
+    | '/employes/performance'
     | '/employes/permissions'
     | '/employes/presence'
     | '/entrees-stock/$entreeId'
@@ -544,6 +555,7 @@ export interface FileRouteTypes {
     | '/clients/statistiques'
     | '/clients/vip'
     | '/employes/conges'
+    | '/employes/performance'
     | '/employes/permissions'
     | '/employes/presence'
     | '/entrees-stock/$entreeId'
@@ -865,6 +877,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployesPermissionsRouteImport
       parentRoute: typeof EmployesRoute
     }
+    '/employes/performance': {
+      id: '/employes/performance'
+      path: '/performance'
+      fullPath: '/employes/performance'
+      preLoaderRoute: typeof EmployesPerformanceRouteImport
+      parentRoute: typeof EmployesRoute
+    }
     '/employes/conges': {
       id: '/employes/conges'
       path: '/conges'
@@ -938,6 +957,7 @@ const ClientsRouteWithChildren =
 
 interface EmployesRouteChildren {
   EmployesCongesRoute: typeof EmployesCongesRoute
+  EmployesPerformanceRoute: typeof EmployesPerformanceRoute
   EmployesPermissionsRoute: typeof EmployesPermissionsRoute
   EmployesPresenceRoute: typeof EmployesPresenceRoute
   EmployesIndexRoute: typeof EmployesIndexRoute
@@ -945,6 +965,7 @@ interface EmployesRouteChildren {
 
 const EmployesRouteChildren: EmployesRouteChildren = {
   EmployesCongesRoute: EmployesCongesRoute,
+  EmployesPerformanceRoute: EmployesPerformanceRoute,
   EmployesPermissionsRoute: EmployesPermissionsRoute,
   EmployesPresenceRoute: EmployesPresenceRoute,
   EmployesIndexRoute: EmployesIndexRoute,
