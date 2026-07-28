@@ -11,13 +11,17 @@ import {
 
 import { cn } from "@/lib/utils";
 import { salesRangeLabels, salesSeries, formatFCFA } from "@/lib/dashboard-data";
+import { useDemoVierge } from "@/lib/demo/reset";
 import { SectionCard } from "./section-card";
 
 type Range = keyof typeof salesSeries;
 
 export function SalesChart() {
+  const vierge = useDemoVierge();
   const [range, setRange] = useState<Range>("7j");
-  const data = salesSeries[range];
+  const data = vierge
+    ? salesSeries[range].map((p) => ({ ...p, ventes: 0 }))
+    : salesSeries[range];
   const total = data.reduce((sum, p) => sum + p.ventes, 0);
 
   return (

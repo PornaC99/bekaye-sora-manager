@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 
 import { cn } from "@/lib/utils";
 import { formatFCFA, recentSales, type Sale } from "@/lib/dashboard-data";
+import { useDemoVierge } from "@/lib/demo/reset";
 import { SectionCard } from "./section-card";
 
 const statusStyles: Record<Sale["statut"], string> = {
@@ -12,6 +13,7 @@ const statusStyles: Record<Sale["statut"], string> = {
 };
 
 export function RecentSalesTable() {
+  const vierge = useDemoVierge();
   return (
     <SectionCard
       title="Dernières ventes"
@@ -41,7 +43,7 @@ export function RecentSalesTable() {
             </tr>
           </thead>
           <tbody>
-            {recentSales.map((sale) => (
+            {(vierge ? [] : recentSales).map((sale) => (
               <tr
                 key={sale.id}
                 className="border-b border-border/70 transition-colors last:border-0 hover:bg-muted/50"

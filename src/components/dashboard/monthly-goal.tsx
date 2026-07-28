@@ -1,10 +1,13 @@
 import { Target } from "lucide-react";
 
 import { formatFCFA, monthlyGoal } from "@/lib/dashboard-data";
+import { useDemoVierge } from "@/lib/demo/reset";
 import { SectionCard } from "./section-card";
 
 export function MonthlyGoal() {
-  const { objectif, realise } = monthlyGoal;
+  const vierge = useDemoVierge();
+  const { objectif } = monthlyGoal;
+  const realise = vierge ? 0 : monthlyGoal.realise;
   const pourcentage = Math.min(100, Math.round((realise / objectif) * 100));
   const restant = Math.max(0, objectif - realise);
 

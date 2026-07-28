@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
 
 import { topProducts } from "@/lib/dashboard-data";
+import { useDemoVierge } from "@/lib/demo/reset";
 import { SectionCard } from "./section-card";
 
 export function TopProducts() {
+  const vierge = useDemoVierge();
   return (
     <SectionCard
       title="Produits les plus vendus"
@@ -18,7 +20,7 @@ export function TopProducts() {
       }
     >
       <ul className="flex flex-col gap-3">
-        {topProducts.map((product) => (
+        {(vierge ? [] : topProducts).map((product) => (
           <li
             key={product.id}
             className="flex items-center gap-3 rounded-xl border border-border p-3 transition-colors hover:border-primary/25 hover:bg-muted/40"
