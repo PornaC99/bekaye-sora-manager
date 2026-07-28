@@ -9,53 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as VentesRouteImport } from './routes/ventes'
-import { Route as StatistiquesRouteImport } from './routes/statistiques'
-import { Route as SortiesStockRouteImport } from './routes/sorties-stock'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SalairesRouteImport } from './routes/salaires'
-import { Route as RapportsRouteImport } from './routes/rapports'
-import { Route as ProduitsRouteImport } from './routes/produits'
-import { Route as ParametresRouteImport } from './routes/parametres'
-import { Route as NotificationsRouteImport } from './routes/notifications'
-import { Route as NexusiaRouteImport } from './routes/nexusia'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as MobileRouteImport } from './routes/mobile'
-import { Route as InventaireRouteImport } from './routes/inventaire'
-import { Route as FournisseursRouteImport } from './routes/fournisseurs'
-import { Route as EntreesStockRouteImport } from './routes/entrees-stock'
-import { Route as EmployesRouteImport } from './routes/employes'
-import { Route as DepensesRouteImport } from './routes/depenses'
-import { Route as ClientsRouteImport } from './routes/clients'
-import { Route as CategoriesRouteImport } from './routes/categories'
-import { Route as CaisseRouteImport } from './routes/caisse'
-import { Route as AdministrationRouteImport } from './routes/administration'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as VentesIndexRouteImport } from './routes/ventes.index'
-import { Route as RapportsIndexRouteImport } from './routes/rapports.index'
-import { Route as ProduitsIndexRouteImport } from './routes/produits.index'
-import { Route as NexusiaIndexRouteImport } from './routes/nexusia.index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as MobileIndexRouteImport } from './routes/mobile.index'
-import { Route as InventaireIndexRouteImport } from './routes/inventaire.index'
-import { Route as FournisseursIndexRouteImport } from './routes/fournisseurs.index'
-import { Route as EntreesStockIndexRouteImport } from './routes/entrees-stock.index'
-import { Route as EmployesIndexRouteImport } from './routes/employes.index'
-import { Route as DepensesIndexRouteImport } from './routes/depenses.index'
-import { Route as ClientsIndexRouteImport } from './routes/clients.index'
-import { Route as AdministrationIndexRouteImport } from './routes/administration.index'
-import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
-import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique'
-import { Route as RapportsPerformanceRouteImport } from './routes/rapports.performance'
-import { Route as RapportsComparaisonRouteImport } from './routes/rapports.comparaison'
-import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
-import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
-import { Route as NexusiaRechercheRouteImport } from './routes/nexusia.recherche'
-import { Route as NexusiaRapportsRouteImport } from './routes/nexusia.rapports'
-import { Route as NexusiaProduitsRouteImport } from './routes/nexusia.produits'
-import { Route as NexusiaObjectifsRouteImport } from './routes/nexusia.objectifs'
-import { Route as NexusiaFinancesRouteImport } from './routes/nexusia.finances'
-import { Route as NexusiaEmployesRouteImport } from './routes/nexusia.employes'
-import { Route as NexusiaDecisionRouteImport } from './routes/nexusia.decision'
-import { Route as NexusiaClientsRouteImport } from './routes/nexusia.clients'
+import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as MobileRechercheRouteImport } from './routes/mobile.recherche'
 import { Route as MobileRapportsRouteImport } from './routes/mobile.rapports'
 import { Route as MobileProduitsRouteImport } from './routes/mobile.produits'
@@ -68,92 +28,95 @@ import { Route as MobileConnexionRouteImport } from './routes/mobile.connexion'
 import { Route as MobileClientsRouteImport } from './routes/mobile.clients'
 import { Route as MobileAssistantRouteImport } from './routes/mobile.assistant'
 import { Route as MobileAlertesRouteImport } from './routes/mobile.alertes'
-import { Route as InventaireHistoriqueRouteImport } from './routes/inventaire.historique'
-import { Route as InventaireAnalyseRouteImport } from './routes/inventaire.analyse'
-import { Route as InventaireInventaireIdRouteImport } from './routes/inventaire.$inventaireId'
-import { Route as FournisseursApprovisionnementRouteImport } from './routes/fournisseurs.approvisionnement'
-import { Route as FournisseursAnalyseRouteImport } from './routes/fournisseurs.analyse'
-import { Route as FournisseursFournisseurIdRouteImport } from './routes/fournisseurs.$fournisseurId'
-import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-stock.historique'
-import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
-import { Route as EmployesPresenceRouteImport } from './routes/employes.presence'
-import { Route as EmployesPermissionsRouteImport } from './routes/employes.permissions'
-import { Route as EmployesPerformanceRouteImport } from './routes/employes.performance'
-import { Route as EmployesJournalRouteImport } from './routes/employes.journal'
-import { Route as EmployesCongesRouteImport } from './routes/employes.conges'
-import { Route as EmployesEmployeIdRouteImport } from './routes/employes.$employeId'
-import { Route as DepensesTresorerieRouteImport } from './routes/depenses.tresorerie'
-import { Route as DepensesPrevisionsRouteImport } from './routes/depenses.previsions'
-import { Route as DepensesCreancesRouteImport } from './routes/depenses.creances'
-import { Route as DepensesChargesRouteImport } from './routes/depenses.charges'
-import { Route as DepensesAnalyseRouteImport } from './routes/depenses.analyse'
-import { Route as ClientsVipRouteImport } from './routes/clients.vip'
-import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
-import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
-import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
-import { Route as AdministrationUtilisateursRouteImport } from './routes/administration.utilisateurs'
-import { Route as AdministrationSecuriteRouteImport } from './routes/administration.securite'
-import { Route as AdministrationSauvegardesRouteImport } from './routes/administration.sauvegardes'
-import { Route as AdministrationPreferencesRouteImport } from './routes/administration.preferences'
-import { Route as AdministrationPersonnalisationRouteImport } from './routes/administration.personnalisation'
-import { Route as AdministrationNotificationsRouteImport } from './routes/administration.notifications'
-import { Route as AdministrationMaintenanceRouteImport } from './routes/administration.maintenance'
-import { Route as AdministrationMagasinsRouteImport } from './routes/administration.magasins'
-import { Route as AdministrationEntreprisesRouteImport } from './routes/administration.entreprises'
-import { Route as AdministrationDonneesRouteImport } from './routes/administration.donnees'
-import { Route as AdministrationAuditRouteImport } from './routes/administration.audit'
-import { Route as AdministrationAProposRouteImport } from './routes/administration.a-propos'
-import { Route as FournisseursCommandesIndexRouteImport } from './routes/fournisseurs.commandes.index'
-import { Route as FournisseursCommandesCommandeIdRouteImport } from './routes/fournisseurs.commandes.$commandeId'
+import { Route as AuthenticatedVentesRouteImport } from './routes/_authenticated/ventes'
+import { Route as AuthenticatedStatistiquesRouteImport } from './routes/_authenticated/statistiques'
+import { Route as AuthenticatedSortiesStockRouteImport } from './routes/_authenticated/sorties-stock'
+import { Route as AuthenticatedSalairesRouteImport } from './routes/_authenticated/salaires'
+import { Route as AuthenticatedRapportsRouteImport } from './routes/_authenticated/rapports'
+import { Route as AuthenticatedProduitsRouteImport } from './routes/_authenticated/produits'
+import { Route as AuthenticatedParametresRouteImport } from './routes/_authenticated/parametres'
+import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated/notifications'
+import { Route as AuthenticatedNexusiaRouteImport } from './routes/_authenticated/nexusia'
+import { Route as AuthenticatedInventaireRouteImport } from './routes/_authenticated/inventaire'
+import { Route as AuthenticatedFournisseursRouteImport } from './routes/_authenticated/fournisseurs'
+import { Route as AuthenticatedEntreesStockRouteImport } from './routes/_authenticated/entrees-stock'
+import { Route as AuthenticatedEmployesRouteImport } from './routes/_authenticated/employes'
+import { Route as AuthenticatedDepensesRouteImport } from './routes/_authenticated/depenses'
+import { Route as AuthenticatedClientsRouteImport } from './routes/_authenticated/clients'
+import { Route as AuthenticatedCategoriesRouteImport } from './routes/_authenticated/categories'
+import { Route as AuthenticatedCaisseRouteImport } from './routes/_authenticated/caisse'
+import { Route as AuthenticatedAdministrationRouteImport } from './routes/_authenticated/administration'
+import { Route as AuthenticatedVentesIndexRouteImport } from './routes/_authenticated/ventes.index'
+import { Route as AuthenticatedRapportsIndexRouteImport } from './routes/_authenticated/rapports.index'
+import { Route as AuthenticatedProduitsIndexRouteImport } from './routes/_authenticated/produits.index'
+import { Route as AuthenticatedNexusiaIndexRouteImport } from './routes/_authenticated/nexusia.index'
+import { Route as AuthenticatedInventaireIndexRouteImport } from './routes/_authenticated/inventaire.index'
+import { Route as AuthenticatedFournisseursIndexRouteImport } from './routes/_authenticated/fournisseurs.index'
+import { Route as AuthenticatedEntreesStockIndexRouteImport } from './routes/_authenticated/entrees-stock.index'
+import { Route as AuthenticatedEmployesIndexRouteImport } from './routes/_authenticated/employes.index'
+import { Route as AuthenticatedDepensesIndexRouteImport } from './routes/_authenticated/depenses.index'
+import { Route as AuthenticatedClientsIndexRouteImport } from './routes/_authenticated/clients.index'
+import { Route as AuthenticatedAdministrationIndexRouteImport } from './routes/_authenticated/administration.index'
+import { Route as AuthenticatedVentesRetoursRouteImport } from './routes/_authenticated/ventes.retours'
+import { Route as AuthenticatedVentesHistoriqueRouteImport } from './routes/_authenticated/ventes.historique'
+import { Route as AuthenticatedRapportsPerformanceRouteImport } from './routes/_authenticated/rapports.performance'
+import { Route as AuthenticatedRapportsComparaisonRouteImport } from './routes/_authenticated/rapports.comparaison'
+import { Route as AuthenticatedProduitsMouvementsRouteImport } from './routes/_authenticated/produits.mouvements'
+import { Route as AuthenticatedProduitsProduitIdRouteImport } from './routes/_authenticated/produits.$produitId'
+import { Route as AuthenticatedNexusiaRechercheRouteImport } from './routes/_authenticated/nexusia.recherche'
+import { Route as AuthenticatedNexusiaRapportsRouteImport } from './routes/_authenticated/nexusia.rapports'
+import { Route as AuthenticatedNexusiaProduitsRouteImport } from './routes/_authenticated/nexusia.produits'
+import { Route as AuthenticatedNexusiaObjectifsRouteImport } from './routes/_authenticated/nexusia.objectifs'
+import { Route as AuthenticatedNexusiaFinancesRouteImport } from './routes/_authenticated/nexusia.finances'
+import { Route as AuthenticatedNexusiaEmployesRouteImport } from './routes/_authenticated/nexusia.employes'
+import { Route as AuthenticatedNexusiaDecisionRouteImport } from './routes/_authenticated/nexusia.decision'
+import { Route as AuthenticatedNexusiaClientsRouteImport } from './routes/_authenticated/nexusia.clients'
+import { Route as AuthenticatedInventaireHistoriqueRouteImport } from './routes/_authenticated/inventaire.historique'
+import { Route as AuthenticatedInventaireAnalyseRouteImport } from './routes/_authenticated/inventaire.analyse'
+import { Route as AuthenticatedInventaireInventaireIdRouteImport } from './routes/_authenticated/inventaire.$inventaireId'
+import { Route as AuthenticatedFournisseursApprovisionnementRouteImport } from './routes/_authenticated/fournisseurs.approvisionnement'
+import { Route as AuthenticatedFournisseursAnalyseRouteImport } from './routes/_authenticated/fournisseurs.analyse'
+import { Route as AuthenticatedFournisseursFournisseurIdRouteImport } from './routes/_authenticated/fournisseurs.$fournisseurId'
+import { Route as AuthenticatedEntreesStockHistoriqueRouteImport } from './routes/_authenticated/entrees-stock.historique'
+import { Route as AuthenticatedEntreesStockEntreeIdRouteImport } from './routes/_authenticated/entrees-stock.$entreeId'
+import { Route as AuthenticatedEmployesPresenceRouteImport } from './routes/_authenticated/employes.presence'
+import { Route as AuthenticatedEmployesPermissionsRouteImport } from './routes/_authenticated/employes.permissions'
+import { Route as AuthenticatedEmployesPerformanceRouteImport } from './routes/_authenticated/employes.performance'
+import { Route as AuthenticatedEmployesJournalRouteImport } from './routes/_authenticated/employes.journal'
+import { Route as AuthenticatedEmployesCongesRouteImport } from './routes/_authenticated/employes.conges'
+import { Route as AuthenticatedEmployesEmployeIdRouteImport } from './routes/_authenticated/employes.$employeId'
+import { Route as AuthenticatedDepensesTresorerieRouteImport } from './routes/_authenticated/depenses.tresorerie'
+import { Route as AuthenticatedDepensesPrevisionsRouteImport } from './routes/_authenticated/depenses.previsions'
+import { Route as AuthenticatedDepensesCreancesRouteImport } from './routes/_authenticated/depenses.creances'
+import { Route as AuthenticatedDepensesChargesRouteImport } from './routes/_authenticated/depenses.charges'
+import { Route as AuthenticatedDepensesAnalyseRouteImport } from './routes/_authenticated/depenses.analyse'
+import { Route as AuthenticatedClientsVipRouteImport } from './routes/_authenticated/clients.vip'
+import { Route as AuthenticatedClientsStatistiquesRouteImport } from './routes/_authenticated/clients.statistiques'
+import { Route as AuthenticatedClientsAnalyseRouteImport } from './routes/_authenticated/clients.analyse'
+import { Route as AuthenticatedClientsClientIdRouteImport } from './routes/_authenticated/clients.$clientId'
+import { Route as AuthenticatedAdministrationUtilisateursRouteImport } from './routes/_authenticated/administration.utilisateurs'
+import { Route as AuthenticatedAdministrationSecuriteRouteImport } from './routes/_authenticated/administration.securite'
+import { Route as AuthenticatedAdministrationSauvegardesRouteImport } from './routes/_authenticated/administration.sauvegardes'
+import { Route as AuthenticatedAdministrationPreferencesRouteImport } from './routes/_authenticated/administration.preferences'
+import { Route as AuthenticatedAdministrationPersonnalisationRouteImport } from './routes/_authenticated/administration.personnalisation'
+import { Route as AuthenticatedAdministrationNotificationsRouteImport } from './routes/_authenticated/administration.notifications'
+import { Route as AuthenticatedAdministrationMaintenanceRouteImport } from './routes/_authenticated/administration.maintenance'
+import { Route as AuthenticatedAdministrationMagasinsRouteImport } from './routes/_authenticated/administration.magasins'
+import { Route as AuthenticatedAdministrationEntreprisesRouteImport } from './routes/_authenticated/administration.entreprises'
+import { Route as AuthenticatedAdministrationDonneesRouteImport } from './routes/_authenticated/administration.donnees'
+import { Route as AuthenticatedAdministrationAuditRouteImport } from './routes/_authenticated/administration.audit'
+import { Route as AuthenticatedAdministrationAProposRouteImport } from './routes/_authenticated/administration.a-propos'
+import { Route as AuthenticatedFournisseursCommandesIndexRouteImport } from './routes/_authenticated/fournisseurs.commandes.index'
+import { Route as AuthenticatedFournisseursCommandesCommandeIdRouteImport } from './routes/_authenticated/fournisseurs.commandes.$commandeId'
 
-const VentesRoute = VentesRouteImport.update({
-  id: '/ventes',
-  path: '/ventes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StatistiquesRoute = StatistiquesRouteImport.update({
-  id: '/statistiques',
-  path: '/statistiques',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SortiesStockRoute = SortiesStockRouteImport.update({
-  id: '/sorties-stock',
-  path: '/sorties-stock',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SalairesRoute = SalairesRouteImport.update({
-  id: '/salaires',
-  path: '/salaires',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RapportsRoute = RapportsRouteImport.update({
-  id: '/rapports',
-  path: '/rapports',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProduitsRoute = ProduitsRouteImport.update({
-  id: '/produits',
-  path: '/produits',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ParametresRoute = ParametresRouteImport.update({
-  id: '/parametres',
-  path: '/parametres',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NotificationsRoute = NotificationsRouteImport.update({
-  id: '/notifications',
-  path: '/notifications',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NexusiaRoute = NexusiaRouteImport.update({
-  id: '/nexusia',
-  path: '/nexusia',
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MobileRoute = MobileRouteImport.update({
@@ -161,185 +124,24 @@ const MobileRoute = MobileRouteImport.update({
   path: '/mobile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const InventaireRoute = InventaireRouteImport.update({
-  id: '/inventaire',
-  path: '/inventaire',
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FournisseursRoute = FournisseursRouteImport.update({
-  id: '/fournisseurs',
-  path: '/fournisseurs',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
-} as any)
-const EntreesStockRoute = EntreesStockRouteImport.update({
-  id: '/entrees-stock',
-  path: '/entrees-stock',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EmployesRoute = EmployesRouteImport.update({
-  id: '/employes',
-  path: '/employes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DepensesRoute = DepensesRouteImport.update({
-  id: '/depenses',
-  path: '/depenses',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClientsRoute = ClientsRouteImport.update({
-  id: '/clients',
-  path: '/clients',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CategoriesRoute = CategoriesRouteImport.update({
-  id: '/categories',
-  path: '/categories',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CaisseRoute = CaisseRouteImport.update({
-  id: '/caisse',
-  path: '/caisse',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdministrationRoute = AdministrationRouteImport.update({
-  id: '/administration',
-  path: '/administration',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VentesIndexRoute = VentesIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => VentesRoute,
-} as any)
-const RapportsIndexRoute = RapportsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => RapportsRoute,
-} as any)
-const ProduitsIndexRoute = ProduitsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ProduitsRoute,
-} as any)
-const NexusiaIndexRoute = NexusiaIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => NexusiaRoute,
 } as any)
 const MobileIndexRoute = MobileIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => MobileRoute,
 } as any)
-const InventaireIndexRoute = InventaireIndexRouteImport.update({
+const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => InventaireRoute,
-} as any)
-const FournisseursIndexRoute = FournisseursIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => FournisseursRoute,
-} as any)
-const EntreesStockIndexRoute = EntreesStockIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => EntreesStockRoute,
-} as any)
-const EmployesIndexRoute = EmployesIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => EmployesRoute,
-} as any)
-const DepensesIndexRoute = DepensesIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => DepensesRoute,
-} as any)
-const ClientsIndexRoute = ClientsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ClientsRoute,
-} as any)
-const AdministrationIndexRoute = AdministrationIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AdministrationRoute,
-} as any)
-const VentesRetoursRoute = VentesRetoursRouteImport.update({
-  id: '/retours',
-  path: '/retours',
-  getParentRoute: () => VentesRoute,
-} as any)
-const VentesHistoriqueRoute = VentesHistoriqueRouteImport.update({
-  id: '/historique',
-  path: '/historique',
-  getParentRoute: () => VentesRoute,
-} as any)
-const RapportsPerformanceRoute = RapportsPerformanceRouteImport.update({
-  id: '/performance',
-  path: '/performance',
-  getParentRoute: () => RapportsRoute,
-} as any)
-const RapportsComparaisonRoute = RapportsComparaisonRouteImport.update({
-  id: '/comparaison',
-  path: '/comparaison',
-  getParentRoute: () => RapportsRoute,
-} as any)
-const ProduitsMouvementsRoute = ProduitsMouvementsRouteImport.update({
-  id: '/mouvements',
-  path: '/mouvements',
-  getParentRoute: () => ProduitsRoute,
-} as any)
-const ProduitsProduitIdRoute = ProduitsProduitIdRouteImport.update({
-  id: '/$produitId',
-  path: '/$produitId',
-  getParentRoute: () => ProduitsRoute,
-} as any)
-const NexusiaRechercheRoute = NexusiaRechercheRouteImport.update({
-  id: '/recherche',
-  path: '/recherche',
-  getParentRoute: () => NexusiaRoute,
-} as any)
-const NexusiaRapportsRoute = NexusiaRapportsRouteImport.update({
-  id: '/rapports',
-  path: '/rapports',
-  getParentRoute: () => NexusiaRoute,
-} as any)
-const NexusiaProduitsRoute = NexusiaProduitsRouteImport.update({
-  id: '/produits',
-  path: '/produits',
-  getParentRoute: () => NexusiaRoute,
-} as any)
-const NexusiaObjectifsRoute = NexusiaObjectifsRouteImport.update({
-  id: '/objectifs',
-  path: '/objectifs',
-  getParentRoute: () => NexusiaRoute,
-} as any)
-const NexusiaFinancesRoute = NexusiaFinancesRouteImport.update({
-  id: '/finances',
-  path: '/finances',
-  getParentRoute: () => NexusiaRoute,
-} as any)
-const NexusiaEmployesRoute = NexusiaEmployesRouteImport.update({
-  id: '/employes',
-  path: '/employes',
-  getParentRoute: () => NexusiaRoute,
-} as any)
-const NexusiaDecisionRoute = NexusiaDecisionRouteImport.update({
-  id: '/decision',
-  path: '/decision',
-  getParentRoute: () => NexusiaRoute,
-} as any)
-const NexusiaClientsRoute = NexusiaClientsRouteImport.update({
-  id: '/clients',
-  path: '/clients',
-  getParentRoute: () => NexusiaRoute,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const MobileRechercheRoute = MobileRechercheRouteImport.update({
   id: '/recherche',
@@ -401,260 +203,498 @@ const MobileAlertesRoute = MobileAlertesRouteImport.update({
   path: '/alertes',
   getParentRoute: () => MobileRoute,
 } as any)
-const InventaireHistoriqueRoute = InventaireHistoriqueRouteImport.update({
-  id: '/historique',
-  path: '/historique',
-  getParentRoute: () => InventaireRoute,
+const AuthenticatedVentesRoute = AuthenticatedVentesRouteImport.update({
+  id: '/ventes',
+  path: '/ventes',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const InventaireAnalyseRoute = InventaireAnalyseRouteImport.update({
-  id: '/analyse',
-  path: '/analyse',
-  getParentRoute: () => InventaireRoute,
-} as any)
-const InventaireInventaireIdRoute = InventaireInventaireIdRouteImport.update({
-  id: '/$inventaireId',
-  path: '/$inventaireId',
-  getParentRoute: () => InventaireRoute,
-} as any)
-const FournisseursApprovisionnementRoute =
-  FournisseursApprovisionnementRouteImport.update({
-    id: '/approvisionnement',
-    path: '/approvisionnement',
-    getParentRoute: () => FournisseursRoute,
+const AuthenticatedStatistiquesRoute =
+  AuthenticatedStatistiquesRouteImport.update({
+    id: '/statistiques',
+    path: '/statistiques',
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const FournisseursAnalyseRoute = FournisseursAnalyseRouteImport.update({
-  id: '/analyse',
-  path: '/analyse',
-  getParentRoute: () => FournisseursRoute,
-} as any)
-const FournisseursFournisseurIdRoute =
-  FournisseursFournisseurIdRouteImport.update({
-    id: '/$fournisseurId',
-    path: '/$fournisseurId',
-    getParentRoute: () => FournisseursRoute,
+const AuthenticatedSortiesStockRoute =
+  AuthenticatedSortiesStockRouteImport.update({
+    id: '/sorties-stock',
+    path: '/sorties-stock',
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const EntreesStockHistoriqueRoute = EntreesStockHistoriqueRouteImport.update({
-  id: '/historique',
-  path: '/historique',
-  getParentRoute: () => EntreesStockRoute,
+const AuthenticatedSalairesRoute = AuthenticatedSalairesRouteImport.update({
+  id: '/salaires',
+  path: '/salaires',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const EntreesStockEntreeIdRoute = EntreesStockEntreeIdRouteImport.update({
-  id: '/$entreeId',
-  path: '/$entreeId',
-  getParentRoute: () => EntreesStockRoute,
+const AuthenticatedRapportsRoute = AuthenticatedRapportsRouteImport.update({
+  id: '/rapports',
+  path: '/rapports',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const EmployesPresenceRoute = EmployesPresenceRouteImport.update({
-  id: '/presence',
-  path: '/presence',
-  getParentRoute: () => EmployesRoute,
+const AuthenticatedProduitsRoute = AuthenticatedProduitsRouteImport.update({
+  id: '/produits',
+  path: '/produits',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const EmployesPermissionsRoute = EmployesPermissionsRouteImport.update({
-  id: '/permissions',
-  path: '/permissions',
-  getParentRoute: () => EmployesRoute,
+const AuthenticatedParametresRoute = AuthenticatedParametresRouteImport.update({
+  id: '/parametres',
+  path: '/parametres',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const EmployesPerformanceRoute = EmployesPerformanceRouteImport.update({
-  id: '/performance',
-  path: '/performance',
-  getParentRoute: () => EmployesRoute,
-} as any)
-const EmployesJournalRoute = EmployesJournalRouteImport.update({
-  id: '/journal',
-  path: '/journal',
-  getParentRoute: () => EmployesRoute,
-} as any)
-const EmployesCongesRoute = EmployesCongesRouteImport.update({
-  id: '/conges',
-  path: '/conges',
-  getParentRoute: () => EmployesRoute,
-} as any)
-const EmployesEmployeIdRoute = EmployesEmployeIdRouteImport.update({
-  id: '/$employeId',
-  path: '/$employeId',
-  getParentRoute: () => EmployesRoute,
-} as any)
-const DepensesTresorerieRoute = DepensesTresorerieRouteImport.update({
-  id: '/tresorerie',
-  path: '/tresorerie',
-  getParentRoute: () => DepensesRoute,
-} as any)
-const DepensesPrevisionsRoute = DepensesPrevisionsRouteImport.update({
-  id: '/previsions',
-  path: '/previsions',
-  getParentRoute: () => DepensesRoute,
-} as any)
-const DepensesCreancesRoute = DepensesCreancesRouteImport.update({
-  id: '/creances',
-  path: '/creances',
-  getParentRoute: () => DepensesRoute,
-} as any)
-const DepensesChargesRoute = DepensesChargesRouteImport.update({
-  id: '/charges',
-  path: '/charges',
-  getParentRoute: () => DepensesRoute,
-} as any)
-const DepensesAnalyseRoute = DepensesAnalyseRouteImport.update({
-  id: '/analyse',
-  path: '/analyse',
-  getParentRoute: () => DepensesRoute,
-} as any)
-const ClientsVipRoute = ClientsVipRouteImport.update({
-  id: '/vip',
-  path: '/vip',
-  getParentRoute: () => ClientsRoute,
-} as any)
-const ClientsStatistiquesRoute = ClientsStatistiquesRouteImport.update({
-  id: '/statistiques',
-  path: '/statistiques',
-  getParentRoute: () => ClientsRoute,
-} as any)
-const ClientsAnalyseRoute = ClientsAnalyseRouteImport.update({
-  id: '/analyse',
-  path: '/analyse',
-  getParentRoute: () => ClientsRoute,
-} as any)
-const ClientsClientIdRoute = ClientsClientIdRouteImport.update({
-  id: '/$clientId',
-  path: '/$clientId',
-  getParentRoute: () => ClientsRoute,
-} as any)
-const AdministrationUtilisateursRoute =
-  AdministrationUtilisateursRouteImport.update({
-    id: '/utilisateurs',
-    path: '/utilisateurs',
-    getParentRoute: () => AdministrationRoute,
-  } as any)
-const AdministrationSecuriteRoute = AdministrationSecuriteRouteImport.update({
-  id: '/securite',
-  path: '/securite',
-  getParentRoute: () => AdministrationRoute,
-} as any)
-const AdministrationSauvegardesRoute =
-  AdministrationSauvegardesRouteImport.update({
-    id: '/sauvegardes',
-    path: '/sauvegardes',
-    getParentRoute: () => AdministrationRoute,
-  } as any)
-const AdministrationPreferencesRoute =
-  AdministrationPreferencesRouteImport.update({
-    id: '/preferences',
-    path: '/preferences',
-    getParentRoute: () => AdministrationRoute,
-  } as any)
-const AdministrationPersonnalisationRoute =
-  AdministrationPersonnalisationRouteImport.update({
-    id: '/personnalisation',
-    path: '/personnalisation',
-    getParentRoute: () => AdministrationRoute,
-  } as any)
-const AdministrationNotificationsRoute =
-  AdministrationNotificationsRouteImport.update({
+const AuthenticatedNotificationsRoute =
+  AuthenticatedNotificationsRouteImport.update({
     id: '/notifications',
     path: '/notifications',
-    getParentRoute: () => AdministrationRoute,
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AdministrationMaintenanceRoute =
-  AdministrationMaintenanceRouteImport.update({
+const AuthenticatedNexusiaRoute = AuthenticatedNexusiaRouteImport.update({
+  id: '/nexusia',
+  path: '/nexusia',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedInventaireRoute = AuthenticatedInventaireRouteImport.update({
+  id: '/inventaire',
+  path: '/inventaire',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFournisseursRoute =
+  AuthenticatedFournisseursRouteImport.update({
+    id: '/fournisseurs',
+    path: '/fournisseurs',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedEntreesStockRoute =
+  AuthenticatedEntreesStockRouteImport.update({
+    id: '/entrees-stock',
+    path: '/entrees-stock',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedEmployesRoute = AuthenticatedEmployesRouteImport.update({
+  id: '/employes',
+  path: '/employes',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDepensesRoute = AuthenticatedDepensesRouteImport.update({
+  id: '/depenses',
+  path: '/depenses',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedClientsRoute = AuthenticatedClientsRouteImport.update({
+  id: '/clients',
+  path: '/clients',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCategoriesRoute = AuthenticatedCategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCaisseRoute = AuthenticatedCaisseRouteImport.update({
+  id: '/caisse',
+  path: '/caisse',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdministrationRoute =
+  AuthenticatedAdministrationRouteImport.update({
+    id: '/administration',
+    path: '/administration',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedVentesIndexRoute =
+  AuthenticatedVentesIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedVentesRoute,
+  } as any)
+const AuthenticatedRapportsIndexRoute =
+  AuthenticatedRapportsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedRapportsRoute,
+  } as any)
+const AuthenticatedProduitsIndexRoute =
+  AuthenticatedProduitsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedProduitsRoute,
+  } as any)
+const AuthenticatedNexusiaIndexRoute =
+  AuthenticatedNexusiaIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedNexusiaRoute,
+  } as any)
+const AuthenticatedInventaireIndexRoute =
+  AuthenticatedInventaireIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedInventaireRoute,
+  } as any)
+const AuthenticatedFournisseursIndexRoute =
+  AuthenticatedFournisseursIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedFournisseursRoute,
+  } as any)
+const AuthenticatedEntreesStockIndexRoute =
+  AuthenticatedEntreesStockIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedEntreesStockRoute,
+  } as any)
+const AuthenticatedEmployesIndexRoute =
+  AuthenticatedEmployesIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedEmployesRoute,
+  } as any)
+const AuthenticatedDepensesIndexRoute =
+  AuthenticatedDepensesIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedDepensesRoute,
+  } as any)
+const AuthenticatedClientsIndexRoute =
+  AuthenticatedClientsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedClientsRoute,
+  } as any)
+const AuthenticatedAdministrationIndexRoute =
+  AuthenticatedAdministrationIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedVentesRetoursRoute =
+  AuthenticatedVentesRetoursRouteImport.update({
+    id: '/retours',
+    path: '/retours',
+    getParentRoute: () => AuthenticatedVentesRoute,
+  } as any)
+const AuthenticatedVentesHistoriqueRoute =
+  AuthenticatedVentesHistoriqueRouteImport.update({
+    id: '/historique',
+    path: '/historique',
+    getParentRoute: () => AuthenticatedVentesRoute,
+  } as any)
+const AuthenticatedRapportsPerformanceRoute =
+  AuthenticatedRapportsPerformanceRouteImport.update({
+    id: '/performance',
+    path: '/performance',
+    getParentRoute: () => AuthenticatedRapportsRoute,
+  } as any)
+const AuthenticatedRapportsComparaisonRoute =
+  AuthenticatedRapportsComparaisonRouteImport.update({
+    id: '/comparaison',
+    path: '/comparaison',
+    getParentRoute: () => AuthenticatedRapportsRoute,
+  } as any)
+const AuthenticatedProduitsMouvementsRoute =
+  AuthenticatedProduitsMouvementsRouteImport.update({
+    id: '/mouvements',
+    path: '/mouvements',
+    getParentRoute: () => AuthenticatedProduitsRoute,
+  } as any)
+const AuthenticatedProduitsProduitIdRoute =
+  AuthenticatedProduitsProduitIdRouteImport.update({
+    id: '/$produitId',
+    path: '/$produitId',
+    getParentRoute: () => AuthenticatedProduitsRoute,
+  } as any)
+const AuthenticatedNexusiaRechercheRoute =
+  AuthenticatedNexusiaRechercheRouteImport.update({
+    id: '/recherche',
+    path: '/recherche',
+    getParentRoute: () => AuthenticatedNexusiaRoute,
+  } as any)
+const AuthenticatedNexusiaRapportsRoute =
+  AuthenticatedNexusiaRapportsRouteImport.update({
+    id: '/rapports',
+    path: '/rapports',
+    getParentRoute: () => AuthenticatedNexusiaRoute,
+  } as any)
+const AuthenticatedNexusiaProduitsRoute =
+  AuthenticatedNexusiaProduitsRouteImport.update({
+    id: '/produits',
+    path: '/produits',
+    getParentRoute: () => AuthenticatedNexusiaRoute,
+  } as any)
+const AuthenticatedNexusiaObjectifsRoute =
+  AuthenticatedNexusiaObjectifsRouteImport.update({
+    id: '/objectifs',
+    path: '/objectifs',
+    getParentRoute: () => AuthenticatedNexusiaRoute,
+  } as any)
+const AuthenticatedNexusiaFinancesRoute =
+  AuthenticatedNexusiaFinancesRouteImport.update({
+    id: '/finances',
+    path: '/finances',
+    getParentRoute: () => AuthenticatedNexusiaRoute,
+  } as any)
+const AuthenticatedNexusiaEmployesRoute =
+  AuthenticatedNexusiaEmployesRouteImport.update({
+    id: '/employes',
+    path: '/employes',
+    getParentRoute: () => AuthenticatedNexusiaRoute,
+  } as any)
+const AuthenticatedNexusiaDecisionRoute =
+  AuthenticatedNexusiaDecisionRouteImport.update({
+    id: '/decision',
+    path: '/decision',
+    getParentRoute: () => AuthenticatedNexusiaRoute,
+  } as any)
+const AuthenticatedNexusiaClientsRoute =
+  AuthenticatedNexusiaClientsRouteImport.update({
+    id: '/clients',
+    path: '/clients',
+    getParentRoute: () => AuthenticatedNexusiaRoute,
+  } as any)
+const AuthenticatedInventaireHistoriqueRoute =
+  AuthenticatedInventaireHistoriqueRouteImport.update({
+    id: '/historique',
+    path: '/historique',
+    getParentRoute: () => AuthenticatedInventaireRoute,
+  } as any)
+const AuthenticatedInventaireAnalyseRoute =
+  AuthenticatedInventaireAnalyseRouteImport.update({
+    id: '/analyse',
+    path: '/analyse',
+    getParentRoute: () => AuthenticatedInventaireRoute,
+  } as any)
+const AuthenticatedInventaireInventaireIdRoute =
+  AuthenticatedInventaireInventaireIdRouteImport.update({
+    id: '/$inventaireId',
+    path: '/$inventaireId',
+    getParentRoute: () => AuthenticatedInventaireRoute,
+  } as any)
+const AuthenticatedFournisseursApprovisionnementRoute =
+  AuthenticatedFournisseursApprovisionnementRouteImport.update({
+    id: '/approvisionnement',
+    path: '/approvisionnement',
+    getParentRoute: () => AuthenticatedFournisseursRoute,
+  } as any)
+const AuthenticatedFournisseursAnalyseRoute =
+  AuthenticatedFournisseursAnalyseRouteImport.update({
+    id: '/analyse',
+    path: '/analyse',
+    getParentRoute: () => AuthenticatedFournisseursRoute,
+  } as any)
+const AuthenticatedFournisseursFournisseurIdRoute =
+  AuthenticatedFournisseursFournisseurIdRouteImport.update({
+    id: '/$fournisseurId',
+    path: '/$fournisseurId',
+    getParentRoute: () => AuthenticatedFournisseursRoute,
+  } as any)
+const AuthenticatedEntreesStockHistoriqueRoute =
+  AuthenticatedEntreesStockHistoriqueRouteImport.update({
+    id: '/historique',
+    path: '/historique',
+    getParentRoute: () => AuthenticatedEntreesStockRoute,
+  } as any)
+const AuthenticatedEntreesStockEntreeIdRoute =
+  AuthenticatedEntreesStockEntreeIdRouteImport.update({
+    id: '/$entreeId',
+    path: '/$entreeId',
+    getParentRoute: () => AuthenticatedEntreesStockRoute,
+  } as any)
+const AuthenticatedEmployesPresenceRoute =
+  AuthenticatedEmployesPresenceRouteImport.update({
+    id: '/presence',
+    path: '/presence',
+    getParentRoute: () => AuthenticatedEmployesRoute,
+  } as any)
+const AuthenticatedEmployesPermissionsRoute =
+  AuthenticatedEmployesPermissionsRouteImport.update({
+    id: '/permissions',
+    path: '/permissions',
+    getParentRoute: () => AuthenticatedEmployesRoute,
+  } as any)
+const AuthenticatedEmployesPerformanceRoute =
+  AuthenticatedEmployesPerformanceRouteImport.update({
+    id: '/performance',
+    path: '/performance',
+    getParentRoute: () => AuthenticatedEmployesRoute,
+  } as any)
+const AuthenticatedEmployesJournalRoute =
+  AuthenticatedEmployesJournalRouteImport.update({
+    id: '/journal',
+    path: '/journal',
+    getParentRoute: () => AuthenticatedEmployesRoute,
+  } as any)
+const AuthenticatedEmployesCongesRoute =
+  AuthenticatedEmployesCongesRouteImport.update({
+    id: '/conges',
+    path: '/conges',
+    getParentRoute: () => AuthenticatedEmployesRoute,
+  } as any)
+const AuthenticatedEmployesEmployeIdRoute =
+  AuthenticatedEmployesEmployeIdRouteImport.update({
+    id: '/$employeId',
+    path: '/$employeId',
+    getParentRoute: () => AuthenticatedEmployesRoute,
+  } as any)
+const AuthenticatedDepensesTresorerieRoute =
+  AuthenticatedDepensesTresorerieRouteImport.update({
+    id: '/tresorerie',
+    path: '/tresorerie',
+    getParentRoute: () => AuthenticatedDepensesRoute,
+  } as any)
+const AuthenticatedDepensesPrevisionsRoute =
+  AuthenticatedDepensesPrevisionsRouteImport.update({
+    id: '/previsions',
+    path: '/previsions',
+    getParentRoute: () => AuthenticatedDepensesRoute,
+  } as any)
+const AuthenticatedDepensesCreancesRoute =
+  AuthenticatedDepensesCreancesRouteImport.update({
+    id: '/creances',
+    path: '/creances',
+    getParentRoute: () => AuthenticatedDepensesRoute,
+  } as any)
+const AuthenticatedDepensesChargesRoute =
+  AuthenticatedDepensesChargesRouteImport.update({
+    id: '/charges',
+    path: '/charges',
+    getParentRoute: () => AuthenticatedDepensesRoute,
+  } as any)
+const AuthenticatedDepensesAnalyseRoute =
+  AuthenticatedDepensesAnalyseRouteImport.update({
+    id: '/analyse',
+    path: '/analyse',
+    getParentRoute: () => AuthenticatedDepensesRoute,
+  } as any)
+const AuthenticatedClientsVipRoute = AuthenticatedClientsVipRouteImport.update({
+  id: '/vip',
+  path: '/vip',
+  getParentRoute: () => AuthenticatedClientsRoute,
+} as any)
+const AuthenticatedClientsStatistiquesRoute =
+  AuthenticatedClientsStatistiquesRouteImport.update({
+    id: '/statistiques',
+    path: '/statistiques',
+    getParentRoute: () => AuthenticatedClientsRoute,
+  } as any)
+const AuthenticatedClientsAnalyseRoute =
+  AuthenticatedClientsAnalyseRouteImport.update({
+    id: '/analyse',
+    path: '/analyse',
+    getParentRoute: () => AuthenticatedClientsRoute,
+  } as any)
+const AuthenticatedClientsClientIdRoute =
+  AuthenticatedClientsClientIdRouteImport.update({
+    id: '/$clientId',
+    path: '/$clientId',
+    getParentRoute: () => AuthenticatedClientsRoute,
+  } as any)
+const AuthenticatedAdministrationUtilisateursRoute =
+  AuthenticatedAdministrationUtilisateursRouteImport.update({
+    id: '/utilisateurs',
+    path: '/utilisateurs',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedAdministrationSecuriteRoute =
+  AuthenticatedAdministrationSecuriteRouteImport.update({
+    id: '/securite',
+    path: '/securite',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedAdministrationSauvegardesRoute =
+  AuthenticatedAdministrationSauvegardesRouteImport.update({
+    id: '/sauvegardes',
+    path: '/sauvegardes',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedAdministrationPreferencesRoute =
+  AuthenticatedAdministrationPreferencesRouteImport.update({
+    id: '/preferences',
+    path: '/preferences',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedAdministrationPersonnalisationRoute =
+  AuthenticatedAdministrationPersonnalisationRouteImport.update({
+    id: '/personnalisation',
+    path: '/personnalisation',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedAdministrationNotificationsRoute =
+  AuthenticatedAdministrationNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedAdministrationMaintenanceRoute =
+  AuthenticatedAdministrationMaintenanceRouteImport.update({
     id: '/maintenance',
     path: '/maintenance',
-    getParentRoute: () => AdministrationRoute,
+    getParentRoute: () => AuthenticatedAdministrationRoute,
   } as any)
-const AdministrationMagasinsRoute = AdministrationMagasinsRouteImport.update({
-  id: '/magasins',
-  path: '/magasins',
-  getParentRoute: () => AdministrationRoute,
-} as any)
-const AdministrationEntreprisesRoute =
-  AdministrationEntreprisesRouteImport.update({
+const AuthenticatedAdministrationMagasinsRoute =
+  AuthenticatedAdministrationMagasinsRouteImport.update({
+    id: '/magasins',
+    path: '/magasins',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedAdministrationEntreprisesRoute =
+  AuthenticatedAdministrationEntreprisesRouteImport.update({
     id: '/entreprises',
     path: '/entreprises',
-    getParentRoute: () => AdministrationRoute,
+    getParentRoute: () => AuthenticatedAdministrationRoute,
   } as any)
-const AdministrationDonneesRoute = AdministrationDonneesRouteImport.update({
-  id: '/donnees',
-  path: '/donnees',
-  getParentRoute: () => AdministrationRoute,
-} as any)
-const AdministrationAuditRoute = AdministrationAuditRouteImport.update({
-  id: '/audit',
-  path: '/audit',
-  getParentRoute: () => AdministrationRoute,
-} as any)
-const AdministrationAProposRoute = AdministrationAProposRouteImport.update({
-  id: '/a-propos',
-  path: '/a-propos',
-  getParentRoute: () => AdministrationRoute,
-} as any)
-const FournisseursCommandesIndexRoute =
-  FournisseursCommandesIndexRouteImport.update({
+const AuthenticatedAdministrationDonneesRoute =
+  AuthenticatedAdministrationDonneesRouteImport.update({
+    id: '/donnees',
+    path: '/donnees',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedAdministrationAuditRoute =
+  AuthenticatedAdministrationAuditRouteImport.update({
+    id: '/audit',
+    path: '/audit',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedAdministrationAProposRoute =
+  AuthenticatedAdministrationAProposRouteImport.update({
+    id: '/a-propos',
+    path: '/a-propos',
+    getParentRoute: () => AuthenticatedAdministrationRoute,
+  } as any)
+const AuthenticatedFournisseursCommandesIndexRoute =
+  AuthenticatedFournisseursCommandesIndexRouteImport.update({
     id: '/commandes/',
     path: '/commandes/',
-    getParentRoute: () => FournisseursRoute,
+    getParentRoute: () => AuthenticatedFournisseursRoute,
   } as any)
-const FournisseursCommandesCommandeIdRoute =
-  FournisseursCommandesCommandeIdRouteImport.update({
+const AuthenticatedFournisseursCommandesCommandeIdRoute =
+  AuthenticatedFournisseursCommandesCommandeIdRouteImport.update({
     id: '/commandes/$commandeId',
     path: '/commandes/$commandeId',
-    getParentRoute: () => FournisseursRoute,
+    getParentRoute: () => AuthenticatedFournisseursRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/administration': typeof AdministrationRouteWithChildren
-  '/caisse': typeof CaisseRoute
-  '/categories': typeof CategoriesRoute
-  '/clients': typeof ClientsRouteWithChildren
-  '/depenses': typeof DepensesRouteWithChildren
-  '/employes': typeof EmployesRouteWithChildren
-  '/entrees-stock': typeof EntreesStockRouteWithChildren
-  '/fournisseurs': typeof FournisseursRouteWithChildren
-  '/inventaire': typeof InventaireRouteWithChildren
+  '/': typeof AuthenticatedIndexRoute
+  '/auth': typeof AuthRoute
   '/mobile': typeof MobileRouteWithChildren
-  '/nexusia': typeof NexusiaRouteWithChildren
-  '/notifications': typeof NotificationsRoute
-  '/parametres': typeof ParametresRoute
-  '/produits': typeof ProduitsRouteWithChildren
-  '/rapports': typeof RapportsRouteWithChildren
-  '/salaires': typeof SalairesRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/sorties-stock': typeof SortiesStockRoute
-  '/statistiques': typeof StatistiquesRoute
-  '/ventes': typeof VentesRouteWithChildren
-  '/administration/a-propos': typeof AdministrationAProposRoute
-  '/administration/audit': typeof AdministrationAuditRoute
-  '/administration/donnees': typeof AdministrationDonneesRoute
-  '/administration/entreprises': typeof AdministrationEntreprisesRoute
-  '/administration/magasins': typeof AdministrationMagasinsRoute
-  '/administration/maintenance': typeof AdministrationMaintenanceRoute
-  '/administration/notifications': typeof AdministrationNotificationsRoute
-  '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
-  '/administration/preferences': typeof AdministrationPreferencesRoute
-  '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
-  '/administration/securite': typeof AdministrationSecuriteRoute
-  '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
-  '/clients/$clientId': typeof ClientsClientIdRoute
-  '/clients/analyse': typeof ClientsAnalyseRoute
-  '/clients/statistiques': typeof ClientsStatistiquesRoute
-  '/clients/vip': typeof ClientsVipRoute
-  '/depenses/analyse': typeof DepensesAnalyseRoute
-  '/depenses/charges': typeof DepensesChargesRoute
-  '/depenses/creances': typeof DepensesCreancesRoute
-  '/depenses/previsions': typeof DepensesPrevisionsRoute
-  '/depenses/tresorerie': typeof DepensesTresorerieRoute
-  '/employes/$employeId': typeof EmployesEmployeIdRoute
-  '/employes/conges': typeof EmployesCongesRoute
-  '/employes/journal': typeof EmployesJournalRoute
-  '/employes/performance': typeof EmployesPerformanceRoute
-  '/employes/permissions': typeof EmployesPermissionsRoute
-  '/employes/presence': typeof EmployesPresenceRoute
-  '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
-  '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
-  '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
-  '/fournisseurs/analyse': typeof FournisseursAnalyseRoute
-  '/fournisseurs/approvisionnement': typeof FournisseursApprovisionnementRoute
-  '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
-  '/inventaire/analyse': typeof InventaireAnalyseRoute
-  '/inventaire/historique': typeof InventaireHistoriqueRoute
+  '/administration': typeof AuthenticatedAdministrationRouteWithChildren
+  '/caisse': typeof AuthenticatedCaisseRoute
+  '/categories': typeof AuthenticatedCategoriesRoute
+  '/clients': typeof AuthenticatedClientsRouteWithChildren
+  '/depenses': typeof AuthenticatedDepensesRouteWithChildren
+  '/employes': typeof AuthenticatedEmployesRouteWithChildren
+  '/entrees-stock': typeof AuthenticatedEntreesStockRouteWithChildren
+  '/fournisseurs': typeof AuthenticatedFournisseursRouteWithChildren
+  '/inventaire': typeof AuthenticatedInventaireRouteWithChildren
+  '/nexusia': typeof AuthenticatedNexusiaRouteWithChildren
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/parametres': typeof AuthenticatedParametresRoute
+  '/produits': typeof AuthenticatedProduitsRouteWithChildren
+  '/rapports': typeof AuthenticatedRapportsRouteWithChildren
+  '/salaires': typeof AuthenticatedSalairesRoute
+  '/sorties-stock': typeof AuthenticatedSortiesStockRoute
+  '/statistiques': typeof AuthenticatedStatistiquesRoute
+  '/ventes': typeof AuthenticatedVentesRouteWithChildren
   '/mobile/alertes': typeof MobileAlertesRoute
   '/mobile/assistant': typeof MobileAssistantRoute
   '/mobile/clients': typeof MobileClientsRoute
@@ -667,80 +707,81 @@ export interface FileRoutesByFullPath {
   '/mobile/produits': typeof MobileProduitsRoute
   '/mobile/rapports': typeof MobileRapportsRoute
   '/mobile/recherche': typeof MobileRechercheRoute
-  '/nexusia/clients': typeof NexusiaClientsRoute
-  '/nexusia/decision': typeof NexusiaDecisionRoute
-  '/nexusia/employes': typeof NexusiaEmployesRoute
-  '/nexusia/finances': typeof NexusiaFinancesRoute
-  '/nexusia/objectifs': typeof NexusiaObjectifsRoute
-  '/nexusia/produits': typeof NexusiaProduitsRoute
-  '/nexusia/rapports': typeof NexusiaRapportsRoute
-  '/nexusia/recherche': typeof NexusiaRechercheRoute
-  '/produits/$produitId': typeof ProduitsProduitIdRoute
-  '/produits/mouvements': typeof ProduitsMouvementsRoute
-  '/rapports/comparaison': typeof RapportsComparaisonRoute
-  '/rapports/performance': typeof RapportsPerformanceRoute
-  '/ventes/historique': typeof VentesHistoriqueRoute
-  '/ventes/retours': typeof VentesRetoursRoute
-  '/administration/': typeof AdministrationIndexRoute
-  '/clients/': typeof ClientsIndexRoute
-  '/depenses/': typeof DepensesIndexRoute
-  '/employes/': typeof EmployesIndexRoute
-  '/entrees-stock/': typeof EntreesStockIndexRoute
-  '/fournisseurs/': typeof FournisseursIndexRoute
-  '/inventaire/': typeof InventaireIndexRoute
   '/mobile/': typeof MobileIndexRoute
-  '/nexusia/': typeof NexusiaIndexRoute
-  '/produits/': typeof ProduitsIndexRoute
-  '/rapports/': typeof RapportsIndexRoute
-  '/ventes/': typeof VentesIndexRoute
-  '/fournisseurs/commandes/$commandeId': typeof FournisseursCommandesCommandeIdRoute
-  '/fournisseurs/commandes/': typeof FournisseursCommandesIndexRoute
+  '/administration/a-propos': typeof AuthenticatedAdministrationAProposRoute
+  '/administration/audit': typeof AuthenticatedAdministrationAuditRoute
+  '/administration/donnees': typeof AuthenticatedAdministrationDonneesRoute
+  '/administration/entreprises': typeof AuthenticatedAdministrationEntreprisesRoute
+  '/administration/magasins': typeof AuthenticatedAdministrationMagasinsRoute
+  '/administration/maintenance': typeof AuthenticatedAdministrationMaintenanceRoute
+  '/administration/notifications': typeof AuthenticatedAdministrationNotificationsRoute
+  '/administration/personnalisation': typeof AuthenticatedAdministrationPersonnalisationRoute
+  '/administration/preferences': typeof AuthenticatedAdministrationPreferencesRoute
+  '/administration/sauvegardes': typeof AuthenticatedAdministrationSauvegardesRoute
+  '/administration/securite': typeof AuthenticatedAdministrationSecuriteRoute
+  '/administration/utilisateurs': typeof AuthenticatedAdministrationUtilisateursRoute
+  '/clients/$clientId': typeof AuthenticatedClientsClientIdRoute
+  '/clients/analyse': typeof AuthenticatedClientsAnalyseRoute
+  '/clients/statistiques': typeof AuthenticatedClientsStatistiquesRoute
+  '/clients/vip': typeof AuthenticatedClientsVipRoute
+  '/depenses/analyse': typeof AuthenticatedDepensesAnalyseRoute
+  '/depenses/charges': typeof AuthenticatedDepensesChargesRoute
+  '/depenses/creances': typeof AuthenticatedDepensesCreancesRoute
+  '/depenses/previsions': typeof AuthenticatedDepensesPrevisionsRoute
+  '/depenses/tresorerie': typeof AuthenticatedDepensesTresorerieRoute
+  '/employes/$employeId': typeof AuthenticatedEmployesEmployeIdRoute
+  '/employes/conges': typeof AuthenticatedEmployesCongesRoute
+  '/employes/journal': typeof AuthenticatedEmployesJournalRoute
+  '/employes/performance': typeof AuthenticatedEmployesPerformanceRoute
+  '/employes/permissions': typeof AuthenticatedEmployesPermissionsRoute
+  '/employes/presence': typeof AuthenticatedEmployesPresenceRoute
+  '/entrees-stock/$entreeId': typeof AuthenticatedEntreesStockEntreeIdRoute
+  '/entrees-stock/historique': typeof AuthenticatedEntreesStockHistoriqueRoute
+  '/fournisseurs/$fournisseurId': typeof AuthenticatedFournisseursFournisseurIdRoute
+  '/fournisseurs/analyse': typeof AuthenticatedFournisseursAnalyseRoute
+  '/fournisseurs/approvisionnement': typeof AuthenticatedFournisseursApprovisionnementRoute
+  '/inventaire/$inventaireId': typeof AuthenticatedInventaireInventaireIdRoute
+  '/inventaire/analyse': typeof AuthenticatedInventaireAnalyseRoute
+  '/inventaire/historique': typeof AuthenticatedInventaireHistoriqueRoute
+  '/nexusia/clients': typeof AuthenticatedNexusiaClientsRoute
+  '/nexusia/decision': typeof AuthenticatedNexusiaDecisionRoute
+  '/nexusia/employes': typeof AuthenticatedNexusiaEmployesRoute
+  '/nexusia/finances': typeof AuthenticatedNexusiaFinancesRoute
+  '/nexusia/objectifs': typeof AuthenticatedNexusiaObjectifsRoute
+  '/nexusia/produits': typeof AuthenticatedNexusiaProduitsRoute
+  '/nexusia/rapports': typeof AuthenticatedNexusiaRapportsRoute
+  '/nexusia/recherche': typeof AuthenticatedNexusiaRechercheRoute
+  '/produits/$produitId': typeof AuthenticatedProduitsProduitIdRoute
+  '/produits/mouvements': typeof AuthenticatedProduitsMouvementsRoute
+  '/rapports/comparaison': typeof AuthenticatedRapportsComparaisonRoute
+  '/rapports/performance': typeof AuthenticatedRapportsPerformanceRoute
+  '/ventes/historique': typeof AuthenticatedVentesHistoriqueRoute
+  '/ventes/retours': typeof AuthenticatedVentesRetoursRoute
+  '/administration/': typeof AuthenticatedAdministrationIndexRoute
+  '/clients/': typeof AuthenticatedClientsIndexRoute
+  '/depenses/': typeof AuthenticatedDepensesIndexRoute
+  '/employes/': typeof AuthenticatedEmployesIndexRoute
+  '/entrees-stock/': typeof AuthenticatedEntreesStockIndexRoute
+  '/fournisseurs/': typeof AuthenticatedFournisseursIndexRoute
+  '/inventaire/': typeof AuthenticatedInventaireIndexRoute
+  '/nexusia/': typeof AuthenticatedNexusiaIndexRoute
+  '/produits/': typeof AuthenticatedProduitsIndexRoute
+  '/rapports/': typeof AuthenticatedRapportsIndexRoute
+  '/ventes/': typeof AuthenticatedVentesIndexRoute
+  '/fournisseurs/commandes/$commandeId': typeof AuthenticatedFournisseursCommandesCommandeIdRoute
+  '/fournisseurs/commandes/': typeof AuthenticatedFournisseursCommandesIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/caisse': typeof CaisseRoute
-  '/categories': typeof CategoriesRoute
-  '/notifications': typeof NotificationsRoute
-  '/parametres': typeof ParametresRoute
-  '/salaires': typeof SalairesRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/sorties-stock': typeof SortiesStockRoute
-  '/statistiques': typeof StatistiquesRoute
-  '/administration/a-propos': typeof AdministrationAProposRoute
-  '/administration/audit': typeof AdministrationAuditRoute
-  '/administration/donnees': typeof AdministrationDonneesRoute
-  '/administration/entreprises': typeof AdministrationEntreprisesRoute
-  '/administration/magasins': typeof AdministrationMagasinsRoute
-  '/administration/maintenance': typeof AdministrationMaintenanceRoute
-  '/administration/notifications': typeof AdministrationNotificationsRoute
-  '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
-  '/administration/preferences': typeof AdministrationPreferencesRoute
-  '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
-  '/administration/securite': typeof AdministrationSecuriteRoute
-  '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
-  '/clients/$clientId': typeof ClientsClientIdRoute
-  '/clients/analyse': typeof ClientsAnalyseRoute
-  '/clients/statistiques': typeof ClientsStatistiquesRoute
-  '/clients/vip': typeof ClientsVipRoute
-  '/depenses/analyse': typeof DepensesAnalyseRoute
-  '/depenses/charges': typeof DepensesChargesRoute
-  '/depenses/creances': typeof DepensesCreancesRoute
-  '/depenses/previsions': typeof DepensesPrevisionsRoute
-  '/depenses/tresorerie': typeof DepensesTresorerieRoute
-  '/employes/$employeId': typeof EmployesEmployeIdRoute
-  '/employes/conges': typeof EmployesCongesRoute
-  '/employes/journal': typeof EmployesJournalRoute
-  '/employes/performance': typeof EmployesPerformanceRoute
-  '/employes/permissions': typeof EmployesPermissionsRoute
-  '/employes/presence': typeof EmployesPresenceRoute
-  '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
-  '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
-  '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
-  '/fournisseurs/analyse': typeof FournisseursAnalyseRoute
-  '/fournisseurs/approvisionnement': typeof FournisseursApprovisionnementRoute
-  '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
-  '/inventaire/analyse': typeof InventaireAnalyseRoute
-  '/inventaire/historique': typeof InventaireHistoriqueRoute
+  '/caisse': typeof AuthenticatedCaisseRoute
+  '/categories': typeof AuthenticatedCategoriesRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/parametres': typeof AuthenticatedParametresRoute
+  '/salaires': typeof AuthenticatedSalairesRoute
+  '/sorties-stock': typeof AuthenticatedSortiesStockRoute
+  '/statistiques': typeof AuthenticatedStatistiquesRoute
   '/mobile/alertes': typeof MobileAlertesRoute
   '/mobile/assistant': typeof MobileAssistantRoute
   '/mobile/clients': typeof MobileClientsRoute
@@ -753,93 +794,96 @@ export interface FileRoutesByTo {
   '/mobile/produits': typeof MobileProduitsRoute
   '/mobile/rapports': typeof MobileRapportsRoute
   '/mobile/recherche': typeof MobileRechercheRoute
-  '/nexusia/clients': typeof NexusiaClientsRoute
-  '/nexusia/decision': typeof NexusiaDecisionRoute
-  '/nexusia/employes': typeof NexusiaEmployesRoute
-  '/nexusia/finances': typeof NexusiaFinancesRoute
-  '/nexusia/objectifs': typeof NexusiaObjectifsRoute
-  '/nexusia/produits': typeof NexusiaProduitsRoute
-  '/nexusia/rapports': typeof NexusiaRapportsRoute
-  '/nexusia/recherche': typeof NexusiaRechercheRoute
-  '/produits/$produitId': typeof ProduitsProduitIdRoute
-  '/produits/mouvements': typeof ProduitsMouvementsRoute
-  '/rapports/comparaison': typeof RapportsComparaisonRoute
-  '/rapports/performance': typeof RapportsPerformanceRoute
-  '/ventes/historique': typeof VentesHistoriqueRoute
-  '/ventes/retours': typeof VentesRetoursRoute
-  '/administration': typeof AdministrationIndexRoute
-  '/clients': typeof ClientsIndexRoute
-  '/depenses': typeof DepensesIndexRoute
-  '/employes': typeof EmployesIndexRoute
-  '/entrees-stock': typeof EntreesStockIndexRoute
-  '/fournisseurs': typeof FournisseursIndexRoute
-  '/inventaire': typeof InventaireIndexRoute
+  '/': typeof AuthenticatedIndexRoute
   '/mobile': typeof MobileIndexRoute
-  '/nexusia': typeof NexusiaIndexRoute
-  '/produits': typeof ProduitsIndexRoute
-  '/rapports': typeof RapportsIndexRoute
-  '/ventes': typeof VentesIndexRoute
-  '/fournisseurs/commandes/$commandeId': typeof FournisseursCommandesCommandeIdRoute
-  '/fournisseurs/commandes': typeof FournisseursCommandesIndexRoute
+  '/administration/a-propos': typeof AuthenticatedAdministrationAProposRoute
+  '/administration/audit': typeof AuthenticatedAdministrationAuditRoute
+  '/administration/donnees': typeof AuthenticatedAdministrationDonneesRoute
+  '/administration/entreprises': typeof AuthenticatedAdministrationEntreprisesRoute
+  '/administration/magasins': typeof AuthenticatedAdministrationMagasinsRoute
+  '/administration/maintenance': typeof AuthenticatedAdministrationMaintenanceRoute
+  '/administration/notifications': typeof AuthenticatedAdministrationNotificationsRoute
+  '/administration/personnalisation': typeof AuthenticatedAdministrationPersonnalisationRoute
+  '/administration/preferences': typeof AuthenticatedAdministrationPreferencesRoute
+  '/administration/sauvegardes': typeof AuthenticatedAdministrationSauvegardesRoute
+  '/administration/securite': typeof AuthenticatedAdministrationSecuriteRoute
+  '/administration/utilisateurs': typeof AuthenticatedAdministrationUtilisateursRoute
+  '/clients/$clientId': typeof AuthenticatedClientsClientIdRoute
+  '/clients/analyse': typeof AuthenticatedClientsAnalyseRoute
+  '/clients/statistiques': typeof AuthenticatedClientsStatistiquesRoute
+  '/clients/vip': typeof AuthenticatedClientsVipRoute
+  '/depenses/analyse': typeof AuthenticatedDepensesAnalyseRoute
+  '/depenses/charges': typeof AuthenticatedDepensesChargesRoute
+  '/depenses/creances': typeof AuthenticatedDepensesCreancesRoute
+  '/depenses/previsions': typeof AuthenticatedDepensesPrevisionsRoute
+  '/depenses/tresorerie': typeof AuthenticatedDepensesTresorerieRoute
+  '/employes/$employeId': typeof AuthenticatedEmployesEmployeIdRoute
+  '/employes/conges': typeof AuthenticatedEmployesCongesRoute
+  '/employes/journal': typeof AuthenticatedEmployesJournalRoute
+  '/employes/performance': typeof AuthenticatedEmployesPerformanceRoute
+  '/employes/permissions': typeof AuthenticatedEmployesPermissionsRoute
+  '/employes/presence': typeof AuthenticatedEmployesPresenceRoute
+  '/entrees-stock/$entreeId': typeof AuthenticatedEntreesStockEntreeIdRoute
+  '/entrees-stock/historique': typeof AuthenticatedEntreesStockHistoriqueRoute
+  '/fournisseurs/$fournisseurId': typeof AuthenticatedFournisseursFournisseurIdRoute
+  '/fournisseurs/analyse': typeof AuthenticatedFournisseursAnalyseRoute
+  '/fournisseurs/approvisionnement': typeof AuthenticatedFournisseursApprovisionnementRoute
+  '/inventaire/$inventaireId': typeof AuthenticatedInventaireInventaireIdRoute
+  '/inventaire/analyse': typeof AuthenticatedInventaireAnalyseRoute
+  '/inventaire/historique': typeof AuthenticatedInventaireHistoriqueRoute
+  '/nexusia/clients': typeof AuthenticatedNexusiaClientsRoute
+  '/nexusia/decision': typeof AuthenticatedNexusiaDecisionRoute
+  '/nexusia/employes': typeof AuthenticatedNexusiaEmployesRoute
+  '/nexusia/finances': typeof AuthenticatedNexusiaFinancesRoute
+  '/nexusia/objectifs': typeof AuthenticatedNexusiaObjectifsRoute
+  '/nexusia/produits': typeof AuthenticatedNexusiaProduitsRoute
+  '/nexusia/rapports': typeof AuthenticatedNexusiaRapportsRoute
+  '/nexusia/recherche': typeof AuthenticatedNexusiaRechercheRoute
+  '/produits/$produitId': typeof AuthenticatedProduitsProduitIdRoute
+  '/produits/mouvements': typeof AuthenticatedProduitsMouvementsRoute
+  '/rapports/comparaison': typeof AuthenticatedRapportsComparaisonRoute
+  '/rapports/performance': typeof AuthenticatedRapportsPerformanceRoute
+  '/ventes/historique': typeof AuthenticatedVentesHistoriqueRoute
+  '/ventes/retours': typeof AuthenticatedVentesRetoursRoute
+  '/administration': typeof AuthenticatedAdministrationIndexRoute
+  '/clients': typeof AuthenticatedClientsIndexRoute
+  '/depenses': typeof AuthenticatedDepensesIndexRoute
+  '/employes': typeof AuthenticatedEmployesIndexRoute
+  '/entrees-stock': typeof AuthenticatedEntreesStockIndexRoute
+  '/fournisseurs': typeof AuthenticatedFournisseursIndexRoute
+  '/inventaire': typeof AuthenticatedInventaireIndexRoute
+  '/nexusia': typeof AuthenticatedNexusiaIndexRoute
+  '/produits': typeof AuthenticatedProduitsIndexRoute
+  '/rapports': typeof AuthenticatedRapportsIndexRoute
+  '/ventes': typeof AuthenticatedVentesIndexRoute
+  '/fournisseurs/commandes/$commandeId': typeof AuthenticatedFournisseursCommandesCommandeIdRoute
+  '/fournisseurs/commandes': typeof AuthenticatedFournisseursCommandesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/administration': typeof AdministrationRouteWithChildren
-  '/caisse': typeof CaisseRoute
-  '/categories': typeof CategoriesRoute
-  '/clients': typeof ClientsRouteWithChildren
-  '/depenses': typeof DepensesRouteWithChildren
-  '/employes': typeof EmployesRouteWithChildren
-  '/entrees-stock': typeof EntreesStockRouteWithChildren
-  '/fournisseurs': typeof FournisseursRouteWithChildren
-  '/inventaire': typeof InventaireRouteWithChildren
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/mobile': typeof MobileRouteWithChildren
-  '/nexusia': typeof NexusiaRouteWithChildren
-  '/notifications': typeof NotificationsRoute
-  '/parametres': typeof ParametresRoute
-  '/produits': typeof ProduitsRouteWithChildren
-  '/rapports': typeof RapportsRouteWithChildren
-  '/salaires': typeof SalairesRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/sorties-stock': typeof SortiesStockRoute
-  '/statistiques': typeof StatistiquesRoute
-  '/ventes': typeof VentesRouteWithChildren
-  '/administration/a-propos': typeof AdministrationAProposRoute
-  '/administration/audit': typeof AdministrationAuditRoute
-  '/administration/donnees': typeof AdministrationDonneesRoute
-  '/administration/entreprises': typeof AdministrationEntreprisesRoute
-  '/administration/magasins': typeof AdministrationMagasinsRoute
-  '/administration/maintenance': typeof AdministrationMaintenanceRoute
-  '/administration/notifications': typeof AdministrationNotificationsRoute
-  '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
-  '/administration/preferences': typeof AdministrationPreferencesRoute
-  '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
-  '/administration/securite': typeof AdministrationSecuriteRoute
-  '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
-  '/clients/$clientId': typeof ClientsClientIdRoute
-  '/clients/analyse': typeof ClientsAnalyseRoute
-  '/clients/statistiques': typeof ClientsStatistiquesRoute
-  '/clients/vip': typeof ClientsVipRoute
-  '/depenses/analyse': typeof DepensesAnalyseRoute
-  '/depenses/charges': typeof DepensesChargesRoute
-  '/depenses/creances': typeof DepensesCreancesRoute
-  '/depenses/previsions': typeof DepensesPrevisionsRoute
-  '/depenses/tresorerie': typeof DepensesTresorerieRoute
-  '/employes/$employeId': typeof EmployesEmployeIdRoute
-  '/employes/conges': typeof EmployesCongesRoute
-  '/employes/journal': typeof EmployesJournalRoute
-  '/employes/performance': typeof EmployesPerformanceRoute
-  '/employes/permissions': typeof EmployesPermissionsRoute
-  '/employes/presence': typeof EmployesPresenceRoute
-  '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
-  '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
-  '/fournisseurs/$fournisseurId': typeof FournisseursFournisseurIdRoute
-  '/fournisseurs/analyse': typeof FournisseursAnalyseRoute
-  '/fournisseurs/approvisionnement': typeof FournisseursApprovisionnementRoute
-  '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
-  '/inventaire/analyse': typeof InventaireAnalyseRoute
-  '/inventaire/historique': typeof InventaireHistoriqueRoute
+  '/_authenticated/administration': typeof AuthenticatedAdministrationRouteWithChildren
+  '/_authenticated/caisse': typeof AuthenticatedCaisseRoute
+  '/_authenticated/categories': typeof AuthenticatedCategoriesRoute
+  '/_authenticated/clients': typeof AuthenticatedClientsRouteWithChildren
+  '/_authenticated/depenses': typeof AuthenticatedDepensesRouteWithChildren
+  '/_authenticated/employes': typeof AuthenticatedEmployesRouteWithChildren
+  '/_authenticated/entrees-stock': typeof AuthenticatedEntreesStockRouteWithChildren
+  '/_authenticated/fournisseurs': typeof AuthenticatedFournisseursRouteWithChildren
+  '/_authenticated/inventaire': typeof AuthenticatedInventaireRouteWithChildren
+  '/_authenticated/nexusia': typeof AuthenticatedNexusiaRouteWithChildren
+  '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
+  '/_authenticated/parametres': typeof AuthenticatedParametresRoute
+  '/_authenticated/produits': typeof AuthenticatedProduitsRouteWithChildren
+  '/_authenticated/rapports': typeof AuthenticatedRapportsRouteWithChildren
+  '/_authenticated/salaires': typeof AuthenticatedSalairesRoute
+  '/_authenticated/sorties-stock': typeof AuthenticatedSortiesStockRoute
+  '/_authenticated/statistiques': typeof AuthenticatedStatistiquesRoute
+  '/_authenticated/ventes': typeof AuthenticatedVentesRouteWithChildren
   '/mobile/alertes': typeof MobileAlertesRoute
   '/mobile/assistant': typeof MobileAssistantRoute
   '/mobile/clients': typeof MobileClientsRoute
@@ -852,39 +896,79 @@ export interface FileRoutesById {
   '/mobile/produits': typeof MobileProduitsRoute
   '/mobile/rapports': typeof MobileRapportsRoute
   '/mobile/recherche': typeof MobileRechercheRoute
-  '/nexusia/clients': typeof NexusiaClientsRoute
-  '/nexusia/decision': typeof NexusiaDecisionRoute
-  '/nexusia/employes': typeof NexusiaEmployesRoute
-  '/nexusia/finances': typeof NexusiaFinancesRoute
-  '/nexusia/objectifs': typeof NexusiaObjectifsRoute
-  '/nexusia/produits': typeof NexusiaProduitsRoute
-  '/nexusia/rapports': typeof NexusiaRapportsRoute
-  '/nexusia/recherche': typeof NexusiaRechercheRoute
-  '/produits/$produitId': typeof ProduitsProduitIdRoute
-  '/produits/mouvements': typeof ProduitsMouvementsRoute
-  '/rapports/comparaison': typeof RapportsComparaisonRoute
-  '/rapports/performance': typeof RapportsPerformanceRoute
-  '/ventes/historique': typeof VentesHistoriqueRoute
-  '/ventes/retours': typeof VentesRetoursRoute
-  '/administration/': typeof AdministrationIndexRoute
-  '/clients/': typeof ClientsIndexRoute
-  '/depenses/': typeof DepensesIndexRoute
-  '/employes/': typeof EmployesIndexRoute
-  '/entrees-stock/': typeof EntreesStockIndexRoute
-  '/fournisseurs/': typeof FournisseursIndexRoute
-  '/inventaire/': typeof InventaireIndexRoute
+  '/_authenticated/': typeof AuthenticatedIndexRoute
   '/mobile/': typeof MobileIndexRoute
-  '/nexusia/': typeof NexusiaIndexRoute
-  '/produits/': typeof ProduitsIndexRoute
-  '/rapports/': typeof RapportsIndexRoute
-  '/ventes/': typeof VentesIndexRoute
-  '/fournisseurs/commandes/$commandeId': typeof FournisseursCommandesCommandeIdRoute
-  '/fournisseurs/commandes/': typeof FournisseursCommandesIndexRoute
+  '/_authenticated/administration/a-propos': typeof AuthenticatedAdministrationAProposRoute
+  '/_authenticated/administration/audit': typeof AuthenticatedAdministrationAuditRoute
+  '/_authenticated/administration/donnees': typeof AuthenticatedAdministrationDonneesRoute
+  '/_authenticated/administration/entreprises': typeof AuthenticatedAdministrationEntreprisesRoute
+  '/_authenticated/administration/magasins': typeof AuthenticatedAdministrationMagasinsRoute
+  '/_authenticated/administration/maintenance': typeof AuthenticatedAdministrationMaintenanceRoute
+  '/_authenticated/administration/notifications': typeof AuthenticatedAdministrationNotificationsRoute
+  '/_authenticated/administration/personnalisation': typeof AuthenticatedAdministrationPersonnalisationRoute
+  '/_authenticated/administration/preferences': typeof AuthenticatedAdministrationPreferencesRoute
+  '/_authenticated/administration/sauvegardes': typeof AuthenticatedAdministrationSauvegardesRoute
+  '/_authenticated/administration/securite': typeof AuthenticatedAdministrationSecuriteRoute
+  '/_authenticated/administration/utilisateurs': typeof AuthenticatedAdministrationUtilisateursRoute
+  '/_authenticated/clients/$clientId': typeof AuthenticatedClientsClientIdRoute
+  '/_authenticated/clients/analyse': typeof AuthenticatedClientsAnalyseRoute
+  '/_authenticated/clients/statistiques': typeof AuthenticatedClientsStatistiquesRoute
+  '/_authenticated/clients/vip': typeof AuthenticatedClientsVipRoute
+  '/_authenticated/depenses/analyse': typeof AuthenticatedDepensesAnalyseRoute
+  '/_authenticated/depenses/charges': typeof AuthenticatedDepensesChargesRoute
+  '/_authenticated/depenses/creances': typeof AuthenticatedDepensesCreancesRoute
+  '/_authenticated/depenses/previsions': typeof AuthenticatedDepensesPrevisionsRoute
+  '/_authenticated/depenses/tresorerie': typeof AuthenticatedDepensesTresorerieRoute
+  '/_authenticated/employes/$employeId': typeof AuthenticatedEmployesEmployeIdRoute
+  '/_authenticated/employes/conges': typeof AuthenticatedEmployesCongesRoute
+  '/_authenticated/employes/journal': typeof AuthenticatedEmployesJournalRoute
+  '/_authenticated/employes/performance': typeof AuthenticatedEmployesPerformanceRoute
+  '/_authenticated/employes/permissions': typeof AuthenticatedEmployesPermissionsRoute
+  '/_authenticated/employes/presence': typeof AuthenticatedEmployesPresenceRoute
+  '/_authenticated/entrees-stock/$entreeId': typeof AuthenticatedEntreesStockEntreeIdRoute
+  '/_authenticated/entrees-stock/historique': typeof AuthenticatedEntreesStockHistoriqueRoute
+  '/_authenticated/fournisseurs/$fournisseurId': typeof AuthenticatedFournisseursFournisseurIdRoute
+  '/_authenticated/fournisseurs/analyse': typeof AuthenticatedFournisseursAnalyseRoute
+  '/_authenticated/fournisseurs/approvisionnement': typeof AuthenticatedFournisseursApprovisionnementRoute
+  '/_authenticated/inventaire/$inventaireId': typeof AuthenticatedInventaireInventaireIdRoute
+  '/_authenticated/inventaire/analyse': typeof AuthenticatedInventaireAnalyseRoute
+  '/_authenticated/inventaire/historique': typeof AuthenticatedInventaireHistoriqueRoute
+  '/_authenticated/nexusia/clients': typeof AuthenticatedNexusiaClientsRoute
+  '/_authenticated/nexusia/decision': typeof AuthenticatedNexusiaDecisionRoute
+  '/_authenticated/nexusia/employes': typeof AuthenticatedNexusiaEmployesRoute
+  '/_authenticated/nexusia/finances': typeof AuthenticatedNexusiaFinancesRoute
+  '/_authenticated/nexusia/objectifs': typeof AuthenticatedNexusiaObjectifsRoute
+  '/_authenticated/nexusia/produits': typeof AuthenticatedNexusiaProduitsRoute
+  '/_authenticated/nexusia/rapports': typeof AuthenticatedNexusiaRapportsRoute
+  '/_authenticated/nexusia/recherche': typeof AuthenticatedNexusiaRechercheRoute
+  '/_authenticated/produits/$produitId': typeof AuthenticatedProduitsProduitIdRoute
+  '/_authenticated/produits/mouvements': typeof AuthenticatedProduitsMouvementsRoute
+  '/_authenticated/rapports/comparaison': typeof AuthenticatedRapportsComparaisonRoute
+  '/_authenticated/rapports/performance': typeof AuthenticatedRapportsPerformanceRoute
+  '/_authenticated/ventes/historique': typeof AuthenticatedVentesHistoriqueRoute
+  '/_authenticated/ventes/retours': typeof AuthenticatedVentesRetoursRoute
+  '/_authenticated/administration/': typeof AuthenticatedAdministrationIndexRoute
+  '/_authenticated/clients/': typeof AuthenticatedClientsIndexRoute
+  '/_authenticated/depenses/': typeof AuthenticatedDepensesIndexRoute
+  '/_authenticated/employes/': typeof AuthenticatedEmployesIndexRoute
+  '/_authenticated/entrees-stock/': typeof AuthenticatedEntreesStockIndexRoute
+  '/_authenticated/fournisseurs/': typeof AuthenticatedFournisseursIndexRoute
+  '/_authenticated/inventaire/': typeof AuthenticatedInventaireIndexRoute
+  '/_authenticated/nexusia/': typeof AuthenticatedNexusiaIndexRoute
+  '/_authenticated/produits/': typeof AuthenticatedProduitsIndexRoute
+  '/_authenticated/rapports/': typeof AuthenticatedRapportsIndexRoute
+  '/_authenticated/ventes/': typeof AuthenticatedVentesIndexRoute
+  '/_authenticated/fournisseurs/commandes/$commandeId': typeof AuthenticatedFournisseursCommandesCommandeIdRoute
+  '/_authenticated/fournisseurs/commandes/': typeof AuthenticatedFournisseursCommandesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
+    | '/mobile'
+    | '/reset-password'
+    | '/sitemap.xml'
     | '/administration'
     | '/caisse'
     | '/categories'
@@ -894,17 +978,28 @@ export interface FileRouteTypes {
     | '/entrees-stock'
     | '/fournisseurs'
     | '/inventaire'
-    | '/mobile'
     | '/nexusia'
     | '/notifications'
     | '/parametres'
     | '/produits'
     | '/rapports'
     | '/salaires'
-    | '/sitemap.xml'
     | '/sorties-stock'
     | '/statistiques'
     | '/ventes'
+    | '/mobile/alertes'
+    | '/mobile/assistant'
+    | '/mobile/clients'
+    | '/mobile/connexion'
+    | '/mobile/direct'
+    | '/mobile/employes'
+    | '/mobile/finances'
+    | '/mobile/notifications'
+    | '/mobile/parametres'
+    | '/mobile/produits'
+    | '/mobile/rapports'
+    | '/mobile/recherche'
+    | '/mobile/'
     | '/administration/a-propos'
     | '/administration/audit'
     | '/administration/donnees'
@@ -940,18 +1035,6 @@ export interface FileRouteTypes {
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
-    | '/mobile/alertes'
-    | '/mobile/assistant'
-    | '/mobile/clients'
-    | '/mobile/connexion'
-    | '/mobile/direct'
-    | '/mobile/employes'
-    | '/mobile/finances'
-    | '/mobile/notifications'
-    | '/mobile/parametres'
-    | '/mobile/produits'
-    | '/mobile/rapports'
-    | '/mobile/recherche'
     | '/nexusia/clients'
     | '/nexusia/decision'
     | '/nexusia/employes'
@@ -973,7 +1056,6 @@ export interface FileRouteTypes {
     | '/entrees-stock/'
     | '/fournisseurs/'
     | '/inventaire/'
-    | '/mobile/'
     | '/nexusia/'
     | '/produits/'
     | '/rapports/'
@@ -982,15 +1064,30 @@ export interface FileRouteTypes {
     | '/fournisseurs/commandes/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/sitemap.xml'
     | '/caisse'
     | '/categories'
     | '/notifications'
     | '/parametres'
     | '/salaires'
-    | '/sitemap.xml'
     | '/sorties-stock'
     | '/statistiques'
+    | '/mobile/alertes'
+    | '/mobile/assistant'
+    | '/mobile/clients'
+    | '/mobile/connexion'
+    | '/mobile/direct'
+    | '/mobile/employes'
+    | '/mobile/finances'
+    | '/mobile/notifications'
+    | '/mobile/parametres'
+    | '/mobile/produits'
+    | '/mobile/rapports'
+    | '/mobile/recherche'
+    | '/'
+    | '/mobile'
     | '/administration/a-propos'
     | '/administration/audit'
     | '/administration/donnees'
@@ -1026,18 +1123,6 @@ export interface FileRouteTypes {
     | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
-    | '/mobile/alertes'
-    | '/mobile/assistant'
-    | '/mobile/clients'
-    | '/mobile/connexion'
-    | '/mobile/direct'
-    | '/mobile/employes'
-    | '/mobile/finances'
-    | '/mobile/notifications'
-    | '/mobile/parametres'
-    | '/mobile/produits'
-    | '/mobile/rapports'
-    | '/mobile/recherche'
     | '/nexusia/clients'
     | '/nexusia/decision'
     | '/nexusia/employes'
@@ -1059,7 +1144,6 @@ export interface FileRouteTypes {
     | '/entrees-stock'
     | '/fournisseurs'
     | '/inventaire'
-    | '/mobile'
     | '/nexusia'
     | '/produits'
     | '/rapports'
@@ -1068,62 +1152,29 @@ export interface FileRouteTypes {
     | '/fournisseurs/commandes'
   id:
     | '__root__'
-    | '/'
-    | '/administration'
-    | '/caisse'
-    | '/categories'
-    | '/clients'
-    | '/depenses'
-    | '/employes'
-    | '/entrees-stock'
-    | '/fournisseurs'
-    | '/inventaire'
+    | '/_authenticated'
+    | '/auth'
     | '/mobile'
-    | '/nexusia'
-    | '/notifications'
-    | '/parametres'
-    | '/produits'
-    | '/rapports'
-    | '/salaires'
+    | '/reset-password'
     | '/sitemap.xml'
-    | '/sorties-stock'
-    | '/statistiques'
-    | '/ventes'
-    | '/administration/a-propos'
-    | '/administration/audit'
-    | '/administration/donnees'
-    | '/administration/entreprises'
-    | '/administration/magasins'
-    | '/administration/maintenance'
-    | '/administration/notifications'
-    | '/administration/personnalisation'
-    | '/administration/preferences'
-    | '/administration/sauvegardes'
-    | '/administration/securite'
-    | '/administration/utilisateurs'
-    | '/clients/$clientId'
-    | '/clients/analyse'
-    | '/clients/statistiques'
-    | '/clients/vip'
-    | '/depenses/analyse'
-    | '/depenses/charges'
-    | '/depenses/creances'
-    | '/depenses/previsions'
-    | '/depenses/tresorerie'
-    | '/employes/$employeId'
-    | '/employes/conges'
-    | '/employes/journal'
-    | '/employes/performance'
-    | '/employes/permissions'
-    | '/employes/presence'
-    | '/entrees-stock/$entreeId'
-    | '/entrees-stock/historique'
-    | '/fournisseurs/$fournisseurId'
-    | '/fournisseurs/analyse'
-    | '/fournisseurs/approvisionnement'
-    | '/inventaire/$inventaireId'
-    | '/inventaire/analyse'
-    | '/inventaire/historique'
+    | '/_authenticated/administration'
+    | '/_authenticated/caisse'
+    | '/_authenticated/categories'
+    | '/_authenticated/clients'
+    | '/_authenticated/depenses'
+    | '/_authenticated/employes'
+    | '/_authenticated/entrees-stock'
+    | '/_authenticated/fournisseurs'
+    | '/_authenticated/inventaire'
+    | '/_authenticated/nexusia'
+    | '/_authenticated/notifications'
+    | '/_authenticated/parametres'
+    | '/_authenticated/produits'
+    | '/_authenticated/rapports'
+    | '/_authenticated/salaires'
+    | '/_authenticated/sorties-stock'
+    | '/_authenticated/statistiques'
+    | '/_authenticated/ventes'
     | '/mobile/alertes'
     | '/mobile/assistant'
     | '/mobile/clients'
@@ -1136,83 +1187,82 @@ export interface FileRouteTypes {
     | '/mobile/produits'
     | '/mobile/rapports'
     | '/mobile/recherche'
-    | '/nexusia/clients'
-    | '/nexusia/decision'
-    | '/nexusia/employes'
-    | '/nexusia/finances'
-    | '/nexusia/objectifs'
-    | '/nexusia/produits'
-    | '/nexusia/rapports'
-    | '/nexusia/recherche'
-    | '/produits/$produitId'
-    | '/produits/mouvements'
-    | '/rapports/comparaison'
-    | '/rapports/performance'
-    | '/ventes/historique'
-    | '/ventes/retours'
-    | '/administration/'
-    | '/clients/'
-    | '/depenses/'
-    | '/employes/'
-    | '/entrees-stock/'
-    | '/fournisseurs/'
-    | '/inventaire/'
+    | '/_authenticated/'
     | '/mobile/'
-    | '/nexusia/'
-    | '/produits/'
-    | '/rapports/'
-    | '/ventes/'
-    | '/fournisseurs/commandes/$commandeId'
-    | '/fournisseurs/commandes/'
+    | '/_authenticated/administration/a-propos'
+    | '/_authenticated/administration/audit'
+    | '/_authenticated/administration/donnees'
+    | '/_authenticated/administration/entreprises'
+    | '/_authenticated/administration/magasins'
+    | '/_authenticated/administration/maintenance'
+    | '/_authenticated/administration/notifications'
+    | '/_authenticated/administration/personnalisation'
+    | '/_authenticated/administration/preferences'
+    | '/_authenticated/administration/sauvegardes'
+    | '/_authenticated/administration/securite'
+    | '/_authenticated/administration/utilisateurs'
+    | '/_authenticated/clients/$clientId'
+    | '/_authenticated/clients/analyse'
+    | '/_authenticated/clients/statistiques'
+    | '/_authenticated/clients/vip'
+    | '/_authenticated/depenses/analyse'
+    | '/_authenticated/depenses/charges'
+    | '/_authenticated/depenses/creances'
+    | '/_authenticated/depenses/previsions'
+    | '/_authenticated/depenses/tresorerie'
+    | '/_authenticated/employes/$employeId'
+    | '/_authenticated/employes/conges'
+    | '/_authenticated/employes/journal'
+    | '/_authenticated/employes/performance'
+    | '/_authenticated/employes/permissions'
+    | '/_authenticated/employes/presence'
+    | '/_authenticated/entrees-stock/$entreeId'
+    | '/_authenticated/entrees-stock/historique'
+    | '/_authenticated/fournisseurs/$fournisseurId'
+    | '/_authenticated/fournisseurs/analyse'
+    | '/_authenticated/fournisseurs/approvisionnement'
+    | '/_authenticated/inventaire/$inventaireId'
+    | '/_authenticated/inventaire/analyse'
+    | '/_authenticated/inventaire/historique'
+    | '/_authenticated/nexusia/clients'
+    | '/_authenticated/nexusia/decision'
+    | '/_authenticated/nexusia/employes'
+    | '/_authenticated/nexusia/finances'
+    | '/_authenticated/nexusia/objectifs'
+    | '/_authenticated/nexusia/produits'
+    | '/_authenticated/nexusia/rapports'
+    | '/_authenticated/nexusia/recherche'
+    | '/_authenticated/produits/$produitId'
+    | '/_authenticated/produits/mouvements'
+    | '/_authenticated/rapports/comparaison'
+    | '/_authenticated/rapports/performance'
+    | '/_authenticated/ventes/historique'
+    | '/_authenticated/ventes/retours'
+    | '/_authenticated/administration/'
+    | '/_authenticated/clients/'
+    | '/_authenticated/depenses/'
+    | '/_authenticated/employes/'
+    | '/_authenticated/entrees-stock/'
+    | '/_authenticated/fournisseurs/'
+    | '/_authenticated/inventaire/'
+    | '/_authenticated/nexusia/'
+    | '/_authenticated/produits/'
+    | '/_authenticated/rapports/'
+    | '/_authenticated/ventes/'
+    | '/_authenticated/fournisseurs/commandes/$commandeId'
+    | '/_authenticated/fournisseurs/commandes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AdministrationRoute: typeof AdministrationRouteWithChildren
-  CaisseRoute: typeof CaisseRoute
-  CategoriesRoute: typeof CategoriesRoute
-  ClientsRoute: typeof ClientsRouteWithChildren
-  DepensesRoute: typeof DepensesRouteWithChildren
-  EmployesRoute: typeof EmployesRouteWithChildren
-  EntreesStockRoute: typeof EntreesStockRouteWithChildren
-  FournisseursRoute: typeof FournisseursRouteWithChildren
-  InventaireRoute: typeof InventaireRouteWithChildren
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
   MobileRoute: typeof MobileRouteWithChildren
-  NexusiaRoute: typeof NexusiaRouteWithChildren
-  NotificationsRoute: typeof NotificationsRoute
-  ParametresRoute: typeof ParametresRoute
-  ProduitsRoute: typeof ProduitsRouteWithChildren
-  RapportsRoute: typeof RapportsRouteWithChildren
-  SalairesRoute: typeof SalairesRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  SortiesStockRoute: typeof SortiesStockRoute
-  StatistiquesRoute: typeof StatistiquesRoute
-  VentesRoute: typeof VentesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/ventes': {
-      id: '/ventes'
-      path: '/ventes'
-      fullPath: '/ventes'
-      preLoaderRoute: typeof VentesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/statistiques': {
-      id: '/statistiques'
-      path: '/statistiques'
-      fullPath: '/statistiques'
-      preLoaderRoute: typeof StatistiquesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sorties-stock': {
-      id: '/sorties-stock'
-      path: '/sorties-stock'
-      fullPath: '/sorties-stock'
-      preLoaderRoute: typeof SortiesStockRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -1220,46 +1270,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/salaires': {
-      id: '/salaires'
-      path: '/salaires'
-      fullPath: '/salaires'
-      preLoaderRoute: typeof SalairesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/rapports': {
-      id: '/rapports'
-      path: '/rapports'
-      fullPath: '/rapports'
-      preLoaderRoute: typeof RapportsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/produits': {
-      id: '/produits'
-      path: '/produits'
-      fullPath: '/produits'
-      preLoaderRoute: typeof ProduitsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/parametres': {
-      id: '/parametres'
-      path: '/parametres'
-      fullPath: '/parametres'
-      preLoaderRoute: typeof ParametresRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notifications': {
-      id: '/notifications'
-      path: '/notifications'
-      fullPath: '/notifications'
-      preLoaderRoute: typeof NotificationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nexusia': {
-      id: '/nexusia'
-      path: '/nexusia'
-      fullPath: '/nexusia'
-      preLoaderRoute: typeof NexusiaRouteImport
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mobile': {
@@ -1269,103 +1284,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MobileRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/inventaire': {
-      id: '/inventaire'
-      path: '/inventaire'
-      fullPath: '/inventaire'
-      preLoaderRoute: typeof InventaireRouteImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/fournisseurs': {
-      id: '/fournisseurs'
-      path: '/fournisseurs'
-      fullPath: '/fournisseurs'
-      preLoaderRoute: typeof FournisseursRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/entrees-stock': {
-      id: '/entrees-stock'
-      path: '/entrees-stock'
-      fullPath: '/entrees-stock'
-      preLoaderRoute: typeof EntreesStockRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/employes': {
-      id: '/employes'
-      path: '/employes'
-      fullPath: '/employes'
-      preLoaderRoute: typeof EmployesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/depenses': {
-      id: '/depenses'
-      path: '/depenses'
-      fullPath: '/depenses'
-      preLoaderRoute: typeof DepensesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/clients': {
-      id: '/clients'
-      path: '/clients'
-      fullPath: '/clients'
-      preLoaderRoute: typeof ClientsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/categories': {
-      id: '/categories'
-      path: '/categories'
-      fullPath: '/categories'
-      preLoaderRoute: typeof CategoriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/caisse': {
-      id: '/caisse'
-      path: '/caisse'
-      fullPath: '/caisse'
-      preLoaderRoute: typeof CaisseRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/administration': {
-      id: '/administration'
-      path: '/administration'
-      fullPath: '/administration'
-      preLoaderRoute: typeof AdministrationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
-      path: '/'
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
-    }
-    '/ventes/': {
-      id: '/ventes/'
-      path: '/'
-      fullPath: '/ventes/'
-      preLoaderRoute: typeof VentesIndexRouteImport
-      parentRoute: typeof VentesRoute
-    }
-    '/rapports/': {
-      id: '/rapports/'
-      path: '/'
-      fullPath: '/rapports/'
-      preLoaderRoute: typeof RapportsIndexRouteImport
-      parentRoute: typeof RapportsRoute
-    }
-    '/produits/': {
-      id: '/produits/'
-      path: '/'
-      fullPath: '/produits/'
-      preLoaderRoute: typeof ProduitsIndexRouteImport
-      parentRoute: typeof ProduitsRoute
-    }
-    '/nexusia/': {
-      id: '/nexusia/'
-      path: '/'
-      fullPath: '/nexusia/'
-      preLoaderRoute: typeof NexusiaIndexRouteImport
-      parentRoute: typeof NexusiaRoute
     }
     '/mobile/': {
       id: '/mobile/'
@@ -1374,152 +1305,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MobileIndexRouteImport
       parentRoute: typeof MobileRoute
     }
-    '/inventaire/': {
-      id: '/inventaire/'
+    '/_authenticated/': {
+      id: '/_authenticated/'
       path: '/'
-      fullPath: '/inventaire/'
-      preLoaderRoute: typeof InventaireIndexRouteImport
-      parentRoute: typeof InventaireRoute
-    }
-    '/fournisseurs/': {
-      id: '/fournisseurs/'
-      path: '/'
-      fullPath: '/fournisseurs/'
-      preLoaderRoute: typeof FournisseursIndexRouteImport
-      parentRoute: typeof FournisseursRoute
-    }
-    '/entrees-stock/': {
-      id: '/entrees-stock/'
-      path: '/'
-      fullPath: '/entrees-stock/'
-      preLoaderRoute: typeof EntreesStockIndexRouteImport
-      parentRoute: typeof EntreesStockRoute
-    }
-    '/employes/': {
-      id: '/employes/'
-      path: '/'
-      fullPath: '/employes/'
-      preLoaderRoute: typeof EmployesIndexRouteImport
-      parentRoute: typeof EmployesRoute
-    }
-    '/depenses/': {
-      id: '/depenses/'
-      path: '/'
-      fullPath: '/depenses/'
-      preLoaderRoute: typeof DepensesIndexRouteImport
-      parentRoute: typeof DepensesRoute
-    }
-    '/clients/': {
-      id: '/clients/'
-      path: '/'
-      fullPath: '/clients/'
-      preLoaderRoute: typeof ClientsIndexRouteImport
-      parentRoute: typeof ClientsRoute
-    }
-    '/administration/': {
-      id: '/administration/'
-      path: '/'
-      fullPath: '/administration/'
-      preLoaderRoute: typeof AdministrationIndexRouteImport
-      parentRoute: typeof AdministrationRoute
-    }
-    '/ventes/retours': {
-      id: '/ventes/retours'
-      path: '/retours'
-      fullPath: '/ventes/retours'
-      preLoaderRoute: typeof VentesRetoursRouteImport
-      parentRoute: typeof VentesRoute
-    }
-    '/ventes/historique': {
-      id: '/ventes/historique'
-      path: '/historique'
-      fullPath: '/ventes/historique'
-      preLoaderRoute: typeof VentesHistoriqueRouteImport
-      parentRoute: typeof VentesRoute
-    }
-    '/rapports/performance': {
-      id: '/rapports/performance'
-      path: '/performance'
-      fullPath: '/rapports/performance'
-      preLoaderRoute: typeof RapportsPerformanceRouteImport
-      parentRoute: typeof RapportsRoute
-    }
-    '/rapports/comparaison': {
-      id: '/rapports/comparaison'
-      path: '/comparaison'
-      fullPath: '/rapports/comparaison'
-      preLoaderRoute: typeof RapportsComparaisonRouteImport
-      parentRoute: typeof RapportsRoute
-    }
-    '/produits/mouvements': {
-      id: '/produits/mouvements'
-      path: '/mouvements'
-      fullPath: '/produits/mouvements'
-      preLoaderRoute: typeof ProduitsMouvementsRouteImport
-      parentRoute: typeof ProduitsRoute
-    }
-    '/produits/$produitId': {
-      id: '/produits/$produitId'
-      path: '/$produitId'
-      fullPath: '/produits/$produitId'
-      preLoaderRoute: typeof ProduitsProduitIdRouteImport
-      parentRoute: typeof ProduitsRoute
-    }
-    '/nexusia/recherche': {
-      id: '/nexusia/recherche'
-      path: '/recherche'
-      fullPath: '/nexusia/recherche'
-      preLoaderRoute: typeof NexusiaRechercheRouteImport
-      parentRoute: typeof NexusiaRoute
-    }
-    '/nexusia/rapports': {
-      id: '/nexusia/rapports'
-      path: '/rapports'
-      fullPath: '/nexusia/rapports'
-      preLoaderRoute: typeof NexusiaRapportsRouteImport
-      parentRoute: typeof NexusiaRoute
-    }
-    '/nexusia/produits': {
-      id: '/nexusia/produits'
-      path: '/produits'
-      fullPath: '/nexusia/produits'
-      preLoaderRoute: typeof NexusiaProduitsRouteImport
-      parentRoute: typeof NexusiaRoute
-    }
-    '/nexusia/objectifs': {
-      id: '/nexusia/objectifs'
-      path: '/objectifs'
-      fullPath: '/nexusia/objectifs'
-      preLoaderRoute: typeof NexusiaObjectifsRouteImport
-      parentRoute: typeof NexusiaRoute
-    }
-    '/nexusia/finances': {
-      id: '/nexusia/finances'
-      path: '/finances'
-      fullPath: '/nexusia/finances'
-      preLoaderRoute: typeof NexusiaFinancesRouteImport
-      parentRoute: typeof NexusiaRoute
-    }
-    '/nexusia/employes': {
-      id: '/nexusia/employes'
-      path: '/employes'
-      fullPath: '/nexusia/employes'
-      preLoaderRoute: typeof NexusiaEmployesRouteImport
-      parentRoute: typeof NexusiaRoute
-    }
-    '/nexusia/decision': {
-      id: '/nexusia/decision'
-      path: '/decision'
-      fullPath: '/nexusia/decision'
-      preLoaderRoute: typeof NexusiaDecisionRouteImport
-      parentRoute: typeof NexusiaRoute
-    }
-    '/nexusia/clients': {
-      id: '/nexusia/clients'
-      path: '/clients'
-      fullPath: '/nexusia/clients'
-      preLoaderRoute: typeof NexusiaClientsRouteImport
-      parentRoute: typeof NexusiaRoute
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/mobile/recherche': {
       id: '/mobile/recherche'
@@ -1605,424 +1396,881 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MobileAlertesRouteImport
       parentRoute: typeof MobileRoute
     }
-    '/inventaire/historique': {
-      id: '/inventaire/historique'
+    '/_authenticated/ventes': {
+      id: '/_authenticated/ventes'
+      path: '/ventes'
+      fullPath: '/ventes'
+      preLoaderRoute: typeof AuthenticatedVentesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/statistiques': {
+      id: '/_authenticated/statistiques'
+      path: '/statistiques'
+      fullPath: '/statistiques'
+      preLoaderRoute: typeof AuthenticatedStatistiquesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/sorties-stock': {
+      id: '/_authenticated/sorties-stock'
+      path: '/sorties-stock'
+      fullPath: '/sorties-stock'
+      preLoaderRoute: typeof AuthenticatedSortiesStockRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/salaires': {
+      id: '/_authenticated/salaires'
+      path: '/salaires'
+      fullPath: '/salaires'
+      preLoaderRoute: typeof AuthenticatedSalairesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/rapports': {
+      id: '/_authenticated/rapports'
+      path: '/rapports'
+      fullPath: '/rapports'
+      preLoaderRoute: typeof AuthenticatedRapportsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/produits': {
+      id: '/_authenticated/produits'
+      path: '/produits'
+      fullPath: '/produits'
+      preLoaderRoute: typeof AuthenticatedProduitsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/parametres': {
+      id: '/_authenticated/parametres'
+      path: '/parametres'
+      fullPath: '/parametres'
+      preLoaderRoute: typeof AuthenticatedParametresRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/notifications': {
+      id: '/_authenticated/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AuthenticatedNotificationsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/nexusia': {
+      id: '/_authenticated/nexusia'
+      path: '/nexusia'
+      fullPath: '/nexusia'
+      preLoaderRoute: typeof AuthenticatedNexusiaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/inventaire': {
+      id: '/_authenticated/inventaire'
+      path: '/inventaire'
+      fullPath: '/inventaire'
+      preLoaderRoute: typeof AuthenticatedInventaireRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/fournisseurs': {
+      id: '/_authenticated/fournisseurs'
+      path: '/fournisseurs'
+      fullPath: '/fournisseurs'
+      preLoaderRoute: typeof AuthenticatedFournisseursRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/entrees-stock': {
+      id: '/_authenticated/entrees-stock'
+      path: '/entrees-stock'
+      fullPath: '/entrees-stock'
+      preLoaderRoute: typeof AuthenticatedEntreesStockRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/employes': {
+      id: '/_authenticated/employes'
+      path: '/employes'
+      fullPath: '/employes'
+      preLoaderRoute: typeof AuthenticatedEmployesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/depenses': {
+      id: '/_authenticated/depenses'
+      path: '/depenses'
+      fullPath: '/depenses'
+      preLoaderRoute: typeof AuthenticatedDepensesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/clients': {
+      id: '/_authenticated/clients'
+      path: '/clients'
+      fullPath: '/clients'
+      preLoaderRoute: typeof AuthenticatedClientsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/categories': {
+      id: '/_authenticated/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof AuthenticatedCategoriesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/caisse': {
+      id: '/_authenticated/caisse'
+      path: '/caisse'
+      fullPath: '/caisse'
+      preLoaderRoute: typeof AuthenticatedCaisseRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/administration': {
+      id: '/_authenticated/administration'
+      path: '/administration'
+      fullPath: '/administration'
+      preLoaderRoute: typeof AuthenticatedAdministrationRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/ventes/': {
+      id: '/_authenticated/ventes/'
+      path: '/'
+      fullPath: '/ventes/'
+      preLoaderRoute: typeof AuthenticatedVentesIndexRouteImport
+      parentRoute: typeof AuthenticatedVentesRoute
+    }
+    '/_authenticated/rapports/': {
+      id: '/_authenticated/rapports/'
+      path: '/'
+      fullPath: '/rapports/'
+      preLoaderRoute: typeof AuthenticatedRapportsIndexRouteImport
+      parentRoute: typeof AuthenticatedRapportsRoute
+    }
+    '/_authenticated/produits/': {
+      id: '/_authenticated/produits/'
+      path: '/'
+      fullPath: '/produits/'
+      preLoaderRoute: typeof AuthenticatedProduitsIndexRouteImport
+      parentRoute: typeof AuthenticatedProduitsRoute
+    }
+    '/_authenticated/nexusia/': {
+      id: '/_authenticated/nexusia/'
+      path: '/'
+      fullPath: '/nexusia/'
+      preLoaderRoute: typeof AuthenticatedNexusiaIndexRouteImport
+      parentRoute: typeof AuthenticatedNexusiaRoute
+    }
+    '/_authenticated/inventaire/': {
+      id: '/_authenticated/inventaire/'
+      path: '/'
+      fullPath: '/inventaire/'
+      preLoaderRoute: typeof AuthenticatedInventaireIndexRouteImport
+      parentRoute: typeof AuthenticatedInventaireRoute
+    }
+    '/_authenticated/fournisseurs/': {
+      id: '/_authenticated/fournisseurs/'
+      path: '/'
+      fullPath: '/fournisseurs/'
+      preLoaderRoute: typeof AuthenticatedFournisseursIndexRouteImport
+      parentRoute: typeof AuthenticatedFournisseursRoute
+    }
+    '/_authenticated/entrees-stock/': {
+      id: '/_authenticated/entrees-stock/'
+      path: '/'
+      fullPath: '/entrees-stock/'
+      preLoaderRoute: typeof AuthenticatedEntreesStockIndexRouteImport
+      parentRoute: typeof AuthenticatedEntreesStockRoute
+    }
+    '/_authenticated/employes/': {
+      id: '/_authenticated/employes/'
+      path: '/'
+      fullPath: '/employes/'
+      preLoaderRoute: typeof AuthenticatedEmployesIndexRouteImport
+      parentRoute: typeof AuthenticatedEmployesRoute
+    }
+    '/_authenticated/depenses/': {
+      id: '/_authenticated/depenses/'
+      path: '/'
+      fullPath: '/depenses/'
+      preLoaderRoute: typeof AuthenticatedDepensesIndexRouteImport
+      parentRoute: typeof AuthenticatedDepensesRoute
+    }
+    '/_authenticated/clients/': {
+      id: '/_authenticated/clients/'
+      path: '/'
+      fullPath: '/clients/'
+      preLoaderRoute: typeof AuthenticatedClientsIndexRouteImport
+      parentRoute: typeof AuthenticatedClientsRoute
+    }
+    '/_authenticated/administration/': {
+      id: '/_authenticated/administration/'
+      path: '/'
+      fullPath: '/administration/'
+      preLoaderRoute: typeof AuthenticatedAdministrationIndexRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
+    }
+    '/_authenticated/ventes/retours': {
+      id: '/_authenticated/ventes/retours'
+      path: '/retours'
+      fullPath: '/ventes/retours'
+      preLoaderRoute: typeof AuthenticatedVentesRetoursRouteImport
+      parentRoute: typeof AuthenticatedVentesRoute
+    }
+    '/_authenticated/ventes/historique': {
+      id: '/_authenticated/ventes/historique'
+      path: '/historique'
+      fullPath: '/ventes/historique'
+      preLoaderRoute: typeof AuthenticatedVentesHistoriqueRouteImport
+      parentRoute: typeof AuthenticatedVentesRoute
+    }
+    '/_authenticated/rapports/performance': {
+      id: '/_authenticated/rapports/performance'
+      path: '/performance'
+      fullPath: '/rapports/performance'
+      preLoaderRoute: typeof AuthenticatedRapportsPerformanceRouteImport
+      parentRoute: typeof AuthenticatedRapportsRoute
+    }
+    '/_authenticated/rapports/comparaison': {
+      id: '/_authenticated/rapports/comparaison'
+      path: '/comparaison'
+      fullPath: '/rapports/comparaison'
+      preLoaderRoute: typeof AuthenticatedRapportsComparaisonRouteImport
+      parentRoute: typeof AuthenticatedRapportsRoute
+    }
+    '/_authenticated/produits/mouvements': {
+      id: '/_authenticated/produits/mouvements'
+      path: '/mouvements'
+      fullPath: '/produits/mouvements'
+      preLoaderRoute: typeof AuthenticatedProduitsMouvementsRouteImport
+      parentRoute: typeof AuthenticatedProduitsRoute
+    }
+    '/_authenticated/produits/$produitId': {
+      id: '/_authenticated/produits/$produitId'
+      path: '/$produitId'
+      fullPath: '/produits/$produitId'
+      preLoaderRoute: typeof AuthenticatedProduitsProduitIdRouteImport
+      parentRoute: typeof AuthenticatedProduitsRoute
+    }
+    '/_authenticated/nexusia/recherche': {
+      id: '/_authenticated/nexusia/recherche'
+      path: '/recherche'
+      fullPath: '/nexusia/recherche'
+      preLoaderRoute: typeof AuthenticatedNexusiaRechercheRouteImport
+      parentRoute: typeof AuthenticatedNexusiaRoute
+    }
+    '/_authenticated/nexusia/rapports': {
+      id: '/_authenticated/nexusia/rapports'
+      path: '/rapports'
+      fullPath: '/nexusia/rapports'
+      preLoaderRoute: typeof AuthenticatedNexusiaRapportsRouteImport
+      parentRoute: typeof AuthenticatedNexusiaRoute
+    }
+    '/_authenticated/nexusia/produits': {
+      id: '/_authenticated/nexusia/produits'
+      path: '/produits'
+      fullPath: '/nexusia/produits'
+      preLoaderRoute: typeof AuthenticatedNexusiaProduitsRouteImport
+      parentRoute: typeof AuthenticatedNexusiaRoute
+    }
+    '/_authenticated/nexusia/objectifs': {
+      id: '/_authenticated/nexusia/objectifs'
+      path: '/objectifs'
+      fullPath: '/nexusia/objectifs'
+      preLoaderRoute: typeof AuthenticatedNexusiaObjectifsRouteImport
+      parentRoute: typeof AuthenticatedNexusiaRoute
+    }
+    '/_authenticated/nexusia/finances': {
+      id: '/_authenticated/nexusia/finances'
+      path: '/finances'
+      fullPath: '/nexusia/finances'
+      preLoaderRoute: typeof AuthenticatedNexusiaFinancesRouteImport
+      parentRoute: typeof AuthenticatedNexusiaRoute
+    }
+    '/_authenticated/nexusia/employes': {
+      id: '/_authenticated/nexusia/employes'
+      path: '/employes'
+      fullPath: '/nexusia/employes'
+      preLoaderRoute: typeof AuthenticatedNexusiaEmployesRouteImport
+      parentRoute: typeof AuthenticatedNexusiaRoute
+    }
+    '/_authenticated/nexusia/decision': {
+      id: '/_authenticated/nexusia/decision'
+      path: '/decision'
+      fullPath: '/nexusia/decision'
+      preLoaderRoute: typeof AuthenticatedNexusiaDecisionRouteImport
+      parentRoute: typeof AuthenticatedNexusiaRoute
+    }
+    '/_authenticated/nexusia/clients': {
+      id: '/_authenticated/nexusia/clients'
+      path: '/clients'
+      fullPath: '/nexusia/clients'
+      preLoaderRoute: typeof AuthenticatedNexusiaClientsRouteImport
+      parentRoute: typeof AuthenticatedNexusiaRoute
+    }
+    '/_authenticated/inventaire/historique': {
+      id: '/_authenticated/inventaire/historique'
       path: '/historique'
       fullPath: '/inventaire/historique'
-      preLoaderRoute: typeof InventaireHistoriqueRouteImport
-      parentRoute: typeof InventaireRoute
+      preLoaderRoute: typeof AuthenticatedInventaireHistoriqueRouteImport
+      parentRoute: typeof AuthenticatedInventaireRoute
     }
-    '/inventaire/analyse': {
-      id: '/inventaire/analyse'
+    '/_authenticated/inventaire/analyse': {
+      id: '/_authenticated/inventaire/analyse'
       path: '/analyse'
       fullPath: '/inventaire/analyse'
-      preLoaderRoute: typeof InventaireAnalyseRouteImport
-      parentRoute: typeof InventaireRoute
+      preLoaderRoute: typeof AuthenticatedInventaireAnalyseRouteImport
+      parentRoute: typeof AuthenticatedInventaireRoute
     }
-    '/inventaire/$inventaireId': {
-      id: '/inventaire/$inventaireId'
+    '/_authenticated/inventaire/$inventaireId': {
+      id: '/_authenticated/inventaire/$inventaireId'
       path: '/$inventaireId'
       fullPath: '/inventaire/$inventaireId'
-      preLoaderRoute: typeof InventaireInventaireIdRouteImport
-      parentRoute: typeof InventaireRoute
+      preLoaderRoute: typeof AuthenticatedInventaireInventaireIdRouteImport
+      parentRoute: typeof AuthenticatedInventaireRoute
     }
-    '/fournisseurs/approvisionnement': {
-      id: '/fournisseurs/approvisionnement'
+    '/_authenticated/fournisseurs/approvisionnement': {
+      id: '/_authenticated/fournisseurs/approvisionnement'
       path: '/approvisionnement'
       fullPath: '/fournisseurs/approvisionnement'
-      preLoaderRoute: typeof FournisseursApprovisionnementRouteImport
-      parentRoute: typeof FournisseursRoute
+      preLoaderRoute: typeof AuthenticatedFournisseursApprovisionnementRouteImport
+      parentRoute: typeof AuthenticatedFournisseursRoute
     }
-    '/fournisseurs/analyse': {
-      id: '/fournisseurs/analyse'
+    '/_authenticated/fournisseurs/analyse': {
+      id: '/_authenticated/fournisseurs/analyse'
       path: '/analyse'
       fullPath: '/fournisseurs/analyse'
-      preLoaderRoute: typeof FournisseursAnalyseRouteImport
-      parentRoute: typeof FournisseursRoute
+      preLoaderRoute: typeof AuthenticatedFournisseursAnalyseRouteImport
+      parentRoute: typeof AuthenticatedFournisseursRoute
     }
-    '/fournisseurs/$fournisseurId': {
-      id: '/fournisseurs/$fournisseurId'
+    '/_authenticated/fournisseurs/$fournisseurId': {
+      id: '/_authenticated/fournisseurs/$fournisseurId'
       path: '/$fournisseurId'
       fullPath: '/fournisseurs/$fournisseurId'
-      preLoaderRoute: typeof FournisseursFournisseurIdRouteImport
-      parentRoute: typeof FournisseursRoute
+      preLoaderRoute: typeof AuthenticatedFournisseursFournisseurIdRouteImport
+      parentRoute: typeof AuthenticatedFournisseursRoute
     }
-    '/entrees-stock/historique': {
-      id: '/entrees-stock/historique'
+    '/_authenticated/entrees-stock/historique': {
+      id: '/_authenticated/entrees-stock/historique'
       path: '/historique'
       fullPath: '/entrees-stock/historique'
-      preLoaderRoute: typeof EntreesStockHistoriqueRouteImport
-      parentRoute: typeof EntreesStockRoute
+      preLoaderRoute: typeof AuthenticatedEntreesStockHistoriqueRouteImport
+      parentRoute: typeof AuthenticatedEntreesStockRoute
     }
-    '/entrees-stock/$entreeId': {
-      id: '/entrees-stock/$entreeId'
+    '/_authenticated/entrees-stock/$entreeId': {
+      id: '/_authenticated/entrees-stock/$entreeId'
       path: '/$entreeId'
       fullPath: '/entrees-stock/$entreeId'
-      preLoaderRoute: typeof EntreesStockEntreeIdRouteImport
-      parentRoute: typeof EntreesStockRoute
+      preLoaderRoute: typeof AuthenticatedEntreesStockEntreeIdRouteImport
+      parentRoute: typeof AuthenticatedEntreesStockRoute
     }
-    '/employes/presence': {
-      id: '/employes/presence'
+    '/_authenticated/employes/presence': {
+      id: '/_authenticated/employes/presence'
       path: '/presence'
       fullPath: '/employes/presence'
-      preLoaderRoute: typeof EmployesPresenceRouteImport
-      parentRoute: typeof EmployesRoute
+      preLoaderRoute: typeof AuthenticatedEmployesPresenceRouteImport
+      parentRoute: typeof AuthenticatedEmployesRoute
     }
-    '/employes/permissions': {
-      id: '/employes/permissions'
+    '/_authenticated/employes/permissions': {
+      id: '/_authenticated/employes/permissions'
       path: '/permissions'
       fullPath: '/employes/permissions'
-      preLoaderRoute: typeof EmployesPermissionsRouteImport
-      parentRoute: typeof EmployesRoute
+      preLoaderRoute: typeof AuthenticatedEmployesPermissionsRouteImport
+      parentRoute: typeof AuthenticatedEmployesRoute
     }
-    '/employes/performance': {
-      id: '/employes/performance'
+    '/_authenticated/employes/performance': {
+      id: '/_authenticated/employes/performance'
       path: '/performance'
       fullPath: '/employes/performance'
-      preLoaderRoute: typeof EmployesPerformanceRouteImport
-      parentRoute: typeof EmployesRoute
+      preLoaderRoute: typeof AuthenticatedEmployesPerformanceRouteImport
+      parentRoute: typeof AuthenticatedEmployesRoute
     }
-    '/employes/journal': {
-      id: '/employes/journal'
+    '/_authenticated/employes/journal': {
+      id: '/_authenticated/employes/journal'
       path: '/journal'
       fullPath: '/employes/journal'
-      preLoaderRoute: typeof EmployesJournalRouteImport
-      parentRoute: typeof EmployesRoute
+      preLoaderRoute: typeof AuthenticatedEmployesJournalRouteImport
+      parentRoute: typeof AuthenticatedEmployesRoute
     }
-    '/employes/conges': {
-      id: '/employes/conges'
+    '/_authenticated/employes/conges': {
+      id: '/_authenticated/employes/conges'
       path: '/conges'
       fullPath: '/employes/conges'
-      preLoaderRoute: typeof EmployesCongesRouteImport
-      parentRoute: typeof EmployesRoute
+      preLoaderRoute: typeof AuthenticatedEmployesCongesRouteImport
+      parentRoute: typeof AuthenticatedEmployesRoute
     }
-    '/employes/$employeId': {
-      id: '/employes/$employeId'
+    '/_authenticated/employes/$employeId': {
+      id: '/_authenticated/employes/$employeId'
       path: '/$employeId'
       fullPath: '/employes/$employeId'
-      preLoaderRoute: typeof EmployesEmployeIdRouteImport
-      parentRoute: typeof EmployesRoute
+      preLoaderRoute: typeof AuthenticatedEmployesEmployeIdRouteImport
+      parentRoute: typeof AuthenticatedEmployesRoute
     }
-    '/depenses/tresorerie': {
-      id: '/depenses/tresorerie'
+    '/_authenticated/depenses/tresorerie': {
+      id: '/_authenticated/depenses/tresorerie'
       path: '/tresorerie'
       fullPath: '/depenses/tresorerie'
-      preLoaderRoute: typeof DepensesTresorerieRouteImport
-      parentRoute: typeof DepensesRoute
+      preLoaderRoute: typeof AuthenticatedDepensesTresorerieRouteImport
+      parentRoute: typeof AuthenticatedDepensesRoute
     }
-    '/depenses/previsions': {
-      id: '/depenses/previsions'
+    '/_authenticated/depenses/previsions': {
+      id: '/_authenticated/depenses/previsions'
       path: '/previsions'
       fullPath: '/depenses/previsions'
-      preLoaderRoute: typeof DepensesPrevisionsRouteImport
-      parentRoute: typeof DepensesRoute
+      preLoaderRoute: typeof AuthenticatedDepensesPrevisionsRouteImport
+      parentRoute: typeof AuthenticatedDepensesRoute
     }
-    '/depenses/creances': {
-      id: '/depenses/creances'
+    '/_authenticated/depenses/creances': {
+      id: '/_authenticated/depenses/creances'
       path: '/creances'
       fullPath: '/depenses/creances'
-      preLoaderRoute: typeof DepensesCreancesRouteImport
-      parentRoute: typeof DepensesRoute
+      preLoaderRoute: typeof AuthenticatedDepensesCreancesRouteImport
+      parentRoute: typeof AuthenticatedDepensesRoute
     }
-    '/depenses/charges': {
-      id: '/depenses/charges'
+    '/_authenticated/depenses/charges': {
+      id: '/_authenticated/depenses/charges'
       path: '/charges'
       fullPath: '/depenses/charges'
-      preLoaderRoute: typeof DepensesChargesRouteImport
-      parentRoute: typeof DepensesRoute
+      preLoaderRoute: typeof AuthenticatedDepensesChargesRouteImport
+      parentRoute: typeof AuthenticatedDepensesRoute
     }
-    '/depenses/analyse': {
-      id: '/depenses/analyse'
+    '/_authenticated/depenses/analyse': {
+      id: '/_authenticated/depenses/analyse'
       path: '/analyse'
       fullPath: '/depenses/analyse'
-      preLoaderRoute: typeof DepensesAnalyseRouteImport
-      parentRoute: typeof DepensesRoute
+      preLoaderRoute: typeof AuthenticatedDepensesAnalyseRouteImport
+      parentRoute: typeof AuthenticatedDepensesRoute
     }
-    '/clients/vip': {
-      id: '/clients/vip'
+    '/_authenticated/clients/vip': {
+      id: '/_authenticated/clients/vip'
       path: '/vip'
       fullPath: '/clients/vip'
-      preLoaderRoute: typeof ClientsVipRouteImport
-      parentRoute: typeof ClientsRoute
+      preLoaderRoute: typeof AuthenticatedClientsVipRouteImport
+      parentRoute: typeof AuthenticatedClientsRoute
     }
-    '/clients/statistiques': {
-      id: '/clients/statistiques'
+    '/_authenticated/clients/statistiques': {
+      id: '/_authenticated/clients/statistiques'
       path: '/statistiques'
       fullPath: '/clients/statistiques'
-      preLoaderRoute: typeof ClientsStatistiquesRouteImport
-      parentRoute: typeof ClientsRoute
+      preLoaderRoute: typeof AuthenticatedClientsStatistiquesRouteImport
+      parentRoute: typeof AuthenticatedClientsRoute
     }
-    '/clients/analyse': {
-      id: '/clients/analyse'
+    '/_authenticated/clients/analyse': {
+      id: '/_authenticated/clients/analyse'
       path: '/analyse'
       fullPath: '/clients/analyse'
-      preLoaderRoute: typeof ClientsAnalyseRouteImport
-      parentRoute: typeof ClientsRoute
+      preLoaderRoute: typeof AuthenticatedClientsAnalyseRouteImport
+      parentRoute: typeof AuthenticatedClientsRoute
     }
-    '/clients/$clientId': {
-      id: '/clients/$clientId'
+    '/_authenticated/clients/$clientId': {
+      id: '/_authenticated/clients/$clientId'
       path: '/$clientId'
       fullPath: '/clients/$clientId'
-      preLoaderRoute: typeof ClientsClientIdRouteImport
-      parentRoute: typeof ClientsRoute
+      preLoaderRoute: typeof AuthenticatedClientsClientIdRouteImport
+      parentRoute: typeof AuthenticatedClientsRoute
     }
-    '/administration/utilisateurs': {
-      id: '/administration/utilisateurs'
+    '/_authenticated/administration/utilisateurs': {
+      id: '/_authenticated/administration/utilisateurs'
       path: '/utilisateurs'
       fullPath: '/administration/utilisateurs'
-      preLoaderRoute: typeof AdministrationUtilisateursRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationUtilisateursRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/securite': {
-      id: '/administration/securite'
+    '/_authenticated/administration/securite': {
+      id: '/_authenticated/administration/securite'
       path: '/securite'
       fullPath: '/administration/securite'
-      preLoaderRoute: typeof AdministrationSecuriteRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationSecuriteRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/sauvegardes': {
-      id: '/administration/sauvegardes'
+    '/_authenticated/administration/sauvegardes': {
+      id: '/_authenticated/administration/sauvegardes'
       path: '/sauvegardes'
       fullPath: '/administration/sauvegardes'
-      preLoaderRoute: typeof AdministrationSauvegardesRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationSauvegardesRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/preferences': {
-      id: '/administration/preferences'
+    '/_authenticated/administration/preferences': {
+      id: '/_authenticated/administration/preferences'
       path: '/preferences'
       fullPath: '/administration/preferences'
-      preLoaderRoute: typeof AdministrationPreferencesRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationPreferencesRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/personnalisation': {
-      id: '/administration/personnalisation'
+    '/_authenticated/administration/personnalisation': {
+      id: '/_authenticated/administration/personnalisation'
       path: '/personnalisation'
       fullPath: '/administration/personnalisation'
-      preLoaderRoute: typeof AdministrationPersonnalisationRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationPersonnalisationRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/notifications': {
-      id: '/administration/notifications'
+    '/_authenticated/administration/notifications': {
+      id: '/_authenticated/administration/notifications'
       path: '/notifications'
       fullPath: '/administration/notifications'
-      preLoaderRoute: typeof AdministrationNotificationsRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationNotificationsRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/maintenance': {
-      id: '/administration/maintenance'
+    '/_authenticated/administration/maintenance': {
+      id: '/_authenticated/administration/maintenance'
       path: '/maintenance'
       fullPath: '/administration/maintenance'
-      preLoaderRoute: typeof AdministrationMaintenanceRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationMaintenanceRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/magasins': {
-      id: '/administration/magasins'
+    '/_authenticated/administration/magasins': {
+      id: '/_authenticated/administration/magasins'
       path: '/magasins'
       fullPath: '/administration/magasins'
-      preLoaderRoute: typeof AdministrationMagasinsRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationMagasinsRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/entreprises': {
-      id: '/administration/entreprises'
+    '/_authenticated/administration/entreprises': {
+      id: '/_authenticated/administration/entreprises'
       path: '/entreprises'
       fullPath: '/administration/entreprises'
-      preLoaderRoute: typeof AdministrationEntreprisesRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationEntreprisesRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/donnees': {
-      id: '/administration/donnees'
+    '/_authenticated/administration/donnees': {
+      id: '/_authenticated/administration/donnees'
       path: '/donnees'
       fullPath: '/administration/donnees'
-      preLoaderRoute: typeof AdministrationDonneesRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationDonneesRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/audit': {
-      id: '/administration/audit'
+    '/_authenticated/administration/audit': {
+      id: '/_authenticated/administration/audit'
       path: '/audit'
       fullPath: '/administration/audit'
-      preLoaderRoute: typeof AdministrationAuditRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationAuditRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/administration/a-propos': {
-      id: '/administration/a-propos'
+    '/_authenticated/administration/a-propos': {
+      id: '/_authenticated/administration/a-propos'
       path: '/a-propos'
       fullPath: '/administration/a-propos'
-      preLoaderRoute: typeof AdministrationAProposRouteImport
-      parentRoute: typeof AdministrationRoute
+      preLoaderRoute: typeof AuthenticatedAdministrationAProposRouteImport
+      parentRoute: typeof AuthenticatedAdministrationRoute
     }
-    '/fournisseurs/commandes/': {
-      id: '/fournisseurs/commandes/'
+    '/_authenticated/fournisseurs/commandes/': {
+      id: '/_authenticated/fournisseurs/commandes/'
       path: '/commandes'
       fullPath: '/fournisseurs/commandes/'
-      preLoaderRoute: typeof FournisseursCommandesIndexRouteImport
-      parentRoute: typeof FournisseursRoute
+      preLoaderRoute: typeof AuthenticatedFournisseursCommandesIndexRouteImport
+      parentRoute: typeof AuthenticatedFournisseursRoute
     }
-    '/fournisseurs/commandes/$commandeId': {
-      id: '/fournisseurs/commandes/$commandeId'
+    '/_authenticated/fournisseurs/commandes/$commandeId': {
+      id: '/_authenticated/fournisseurs/commandes/$commandeId'
       path: '/commandes/$commandeId'
       fullPath: '/fournisseurs/commandes/$commandeId'
-      preLoaderRoute: typeof FournisseursCommandesCommandeIdRouteImport
-      parentRoute: typeof FournisseursRoute
+      preLoaderRoute: typeof AuthenticatedFournisseursCommandesCommandeIdRouteImport
+      parentRoute: typeof AuthenticatedFournisseursRoute
     }
   }
 }
 
-interface AdministrationRouteChildren {
-  AdministrationAProposRoute: typeof AdministrationAProposRoute
-  AdministrationAuditRoute: typeof AdministrationAuditRoute
-  AdministrationDonneesRoute: typeof AdministrationDonneesRoute
-  AdministrationEntreprisesRoute: typeof AdministrationEntreprisesRoute
-  AdministrationMagasinsRoute: typeof AdministrationMagasinsRoute
-  AdministrationMaintenanceRoute: typeof AdministrationMaintenanceRoute
-  AdministrationNotificationsRoute: typeof AdministrationNotificationsRoute
-  AdministrationPersonnalisationRoute: typeof AdministrationPersonnalisationRoute
-  AdministrationPreferencesRoute: typeof AdministrationPreferencesRoute
-  AdministrationSauvegardesRoute: typeof AdministrationSauvegardesRoute
-  AdministrationSecuriteRoute: typeof AdministrationSecuriteRoute
-  AdministrationUtilisateursRoute: typeof AdministrationUtilisateursRoute
-  AdministrationIndexRoute: typeof AdministrationIndexRoute
+interface AuthenticatedAdministrationRouteChildren {
+  AuthenticatedAdministrationAProposRoute: typeof AuthenticatedAdministrationAProposRoute
+  AuthenticatedAdministrationAuditRoute: typeof AuthenticatedAdministrationAuditRoute
+  AuthenticatedAdministrationDonneesRoute: typeof AuthenticatedAdministrationDonneesRoute
+  AuthenticatedAdministrationEntreprisesRoute: typeof AuthenticatedAdministrationEntreprisesRoute
+  AuthenticatedAdministrationMagasinsRoute: typeof AuthenticatedAdministrationMagasinsRoute
+  AuthenticatedAdministrationMaintenanceRoute: typeof AuthenticatedAdministrationMaintenanceRoute
+  AuthenticatedAdministrationNotificationsRoute: typeof AuthenticatedAdministrationNotificationsRoute
+  AuthenticatedAdministrationPersonnalisationRoute: typeof AuthenticatedAdministrationPersonnalisationRoute
+  AuthenticatedAdministrationPreferencesRoute: typeof AuthenticatedAdministrationPreferencesRoute
+  AuthenticatedAdministrationSauvegardesRoute: typeof AuthenticatedAdministrationSauvegardesRoute
+  AuthenticatedAdministrationSecuriteRoute: typeof AuthenticatedAdministrationSecuriteRoute
+  AuthenticatedAdministrationUtilisateursRoute: typeof AuthenticatedAdministrationUtilisateursRoute
+  AuthenticatedAdministrationIndexRoute: typeof AuthenticatedAdministrationIndexRoute
 }
 
-const AdministrationRouteChildren: AdministrationRouteChildren = {
-  AdministrationAProposRoute: AdministrationAProposRoute,
-  AdministrationAuditRoute: AdministrationAuditRoute,
-  AdministrationDonneesRoute: AdministrationDonneesRoute,
-  AdministrationEntreprisesRoute: AdministrationEntreprisesRoute,
-  AdministrationMagasinsRoute: AdministrationMagasinsRoute,
-  AdministrationMaintenanceRoute: AdministrationMaintenanceRoute,
-  AdministrationNotificationsRoute: AdministrationNotificationsRoute,
-  AdministrationPersonnalisationRoute: AdministrationPersonnalisationRoute,
-  AdministrationPreferencesRoute: AdministrationPreferencesRoute,
-  AdministrationSauvegardesRoute: AdministrationSauvegardesRoute,
-  AdministrationSecuriteRoute: AdministrationSecuriteRoute,
-  AdministrationUtilisateursRoute: AdministrationUtilisateursRoute,
-  AdministrationIndexRoute: AdministrationIndexRoute,
+const AuthenticatedAdministrationRouteChildren: AuthenticatedAdministrationRouteChildren =
+  {
+    AuthenticatedAdministrationAProposRoute:
+      AuthenticatedAdministrationAProposRoute,
+    AuthenticatedAdministrationAuditRoute:
+      AuthenticatedAdministrationAuditRoute,
+    AuthenticatedAdministrationDonneesRoute:
+      AuthenticatedAdministrationDonneesRoute,
+    AuthenticatedAdministrationEntreprisesRoute:
+      AuthenticatedAdministrationEntreprisesRoute,
+    AuthenticatedAdministrationMagasinsRoute:
+      AuthenticatedAdministrationMagasinsRoute,
+    AuthenticatedAdministrationMaintenanceRoute:
+      AuthenticatedAdministrationMaintenanceRoute,
+    AuthenticatedAdministrationNotificationsRoute:
+      AuthenticatedAdministrationNotificationsRoute,
+    AuthenticatedAdministrationPersonnalisationRoute:
+      AuthenticatedAdministrationPersonnalisationRoute,
+    AuthenticatedAdministrationPreferencesRoute:
+      AuthenticatedAdministrationPreferencesRoute,
+    AuthenticatedAdministrationSauvegardesRoute:
+      AuthenticatedAdministrationSauvegardesRoute,
+    AuthenticatedAdministrationSecuriteRoute:
+      AuthenticatedAdministrationSecuriteRoute,
+    AuthenticatedAdministrationUtilisateursRoute:
+      AuthenticatedAdministrationUtilisateursRoute,
+    AuthenticatedAdministrationIndexRoute:
+      AuthenticatedAdministrationIndexRoute,
+  }
+
+const AuthenticatedAdministrationRouteWithChildren =
+  AuthenticatedAdministrationRoute._addFileChildren(
+    AuthenticatedAdministrationRouteChildren,
+  )
+
+interface AuthenticatedClientsRouteChildren {
+  AuthenticatedClientsClientIdRoute: typeof AuthenticatedClientsClientIdRoute
+  AuthenticatedClientsAnalyseRoute: typeof AuthenticatedClientsAnalyseRoute
+  AuthenticatedClientsStatistiquesRoute: typeof AuthenticatedClientsStatistiquesRoute
+  AuthenticatedClientsVipRoute: typeof AuthenticatedClientsVipRoute
+  AuthenticatedClientsIndexRoute: typeof AuthenticatedClientsIndexRoute
 }
 
-const AdministrationRouteWithChildren = AdministrationRoute._addFileChildren(
-  AdministrationRouteChildren,
-)
-
-interface ClientsRouteChildren {
-  ClientsClientIdRoute: typeof ClientsClientIdRoute
-  ClientsAnalyseRoute: typeof ClientsAnalyseRoute
-  ClientsStatistiquesRoute: typeof ClientsStatistiquesRoute
-  ClientsVipRoute: typeof ClientsVipRoute
-  ClientsIndexRoute: typeof ClientsIndexRoute
+const AuthenticatedClientsRouteChildren: AuthenticatedClientsRouteChildren = {
+  AuthenticatedClientsClientIdRoute: AuthenticatedClientsClientIdRoute,
+  AuthenticatedClientsAnalyseRoute: AuthenticatedClientsAnalyseRoute,
+  AuthenticatedClientsStatistiquesRoute: AuthenticatedClientsStatistiquesRoute,
+  AuthenticatedClientsVipRoute: AuthenticatedClientsVipRoute,
+  AuthenticatedClientsIndexRoute: AuthenticatedClientsIndexRoute,
 }
 
-const ClientsRouteChildren: ClientsRouteChildren = {
-  ClientsClientIdRoute: ClientsClientIdRoute,
-  ClientsAnalyseRoute: ClientsAnalyseRoute,
-  ClientsStatistiquesRoute: ClientsStatistiquesRoute,
-  ClientsVipRoute: ClientsVipRoute,
-  ClientsIndexRoute: ClientsIndexRoute,
+const AuthenticatedClientsRouteWithChildren =
+  AuthenticatedClientsRoute._addFileChildren(AuthenticatedClientsRouteChildren)
+
+interface AuthenticatedDepensesRouteChildren {
+  AuthenticatedDepensesAnalyseRoute: typeof AuthenticatedDepensesAnalyseRoute
+  AuthenticatedDepensesChargesRoute: typeof AuthenticatedDepensesChargesRoute
+  AuthenticatedDepensesCreancesRoute: typeof AuthenticatedDepensesCreancesRoute
+  AuthenticatedDepensesPrevisionsRoute: typeof AuthenticatedDepensesPrevisionsRoute
+  AuthenticatedDepensesTresorerieRoute: typeof AuthenticatedDepensesTresorerieRoute
+  AuthenticatedDepensesIndexRoute: typeof AuthenticatedDepensesIndexRoute
 }
 
-const ClientsRouteWithChildren =
-  ClientsRoute._addFileChildren(ClientsRouteChildren)
-
-interface DepensesRouteChildren {
-  DepensesAnalyseRoute: typeof DepensesAnalyseRoute
-  DepensesChargesRoute: typeof DepensesChargesRoute
-  DepensesCreancesRoute: typeof DepensesCreancesRoute
-  DepensesPrevisionsRoute: typeof DepensesPrevisionsRoute
-  DepensesTresorerieRoute: typeof DepensesTresorerieRoute
-  DepensesIndexRoute: typeof DepensesIndexRoute
+const AuthenticatedDepensesRouteChildren: AuthenticatedDepensesRouteChildren = {
+  AuthenticatedDepensesAnalyseRoute: AuthenticatedDepensesAnalyseRoute,
+  AuthenticatedDepensesChargesRoute: AuthenticatedDepensesChargesRoute,
+  AuthenticatedDepensesCreancesRoute: AuthenticatedDepensesCreancesRoute,
+  AuthenticatedDepensesPrevisionsRoute: AuthenticatedDepensesPrevisionsRoute,
+  AuthenticatedDepensesTresorerieRoute: AuthenticatedDepensesTresorerieRoute,
+  AuthenticatedDepensesIndexRoute: AuthenticatedDepensesIndexRoute,
 }
 
-const DepensesRouteChildren: DepensesRouteChildren = {
-  DepensesAnalyseRoute: DepensesAnalyseRoute,
-  DepensesChargesRoute: DepensesChargesRoute,
-  DepensesCreancesRoute: DepensesCreancesRoute,
-  DepensesPrevisionsRoute: DepensesPrevisionsRoute,
-  DepensesTresorerieRoute: DepensesTresorerieRoute,
-  DepensesIndexRoute: DepensesIndexRoute,
+const AuthenticatedDepensesRouteWithChildren =
+  AuthenticatedDepensesRoute._addFileChildren(
+    AuthenticatedDepensesRouteChildren,
+  )
+
+interface AuthenticatedEmployesRouteChildren {
+  AuthenticatedEmployesEmployeIdRoute: typeof AuthenticatedEmployesEmployeIdRoute
+  AuthenticatedEmployesCongesRoute: typeof AuthenticatedEmployesCongesRoute
+  AuthenticatedEmployesJournalRoute: typeof AuthenticatedEmployesJournalRoute
+  AuthenticatedEmployesPerformanceRoute: typeof AuthenticatedEmployesPerformanceRoute
+  AuthenticatedEmployesPermissionsRoute: typeof AuthenticatedEmployesPermissionsRoute
+  AuthenticatedEmployesPresenceRoute: typeof AuthenticatedEmployesPresenceRoute
+  AuthenticatedEmployesIndexRoute: typeof AuthenticatedEmployesIndexRoute
 }
 
-const DepensesRouteWithChildren = DepensesRoute._addFileChildren(
-  DepensesRouteChildren,
-)
-
-interface EmployesRouteChildren {
-  EmployesEmployeIdRoute: typeof EmployesEmployeIdRoute
-  EmployesCongesRoute: typeof EmployesCongesRoute
-  EmployesJournalRoute: typeof EmployesJournalRoute
-  EmployesPerformanceRoute: typeof EmployesPerformanceRoute
-  EmployesPermissionsRoute: typeof EmployesPermissionsRoute
-  EmployesPresenceRoute: typeof EmployesPresenceRoute
-  EmployesIndexRoute: typeof EmployesIndexRoute
+const AuthenticatedEmployesRouteChildren: AuthenticatedEmployesRouteChildren = {
+  AuthenticatedEmployesEmployeIdRoute: AuthenticatedEmployesEmployeIdRoute,
+  AuthenticatedEmployesCongesRoute: AuthenticatedEmployesCongesRoute,
+  AuthenticatedEmployesJournalRoute: AuthenticatedEmployesJournalRoute,
+  AuthenticatedEmployesPerformanceRoute: AuthenticatedEmployesPerformanceRoute,
+  AuthenticatedEmployesPermissionsRoute: AuthenticatedEmployesPermissionsRoute,
+  AuthenticatedEmployesPresenceRoute: AuthenticatedEmployesPresenceRoute,
+  AuthenticatedEmployesIndexRoute: AuthenticatedEmployesIndexRoute,
 }
 
-const EmployesRouteChildren: EmployesRouteChildren = {
-  EmployesEmployeIdRoute: EmployesEmployeIdRoute,
-  EmployesCongesRoute: EmployesCongesRoute,
-  EmployesJournalRoute: EmployesJournalRoute,
-  EmployesPerformanceRoute: EmployesPerformanceRoute,
-  EmployesPermissionsRoute: EmployesPermissionsRoute,
-  EmployesPresenceRoute: EmployesPresenceRoute,
-  EmployesIndexRoute: EmployesIndexRoute,
+const AuthenticatedEmployesRouteWithChildren =
+  AuthenticatedEmployesRoute._addFileChildren(
+    AuthenticatedEmployesRouteChildren,
+  )
+
+interface AuthenticatedEntreesStockRouteChildren {
+  AuthenticatedEntreesStockEntreeIdRoute: typeof AuthenticatedEntreesStockEntreeIdRoute
+  AuthenticatedEntreesStockHistoriqueRoute: typeof AuthenticatedEntreesStockHistoriqueRoute
+  AuthenticatedEntreesStockIndexRoute: typeof AuthenticatedEntreesStockIndexRoute
 }
 
-const EmployesRouteWithChildren = EmployesRoute._addFileChildren(
-  EmployesRouteChildren,
-)
+const AuthenticatedEntreesStockRouteChildren: AuthenticatedEntreesStockRouteChildren =
+  {
+    AuthenticatedEntreesStockEntreeIdRoute:
+      AuthenticatedEntreesStockEntreeIdRoute,
+    AuthenticatedEntreesStockHistoriqueRoute:
+      AuthenticatedEntreesStockHistoriqueRoute,
+    AuthenticatedEntreesStockIndexRoute: AuthenticatedEntreesStockIndexRoute,
+  }
 
-interface EntreesStockRouteChildren {
-  EntreesStockEntreeIdRoute: typeof EntreesStockEntreeIdRoute
-  EntreesStockHistoriqueRoute: typeof EntreesStockHistoriqueRoute
-  EntreesStockIndexRoute: typeof EntreesStockIndexRoute
+const AuthenticatedEntreesStockRouteWithChildren =
+  AuthenticatedEntreesStockRoute._addFileChildren(
+    AuthenticatedEntreesStockRouteChildren,
+  )
+
+interface AuthenticatedFournisseursRouteChildren {
+  AuthenticatedFournisseursFournisseurIdRoute: typeof AuthenticatedFournisseursFournisseurIdRoute
+  AuthenticatedFournisseursAnalyseRoute: typeof AuthenticatedFournisseursAnalyseRoute
+  AuthenticatedFournisseursApprovisionnementRoute: typeof AuthenticatedFournisseursApprovisionnementRoute
+  AuthenticatedFournisseursIndexRoute: typeof AuthenticatedFournisseursIndexRoute
+  AuthenticatedFournisseursCommandesCommandeIdRoute: typeof AuthenticatedFournisseursCommandesCommandeIdRoute
+  AuthenticatedFournisseursCommandesIndexRoute: typeof AuthenticatedFournisseursCommandesIndexRoute
 }
 
-const EntreesStockRouteChildren: EntreesStockRouteChildren = {
-  EntreesStockEntreeIdRoute: EntreesStockEntreeIdRoute,
-  EntreesStockHistoriqueRoute: EntreesStockHistoriqueRoute,
-  EntreesStockIndexRoute: EntreesStockIndexRoute,
+const AuthenticatedFournisseursRouteChildren: AuthenticatedFournisseursRouteChildren =
+  {
+    AuthenticatedFournisseursFournisseurIdRoute:
+      AuthenticatedFournisseursFournisseurIdRoute,
+    AuthenticatedFournisseursAnalyseRoute:
+      AuthenticatedFournisseursAnalyseRoute,
+    AuthenticatedFournisseursApprovisionnementRoute:
+      AuthenticatedFournisseursApprovisionnementRoute,
+    AuthenticatedFournisseursIndexRoute: AuthenticatedFournisseursIndexRoute,
+    AuthenticatedFournisseursCommandesCommandeIdRoute:
+      AuthenticatedFournisseursCommandesCommandeIdRoute,
+    AuthenticatedFournisseursCommandesIndexRoute:
+      AuthenticatedFournisseursCommandesIndexRoute,
+  }
+
+const AuthenticatedFournisseursRouteWithChildren =
+  AuthenticatedFournisseursRoute._addFileChildren(
+    AuthenticatedFournisseursRouteChildren,
+  )
+
+interface AuthenticatedInventaireRouteChildren {
+  AuthenticatedInventaireInventaireIdRoute: typeof AuthenticatedInventaireInventaireIdRoute
+  AuthenticatedInventaireAnalyseRoute: typeof AuthenticatedInventaireAnalyseRoute
+  AuthenticatedInventaireHistoriqueRoute: typeof AuthenticatedInventaireHistoriqueRoute
+  AuthenticatedInventaireIndexRoute: typeof AuthenticatedInventaireIndexRoute
 }
 
-const EntreesStockRouteWithChildren = EntreesStockRoute._addFileChildren(
-  EntreesStockRouteChildren,
-)
+const AuthenticatedInventaireRouteChildren: AuthenticatedInventaireRouteChildren =
+  {
+    AuthenticatedInventaireInventaireIdRoute:
+      AuthenticatedInventaireInventaireIdRoute,
+    AuthenticatedInventaireAnalyseRoute: AuthenticatedInventaireAnalyseRoute,
+    AuthenticatedInventaireHistoriqueRoute:
+      AuthenticatedInventaireHistoriqueRoute,
+    AuthenticatedInventaireIndexRoute: AuthenticatedInventaireIndexRoute,
+  }
 
-interface FournisseursRouteChildren {
-  FournisseursFournisseurIdRoute: typeof FournisseursFournisseurIdRoute
-  FournisseursAnalyseRoute: typeof FournisseursAnalyseRoute
-  FournisseursApprovisionnementRoute: typeof FournisseursApprovisionnementRoute
-  FournisseursIndexRoute: typeof FournisseursIndexRoute
-  FournisseursCommandesCommandeIdRoute: typeof FournisseursCommandesCommandeIdRoute
-  FournisseursCommandesIndexRoute: typeof FournisseursCommandesIndexRoute
+const AuthenticatedInventaireRouteWithChildren =
+  AuthenticatedInventaireRoute._addFileChildren(
+    AuthenticatedInventaireRouteChildren,
+  )
+
+interface AuthenticatedNexusiaRouteChildren {
+  AuthenticatedNexusiaClientsRoute: typeof AuthenticatedNexusiaClientsRoute
+  AuthenticatedNexusiaDecisionRoute: typeof AuthenticatedNexusiaDecisionRoute
+  AuthenticatedNexusiaEmployesRoute: typeof AuthenticatedNexusiaEmployesRoute
+  AuthenticatedNexusiaFinancesRoute: typeof AuthenticatedNexusiaFinancesRoute
+  AuthenticatedNexusiaObjectifsRoute: typeof AuthenticatedNexusiaObjectifsRoute
+  AuthenticatedNexusiaProduitsRoute: typeof AuthenticatedNexusiaProduitsRoute
+  AuthenticatedNexusiaRapportsRoute: typeof AuthenticatedNexusiaRapportsRoute
+  AuthenticatedNexusiaRechercheRoute: typeof AuthenticatedNexusiaRechercheRoute
+  AuthenticatedNexusiaIndexRoute: typeof AuthenticatedNexusiaIndexRoute
 }
 
-const FournisseursRouteChildren: FournisseursRouteChildren = {
-  FournisseursFournisseurIdRoute: FournisseursFournisseurIdRoute,
-  FournisseursAnalyseRoute: FournisseursAnalyseRoute,
-  FournisseursApprovisionnementRoute: FournisseursApprovisionnementRoute,
-  FournisseursIndexRoute: FournisseursIndexRoute,
-  FournisseursCommandesCommandeIdRoute: FournisseursCommandesCommandeIdRoute,
-  FournisseursCommandesIndexRoute: FournisseursCommandesIndexRoute,
+const AuthenticatedNexusiaRouteChildren: AuthenticatedNexusiaRouteChildren = {
+  AuthenticatedNexusiaClientsRoute: AuthenticatedNexusiaClientsRoute,
+  AuthenticatedNexusiaDecisionRoute: AuthenticatedNexusiaDecisionRoute,
+  AuthenticatedNexusiaEmployesRoute: AuthenticatedNexusiaEmployesRoute,
+  AuthenticatedNexusiaFinancesRoute: AuthenticatedNexusiaFinancesRoute,
+  AuthenticatedNexusiaObjectifsRoute: AuthenticatedNexusiaObjectifsRoute,
+  AuthenticatedNexusiaProduitsRoute: AuthenticatedNexusiaProduitsRoute,
+  AuthenticatedNexusiaRapportsRoute: AuthenticatedNexusiaRapportsRoute,
+  AuthenticatedNexusiaRechercheRoute: AuthenticatedNexusiaRechercheRoute,
+  AuthenticatedNexusiaIndexRoute: AuthenticatedNexusiaIndexRoute,
 }
 
-const FournisseursRouteWithChildren = FournisseursRoute._addFileChildren(
-  FournisseursRouteChildren,
-)
+const AuthenticatedNexusiaRouteWithChildren =
+  AuthenticatedNexusiaRoute._addFileChildren(AuthenticatedNexusiaRouteChildren)
 
-interface InventaireRouteChildren {
-  InventaireInventaireIdRoute: typeof InventaireInventaireIdRoute
-  InventaireAnalyseRoute: typeof InventaireAnalyseRoute
-  InventaireHistoriqueRoute: typeof InventaireHistoriqueRoute
-  InventaireIndexRoute: typeof InventaireIndexRoute
+interface AuthenticatedProduitsRouteChildren {
+  AuthenticatedProduitsProduitIdRoute: typeof AuthenticatedProduitsProduitIdRoute
+  AuthenticatedProduitsMouvementsRoute: typeof AuthenticatedProduitsMouvementsRoute
+  AuthenticatedProduitsIndexRoute: typeof AuthenticatedProduitsIndexRoute
 }
 
-const InventaireRouteChildren: InventaireRouteChildren = {
-  InventaireInventaireIdRoute: InventaireInventaireIdRoute,
-  InventaireAnalyseRoute: InventaireAnalyseRoute,
-  InventaireHistoriqueRoute: InventaireHistoriqueRoute,
-  InventaireIndexRoute: InventaireIndexRoute,
+const AuthenticatedProduitsRouteChildren: AuthenticatedProduitsRouteChildren = {
+  AuthenticatedProduitsProduitIdRoute: AuthenticatedProduitsProduitIdRoute,
+  AuthenticatedProduitsMouvementsRoute: AuthenticatedProduitsMouvementsRoute,
+  AuthenticatedProduitsIndexRoute: AuthenticatedProduitsIndexRoute,
 }
 
-const InventaireRouteWithChildren = InventaireRoute._addFileChildren(
-  InventaireRouteChildren,
-)
+const AuthenticatedProduitsRouteWithChildren =
+  AuthenticatedProduitsRoute._addFileChildren(
+    AuthenticatedProduitsRouteChildren,
+  )
+
+interface AuthenticatedRapportsRouteChildren {
+  AuthenticatedRapportsComparaisonRoute: typeof AuthenticatedRapportsComparaisonRoute
+  AuthenticatedRapportsPerformanceRoute: typeof AuthenticatedRapportsPerformanceRoute
+  AuthenticatedRapportsIndexRoute: typeof AuthenticatedRapportsIndexRoute
+}
+
+const AuthenticatedRapportsRouteChildren: AuthenticatedRapportsRouteChildren = {
+  AuthenticatedRapportsComparaisonRoute: AuthenticatedRapportsComparaisonRoute,
+  AuthenticatedRapportsPerformanceRoute: AuthenticatedRapportsPerformanceRoute,
+  AuthenticatedRapportsIndexRoute: AuthenticatedRapportsIndexRoute,
+}
+
+const AuthenticatedRapportsRouteWithChildren =
+  AuthenticatedRapportsRoute._addFileChildren(
+    AuthenticatedRapportsRouteChildren,
+  )
+
+interface AuthenticatedVentesRouteChildren {
+  AuthenticatedVentesHistoriqueRoute: typeof AuthenticatedVentesHistoriqueRoute
+  AuthenticatedVentesRetoursRoute: typeof AuthenticatedVentesRetoursRoute
+  AuthenticatedVentesIndexRoute: typeof AuthenticatedVentesIndexRoute
+}
+
+const AuthenticatedVentesRouteChildren: AuthenticatedVentesRouteChildren = {
+  AuthenticatedVentesHistoriqueRoute: AuthenticatedVentesHistoriqueRoute,
+  AuthenticatedVentesRetoursRoute: AuthenticatedVentesRetoursRoute,
+  AuthenticatedVentesIndexRoute: AuthenticatedVentesIndexRoute,
+}
+
+const AuthenticatedVentesRouteWithChildren =
+  AuthenticatedVentesRoute._addFileChildren(AuthenticatedVentesRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdministrationRoute: typeof AuthenticatedAdministrationRouteWithChildren
+  AuthenticatedCaisseRoute: typeof AuthenticatedCaisseRoute
+  AuthenticatedCategoriesRoute: typeof AuthenticatedCategoriesRoute
+  AuthenticatedClientsRoute: typeof AuthenticatedClientsRouteWithChildren
+  AuthenticatedDepensesRoute: typeof AuthenticatedDepensesRouteWithChildren
+  AuthenticatedEmployesRoute: typeof AuthenticatedEmployesRouteWithChildren
+  AuthenticatedEntreesStockRoute: typeof AuthenticatedEntreesStockRouteWithChildren
+  AuthenticatedFournisseursRoute: typeof AuthenticatedFournisseursRouteWithChildren
+  AuthenticatedInventaireRoute: typeof AuthenticatedInventaireRouteWithChildren
+  AuthenticatedNexusiaRoute: typeof AuthenticatedNexusiaRouteWithChildren
+  AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
+  AuthenticatedParametresRoute: typeof AuthenticatedParametresRoute
+  AuthenticatedProduitsRoute: typeof AuthenticatedProduitsRouteWithChildren
+  AuthenticatedRapportsRoute: typeof AuthenticatedRapportsRouteWithChildren
+  AuthenticatedSalairesRoute: typeof AuthenticatedSalairesRoute
+  AuthenticatedSortiesStockRoute: typeof AuthenticatedSortiesStockRoute
+  AuthenticatedStatistiquesRoute: typeof AuthenticatedStatistiquesRoute
+  AuthenticatedVentesRoute: typeof AuthenticatedVentesRouteWithChildren
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdministrationRoute:
+    AuthenticatedAdministrationRouteWithChildren,
+  AuthenticatedCaisseRoute: AuthenticatedCaisseRoute,
+  AuthenticatedCategoriesRoute: AuthenticatedCategoriesRoute,
+  AuthenticatedClientsRoute: AuthenticatedClientsRouteWithChildren,
+  AuthenticatedDepensesRoute: AuthenticatedDepensesRouteWithChildren,
+  AuthenticatedEmployesRoute: AuthenticatedEmployesRouteWithChildren,
+  AuthenticatedEntreesStockRoute: AuthenticatedEntreesStockRouteWithChildren,
+  AuthenticatedFournisseursRoute: AuthenticatedFournisseursRouteWithChildren,
+  AuthenticatedInventaireRoute: AuthenticatedInventaireRouteWithChildren,
+  AuthenticatedNexusiaRoute: AuthenticatedNexusiaRouteWithChildren,
+  AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
+  AuthenticatedParametresRoute: AuthenticatedParametresRoute,
+  AuthenticatedProduitsRoute: AuthenticatedProduitsRouteWithChildren,
+  AuthenticatedRapportsRoute: AuthenticatedRapportsRouteWithChildren,
+  AuthenticatedSalairesRoute: AuthenticatedSalairesRoute,
+  AuthenticatedSortiesStockRoute: AuthenticatedSortiesStockRoute,
+  AuthenticatedStatistiquesRoute: AuthenticatedStatistiquesRoute,
+  AuthenticatedVentesRoute: AuthenticatedVentesRouteWithChildren,
+  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface MobileRouteChildren {
   MobileAlertesRoute: typeof MobileAlertesRoute
@@ -2059,102 +2307,12 @@ const MobileRouteChildren: MobileRouteChildren = {
 const MobileRouteWithChildren =
   MobileRoute._addFileChildren(MobileRouteChildren)
 
-interface NexusiaRouteChildren {
-  NexusiaClientsRoute: typeof NexusiaClientsRoute
-  NexusiaDecisionRoute: typeof NexusiaDecisionRoute
-  NexusiaEmployesRoute: typeof NexusiaEmployesRoute
-  NexusiaFinancesRoute: typeof NexusiaFinancesRoute
-  NexusiaObjectifsRoute: typeof NexusiaObjectifsRoute
-  NexusiaProduitsRoute: typeof NexusiaProduitsRoute
-  NexusiaRapportsRoute: typeof NexusiaRapportsRoute
-  NexusiaRechercheRoute: typeof NexusiaRechercheRoute
-  NexusiaIndexRoute: typeof NexusiaIndexRoute
-}
-
-const NexusiaRouteChildren: NexusiaRouteChildren = {
-  NexusiaClientsRoute: NexusiaClientsRoute,
-  NexusiaDecisionRoute: NexusiaDecisionRoute,
-  NexusiaEmployesRoute: NexusiaEmployesRoute,
-  NexusiaFinancesRoute: NexusiaFinancesRoute,
-  NexusiaObjectifsRoute: NexusiaObjectifsRoute,
-  NexusiaProduitsRoute: NexusiaProduitsRoute,
-  NexusiaRapportsRoute: NexusiaRapportsRoute,
-  NexusiaRechercheRoute: NexusiaRechercheRoute,
-  NexusiaIndexRoute: NexusiaIndexRoute,
-}
-
-const NexusiaRouteWithChildren =
-  NexusiaRoute._addFileChildren(NexusiaRouteChildren)
-
-interface ProduitsRouteChildren {
-  ProduitsProduitIdRoute: typeof ProduitsProduitIdRoute
-  ProduitsMouvementsRoute: typeof ProduitsMouvementsRoute
-  ProduitsIndexRoute: typeof ProduitsIndexRoute
-}
-
-const ProduitsRouteChildren: ProduitsRouteChildren = {
-  ProduitsProduitIdRoute: ProduitsProduitIdRoute,
-  ProduitsMouvementsRoute: ProduitsMouvementsRoute,
-  ProduitsIndexRoute: ProduitsIndexRoute,
-}
-
-const ProduitsRouteWithChildren = ProduitsRoute._addFileChildren(
-  ProduitsRouteChildren,
-)
-
-interface RapportsRouteChildren {
-  RapportsComparaisonRoute: typeof RapportsComparaisonRoute
-  RapportsPerformanceRoute: typeof RapportsPerformanceRoute
-  RapportsIndexRoute: typeof RapportsIndexRoute
-}
-
-const RapportsRouteChildren: RapportsRouteChildren = {
-  RapportsComparaisonRoute: RapportsComparaisonRoute,
-  RapportsPerformanceRoute: RapportsPerformanceRoute,
-  RapportsIndexRoute: RapportsIndexRoute,
-}
-
-const RapportsRouteWithChildren = RapportsRoute._addFileChildren(
-  RapportsRouteChildren,
-)
-
-interface VentesRouteChildren {
-  VentesHistoriqueRoute: typeof VentesHistoriqueRoute
-  VentesRetoursRoute: typeof VentesRetoursRoute
-  VentesIndexRoute: typeof VentesIndexRoute
-}
-
-const VentesRouteChildren: VentesRouteChildren = {
-  VentesHistoriqueRoute: VentesHistoriqueRoute,
-  VentesRetoursRoute: VentesRetoursRoute,
-  VentesIndexRoute: VentesIndexRoute,
-}
-
-const VentesRouteWithChildren =
-  VentesRoute._addFileChildren(VentesRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AdministrationRoute: AdministrationRouteWithChildren,
-  CaisseRoute: CaisseRoute,
-  CategoriesRoute: CategoriesRoute,
-  ClientsRoute: ClientsRouteWithChildren,
-  DepensesRoute: DepensesRouteWithChildren,
-  EmployesRoute: EmployesRouteWithChildren,
-  EntreesStockRoute: EntreesStockRouteWithChildren,
-  FournisseursRoute: FournisseursRouteWithChildren,
-  InventaireRoute: InventaireRouteWithChildren,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
   MobileRoute: MobileRouteWithChildren,
-  NexusiaRoute: NexusiaRouteWithChildren,
-  NotificationsRoute: NotificationsRoute,
-  ParametresRoute: ParametresRoute,
-  ProduitsRoute: ProduitsRouteWithChildren,
-  RapportsRoute: RapportsRouteWithChildren,
-  SalairesRoute: SalairesRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  SortiesStockRoute: SortiesStockRoute,
-  StatistiquesRoute: StatistiquesRoute,
-  VentesRoute: VentesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
