@@ -41,6 +41,7 @@ import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
 import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique'
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
+import { Route as MobileRapportsRouteImport } from './routes/mobile.rapports'
 import { Route as MobileProduitsRouteImport } from './routes/mobile.produits'
 import { Route as MobileNotificationsRouteImport } from './routes/mobile.notifications'
 import { Route as MobileEmployesRouteImport } from './routes/mobile.employes'
@@ -232,6 +233,11 @@ const ProduitsProduitIdRoute = ProduitsProduitIdRouteImport.update({
   id: '/$produitId',
   path: '/$produitId',
   getParentRoute: () => ProduitsRoute,
+} as any)
+const MobileRapportsRoute = MobileRapportsRouteImport.update({
+  id: '/rapports',
+  path: '/rapports',
+  getParentRoute: () => MobileRoute,
 } as any)
 const MobileProduitsRoute = MobileProduitsRouteImport.update({
   id: '/produits',
@@ -442,6 +448,7 @@ export interface FileRoutesByFullPath {
   '/mobile/employes': typeof MobileEmployesRoute
   '/mobile/notifications': typeof MobileNotificationsRoute
   '/mobile/produits': typeof MobileProduitsRoute
+  '/mobile/rapports': typeof MobileRapportsRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -498,6 +505,7 @@ export interface FileRoutesByTo {
   '/mobile/employes': typeof MobileEmployesRoute
   '/mobile/notifications': typeof MobileNotificationsRoute
   '/mobile/produits': typeof MobileProduitsRoute
+  '/mobile/rapports': typeof MobileRapportsRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -564,6 +572,7 @@ export interface FileRoutesById {
   '/mobile/employes': typeof MobileEmployesRoute
   '/mobile/notifications': typeof MobileNotificationsRoute
   '/mobile/produits': typeof MobileProduitsRoute
+  '/mobile/rapports': typeof MobileRapportsRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
   '/ventes/historique': typeof VentesHistoriqueRoute
@@ -631,6 +640,7 @@ export interface FileRouteTypes {
     | '/mobile/employes'
     | '/mobile/notifications'
     | '/mobile/produits'
+    | '/mobile/rapports'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -687,6 +697,7 @@ export interface FileRouteTypes {
     | '/mobile/employes'
     | '/mobile/notifications'
     | '/mobile/produits'
+    | '/mobile/rapports'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -752,6 +763,7 @@ export interface FileRouteTypes {
     | '/mobile/employes'
     | '/mobile/notifications'
     | '/mobile/produits'
+    | '/mobile/rapports'
     | '/produits/$produitId'
     | '/produits/mouvements'
     | '/ventes/historique'
@@ -1016,6 +1028,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/produits/$produitId'
       preLoaderRoute: typeof ProduitsProduitIdRouteImport
       parentRoute: typeof ProduitsRoute
+    }
+    '/mobile/rapports': {
+      id: '/mobile/rapports'
+      path: '/rapports'
+      fullPath: '/mobile/rapports'
+      preLoaderRoute: typeof MobileRapportsRouteImport
+      parentRoute: typeof MobileRoute
     }
     '/mobile/produits': {
       id: '/mobile/produits'
@@ -1365,6 +1384,7 @@ interface MobileRouteChildren {
   MobileEmployesRoute: typeof MobileEmployesRoute
   MobileNotificationsRoute: typeof MobileNotificationsRoute
   MobileProduitsRoute: typeof MobileProduitsRoute
+  MobileRapportsRoute: typeof MobileRapportsRoute
   MobileIndexRoute: typeof MobileIndexRoute
 }
 
@@ -1375,6 +1395,7 @@ const MobileRouteChildren: MobileRouteChildren = {
   MobileEmployesRoute: MobileEmployesRoute,
   MobileNotificationsRoute: MobileNotificationsRoute,
   MobileProduitsRoute: MobileProduitsRoute,
+  MobileRapportsRoute: MobileRapportsRoute,
   MobileIndexRoute: MobileIndexRoute,
 }
 
