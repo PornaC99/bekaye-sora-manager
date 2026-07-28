@@ -66,6 +66,115 @@ export function notifierFinance(notification: Omit<NotificationFinance, "id" | "
     date: new Date().toISOString(),
   };
   setState({ notifications: [item, ...state.notifications].slice(0, 40) });
+  publier({
+    module: "finances",
+    ton: notification.ton,
+    titre: notification.titre,
+    message: notification.message,
+  });
+}
+
+/* ------------------------------------------------------------------ */
+/* Liaisons automatiques avec les autres modules                        */
+/* ------------------------------------------------------------------ */
+
+const dansNJours = (jours: number) =>
+  new Date(Date.now() + jours * 86_400_000).toISOString().slice(0, 10);
+
+/** Crée automatiquement une créance client (vente partiellement encaissée). */
+export function enregistrerCreanceClient(input: {
+  clientId?: string | null;
+  nom: string;
+  montant: number;
+  reference: string;
+  date?: string;
+  echeanceJours?: number;
+}): Creance | null {
+  if (input.montant <= 0) return null;
+  const reference = `Réf. ${input.reference}`;
+  if (state.creances.some((c) => c.observation.includes(reference))) return null;
+
+  const creance: Creance = {
+    id: `CR-${Date.now()}`,
+    clientId: input.clientId ?? null,
+    nom: input.nom,
+    montant: Math.round(input.montant),
+    date: input.date ?? new Date().toISOString(),
+    echeance: dansNJours(input.echeanceJours ?? 15),
+    regle: false,
+    observation: `Reste à encaisser — ${reference}`,
+  };
+  setState({ creances: [creance, ...state.creances] });
+  notifierFinance({
+    ton: "alerte",
+    titre: "Créance client créée",
+    message: `${input.nom} · ${creance.montant.toLocaleString("fr-FR")} FCFA restant sur ${input.reference}.`,
+  });
+  return creance;
+}
+
+/** Crée automatiquement une dette fournisseur (commande réceptionnée non payée). */
+export function enregistrerDetteFournisseur(input: {
+  fournisseurId?: string | null;
+  fournisseur: string;
+  montant: number;
+  reference: string;
+  date?: string;
+  echeanceJours?: number;
+}): Dette | null {
+  if (input.montant <= 0) return null;
+  const reference = `Réf. ${input.reference}`;
+  if (state.dettes.some((d) => d.observation.includes(reference))) return null;
+
+  const dette: Dette = {
+    id: `DT-${Date.now()}`,
+    fournisseurId: input.fournisseurId ?? null,
+    fournisseur: input.fournisseur,
+    montant: Math.round(input.montant),
+    date: input.date ?? new Date().toISOString(),
+    echeance: dansNJours(input.echeanceJours ?? 30),
+    regle: false,
+    observation: `Commande réceptionnée — ${reference}`,
+  };
+  setState({ dettes: [dette, ...state.dettes] });
+  notifierFinance({
+    ton: "alerte",
+    titre: "Dette fournisseur enregistrée",
+    message: `${input.fournisseur} · ${dette.montant.toLocaleString("fr-FR")} FCFA à régler (${input.reference}).`,
+  });
+  return dette;
+}
+
+/** Enregistre une dépense générée par un autre module (perte, casse, achat…). */
+export function enregistrerDepenseAutomatique(input: {
+  libelle: string;
+  montant: number;
+  categorie: Depense["categorie"];
+  source: Depense["source"];
+  reference: string;
+  responsable?: string;
+  date?: string;
+}): Depense | null {
+  if (input.montant <= 0) return null;
+  const reference = `Réf. ${input.reference}`;
+  if (state.depenses.some((d) => d.description.includes(reference))) return null;
+
+  const depense: Depense = {
+    id: prochainIdDepense(),
+    libelle: input.libelle,
+    montant: Math.round(input.montant),
+    categorie: input.categorie,
+    date: input.date ?? new Date().toISOString(),
+    modePaiement: "especes",
+    beneficiaire: input.responsable ?? "Interne",
+    description: `Généré automatiquement — ${reference}`,
+    responsable: input.responsable ?? "Système",
+    statut: "payee",
+    justificatif: null,
+    source: input.source,
+  };
+  setState({ depenses: [depense, ...state.depenses] });
+  return depense;
 }
 
 /* ------------------------------------------------------------------ */
