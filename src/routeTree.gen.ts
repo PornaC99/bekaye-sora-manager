@@ -27,6 +27,7 @@ import { Route as DepensesRouteImport } from './routes/depenses'
 import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as CaisseRouteImport } from './routes/caisse'
+import { Route as AdministrationRouteImport } from './routes/administration'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as VentesIndexRouteImport } from './routes/ventes.index'
 import { Route as RapportsIndexRouteImport } from './routes/rapports.index'
@@ -170,6 +171,11 @@ const CategoriesRoute = CategoriesRouteImport.update({
 const CaisseRoute = CaisseRouteImport.update({
   id: '/caisse',
   path: '/caisse',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdministrationRoute = AdministrationRouteImport.update({
+  id: '/administration',
+  path: '/administration',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -449,6 +455,7 @@ const FournisseursCommandesCommandeIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/administration': typeof AdministrationRoute
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
   '/clients': typeof ClientsRouteWithChildren
@@ -523,6 +530,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/administration': typeof AdministrationRoute
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
   '/notifications': typeof NotificationsRoute
@@ -588,6 +596,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/administration': typeof AdministrationRoute
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
   '/clients': typeof ClientsRouteWithChildren
@@ -664,6 +673,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/administration'
     | '/caisse'
     | '/categories'
     | '/clients'
@@ -738,6 +748,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/administration'
     | '/caisse'
     | '/categories'
     | '/notifications'
@@ -802,6 +813,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/administration'
     | '/caisse'
     | '/categories'
     | '/clients'
@@ -877,6 +889,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdministrationRoute: typeof AdministrationRoute
   CaisseRoute: typeof CaisseRoute
   CategoriesRoute: typeof CategoriesRoute
   ClientsRoute: typeof ClientsRouteWithChildren
@@ -1023,6 +1036,13 @@ declare module '@tanstack/react-router' {
       path: '/caisse'
       fullPath: '/caisse'
       preLoaderRoute: typeof CaisseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/administration': {
+      id: '/administration'
+      path: '/administration'
+      fullPath: '/administration'
+      preLoaderRoute: typeof AdministrationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -1611,6 +1631,7 @@ const VentesRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdministrationRoute: AdministrationRoute,
   CaisseRoute: CaisseRoute,
   CategoriesRoute: CategoriesRoute,
   ClientsRoute: ClientsRouteWithChildren,
