@@ -103,11 +103,16 @@
   --input: oklch(0.925 0.003 20);
   --ring: oklch(0.55 0.213 27.5);
 
-  --chart-1: oklch(0.55 0.213 27.5);
-  --chart-2: oklch(0.68 0.15 30);
-  --chart-3: oklch(0.42 0.01 20);
-  --chart-4: oklch(0.78 0.09 30);
-  --chart-5: oklch(0.88 0.03 27.5);
+  --gold: oklch(0.76 0.13 85);
+  --gold-soft: oklch(0.96 0.045 88);
+  --gold-foreground: oklch(0.32 0.07 75);
+
+  --chart-1: oklch(0.5 0.21 27.5);
+  --chart-2: oklch(0.76 0.13 85);
+  --chart-3: oklch(0.68 0.17 29);
+  --chart-4: oklch(0.87 0.08 88);
+  --chart-5: oklch(0.35 0.02 20);
+
 
   --sidebar: oklch(0.995 0 0);
   --sidebar-foreground: oklch(0.33 0.008 20);
