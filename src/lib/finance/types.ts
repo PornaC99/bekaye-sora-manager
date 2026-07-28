@@ -80,13 +80,14 @@ export const STATUT_DEPENSE_CLASSE: Record<StatutDepense, string> = {
 };
 
 /** Origine de la dépense : saisie manuelle ou synchronisation automatique. */
-export type SourceDepense = "manuelle" | "salaires" | "achats" | "caisse";
+export type SourceDepense = "manuelle" | "salaires" | "achats" | "caisse" | "stock";
 
 export const SOURCE_DEPENSE_LABEL: Record<SourceDepense, string> = {
   manuelle: "Saisie manuelle",
   salaires: "Module Salaires",
   achats: "Commandes d'achat",
   caisse: "Caisse",
+  stock: "Inventaire & stock",
 };
 
 export type Justificatif = { nom: string; type: string; taille: number };

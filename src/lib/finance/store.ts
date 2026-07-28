@@ -1,5 +1,7 @@
 import { useSyncExternalStore } from "react";
 
+import { publier } from "@/lib/core/notifications";
+
 import { creancesDemo, depensesDemo, dettesDemo, objectifsDemo } from "./demo-data";
 import type {
   Creance,
@@ -161,13 +163,11 @@ export function enregistrerDepenseAutomatique(input: {
 
   const depense: Depense = {
     id: prochainIdDepense(),
-    libelle: input.libelle,
     montant: Math.round(input.montant),
     categorie: input.categorie,
     date: input.date ?? new Date().toISOString(),
     modePaiement: "especes",
-    beneficiaire: input.responsable ?? "Interne",
-    description: `Généré automatiquement — ${reference}`,
+    description: `${input.libelle} — ${reference}`,
     responsable: input.responsable ?? "Système",
     statut: "payee",
     justificatif: null,
