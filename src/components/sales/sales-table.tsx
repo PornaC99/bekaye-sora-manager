@@ -1,4 +1,4 @@
-import { Ban, Download, Eye, Printer } from "lucide-react";
+import { Ban, Download, Eye, MessageCircle, Printer } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -42,12 +42,14 @@ export function SalesTable({
   onVoir,
   onImprimer,
   onTelecharger,
+  onWhatsApp,
   onAnnuler,
 }: {
   ventes: Vente[];
   onVoir: (vente: Vente) => void;
   onImprimer: (vente: Vente) => void;
   onTelecharger: (vente: Vente) => void;
+  onWhatsApp: (vente: Vente) => void;
   onAnnuler: (vente: Vente) => void;
 }) {
   if (ventes.length === 0) {
@@ -109,6 +111,9 @@ export function SalesTable({
                         </DropdownMenuItem>
                         <DropdownMenuItem onClick={() => onTelecharger(vente)}>
                           <Download className="mr-2 h-4 w-4" /> Télécharger
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => onWhatsApp(vente)}>
+                          <MessageCircle className="mr-2 h-4 w-4" /> Envoyer par WhatsApp
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem

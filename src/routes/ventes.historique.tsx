@@ -5,6 +5,7 @@ import { toast } from "sonner";
 
 import { PageHeader } from "@/components/layout/page";
 import { SalesTable } from "@/components/sales/sales-table";
+import { envoyerFactureWhatsApp } from "@/lib/sales/whatsapp";
 import { Input } from "@/components/ui/input";
 import { formatFCFA } from "@/lib/products/types";
 import { imprimerFacture, telechargerFacture } from "@/lib/sales/print";
@@ -78,6 +79,18 @@ function HistoriqueVentes() {
         onTelecharger={(v) =>
           void telechargerFacture(v).then(() => toast.success("Facture téléchargée."))
         }
+        onWhatsApp={(v) => {
+          const resultat = envoyerFactureWhatsApp(v);
+          if (!resultat.ok) {
+            toast.error(resultat.erreur ?? "Envoi WhatsApp impossible.");
+            return;
+          }
+          toast.success("WhatsApp ouvert avec la facture", {
+            description: resultat.sansNumero
+              ? "Aucun numéro client enregistré : choisissez le destinataire dans WhatsApp."
+              : `Facture ${v.numero} prête à être envoyée au client.`,
+          });
+        }}
         onAnnuler={(v) => {
           annulerVente(v.id);
           toast.success(`Vente ${v.numero} annulée`, {
