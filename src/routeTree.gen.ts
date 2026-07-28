@@ -30,6 +30,7 @@ import { Route as CaisseRouteImport } from './routes/caisse'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as VentesIndexRouteImport } from './routes/ventes.index'
 import { Route as ProduitsIndexRouteImport } from './routes/produits.index'
+import { Route as MobileIndexRouteImport } from './routes/mobile.index'
 import { Route as InventaireIndexRouteImport } from './routes/inventaire.index'
 import { Route as FournisseursIndexRouteImport } from './routes/fournisseurs.index'
 import { Route as EntreesStockIndexRouteImport } from './routes/entrees-stock.index'
@@ -171,6 +172,11 @@ const ProduitsIndexRoute = ProduitsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ProduitsRoute,
+} as any)
+const MobileIndexRoute = MobileIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MobileRoute,
 } as any)
 const InventaireIndexRoute = InventaireIndexRouteImport.update({
   id: '/',
@@ -411,6 +417,7 @@ export interface FileRoutesByFullPath {
   '/entrees-stock/': typeof EntreesStockIndexRoute
   '/fournisseurs/': typeof FournisseursIndexRoute
   '/inventaire/': typeof InventaireIndexRoute
+  '/mobile/': typeof MobileIndexRoute
   '/produits/': typeof ProduitsIndexRoute
   '/ventes/': typeof VentesIndexRoute
   '/fournisseurs/commandes/$commandeId': typeof FournisseursCommandesCommandeIdRoute
@@ -420,7 +427,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
-  '/mobile': typeof MobileRouteWithChildren
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/rapports': typeof RapportsRoute
@@ -462,6 +468,7 @@ export interface FileRoutesByTo {
   '/entrees-stock': typeof EntreesStockIndexRoute
   '/fournisseurs': typeof FournisseursIndexRoute
   '/inventaire': typeof InventaireIndexRoute
+  '/mobile': typeof MobileIndexRoute
   '/produits': typeof ProduitsIndexRoute
   '/ventes': typeof VentesIndexRoute
   '/fournisseurs/commandes/$commandeId': typeof FournisseursCommandesCommandeIdRoute
@@ -522,6 +529,7 @@ export interface FileRoutesById {
   '/entrees-stock/': typeof EntreesStockIndexRoute
   '/fournisseurs/': typeof FournisseursIndexRoute
   '/inventaire/': typeof InventaireIndexRoute
+  '/mobile/': typeof MobileIndexRoute
   '/produits/': typeof ProduitsIndexRoute
   '/ventes/': typeof VentesIndexRoute
   '/fournisseurs/commandes/$commandeId': typeof FournisseursCommandesCommandeIdRoute
@@ -583,6 +591,7 @@ export interface FileRouteTypes {
     | '/entrees-stock/'
     | '/fournisseurs/'
     | '/inventaire/'
+    | '/mobile/'
     | '/produits/'
     | '/ventes/'
     | '/fournisseurs/commandes/$commandeId'
@@ -592,7 +601,6 @@ export interface FileRouteTypes {
     | '/'
     | '/caisse'
     | '/categories'
-    | '/mobile'
     | '/notifications'
     | '/parametres'
     | '/rapports'
@@ -634,6 +642,7 @@ export interface FileRouteTypes {
     | '/entrees-stock'
     | '/fournisseurs'
     | '/inventaire'
+    | '/mobile'
     | '/produits'
     | '/ventes'
     | '/fournisseurs/commandes/$commandeId'
@@ -693,6 +702,7 @@ export interface FileRouteTypes {
     | '/entrees-stock/'
     | '/fournisseurs/'
     | '/inventaire/'
+    | '/mobile/'
     | '/produits/'
     | '/ventes/'
     | '/fournisseurs/commandes/$commandeId'
@@ -869,6 +879,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/produits/'
       preLoaderRoute: typeof ProduitsIndexRouteImport
       parentRoute: typeof ProduitsRoute
+    }
+    '/mobile/': {
+      id: '/mobile/'
+      path: '/'
+      fullPath: '/mobile/'
+      preLoaderRoute: typeof MobileIndexRouteImport
+      parentRoute: typeof MobileRoute
     }
     '/inventaire/': {
       id: '/inventaire/'
@@ -1248,10 +1265,12 @@ const InventaireRouteWithChildren = InventaireRoute._addFileChildren(
 
 interface MobileRouteChildren {
   MobileConnexionRoute: typeof MobileConnexionRoute
+  MobileIndexRoute: typeof MobileIndexRoute
 }
 
 const MobileRouteChildren: MobileRouteChildren = {
   MobileConnexionRoute: MobileConnexionRoute,
+  MobileIndexRoute: MobileIndexRoute,
 }
 
 const MobileRouteWithChildren =
