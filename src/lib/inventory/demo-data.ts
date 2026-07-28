@@ -20,7 +20,7 @@ export function lignesDepuisProduits(
     codeBarres: p.codeBarres,
     image: p.image,
     stockTheorique: p.stock,
-    stockPhysique: saisirTout ? p.stock + (ecarts[p.id] ?? 0) : null,
+    stockPhysique: saisirTout ? Math.max(0, p.stock + (ecarts[p.id] ?? 0)) : null,
     prixAchat: p.prixAchat,
     commentaire: ecarts[p.id] ? "Écart constaté lors du comptage" : "",
   }));
