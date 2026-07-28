@@ -21,11 +21,11 @@ function NavLinks({ onNavigate, compact }: { onNavigate?: () => void; compact?: 
     .filter((section) => section.items.length > 0);
 
   return (
-    <nav className="flex flex-col gap-5 px-3 pb-6">
+    <nav className="flex flex-col gap-3 px-2.5 pb-4 lg:gap-5 lg:px-3 lg:pb-6">
       {sections.map((section) => (
-        <div key={section.label} className="flex flex-col gap-1">
+        <div key={section.label} className="flex flex-col gap-0.5 lg:gap-1">
           {!compact && (
-            <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            <p className="px-3 pb-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
               {section.label}
             </p>
           )}
@@ -39,7 +39,7 @@ function NavLinks({ onNavigate, compact }: { onNavigate?: () => void; compact?: 
                 title={compact ? item.title : undefined}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "tap group relative flex min-h-[44px] items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
+                  "tap group relative flex min-h-[40px] items-center gap-3 rounded-xl px-3 py-2 text-[13px] font-medium transition-colors lg:min-h-[44px] lg:py-2.5 lg:text-sm",
                   compact && "justify-center px-0",
                   active
                     ? "bg-primary-soft text-accent-foreground"
