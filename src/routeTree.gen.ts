@@ -37,6 +37,7 @@ import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvem
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
 import { Route as InventaireHistoriqueRouteImport } from './routes/inventaire.historique'
 import { Route as InventaireAnalyseRouteImport } from './routes/inventaire.analyse'
+import { Route as InventaireInventaireIdRouteImport } from './routes/inventaire.$inventaireId'
 import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-stock.historique'
 import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
 
@@ -180,6 +181,11 @@ const InventaireAnalyseRoute = InventaireAnalyseRouteImport.update({
   path: '/analyse',
   getParentRoute: () => InventaireRoute,
 } as any)
+const InventaireInventaireIdRoute = InventaireInventaireIdRouteImport.update({
+  id: '/$inventaireId',
+  path: '/$inventaireId',
+  getParentRoute: () => InventaireRoute,
+} as any)
 const EntreesStockHistoriqueRoute = EntreesStockHistoriqueRouteImport.update({
   id: '/historique',
   path: '/historique',
@@ -212,6 +218,7 @@ export interface FileRoutesByFullPath {
   '/ventes': typeof VentesRouteWithChildren
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
+  '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
@@ -240,6 +247,7 @@ export interface FileRoutesByTo {
   '/statistiques': typeof StatistiquesRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
+  '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
@@ -273,6 +281,7 @@ export interface FileRoutesById {
   '/ventes': typeof VentesRouteWithChildren
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
+  '/inventaire/$inventaireId': typeof InventaireInventaireIdRoute
   '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
@@ -307,6 +316,7 @@ export interface FileRouteTypes {
     | '/ventes'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
+    | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/produits/$produitId'
@@ -335,6 +345,7 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
+    | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/produits/$produitId'
@@ -367,6 +378,7 @@ export interface FileRouteTypes {
     | '/ventes'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
+    | '/inventaire/$inventaireId'
     | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/produits/$produitId'
@@ -598,6 +610,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventaireAnalyseRouteImport
       parentRoute: typeof InventaireRoute
     }
+    '/inventaire/$inventaireId': {
+      id: '/inventaire/$inventaireId'
+      path: '/$inventaireId'
+      fullPath: '/inventaire/$inventaireId'
+      preLoaderRoute: typeof InventaireInventaireIdRouteImport
+      parentRoute: typeof InventaireRoute
+    }
     '/entrees-stock/historique': {
       id: '/entrees-stock/historique'
       path: '/historique'
@@ -632,12 +651,14 @@ const EntreesStockRouteWithChildren = EntreesStockRoute._addFileChildren(
 )
 
 interface InventaireRouteChildren {
+  InventaireInventaireIdRoute: typeof InventaireInventaireIdRoute
   InventaireAnalyseRoute: typeof InventaireAnalyseRoute
   InventaireHistoriqueRoute: typeof InventaireHistoriqueRoute
   InventaireIndexRoute: typeof InventaireIndexRoute
 }
 
 const InventaireRouteChildren: InventaireRouteChildren = {
+  InventaireInventaireIdRoute: InventaireInventaireIdRoute,
   InventaireAnalyseRoute: InventaireAnalyseRoute,
   InventaireHistoriqueRoute: InventaireHistoriqueRoute,
   InventaireIndexRoute: InventaireIndexRoute,
