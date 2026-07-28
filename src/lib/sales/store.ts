@@ -145,6 +145,25 @@ export function enregistrerVente(values: VenteFormValues): Vente {
     mode: vente.paiements[0]?.mode,
   });
 
+  // Mise à jour automatique du profil client, de ses points de fidélité
+  // et de son historique d'achats.
+  enregistrerAchatClient({
+    nom: vente.client,
+    telephone: vente.telephoneClient,
+    reference: vente.numero,
+    date: vente.date,
+    montant: total,
+    modePaiement: vente.paiements[0] ? MODE_PAIEMENT_LABEL[vente.paiements[0].mode] : "Espèces",
+    vendeur: vente.vendeur,
+    produits: vente.lignes.map((l) => ({
+      produitId: l.produitId,
+      nom: l.nom,
+      quantite: l.quantite,
+      prixUnitaire: l.prixUnitaire,
+    })),
+  });
+
+
   notifier({
     type: "vente",
     titre: "Nouvelle vente enregistrée",
