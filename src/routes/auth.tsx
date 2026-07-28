@@ -215,7 +215,7 @@ function AuthPage() {
         src={BOUTEILLE_501_URL}
         alt=""
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-[58%] object-cover opacity-45 blur-[2px] lg:block"
+        className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-[52%] scale-110 object-cover object-right opacity-55 blur-[3px] lg:block"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[oklch(0.18_0.07_23)] via-[oklch(0.2_0.08_23)]/85 to-transparent" />
       <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-[var(--color-gold)]/10 blur-3xl" />
@@ -241,7 +241,7 @@ function AuthPage() {
           </p>
         </div>
 
-        <div className="brand-glass w-full rounded-2xl p-6 shadow-[var(--shadow-luxe)] sm:p-8">
+        <div className="animate-scale-in w-full rounded-2xl border border-[var(--color-gold)]/25 bg-card/95 p-6 shadow-[var(--shadow-luxe)] backdrop-blur-xl sm:p-8">
         <div className="flex flex-col items-center gap-3 text-center">
           <BrandMark taille="lg" />
           <h1 className="font-display text-2xl font-semibold text-foreground">
