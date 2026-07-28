@@ -1,6 +1,8 @@
 import { useSyncExternalStore } from "react";
 
 import { appliquerInventaire, lireProduits } from "@/lib/products/store";
+import { enregistrerDepenseAutomatique } from "@/lib/finance/store";
+import { publier } from "@/lib/core/notifications";
 import { inventairesDemo, lignesDepuisProduits } from "./demo-data";
 import {
   ligneVerifiee,
@@ -118,6 +120,38 @@ export function ajusterStockDepuisInventaire(id: string) {
     reference: inventaire.numero,
     utilisateur: inventaire.responsable,
     date: new Date().toISOString(),
+  });
+
+  // Valorisation de l'écart : une perte constatée devient automatiquement une
+  // dépense dans le module Finances (catégorie « Autres », source « stock »).
+  const produits = lireProduits();
+  const valeurEcart = inventaire.lignes.filter(ligneVerifiee).reduce((somme, l) => {
+    const produit = produits.find((p) => p.id === l.produitId);
+    if (!produit) return somme;
+    return somme + ((l.stockPhysique as number) - l.stockTheorique) * produit.prixAchat;
+  }, 0);
+
+  if (valeurEcart < 0) {
+    enregistrerDepenseAutomatique({
+      libelle: `Perte sur inventaire ${inventaire.numero}`,
+      montant: Math.abs(valeurEcart),
+      categorie: "autres",
+      source: "stock",
+      reference: inventaire.numero,
+      responsable: inventaire.responsable,
+    });
+  }
+
+  publier({
+    module: "inventaire",
+    ton: valeurEcart < 0 ? "alerte" : "succes",
+    titre: "Inventaire appliqué au stock",
+    message:
+      `${inventaire.numero} · ${corrections} produit(s) corrigé(s)` +
+      (valeurEcart < 0
+        ? ` · perte de ${Math.abs(Math.round(valeurEcart)).toLocaleString("fr-FR")} FCFA enregistrée en dépense.`
+        : " · aucun écart de valeur défavorable."),
+    lien: "/inventaire",
   });
 
   majInventaire(id, (inv) => ({

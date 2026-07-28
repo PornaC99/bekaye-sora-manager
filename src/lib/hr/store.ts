@@ -1,5 +1,7 @@
 import { useSyncExternalStore } from "react";
 
+import { publier } from "@/lib/core/notifications";
+
 import { activitesDemo, bulletinsDemo, congesDemo, employesDemo, presencesDemo } from "./demo-data";
 import {
   PERMISSIONS_PAR_ROLE,
@@ -97,6 +99,12 @@ export function journaliser(input: {
     description: input.description,
   };
   setState({ activites: [activite, ...state.activites].slice(0, 200) });
+  publier({
+    module: "rh",
+    ton: input.type === "suppression" ? "alerte" : "info",
+    titre: `${input.module} · ${activite.auteur}`,
+    message: input.description,
+  });
 }
 
 /* ------------------------------------------------------------------ */

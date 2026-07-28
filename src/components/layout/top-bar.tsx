@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Bell, Menu, Search, ChevronDown } from "lucide-react";
 
+import { useCentreNotifications } from "@/lib/core/notifications";
+
 import { navItems } from "@/lib/navigation";
 import { useSession, nomAffiche, initialesUtilisateur } from "@/hooks/use-session";
 import { supabase } from "@/integrations/supabase/client";
@@ -32,6 +34,8 @@ export function TopBar() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { user } = useSession();
+  const { evenements } = useCentreNotifications();
+  const nonLus = evenements.filter((e) => !e.lu).length;
   const nom = nomAffiche(user);
   const initiales = initialesUtilisateur(nom);
   const identifiant = user?.email ?? "Session locale";
@@ -89,7 +93,11 @@ export function TopBar() {
             className="relative grid h-9 w-9 place-items-center rounded-lg border border-border text-foreground transition-colors hover:bg-muted"
           >
             <Bell className="h-4 w-4" />
-            <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-background bg-primary" />
+            {nonLus > 0 && (
+              <span className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full border-2 border-background bg-primary px-1 text-[10px] font-semibold text-primary-foreground">
+                {nonLus > 99 ? "99+" : nonLus}
+              </span>
+            )}
           </Link>
 
           <DropdownMenu>

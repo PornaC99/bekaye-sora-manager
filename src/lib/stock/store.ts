@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from "react";
 
 import { annulerReception, appliquerReception, type LigneReception } from "@/lib/products/store";
+import { publier } from "@/lib/core/notifications";
 import { entreesDemo } from "./demo-entries";
 import type { EntreeFormValues, EntreeStock, EvenementEntree } from "./types";
 
@@ -88,6 +89,13 @@ export function ajouterEntree(values: EntreeFormValues): EntreeStock {
       fournisseur: entree.fournisseur,
       utilisateur: entree.utilisateur,
       date: entree.date,
+    });
+    publier({
+      module: "stock",
+      ton: "succes",
+      titre: "Entrée de stock validée",
+      message: `${entree.numero} · ${entree.fournisseur} · ${entree.lignes.length} produit(s) ajouté(s) au stock.`,
+      lien: "/entrees-stock",
     });
   }
   return entree;

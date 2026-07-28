@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from "react";
 
+import { publier } from "@/lib/core/notifications";
 import { achatsDemo, clientsDemo, notificationsClientsDemo, reglesFideliteDemo } from "./demo-data";
 import {
   estVip,
@@ -87,6 +88,12 @@ export function notifierClient(notification: Omit<NotificationClient, "id" | "da
       { ...notification, id: uid("NC"), date: new Date().toISOString() },
       ...state.notifications,
     ].slice(0, 50),
+  });
+  publier({
+    module: "clients",
+    ton: notification.type === "inactif" ? "alerte" : "info",
+    titre: notification.titre,
+    message: notification.message,
   });
 }
 

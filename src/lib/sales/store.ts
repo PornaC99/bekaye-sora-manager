@@ -2,6 +2,8 @@ import { useSyncExternalStore } from "react";
 
 import { appliquerVente, retournerVente } from "@/lib/products/store";
 import { enregistrerAchatClient } from "@/lib/clients/store";
+import { enregistrerCreanceClient } from "@/lib/finance/store";
+import { publier } from "@/lib/core/notifications";
 import { notificationsDemo, retoursDemo, sessionsDemo, ventesDemo } from "./demo-data";
 import {
   MODE_PAIEMENT_LABEL,
@@ -89,6 +91,12 @@ function notifier(notification: Omit<NotificationVente, "id" | "date">) {
       ...state.notifications,
     ],
   });
+  publier({
+    module: notification.type === "caisse" ? "caisse" : "ventes",
+    ton: notification.type === "retour" ? "alerte" : "succes",
+    titre: notification.titre,
+    message: notification.message,
+  });
 }
 
 /** Ajoute une opération à la session de caisse ouverte (si elle existe). */
@@ -163,6 +171,18 @@ export function enregistrerVente(values: VenteFormValues): Vente {
     })),
   });
 
+
+  // Encaissement partiel : une créance client est ouverte automatiquement
+  // dans le module Finances (aucune double saisie).
+  const encaisse = vente.paiements.reduce((somme, p) => somme + p.montant, 0);
+  if (encaisse < total - 1) {
+    enregistrerCreanceClient({
+      nom: vente.client,
+      montant: total - encaisse,
+      reference: vente.numero,
+      date: vente.date,
+    });
+  }
 
   notifier({
     type: "vente",
