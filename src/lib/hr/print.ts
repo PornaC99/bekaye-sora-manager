@@ -1,3 +1,4 @@
+import { LOGO_URL } from "@/lib/brand";
 import { formatFCFA } from "@/lib/products/types";
 import {
   MODE_PAIEMENT_SALAIRE_LABEL,
@@ -38,14 +39,20 @@ export function imprimerBulletin(bulletin: BulletinPaie, employe: Employe) {
   .signatures { display: flex; justify-content: space-between; margin-top: 56px; font-size: 12px; color: #6b7280; }
   .signatures div { width: 40%; border-top: 1px solid #c9c9cd; padding-top: 6px; }
   footer { margin-top: 40px; font-size: 11px; color: #9ca3af; text-align: center; }
+
+  .marque-bloc { display: flex; align-items: center; gap: 12px; }
+  .logo-marque { width: 56px; height: 56px; object-fit: contain; border-radius: 10px; }
+  .entete { border-bottom: 3px solid #A31018 !important; }
+  .marque span { color: #C9A227 !important; }
+  h1 { color: #A31018; }
   @media print { body { padding: 12px; } }
 </style></head>
 <body>
   <div class="entete">
     <div>
-      <div class="marque">Bekaye Sora <span>501</span></div>
+      <div class="marque-bloc"><img class="logo-marque" src="${LOGO_URL}" alt="Bekaye Sora Collection" /><div><div class="marque">Bekaye Sora <span>Collection</span></div>
       <div class="sous">Cosmétiques 501 — Bamako, Mali · +223 76 12 34 56</div>
-    </div>
+    </div></div>
     <div style="text-align:right">
       <div style="font-weight:700">Bulletin de paie</div>
       <div class="sous">${formatMois(bulletin.mois)} · ${STATUT_PAIE_LABEL[bulletin.statut]}</div>
