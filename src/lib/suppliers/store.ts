@@ -1,6 +1,8 @@
 import { useSyncExternalStore } from "react";
 
 import { appliquerReception, type LigneReception } from "@/lib/products/store";
+import { enregistrerDetteFournisseur } from "@/lib/finance/store";
+import { publier } from "@/lib/core/notifications";
 import {
   insererFournisseur,
   listerFournisseurs,
@@ -116,6 +118,19 @@ export function notifierFournisseur(notification: Omit<NotificationFournisseur, 
       { ...notification, id: uid("NF"), date: new Date().toISOString() },
       ...state.notifications,
     ].slice(0, 50),
+  });
+  publier({
+    module: "fournisseurs",
+    ton:
+      notification.type === "retard"
+        ? "danger"
+        : notification.type === "alerte"
+          ? "alerte"
+          : notification.type === "reception"
+            ? "succes"
+            : "info",
+    titre: notification.titre,
+    message: notification.message,
   });
 }
 
@@ -336,6 +351,22 @@ export function receptionnerCommande(id: string) {
         : c,
     ),
   });
+
+  const fournisseur = state.fournisseurs.find((f) => f.id === commande.fournisseurId);
+  const montant = commande.lignes.reduce((somme, l) => somme + l.quantite * l.prixAchat, 0);
+  const comptant = /comptant|esp|cash/i.test(commande.modePaiement);
+  if (!comptant) {
+    // Achat à crédit : la dette fournisseur alimente automatiquement la
+    // trésorerie et les échéances du module Finances.
+    enregistrerDetteFournisseur({
+      fournisseurId: commande.fournisseurId,
+      fournisseur: nomFournisseur(commande.fournisseurId),
+      montant,
+      reference: commande.numero,
+      date: now,
+      echeanceJours: fournisseur?.delaiLivraisonJours ? 30 : 30,
+    });
+  }
 
   notifierFournisseur({
     type: "reception",
