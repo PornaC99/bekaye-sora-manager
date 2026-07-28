@@ -18,7 +18,7 @@ function ClientsLayout() {
 
   return (
     <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-5">
-      <nav className="no-scrollbar -mx-1 flex w-full gap-1 overflow-x-auto rounded-xl border border-border bg-card p-1 shadow-[var(--shadow-card)] sm:w-fit">
+      <nav className="no-scrollbar flex w-full gap-1 overflow-x-auto rounded-xl border border-border bg-card p-1 shadow-[var(--shadow-card)] sm:w-fit">
         {ONGLETS.map((onglet) => {
           const actif =
             onglet.to === "/clients" ? pathname === "/clients" : pathname.startsWith(onglet.to);
