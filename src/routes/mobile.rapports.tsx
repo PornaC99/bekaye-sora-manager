@@ -71,7 +71,10 @@ function RapportsMobile() {
       ca,
       cout,
       depenses: totalDepenses,
-      benefice: ca - cout - depenses.filter((d) => d.categorie !== "achats").reduce((t, d) => t + d.montant, 0),
+      benefice:
+        ca -
+        cout -
+        depenses.filter((d) => d.source !== "achats").reduce((t, d) => t + d.montant, 0),
       panierMoyen: ventes.length ? ca / ventes.length : 0,
     };
   }, [finances, debut]);
