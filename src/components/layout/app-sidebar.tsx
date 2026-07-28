@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { PanelLeftClose, PanelLeftOpen, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import { useRoleActuel } from "@/hooks/use-role";
 import { peutAcceder } from "@/lib/access/roles";
@@ -38,7 +39,7 @@ function NavLinks({ onNavigate, compact }: { onNavigate?: () => void; compact?: 
                 title={compact ? item.title : undefined}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                  "tap group relative flex min-h-[44px] items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
                   compact && "justify-center px-0",
                   active
                     ? "bg-primary-soft text-accent-foreground"
@@ -118,29 +119,78 @@ export function AppSidebar() {
 
 export function MobileSidebar() {
   const { mobileOpen, setMobileOpen } = useShell();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [dragX, setDragX] = useState(0);
+  const depart = useRef<number | null>(null);
+
+  /* Fermeture automatique après changement de page */
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname, setMobileOpen]);
+
+  /* Blocage du défilement de l'arrière-plan pendant l'ouverture */
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const precedent = document.body.style.overflow;
+    if (mobileOpen) document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = precedent;
+    };
+  }, [mobileOpen]);
+
+  /* Geste : glisser vers la gauche pour fermer */
+  function onTouchStart(e: React.TouchEvent) {
+    depart.current = e.touches[0].clientX;
+  }
+  function onTouchMove(e: React.TouchEvent) {
+    if (depart.current === null) return;
+    setDragX(Math.min(0, e.touches[0].clientX - depart.current));
+  }
+  function onTouchEnd() {
+    if (dragX < -70) setMobileOpen(false);
+    depart.current = null;
+    setDragX(0);
+  }
 
   return (
     <div className={cn("lg:hidden", !mobileOpen && "pointer-events-none")}>
       <div
         onClick={() => setMobileOpen(false)}
         className={cn(
-          "fixed inset-0 z-40 bg-foreground/40 transition-opacity duration-200",
+          "fixed inset-0 z-40 bg-foreground/50 backdrop-blur-[2px] transition-opacity duration-200",
           mobileOpen ? "opacity-100" : "opacity-0",
         )}
       />
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu de navigation"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        style={dragX ? { transform: `translateX(${dragX}px)`, transition: "none" } : undefined}
         className={cn(
-          "fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col border-r border-sidebar-border bg-sidebar transition-transform duration-200",
+          "safe-top safe-bottom fixed inset-y-0 left-0 z-50 flex w-[86vw] max-w-[320px] flex-col border-r border-sidebar-border bg-sidebar shadow-2xl transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
           mobileOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
-        <div className="flex h-16 items-center border-b border-sidebar-border px-4">
-          <BrandMark />
+        <div className="flex h-16 shrink-0 items-center justify-between gap-3 border-b border-sidebar-border px-4">
+          <div className="min-w-0">
+            <BrandMark />
+          </div>
+          <button
+            type="button"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Fermer le menu"
+            className="tap grid h-10 w-10 shrink-0 place-items-center rounded-full text-muted-foreground hover:bg-sidebar-accent"
+          >
+            <X className="h-5 w-5" />
+          </button>
         </div>
-        <div className="scrollbar-slim mt-3 flex-1 overflow-y-auto">
+        <div className="scrollbar-slim mt-2 flex-1 overflow-y-auto overscroll-contain">
           <NavLinks onNavigate={() => setMobileOpen(false)} />
         </div>
-        <div className="border-t border-sidebar-border px-5 py-4">
+        <div className="shrink-0 border-t border-sidebar-border px-5 py-3">
           <p className="font-display text-xs font-medium text-foreground">{BRAND.slogan}</p>
         </div>
       </div>
