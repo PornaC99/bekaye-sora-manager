@@ -47,6 +47,7 @@ import { Route as FournisseursFournisseurIdRouteImport } from './routes/fourniss
 import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-stock.historique'
 import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
 import { Route as EmployesPresenceRouteImport } from './routes/employes.presence'
+import { Route as EmployesCongesRouteImport } from './routes/employes.conges'
 import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
 import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
@@ -246,6 +247,11 @@ const EmployesPresenceRoute = EmployesPresenceRouteImport.update({
   path: '/presence',
   getParentRoute: () => EmployesRoute,
 } as any)
+const EmployesCongesRoute = EmployesCongesRouteImport.update({
+  id: '/conges',
+  path: '/conges',
+  getParentRoute: () => EmployesRoute,
+} as any)
 const ClientsVipRoute = ClientsVipRouteImport.update({
   id: '/vip',
   path: '/vip',
@@ -302,6 +308,7 @@ export interface FileRoutesByFullPath {
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
+  '/employes/conges': typeof EmployesCongesRoute
   '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
@@ -341,6 +348,7 @@ export interface FileRoutesByTo {
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
+  '/employes/conges': typeof EmployesCongesRoute
   '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
@@ -388,6 +396,7 @@ export interface FileRoutesById {
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
+  '/employes/conges': typeof EmployesCongesRoute
   '/employes/presence': typeof EmployesPresenceRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
@@ -436,6 +445,7 @@ export interface FileRouteTypes {
     | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
+    | '/employes/conges'
     | '/employes/presence'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
@@ -475,6 +485,7 @@ export interface FileRouteTypes {
     | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
+    | '/employes/conges'
     | '/employes/presence'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
@@ -521,6 +532,7 @@ export interface FileRouteTypes {
     | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
+    | '/employes/conges'
     | '/employes/presence'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
@@ -834,6 +846,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployesPresenceRouteImport
       parentRoute: typeof EmployesRoute
     }
+    '/employes/conges': {
+      id: '/employes/conges'
+      path: '/conges'
+      fullPath: '/employes/conges'
+      preLoaderRoute: typeof EmployesCongesRouteImport
+      parentRoute: typeof EmployesRoute
+    }
     '/clients/vip': {
       id: '/clients/vip'
       path: '/vip'
@@ -899,11 +918,13 @@ const ClientsRouteWithChildren =
   ClientsRoute._addFileChildren(ClientsRouteChildren)
 
 interface EmployesRouteChildren {
+  EmployesCongesRoute: typeof EmployesCongesRoute
   EmployesPresenceRoute: typeof EmployesPresenceRoute
   EmployesIndexRoute: typeof EmployesIndexRoute
 }
 
 const EmployesRouteChildren: EmployesRouteChildren = {
+  EmployesCongesRoute: EmployesCongesRoute,
   EmployesPresenceRoute: EmployesPresenceRoute,
   EmployesIndexRoute: EmployesIndexRoute,
 }
