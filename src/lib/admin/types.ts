@@ -44,6 +44,10 @@ export type Utilisateur = {
   nom: string;
   email: string;
   telephone: string;
+  /** Fonction occupée dans l'entreprise (libellé libre). */
+  fonction?: string;
+  /** URL de la photo de profil (facultative : initiales par défaut). */
+  photo?: string;
   roleId: string;
   statut: StatutUtilisateur;
   derniereConnexion: string | null;
