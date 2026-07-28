@@ -145,6 +145,24 @@ function RootComponent() {
   const [hydrate, setHydrate] = useState(false);
   useEffect(() => setHydrate(true), []);
 
+  // Les liens e-mail Supabase (confirmation, récupération) reviennent sur l'URL
+  // du site avec un fragment `#type=...`. On les réoriente vers la bonne page.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash.includes("type=")) return;
+    const params = new URLSearchParams(hash.replace(/^#/, ""));
+    const type = params.get("type");
+    if (type === "signup" || type === "invite" || type === "email_change") {
+      void supabase.auth.signOut().finally(() => {
+        window.location.replace("/auth?confirmation=reussie");
+      });
+    } else if (type === "recovery" && window.location.pathname !== "/reset-password") {
+      window.history.replaceState({}, "", "/reset-password");
+      window.location.replace("/reset-password" + hash);
+    }
+  }, []);
+
+
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange((event) => {
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
