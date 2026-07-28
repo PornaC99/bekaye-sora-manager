@@ -33,6 +33,7 @@ import { Route as InventaireIndexRouteImport } from './routes/inventaire.index'
 import { Route as FournisseursIndexRouteImport } from './routes/fournisseurs.index'
 import { Route as EntreesStockIndexRouteImport } from './routes/entrees-stock.index'
 import { Route as EmployesIndexRouteImport } from './routes/employes.index'
+import { Route as DepensesIndexRouteImport } from './routes/depenses.index'
 import { Route as ClientsIndexRouteImport } from './routes/clients.index'
 import { Route as VentesRetoursRouteImport } from './routes/ventes.retours'
 import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique'
@@ -52,6 +53,11 @@ import { Route as EmployesPerformanceRouteImport } from './routes/employes.perfo
 import { Route as EmployesJournalRouteImport } from './routes/employes.journal'
 import { Route as EmployesCongesRouteImport } from './routes/employes.conges'
 import { Route as EmployesEmployeIdRouteImport } from './routes/employes.$employeId'
+import { Route as DepensesTresorerieRouteImport } from './routes/depenses.tresorerie'
+import { Route as DepensesPrevisionsRouteImport } from './routes/depenses.previsions'
+import { Route as DepensesCreancesRouteImport } from './routes/depenses.creances'
+import { Route as DepensesChargesRouteImport } from './routes/depenses.charges'
+import { Route as DepensesAnalyseRouteImport } from './routes/depenses.analyse'
 import { Route as ClientsVipRouteImport } from './routes/clients.vip'
 import { Route as ClientsStatistiquesRouteImport } from './routes/clients.statistiques'
 import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
@@ -179,6 +185,11 @@ const EmployesIndexRoute = EmployesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => EmployesRoute,
 } as any)
+const DepensesIndexRoute = DepensesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DepensesRoute,
+} as any)
 const ClientsIndexRoute = ClientsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -276,6 +287,31 @@ const EmployesEmployeIdRoute = EmployesEmployeIdRouteImport.update({
   path: '/$employeId',
   getParentRoute: () => EmployesRoute,
 } as any)
+const DepensesTresorerieRoute = DepensesTresorerieRouteImport.update({
+  id: '/tresorerie',
+  path: '/tresorerie',
+  getParentRoute: () => DepensesRoute,
+} as any)
+const DepensesPrevisionsRoute = DepensesPrevisionsRouteImport.update({
+  id: '/previsions',
+  path: '/previsions',
+  getParentRoute: () => DepensesRoute,
+} as any)
+const DepensesCreancesRoute = DepensesCreancesRouteImport.update({
+  id: '/creances',
+  path: '/creances',
+  getParentRoute: () => DepensesRoute,
+} as any)
+const DepensesChargesRoute = DepensesChargesRouteImport.update({
+  id: '/charges',
+  path: '/charges',
+  getParentRoute: () => DepensesRoute,
+} as any)
+const DepensesAnalyseRoute = DepensesAnalyseRouteImport.update({
+  id: '/analyse',
+  path: '/analyse',
+  getParentRoute: () => DepensesRoute,
+} as any)
 const ClientsVipRoute = ClientsVipRouteImport.update({
   id: '/vip',
   path: '/vip',
@@ -314,7 +350,7 @@ export interface FileRoutesByFullPath {
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
   '/clients': typeof ClientsRouteWithChildren
-  '/depenses': typeof DepensesRoute
+  '/depenses': typeof DepensesRouteWithChildren
   '/employes': typeof EmployesRouteWithChildren
   '/entrees-stock': typeof EntreesStockRouteWithChildren
   '/fournisseurs': typeof FournisseursRouteWithChildren
@@ -332,6 +368,11 @@ export interface FileRoutesByFullPath {
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
+  '/depenses/analyse': typeof DepensesAnalyseRoute
+  '/depenses/charges': typeof DepensesChargesRoute
+  '/depenses/creances': typeof DepensesCreancesRoute
+  '/depenses/previsions': typeof DepensesPrevisionsRoute
+  '/depenses/tresorerie': typeof DepensesTresorerieRoute
   '/employes/$employeId': typeof EmployesEmployeIdRoute
   '/employes/conges': typeof EmployesCongesRoute
   '/employes/journal': typeof EmployesJournalRoute
@@ -351,6 +392,7 @@ export interface FileRoutesByFullPath {
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
   '/clients/': typeof ClientsIndexRoute
+  '/depenses/': typeof DepensesIndexRoute
   '/employes/': typeof EmployesIndexRoute
   '/entrees-stock/': typeof EntreesStockIndexRoute
   '/fournisseurs/': typeof FournisseursIndexRoute
@@ -364,7 +406,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
-  '/depenses': typeof DepensesRoute
   '/notifications': typeof NotificationsRoute
   '/parametres': typeof ParametresRoute
   '/rapports': typeof RapportsRoute
@@ -376,6 +417,11 @@ export interface FileRoutesByTo {
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
+  '/depenses/analyse': typeof DepensesAnalyseRoute
+  '/depenses/charges': typeof DepensesChargesRoute
+  '/depenses/creances': typeof DepensesCreancesRoute
+  '/depenses/previsions': typeof DepensesPrevisionsRoute
+  '/depenses/tresorerie': typeof DepensesTresorerieRoute
   '/employes/$employeId': typeof EmployesEmployeIdRoute
   '/employes/conges': typeof EmployesCongesRoute
   '/employes/journal': typeof EmployesJournalRoute
@@ -395,6 +441,7 @@ export interface FileRoutesByTo {
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
   '/clients': typeof ClientsIndexRoute
+  '/depenses': typeof DepensesIndexRoute
   '/employes': typeof EmployesIndexRoute
   '/entrees-stock': typeof EntreesStockIndexRoute
   '/fournisseurs': typeof FournisseursIndexRoute
@@ -410,7 +457,7 @@ export interface FileRoutesById {
   '/caisse': typeof CaisseRoute
   '/categories': typeof CategoriesRoute
   '/clients': typeof ClientsRouteWithChildren
-  '/depenses': typeof DepensesRoute
+  '/depenses': typeof DepensesRouteWithChildren
   '/employes': typeof EmployesRouteWithChildren
   '/entrees-stock': typeof EntreesStockRouteWithChildren
   '/fournisseurs': typeof FournisseursRouteWithChildren
@@ -428,6 +475,11 @@ export interface FileRoutesById {
   '/clients/analyse': typeof ClientsAnalyseRoute
   '/clients/statistiques': typeof ClientsStatistiquesRoute
   '/clients/vip': typeof ClientsVipRoute
+  '/depenses/analyse': typeof DepensesAnalyseRoute
+  '/depenses/charges': typeof DepensesChargesRoute
+  '/depenses/creances': typeof DepensesCreancesRoute
+  '/depenses/previsions': typeof DepensesPrevisionsRoute
+  '/depenses/tresorerie': typeof DepensesTresorerieRoute
   '/employes/$employeId': typeof EmployesEmployeIdRoute
   '/employes/conges': typeof EmployesCongesRoute
   '/employes/journal': typeof EmployesJournalRoute
@@ -447,6 +499,7 @@ export interface FileRoutesById {
   '/ventes/historique': typeof VentesHistoriqueRoute
   '/ventes/retours': typeof VentesRetoursRoute
   '/clients/': typeof ClientsIndexRoute
+  '/depenses/': typeof DepensesIndexRoute
   '/employes/': typeof EmployesIndexRoute
   '/entrees-stock/': typeof EntreesStockIndexRoute
   '/fournisseurs/': typeof FournisseursIndexRoute
@@ -481,6 +534,11 @@ export interface FileRouteTypes {
     | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
+    | '/depenses/analyse'
+    | '/depenses/charges'
+    | '/depenses/creances'
+    | '/depenses/previsions'
+    | '/depenses/tresorerie'
     | '/employes/$employeId'
     | '/employes/conges'
     | '/employes/journal'
@@ -500,6 +558,7 @@ export interface FileRouteTypes {
     | '/ventes/historique'
     | '/ventes/retours'
     | '/clients/'
+    | '/depenses/'
     | '/employes/'
     | '/entrees-stock/'
     | '/fournisseurs/'
@@ -513,7 +572,6 @@ export interface FileRouteTypes {
     | '/'
     | '/caisse'
     | '/categories'
-    | '/depenses'
     | '/notifications'
     | '/parametres'
     | '/rapports'
@@ -525,6 +583,11 @@ export interface FileRouteTypes {
     | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
+    | '/depenses/analyse'
+    | '/depenses/charges'
+    | '/depenses/creances'
+    | '/depenses/previsions'
+    | '/depenses/tresorerie'
     | '/employes/$employeId'
     | '/employes/conges'
     | '/employes/journal'
@@ -544,6 +607,7 @@ export interface FileRouteTypes {
     | '/ventes/historique'
     | '/ventes/retours'
     | '/clients'
+    | '/depenses'
     | '/employes'
     | '/entrees-stock'
     | '/fournisseurs'
@@ -576,6 +640,11 @@ export interface FileRouteTypes {
     | '/clients/analyse'
     | '/clients/statistiques'
     | '/clients/vip'
+    | '/depenses/analyse'
+    | '/depenses/charges'
+    | '/depenses/creances'
+    | '/depenses/previsions'
+    | '/depenses/tresorerie'
     | '/employes/$employeId'
     | '/employes/conges'
     | '/employes/journal'
@@ -595,6 +664,7 @@ export interface FileRouteTypes {
     | '/ventes/historique'
     | '/ventes/retours'
     | '/clients/'
+    | '/depenses/'
     | '/employes/'
     | '/entrees-stock/'
     | '/fournisseurs/'
@@ -610,7 +680,7 @@ export interface RootRouteChildren {
   CaisseRoute: typeof CaisseRoute
   CategoriesRoute: typeof CategoriesRoute
   ClientsRoute: typeof ClientsRouteWithChildren
-  DepensesRoute: typeof DepensesRoute
+  DepensesRoute: typeof DepensesRouteWithChildren
   EmployesRoute: typeof EmployesRouteWithChildren
   EntreesStockRoute: typeof EntreesStockRouteWithChildren
   FournisseursRoute: typeof FournisseursRouteWithChildren
@@ -796,6 +866,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployesIndexRouteImport
       parentRoute: typeof EmployesRoute
     }
+    '/depenses/': {
+      id: '/depenses/'
+      path: '/'
+      fullPath: '/depenses/'
+      preLoaderRoute: typeof DepensesIndexRouteImport
+      parentRoute: typeof DepensesRoute
+    }
     '/clients/': {
       id: '/clients/'
       path: '/'
@@ -929,6 +1006,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployesEmployeIdRouteImport
       parentRoute: typeof EmployesRoute
     }
+    '/depenses/tresorerie': {
+      id: '/depenses/tresorerie'
+      path: '/tresorerie'
+      fullPath: '/depenses/tresorerie'
+      preLoaderRoute: typeof DepensesTresorerieRouteImport
+      parentRoute: typeof DepensesRoute
+    }
+    '/depenses/previsions': {
+      id: '/depenses/previsions'
+      path: '/previsions'
+      fullPath: '/depenses/previsions'
+      preLoaderRoute: typeof DepensesPrevisionsRouteImport
+      parentRoute: typeof DepensesRoute
+    }
+    '/depenses/creances': {
+      id: '/depenses/creances'
+      path: '/creances'
+      fullPath: '/depenses/creances'
+      preLoaderRoute: typeof DepensesCreancesRouteImport
+      parentRoute: typeof DepensesRoute
+    }
+    '/depenses/charges': {
+      id: '/depenses/charges'
+      path: '/charges'
+      fullPath: '/depenses/charges'
+      preLoaderRoute: typeof DepensesChargesRouteImport
+      parentRoute: typeof DepensesRoute
+    }
+    '/depenses/analyse': {
+      id: '/depenses/analyse'
+      path: '/analyse'
+      fullPath: '/depenses/analyse'
+      preLoaderRoute: typeof DepensesAnalyseRouteImport
+      parentRoute: typeof DepensesRoute
+    }
     '/clients/vip': {
       id: '/clients/vip'
       path: '/vip'
@@ -992,6 +1104,28 @@ const ClientsRouteChildren: ClientsRouteChildren = {
 
 const ClientsRouteWithChildren =
   ClientsRoute._addFileChildren(ClientsRouteChildren)
+
+interface DepensesRouteChildren {
+  DepensesAnalyseRoute: typeof DepensesAnalyseRoute
+  DepensesChargesRoute: typeof DepensesChargesRoute
+  DepensesCreancesRoute: typeof DepensesCreancesRoute
+  DepensesPrevisionsRoute: typeof DepensesPrevisionsRoute
+  DepensesTresorerieRoute: typeof DepensesTresorerieRoute
+  DepensesIndexRoute: typeof DepensesIndexRoute
+}
+
+const DepensesRouteChildren: DepensesRouteChildren = {
+  DepensesAnalyseRoute: DepensesAnalyseRoute,
+  DepensesChargesRoute: DepensesChargesRoute,
+  DepensesCreancesRoute: DepensesCreancesRoute,
+  DepensesPrevisionsRoute: DepensesPrevisionsRoute,
+  DepensesTresorerieRoute: DepensesTresorerieRoute,
+  DepensesIndexRoute: DepensesIndexRoute,
+}
+
+const DepensesRouteWithChildren = DepensesRoute._addFileChildren(
+  DepensesRouteChildren,
+)
 
 interface EmployesRouteChildren {
   EmployesEmployeIdRoute: typeof EmployesEmployeIdRoute
@@ -1109,7 +1243,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaisseRoute: CaisseRoute,
   CategoriesRoute: CategoriesRoute,
   ClientsRoute: ClientsRouteWithChildren,
-  DepensesRoute: DepensesRoute,
+  DepensesRoute: DepensesRouteWithChildren,
   EmployesRoute: EmployesRouteWithChildren,
   EntreesStockRoute: EntreesStockRouteWithChildren,
   FournisseursRoute: FournisseursRouteWithChildren,
