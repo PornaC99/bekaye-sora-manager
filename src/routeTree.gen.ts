@@ -36,6 +36,7 @@ import { Route as VentesHistoriqueRouteImport } from './routes/ventes.historique
 import { Route as ProduitsMouvementsRouteImport } from './routes/produits.mouvements'
 import { Route as ProduitsProduitIdRouteImport } from './routes/produits.$produitId'
 import { Route as InventaireHistoriqueRouteImport } from './routes/inventaire.historique'
+import { Route as InventaireAnalyseRouteImport } from './routes/inventaire.analyse'
 import { Route as EntreesStockHistoriqueRouteImport } from './routes/entrees-stock.historique'
 import { Route as EntreesStockEntreeIdRouteImport } from './routes/entrees-stock.$entreeId'
 
@@ -174,6 +175,11 @@ const InventaireHistoriqueRoute = InventaireHistoriqueRouteImport.update({
   path: '/historique',
   getParentRoute: () => InventaireRoute,
 } as any)
+const InventaireAnalyseRoute = InventaireAnalyseRouteImport.update({
+  id: '/analyse',
+  path: '/analyse',
+  getParentRoute: () => InventaireRoute,
+} as any)
 const EntreesStockHistoriqueRoute = EntreesStockHistoriqueRouteImport.update({
   id: '/historique',
   path: '/historique',
@@ -206,6 +212,7 @@ export interface FileRoutesByFullPath {
   '/ventes': typeof VentesRouteWithChildren
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
+  '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
@@ -233,6 +240,7 @@ export interface FileRoutesByTo {
   '/statistiques': typeof StatistiquesRoute
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
+  '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
@@ -265,6 +273,7 @@ export interface FileRoutesById {
   '/ventes': typeof VentesRouteWithChildren
   '/entrees-stock/$entreeId': typeof EntreesStockEntreeIdRoute
   '/entrees-stock/historique': typeof EntreesStockHistoriqueRoute
+  '/inventaire/analyse': typeof InventaireAnalyseRoute
   '/inventaire/historique': typeof InventaireHistoriqueRoute
   '/produits/$produitId': typeof ProduitsProduitIdRoute
   '/produits/mouvements': typeof ProduitsMouvementsRoute
@@ -298,6 +307,7 @@ export interface FileRouteTypes {
     | '/ventes'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
+    | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/produits/$produitId'
     | '/produits/mouvements'
@@ -325,6 +335,7 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
+    | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/produits/$produitId'
     | '/produits/mouvements'
@@ -356,6 +367,7 @@ export interface FileRouteTypes {
     | '/ventes'
     | '/entrees-stock/$entreeId'
     | '/entrees-stock/historique'
+    | '/inventaire/analyse'
     | '/inventaire/historique'
     | '/produits/$produitId'
     | '/produits/mouvements'
@@ -579,6 +591,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventaireHistoriqueRouteImport
       parentRoute: typeof InventaireRoute
     }
+    '/inventaire/analyse': {
+      id: '/inventaire/analyse'
+      path: '/analyse'
+      fullPath: '/inventaire/analyse'
+      preLoaderRoute: typeof InventaireAnalyseRouteImport
+      parentRoute: typeof InventaireRoute
+    }
     '/entrees-stock/historique': {
       id: '/entrees-stock/historique'
       path: '/historique'
@@ -613,11 +632,13 @@ const EntreesStockRouteWithChildren = EntreesStockRoute._addFileChildren(
 )
 
 interface InventaireRouteChildren {
+  InventaireAnalyseRoute: typeof InventaireAnalyseRoute
   InventaireHistoriqueRoute: typeof InventaireHistoriqueRoute
   InventaireIndexRoute: typeof InventaireIndexRoute
 }
 
 const InventaireRouteChildren: InventaireRouteChildren = {
+  InventaireAnalyseRoute: InventaireAnalyseRoute,
   InventaireHistoriqueRoute: InventaireHistoriqueRoute,
   InventaireIndexRoute: InventaireIndexRoute,
 }
