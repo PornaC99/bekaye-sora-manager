@@ -80,38 +80,26 @@ function RapportsPage() {
       </div>
 
       <SectionCard
-        title={rapport.titre}
-        description={rapport.sousTitre}
+        title={rapport.info.label}
+        description={`${rapport.info.description} — période « ${rapport.source.periode.label} »`}
         action={<Pastille ton="info">Aperçu</Pastille>}
         bodyClassName="flex flex-col gap-6"
       >
-        {rapport.sections.map((section) => (
-          <section key={section.titre} className="flex flex-col gap-3">
-            <h3 className="font-display text-sm font-semibold text-foreground">{section.titre}</h3>
-            {section.lignes.length > 0 && (
-              <dl className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
-                {section.lignes.map((l) => (
-                  <div key={l.label} className="rounded-xl border border-border bg-background/60 p-3">
-                    <dt className="text-[11px] uppercase tracking-wider text-muted-foreground">
-                      {l.label}
-                    </dt>
-                    <dd className="mt-0.5 text-sm font-semibold text-foreground">{l.valeur}</dd>
-                  </div>
-                ))}
-              </dl>
-            )}
-            {section.paragraphes && section.paragraphes.length > 0 && (
-              <ul className="flex flex-col gap-2">
-                {section.paragraphes.map((p, i) => (
-                  <li
-                    key={`${section.titre}-${i}`}
-                    className="rounded-xl bg-muted/50 px-3.5 py-2.5 text-sm leading-relaxed text-foreground"
-                  >
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            )}
+        <div className="flex flex-col gap-2 rounded-xl bg-muted/50 px-4 py-3">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+            Résumé exécutif
+          </p>
+          {rapport.source.resume.phrases.map((phrase, i) => (
+            <p key={i} className="text-sm leading-relaxed text-foreground">
+              {phrase}
+            </p>
+          ))}
+        </div>
+
+        {rapport.blocs.map((bloc) => (
+          <section key={bloc.titre} className="flex flex-col gap-3">
+            <h3 className="font-display text-sm font-semibold text-foreground">{bloc.titre}</h3>
+            <TableauCompact entetes={bloc.entetes} lignes={bloc.lignes} />
           </section>
         ))}
       </SectionCard>
