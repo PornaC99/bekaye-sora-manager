@@ -187,11 +187,40 @@ export function MobileSidebar() {
             <X className="h-5 w-5" />
           </button>
         </div>
-        <div className="scrollbar-slim mt-2 flex-1 overflow-y-auto overscroll-contain">
+        <div className="scrollbar-slim flex-1 overflow-y-auto overscroll-contain pt-2">
+          {/* Profil utilisateur déplacé de l'en-tête vers le menu */}
+          <div className="mx-2.5 mb-3 rounded-2xl border border-sidebar-border bg-sidebar-accent/40 p-3">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+                {initiales}
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-semibold text-foreground">{nom}</p>
+                <p className="truncate text-[11px] text-muted-foreground">{identifiant}</p>
+              </div>
+              <ThemeToggle />
+            </div>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <Link
+                to="/parametres"
+                onClick={() => setMobileOpen(false)}
+                className="tap flex min-h-[38px] items-center justify-center gap-1.5 rounded-xl border border-sidebar-border bg-background text-xs font-medium text-foreground"
+              >
+                <User className="h-3.5 w-3.5" /> Mon profil
+              </Link>
+              <button
+                type="button"
+                onClick={() => void seDeconnecter()}
+                className="tap flex min-h-[38px] items-center justify-center gap-1.5 rounded-xl border border-destructive/30 bg-destructive/10 text-xs font-medium text-destructive"
+              >
+                <LogOut className="h-3.5 w-3.5" /> Déconnexion
+              </button>
+            </div>
+          </div>
           <NavLinks onNavigate={() => setMobileOpen(false)} />
         </div>
-        <div className="shrink-0 border-t border-sidebar-border px-5 py-3">
-          <p className="font-display text-xs font-medium text-foreground">{BRAND.slogan}</p>
+        <div className="shrink-0 border-t border-sidebar-border px-5 py-2.5">
+          <p className="font-display text-[11px] font-medium text-foreground">{BRAND.slogan}</p>
         </div>
       </div>
     </div>
