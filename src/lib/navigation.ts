@@ -1,5 +1,4 @@
 import {
-  Brain,
   LayoutDashboard,
   Package,
   Tags,
@@ -42,12 +41,6 @@ export const navSections: NavSection[] = [
         to: "/",
         icon: LayoutDashboard,
         description: "Vue d'ensemble de l'activité de Bekaye Sora.",
-      },
-      {
-        title: "NEXUSIA Insight",
-        to: "/nexusia",
-        icon: Brain,
-        description: "Votre copilote de décision intelligent.",
       },
     ],
   },
