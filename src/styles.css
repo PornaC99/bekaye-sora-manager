@@ -211,3 +211,51 @@
     border-radius: 9999px;
   }
 }
+
+/* --- Univers graphique Bekaye Sora Collection --- */
+
+@utility brand-surface-red {
+  background-image:
+    radial-gradient(120% 140% at 12% 0%, oklch(0.42 0.17 27.5) 0%, transparent 55%),
+    radial-gradient(90% 120% at 100% 100%, oklch(0.3 0.12 25) 0%, transparent 60%),
+    linear-gradient(135deg, oklch(0.26 0.1 24) 0%, oklch(0.17 0.06 22) 100%);
+}
+
+@utility brand-gold-line {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold) 30%,
+    oklch(0.95 0.06 90) 50%,
+    var(--color-gold) 70%,
+    transparent
+  );
+}
+
+@utility brand-gold-text {
+  background-image: linear-gradient(100deg, var(--color-gold) 10%, oklch(0.96 0.06 92) 55%, var(--color-gold) 90%);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility card-luxe {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-luxe);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease;
+  &:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, var(--color-primary) 28%, var(--color-border));
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@utility brand-glass {
+  background-color: color-mix(in oklab, var(--color-card) 72%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--color-gold) 22%, transparent);
+}
