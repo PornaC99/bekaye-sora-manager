@@ -157,17 +157,21 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {estMobile || estAuth ? (
-        /* Coques autonomes : application mobile du Directeur et pages d'authentification. */
+      {estMobile ? (
+        /* Coque autonome SSR : application mobile publique du Directeur. */
         <Outlet />
-      ) : hydrate ? (
+      ) : !hydrate ? null : estAuth ? (
+        <Outlet />
+      ) : (
         <TenantGate>
           <AppShell>
             {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
             <Outlet />
           </AppShell>
         </TenantGate>
-      ) : null}
+      )}
+
+
 
 
       <Toaster position="top-right" richColors />
