@@ -187,6 +187,24 @@ export function basculerActivation(id: string) {
 }
 
 
+/** Persiste dans Supabase les stocks modifiés localement (réception, vente, inventaire). */
+function persisterStocks(nouveaux: Produit[]): Produit[] {
+  const avant = new Map(state.produits.map((p) => [p.id, p]));
+  for (const produit of nouveaux) {
+    const precedent = avant.get(produit.id);
+    if (!precedent) continue;
+    const champs: { stock?: number; prix_achat?: number; prix_vente?: number } = {};
+    if (precedent.stock !== produit.stock) champs.stock = produit.stock;
+    if (precedent.prixAchat !== produit.prixAchat) champs.prix_achat = produit.prixAchat;
+    if (precedent.prixVente !== produit.prixVente) champs.prix_vente = produit.prixVente;
+    if (Object.keys(champs).length === 0) continue;
+    majChampsProduit(produit.id, champs).catch((erreur) =>
+      signalerErreur("Mise à jour du stock impossible", erreur),
+    );
+  }
+  return nouveaux;
+}
+
 export function enregistrerMouvement(input: {
   produitId: string;
   type: MouvementStock["type"];
@@ -261,7 +279,7 @@ export function appliquerReception(lignes: LigneReception[], meta: MetaReception
   }));
 
   setState({
-    produits,
+    produits: persisterStocks(produits),
     mouvements: [...mouvements, ...state.mouvements],
     achats: [...achats, ...state.achats],
   });
@@ -290,7 +308,7 @@ export function annulerReception(lignes: LigneReception[], meta: MetaReception) 
   }));
 
   setState({
-    produits,
+    produits: persisterStocks(produits),
     mouvements: [...mouvements, ...state.mouvements],
     achats: state.achats.filter((a) => a.reference !== meta.reference),
   });
@@ -342,7 +360,7 @@ export function appliquerVente(lignes: LigneVenteProduit[], meta: MetaVente) {
   }));
 
   setState({
-    produits,
+    produits: persisterStocks(produits),
     mouvements: [...mouvements, ...state.mouvements],
     ventes: [...ventes, ...state.ventes],
   });
@@ -373,7 +391,7 @@ export function retournerVente(
     observation: `${meta.motif} — vente ${meta.reference}`,
   }));
 
-  setState({ produits, mouvements: [...mouvements, ...state.mouvements] });
+  setState({ produits: persisterStocks(produits), mouvements: [...mouvements, ...state.mouvements] });
 }
 
 /* ------------------------------------------------------------------ */
@@ -412,7 +430,7 @@ export function appliquerInventaire(
     };
   });
 
-  setState({ produits, mouvements: [...mouvements, ...state.mouvements] });
+  setState({ produits: persisterStocks(produits), mouvements: [...mouvements, ...state.mouvements] });
   return mouvements.length;
 }
 
