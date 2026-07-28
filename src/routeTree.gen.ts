@@ -83,6 +83,7 @@ import { Route as ClientsAnalyseRouteImport } from './routes/clients.analyse'
 import { Route as ClientsClientIdRouteImport } from './routes/clients.$clientId'
 import { Route as AdministrationUtilisateursRouteImport } from './routes/administration.utilisateurs'
 import { Route as AdministrationSecuriteRouteImport } from './routes/administration.securite'
+import { Route as AdministrationSauvegardesRouteImport } from './routes/administration.sauvegardes'
 import { Route as AdministrationPersonnalisationRouteImport } from './routes/administration.personnalisation'
 import { Route as AdministrationAuditRouteImport } from './routes/administration.audit'
 import { Route as FournisseursCommandesIndexRouteImport } from './routes/fournisseurs.commandes.index'
@@ -461,6 +462,12 @@ const AdministrationSecuriteRoute = AdministrationSecuriteRouteImport.update({
   path: '/securite',
   getParentRoute: () => AdministrationRoute,
 } as any)
+const AdministrationSauvegardesRoute =
+  AdministrationSauvegardesRouteImport.update({
+    id: '/sauvegardes',
+    path: '/sauvegardes',
+    getParentRoute: () => AdministrationRoute,
+  } as any)
 const AdministrationPersonnalisationRoute =
   AdministrationPersonnalisationRouteImport.update({
     id: '/personnalisation',
@@ -508,6 +515,7 @@ export interface FileRoutesByFullPath {
   '/ventes': typeof VentesRouteWithChildren
   '/administration/audit': typeof AdministrationAuditRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
   '/administration/securite': typeof AdministrationSecuriteRoute
   '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
@@ -577,6 +585,7 @@ export interface FileRoutesByTo {
   '/statistiques': typeof StatistiquesRoute
   '/administration/audit': typeof AdministrationAuditRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
   '/administration/securite': typeof AdministrationSecuriteRoute
   '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
@@ -658,6 +667,7 @@ export interface FileRoutesById {
   '/ventes': typeof VentesRouteWithChildren
   '/administration/audit': typeof AdministrationAuditRoute
   '/administration/personnalisation': typeof AdministrationPersonnalisationRoute
+  '/administration/sauvegardes': typeof AdministrationSauvegardesRoute
   '/administration/securite': typeof AdministrationSecuriteRoute
   '/administration/utilisateurs': typeof AdministrationUtilisateursRoute
   '/clients/$clientId': typeof ClientsClientIdRoute
@@ -740,6 +750,7 @@ export interface FileRouteTypes {
     | '/ventes'
     | '/administration/audit'
     | '/administration/personnalisation'
+    | '/administration/sauvegardes'
     | '/administration/securite'
     | '/administration/utilisateurs'
     | '/clients/$clientId'
@@ -809,6 +820,7 @@ export interface FileRouteTypes {
     | '/statistiques'
     | '/administration/audit'
     | '/administration/personnalisation'
+    | '/administration/sauvegardes'
     | '/administration/securite'
     | '/administration/utilisateurs'
     | '/clients/$clientId'
@@ -889,6 +901,7 @@ export interface FileRouteTypes {
     | '/ventes'
     | '/administration/audit'
     | '/administration/personnalisation'
+    | '/administration/sauvegardes'
     | '/administration/securite'
     | '/administration/utilisateurs'
     | '/clients/$clientId'
@@ -1490,6 +1503,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdministrationSecuriteRouteImport
       parentRoute: typeof AdministrationRoute
     }
+    '/administration/sauvegardes': {
+      id: '/administration/sauvegardes'
+      path: '/sauvegardes'
+      fullPath: '/administration/sauvegardes'
+      preLoaderRoute: typeof AdministrationSauvegardesRouteImport
+      parentRoute: typeof AdministrationRoute
+    }
     '/administration/personnalisation': {
       id: '/administration/personnalisation'
       path: '/personnalisation'
@@ -1524,6 +1544,7 @@ declare module '@tanstack/react-router' {
 interface AdministrationRouteChildren {
   AdministrationAuditRoute: typeof AdministrationAuditRoute
   AdministrationPersonnalisationRoute: typeof AdministrationPersonnalisationRoute
+  AdministrationSauvegardesRoute: typeof AdministrationSauvegardesRoute
   AdministrationSecuriteRoute: typeof AdministrationSecuriteRoute
   AdministrationUtilisateursRoute: typeof AdministrationUtilisateursRoute
   AdministrationIndexRoute: typeof AdministrationIndexRoute
@@ -1532,6 +1553,7 @@ interface AdministrationRouteChildren {
 const AdministrationRouteChildren: AdministrationRouteChildren = {
   AdministrationAuditRoute: AdministrationAuditRoute,
   AdministrationPersonnalisationRoute: AdministrationPersonnalisationRoute,
+  AdministrationSauvegardesRoute: AdministrationSauvegardesRoute,
   AdministrationSecuriteRoute: AdministrationSecuriteRoute,
   AdministrationUtilisateursRoute: AdministrationUtilisateursRoute,
   AdministrationIndexRoute: AdministrationIndexRoute,
