@@ -1,0 +1,4361 @@
+{
+  "connecte": false,
+  "largeurs": [
+    320,
+    360,
+    375,
+    390,
+    412,
+    430,
+    768
+  ],
+  "resultats": [
+    {
+      "route": "/",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/a-propos",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/a-propos",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/a-propos",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/a-propos",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/a-propos",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/a-propos",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/a-propos",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/audit",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/audit",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/audit",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/audit",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/audit",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/audit",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/audit",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/donnees",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/donnees",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/donnees",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/donnees",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/donnees",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/donnees",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/donnees",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/entreprises",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/entreprises",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/entreprises",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/entreprises",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/entreprises",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/entreprises",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/entreprises",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/magasins",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/magasins",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/magasins",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/magasins",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/magasins",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/magasins",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/magasins",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/maintenance",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/maintenance",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/maintenance",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/maintenance",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/maintenance",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/maintenance",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/maintenance",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/notifications",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/notifications",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/notifications",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/notifications",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/notifications",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/notifications",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/notifications",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/personnalisation",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/personnalisation",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/personnalisation",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/personnalisation",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/personnalisation",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/personnalisation",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/personnalisation",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/preferences",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/preferences",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/preferences",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/preferences",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/preferences",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/preferences",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/preferences",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/sauvegardes",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/sauvegardes",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/sauvegardes",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/sauvegardes",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/sauvegardes",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/sauvegardes",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/sauvegardes",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/securite",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/securite",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/securite",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/securite",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/securite",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/securite",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/securite",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/utilisateurs",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/utilisateurs",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/utilisateurs",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/utilisateurs",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/utilisateurs",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/utilisateurs",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/administration/utilisateurs",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/auth",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/auth",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/auth",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/auth",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/auth",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/auth",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/auth",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/caisse",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/caisse",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/caisse",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/caisse",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/caisse",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/caisse",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/caisse",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/categories",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/categories",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/categories",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/categories",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/categories",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/categories",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/categories",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/analyse",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/analyse",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/analyse",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/analyse",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/analyse",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/analyse",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/analyse",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/clients/analyse",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/statistiques",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/statistiques",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/statistiques",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/statistiques",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/statistiques",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/statistiques",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/statistiques",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/vip",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/vip",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/vip",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/vip",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/vip",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/vip",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/clients/vip",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/depenses",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/analyse",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/analyse",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/analyse",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/analyse",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/analyse",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/analyse",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/analyse",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/charges",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/charges",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/charges",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/charges",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/charges",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/charges",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/charges",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/creances",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/creances",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/creances",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/creances",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/creances",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/creances",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/creances",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/previsions",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/previsions",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/previsions",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/previsions",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/previsions",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/previsions",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/previsions",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/tresorerie",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/tresorerie",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/tresorerie",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/tresorerie",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/tresorerie",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/tresorerie",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/depenses/tresorerie",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/conges",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/conges",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/conges",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/conges",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/conges",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/conges",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/conges",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/journal",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/journal",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/journal",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/journal",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/journal",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/journal",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/journal",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/performance",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/performance",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/performance",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/performance",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/performance",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/performance",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/performance",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/permissions",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/permissions",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/permissions",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/permissions",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/permissions",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/permissions",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/permissions",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/presence",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/presence",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/presence",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/presence",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/presence",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/presence",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/employes/presence",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock/historique",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock/historique",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock/historique",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock/historique",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock/historique",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock/historique",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/entrees-stock/historique",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/analyse",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/analyse",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/analyse",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/analyse",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/analyse",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/analyse",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/analyse",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/approvisionnement",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/approvisionnement",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/approvisionnement",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/approvisionnement",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/approvisionnement",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/approvisionnement",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/approvisionnement",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/commandes",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/commandes",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/commandes",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/commandes",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/commandes",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/commandes",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/fournisseurs/commandes",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/analyse",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/analyse",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/analyse",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/analyse",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/analyse",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/analyse",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/analyse",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/historique",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/historique",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/historique",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/historique",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/historique",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/historique",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/inventaire/historique",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/alertes",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/alertes",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/alertes",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/alertes",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/alertes",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/alertes",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/alertes",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/assistant",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/assistant",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/assistant",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/assistant",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/assistant",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/assistant",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/assistant",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/clients",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/clients",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/clients",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/clients",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/clients",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/clients",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/clients",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/connexion",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/connexion",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/connexion",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/connexion",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/connexion",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/connexion",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/connexion",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/direct",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/direct",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/direct",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/direct",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/direct",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/direct",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/direct",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/employes",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/employes",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/employes",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/employes",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/employes",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/employes",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/employes",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/finances",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/finances",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/finances",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/finances",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/finances",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/finances",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/finances",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/notifications",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/notifications",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/notifications",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/notifications",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/notifications",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/notifications",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/notifications",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/parametres",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/parametres",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/parametres",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/parametres",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/parametres",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/parametres",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/parametres",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/produits",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/produits",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/produits",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/produits",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/produits",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/produits",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/produits",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/rapports",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/rapports",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/rapports",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/rapports",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/rapports",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/rapports",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/rapports",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/recherche",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/recherche",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/recherche",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/recherche",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/recherche",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/recherche",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/mobile/recherche",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/mobile/connexion",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/notifications",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/notifications",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/notifications",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/notifications",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/notifications",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/notifications",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/notifications",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/parametres",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/parametres",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/parametres",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/parametres",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/parametres",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/parametres",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/parametres",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits/mouvements",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits/mouvements",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits/mouvements",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits/mouvements",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits/mouvements",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits/mouvements",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/produits/mouvements",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/comparaison",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/comparaison",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/comparaison",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/comparaison",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/comparaison",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/comparaison",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/comparaison",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/performance",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/performance",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/performance",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/performance",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/performance",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/performance",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/rapports/performance",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/reset-password",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/reset-password",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/reset-password",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/reset-password",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/reset-password",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/reset-password",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/reset-password",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/reset-password",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/reset-password",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/reset-password",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/reset-password",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/reset-password",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/reset-password",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/reset-password",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/salaires",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/salaires",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/salaires",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/salaires",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/salaires",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/salaires",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/salaires",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/sorties-stock",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/sorties-stock",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/sorties-stock",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/sorties-stock",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/sorties-stock",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/sorties-stock",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/sorties-stock",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/statistiques",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/statistiques",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/statistiques",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/statistiques",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/statistiques",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/statistiques",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/statistiques",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/historique",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/historique",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/historique",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/historique",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/historique",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/historique",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/historique",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/retours",
+      "largeur": 320,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 320,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/retours",
+      "largeur": 360,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 360,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/retours",
+      "largeur": 375,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 375,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/retours",
+      "largeur": 390,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 390,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/retours",
+      "largeur": 412,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 412,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/retours",
+      "largeur": 430,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 430,
+      "coupables": [],
+      "statut": "OK"
+    },
+    {
+      "route": "/ventes/retours",
+      "largeur": 768,
+      "urlFinale": "http://localhost:8080/auth",
+      "scrollHorizontal": false,
+      "scrollWidth": 768,
+      "coupables": [],
+      "statut": "OK"
+    }
+  ]
+}
