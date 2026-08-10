@@ -20,13 +20,21 @@ export function useEntreprise() {
       const id = await lireEntrepriseId();
       if (!id) return { entreprise: null, role: null };
 
+      const { data: auth } = await supabase.auth.getUser();
       const [{ data: entreprise, error }, { data: roles }] = await Promise.all([
         supabase
           .from("entreprises")
           .select("id, nom, secteur, devise, ville, logo_url")
           .eq("id", id)
           .maybeSingle(),
-        supabase.from("user_roles").select("role").limit(1),
+        // Rôle de l'utilisateur connecté uniquement (le RLS laisse voir toute
+        // l'entreprise : sans ce filtre, un caissier pourrait hériter du rôle
+        // d'un collègue directeur).
+        supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", auth.user?.id ?? "")
+          .limit(1),
       ]);
       if (error) throw error;
       return { entreprise: entreprise as Entreprise | null, role: roles?.[0]?.role ?? null };
