@@ -115,8 +115,10 @@ export function roleDepuisBase(role: string | null | undefined): RoleCle {
       return "gestionnaire_stock";
     case "administrateur":
     case "directeur":
-    default:
       return "directeur";
+    default:
+      // Aucun rôle connu : on applique le privilège le plus faible.
+      return "caissier";
   }
 }
 

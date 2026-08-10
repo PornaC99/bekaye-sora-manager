@@ -49,10 +49,14 @@ export function useRoleActuel() {
   const { data, isLoading } = useEntreprise();
   const reel = roleDepuisBase(data?.role);
 
+  // La simulation de rôle est une aide de démonstration réservée aux
+  // directeurs : un caissier ne peut pas se donner une autre interface.
+  const simulationAutorisee = reel === "directeur";
+
   return {
-    role: simule ?? reel,
+    role: (simulationAutorisee ? simule : null) ?? reel,
     reel,
-    simule,
+    simule: simulationAutorisee ? simule : null,
     chargement: isLoading,
   };
 }
