@@ -73,7 +73,11 @@ function ResetPasswordPage() {
       return;
     }
     setEnCours(true);
-    const { error } = await supabase.auth.updateUser({ password: motDePasse });
+    const { error } = await supabase.auth.updateUser({
+      password: motDePasse,
+      // Lève l'obligation de changement (première connexion / mot de passe temporaire).
+      data: { doit_changer_mot_de_passe: false },
+    });
     setEnCours(false);
     if (error) {
       const m = error.message.toLowerCase();
