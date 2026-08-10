@@ -84,6 +84,10 @@ export function EmployeeFormDialog({
   const [compteActif, setCompteActif] = useState(true);
   const [enCours, setEnCours] = useState(false);
   const [compteCree, setCompteCree] = useState(false);
+  const [identifiantsCrees, setIdentifiantsCrees] = useState<{
+    email: string;
+    motDePasse: string;
+  } | null>(null);
   const creerCompte = useServerFn(creerCompteEmploye);
 
   useEffect(() => {
@@ -94,6 +98,7 @@ export function EmployeeFormDialog({
     setRoleCompte("vendeur");
     setCompteActif(true);
     setCompteCree(false);
+    setIdentifiantsCrees(null);
     setValues(
       employe
         ? {
@@ -125,9 +130,10 @@ export function EmployeeFormDialog({
     setValues((v) => ({ ...v, [cle]: valeur }));
 
   async function copierMotDePasse() {
-    if (!motDePasse) return;
+    const valeur = identifiantsCrees?.motDePasse ?? motDePasse;
+    if (!valeur) return;
     try {
-      await navigator.clipboard.writeText(motDePasse);
+      await navigator.clipboard.writeText(valeur);
       toast.success("Mot de passe temporaire copié.");
     } catch {
       toast.error("Copie impossible sur cet appareil.");
@@ -153,14 +159,19 @@ export function EmployeeFormDialog({
     setEnCours(true);
     try {
       let userId: string | null = values.userId ?? null;
+      let emailAuthCree: string | null = null;
       if (acces) {
+        // Capture un instantané immuable : l'appel Auth peut prendre du temps et
+        // l'écran de succès doit afficher exactement les valeurs envoyées.
+        const emailAuthEnvoye = emailConnexion.trim();
+        const motDePasseEnvoye = motDePasse;
         // Le compte est créé côté serveur : rôle, tenant, permissions et audit
         // sont déterminés par le backend, jamais par le frontend.
         const resultat = (await creerCompte({
           data: {
             nomComplet: values.nom.trim(),
-            email: emailConnexion.trim(),
-            motDePasse,
+            email: emailAuthEnvoye,
+            motDePasse: motDePasseEnvoye,
             telephone: values.telephone.trim() || undefined,
             role: roleCompte,
             magasinId: null,
@@ -175,12 +186,14 @@ export function EmployeeFormDialog({
           },
         })) as { userId: string; email: string };
         userId = resultat.userId;
-        setEmailConnexion(resultat.email);
+        emailAuthCree = resultat.email;
+        setEmailConnexion(emailAuthCree);
+        setIdentifiantsCrees({ email: emailAuthCree, motDePasse: motDePasseEnvoye });
       }
 
       const aEnregistrer: EmployeFormValues = {
         ...values,
-        emailConnexion: acces ? emailConnexion.trim() : (values.emailConnexion ?? null),
+        emailConnexion: acces ? emailAuthCree : (values.emailConnexion ?? null),
         userId,
         compteActif: acces ? compteActif : (values.compteActif ?? false),
       };
@@ -360,7 +373,7 @@ export function EmployeeFormDialog({
                 if (actif && !motDePasse) setMotDePasse(genererMotDePasse());
               }}
               className="mt-0.5"
-              disabled={Boolean(values.userId)}
+              disabled={Boolean(values.userId) || enCours}
             />
             <span>
               Créer un compte de connexion
@@ -381,8 +394,10 @@ export function EmployeeFormDialog({
           {compteCree && (
             <div role="status" className="mt-3 rounded-lg border border-success/30 bg-success/10 p-3 text-sm text-foreground">
               <p className="font-medium">Compte créé et confirmé</p>
-              <p className="mt-1 break-all text-xs">E-mail Auth : {emailConnexion}</p>
-              <p className="mt-1 font-mono text-sm">Mot de passe temporaire : {motDePasse}</p>
+              <p className="mt-1 break-all text-xs">E-mail Auth : {identifiantsCrees?.email}</p>
+              <p className="mt-1 font-mono text-sm">
+                Mot de passe temporaire : {identifiantsCrees?.motDePasse}
+              </p>
               <p className="mt-2 text-xs text-muted-foreground">
                 Copiez ce mot de passe maintenant : il ne sera plus affiché après fermeture.
               </p>
@@ -397,10 +412,15 @@ export function EmployeeFormDialog({
                   placeholder="caissier@entreprise.com"
                   value={emailConnexion}
                   onChange={(e) => setEmailConnexion(e.target.value)}
+                  disabled={enCours}
                 />
               </Champ>
               <Champ label="Rôle (permissions applicatives)">
-                <Select value={roleCompte} onValueChange={(v) => setRoleCompte(v as RoleBase)}>
+                <Select
+                  value={roleCompte}
+                  onValueChange={(v) => setRoleCompte(v as RoleBase)}
+                  disabled={enCours}
+                >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
@@ -415,13 +435,14 @@ export function EmployeeFormDialog({
               </Champ>
               <Champ label="Mot de passe temporaire">
                 <div className="flex gap-2">
-                  <Input readOnly value={motDePasse} className="font-mono text-sm" />
+                  <Input readOnly value={motDePasse} disabled={enCours} className="font-mono text-sm" />
                   <Button
                     type="button"
                     variant="outline"
                     size="icon"
                     aria-label="Générer un mot de passe"
                     onClick={() => setMotDePasse(genererMotDePasse())}
+                    disabled={enCours}
                   >
                     <RefreshCw className="h-4 w-4" />
                   </Button>
@@ -431,6 +452,7 @@ export function EmployeeFormDialog({
                     size="icon"
                     aria-label="Copier le mot de passe temporaire"
                     onClick={copierMotDePasse}
+                    disabled={enCours}
                   >
                     <Copy className="h-4 w-4" />
                   </Button>
@@ -440,6 +462,7 @@ export function EmployeeFormDialog({
                 <Select
                   value={compteActif ? "actif" : "inactif"}
                   onValueChange={(v) => setCompteActif(v === "actif")}
+                  disabled={enCours}
                 >
                   <SelectTrigger>
                     <SelectValue />
