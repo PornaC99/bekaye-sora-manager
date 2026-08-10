@@ -172,16 +172,16 @@ export async function creerSortie(values: SortieFormValues): Promise<string> {
     _produit_id: values.produitId,
     _quantite: values.quantite,
     _motif: values.motif,
-    _magasin_id: values.magasinId ?? null,
-    _commentaire: values.commentaire?.trim() || null,
-    _reference: values.reference?.trim() || null,
-    _lot: values.lot || null,
+    _magasin_id: values.magasinId ?? undefined,
+    _commentaire: values.commentaire?.trim() || undefined,
+    _reference: values.reference?.trim() || undefined,
+    _lot: values.lot || undefined,
   });
   if (error) throw new Error(traduireErreur(error.message));
 
   publier({
     module: "stock",
-    ton: "attention",
+    ton: "alerte",
     titre: "Sortie de stock enregistrée",
     message: `${values.quantite} unité(s) sorties · ${LABEL_MOTIF[values.motif] ?? values.motif}.`,
     lien: "/sorties-stock",
