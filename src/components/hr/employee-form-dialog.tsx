@@ -77,9 +77,21 @@ export function EmployeeFormDialog({
   employe: Employe | null;
 }) {
   const [values, setValues] = useState<EmployeFormValues>(VIDE);
+  const [acces, setAcces] = useState(false);
+  const [emailConnexion, setEmailConnexion] = useState("");
+  const [motDePasse, setMotDePasse] = useState("");
+  const [roleCompte, setRoleCompte] = useState<RoleBase>("vendeur");
+  const [compteActif, setCompteActif] = useState(true);
+  const [enCours, setEnCours] = useState(false);
+  const creerCompte = useServerFn(creerCompteEmploye);
 
   useEffect(() => {
     if (!open) return;
+    setAcces(false);
+    setEmailConnexion(employe?.emailConnexion ?? "");
+    setMotDePasse("");
+    setRoleCompte("vendeur");
+    setCompteActif(true);
     setValues(
       employe
         ? {
@@ -99,6 +111,9 @@ export function EmployeeFormDialog({
             objectifMensuel: employe.objectifMensuel,
             statut: employe.statut,
             notes: employe.notes,
+            emailConnexion: employe.emailConnexion ?? null,
+            userId: employe.userId ?? null,
+            compteActif: employe.compteActif ?? false,
           }
         : VIDE,
     );
@@ -107,20 +122,82 @@ export function EmployeeFormDialog({
   const set = <K extends keyof EmployeFormValues>(cle: K, valeur: EmployeFormValues[K]) =>
     setValues((v) => ({ ...v, [cle]: valeur }));
 
-  function soumettre() {
+  async function copierMotDePasse() {
+    if (!motDePasse) return;
+    try {
+      await navigator.clipboard.writeText(`${emailConnexion} / ${motDePasse}`);
+      toast.success("Identifiants copiés dans le presse-papiers.");
+    } catch {
+      toast.error("Copie impossible sur cet appareil.");
+    }
+  }
+
+  async function soumettre() {
     if (!values.nom.trim() || !values.fonction.trim()) {
       toast.error("Le nom et la fonction sont obligatoires.");
       return;
     }
-    if (employe) {
-      modifierEmploye(employe.id, values);
-      toast.success("Fiche employé mise à jour.");
-    } else {
-      const cree = ajouterEmploye(values);
-      toast.success(`${cree.nom} a été ajouté (${cree.matricule}).`);
+    if (acces) {
+      if (!/^\S+@\S+\.\S+$/.test(emailConnexion.trim())) {
+        toast.error("Saisissez un e-mail de connexion valide.");
+        return;
+      }
+      if (motDePasse.length < 8) {
+        toast.error("Générez un mot de passe temporaire (8 caractères minimum).");
+        return;
+      }
     }
-    onOpenChange(false);
+
+    setEnCours(true);
+    try {
+      let userId: string | null = values.userId ?? null;
+      if (acces) {
+        // Le compte est créé côté serveur : rôle, tenant, permissions et audit
+        // sont déterminés par le backend, jamais par le frontend.
+        const resultat = (await creerCompte({
+          data: {
+            nomComplet: values.nom.trim(),
+            email: emailConnexion.trim(),
+            motDePasse,
+            telephone: values.telephone.trim() || undefined,
+            role: roleCompte,
+            magasinId: null,
+            actif: compteActif,
+          },
+        })) as { userId: string };
+        userId = resultat.userId;
+      }
+
+      const aEnregistrer: EmployeFormValues = {
+        ...values,
+        emailConnexion: acces ? emailConnexion.trim() : (values.emailConnexion ?? null),
+        userId,
+        compteActif: acces ? compteActif : (values.compteActif ?? false),
+      };
+
+      if (employe) {
+        modifierEmploye(employe.id, aEnregistrer);
+        toast.success("Fiche employé mise à jour.");
+      } else {
+        const cree = ajouterEmploye(aEnregistrer);
+        toast.success(`${cree.nom} a été ajouté (${cree.matricule}).`);
+      }
+      if (acces) {
+        toast.success("Compte de connexion créé", {
+          description: `${emailConnexion.trim()} — mot de passe temporaire à communiquer à l'employé.`,
+          duration: 8000,
+        });
+      }
+      onOpenChange(false);
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "Création du compte refusée par le serveur.",
+      );
+    } finally {
+      setEnCours(false);
+    }
   }
+
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
