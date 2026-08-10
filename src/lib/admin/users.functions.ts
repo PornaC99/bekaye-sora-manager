@@ -61,7 +61,7 @@ async function auditer(
     action,
     entite: "utilisateurs",
     entite_id: cible,
-    details,
+    details: details as never,
   });
 }
 
@@ -148,10 +148,14 @@ export const modifierCompteEmploye = createServerFn({ method: "POST" })
       throw new Response("Forbidden", { status: 403 });
     }
 
-    const majProfil: Record<string, unknown> = {};
-    if (data.nomComplet !== undefined) majProfil["nom_complet"] = data.nomComplet;
-    if (data.telephone !== undefined) majProfil["telephone"] = data.telephone;
-    if (data.magasinId !== undefined) majProfil["magasin_id"] = data.magasinId;
+    const majProfil: {
+      nom_complet?: string;
+      telephone?: string | null;
+      magasin_id?: string | null;
+    } = {};
+    if (data.nomComplet !== undefined) majProfil.nom_complet = data.nomComplet;
+    if (data.telephone !== undefined) majProfil.telephone = data.telephone ?? null;
+    if (data.magasinId !== undefined) majProfil.magasin_id = data.magasinId ?? null;
     if (Object.keys(majProfil).length > 0) {
       await supabaseAdmin.from("profiles").update(majProfil).eq("user_id", data.userId);
     }
@@ -163,7 +167,7 @@ export const modifierCompteEmploye = createServerFn({ method: "POST" })
         .insert({ user_id: data.userId, entreprise_id: entrepriseId, role: data.role });
     }
 
-    await auditer(entrepriseId, context.userId, acteur, "users.update", data.userId, { ...data });
+    await auditer(entrepriseId, context.userId, acteur, "users.update", data.userId, { ...data } as Record<string, unknown>);
     return { ok: true };
   });
 
