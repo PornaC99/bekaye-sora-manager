@@ -222,9 +222,10 @@ export function EmployeeFormDialog({
           <Champ label="WhatsApp">
             <Input value={values.whatsapp} onChange={(e) => set("whatsapp", e.target.value)} />
           </Champ>
-          <Champ label="Email">
+          <Champ label="Email professionnel / personnel">
             <Input
               type="email"
+              placeholder="Distinct de l'e-mail de connexion"
               value={values.email}
               onChange={(e) => set("email", e.target.value)}
             />
