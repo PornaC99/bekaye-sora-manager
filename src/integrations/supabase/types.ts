@@ -1353,6 +1353,30 @@ export type Database = {
           },
         ]
       }
+      permissions: {
+        Row: {
+          code: string
+          created_at: string
+          libelle: string
+          module: string
+          ordre: number
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          libelle: string
+          module: string
+          ordre?: number
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          libelle?: string
+          module?: string
+          ordre?: number
+        }
+        Relationships: []
+      }
       plans: {
         Row: {
           actif: boolean
@@ -2057,6 +2081,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      a_permission: { Args: { _permission: string }; Returns: boolean }
       creer_entreprise: {
         Args: { _devise?: string; _nom: string; _secteur?: string }
         Returns: string
@@ -2069,7 +2094,21 @@ export type Database = {
         }
         Returns: boolean
       }
+      initialiser_permissions: {
+        Args: { _entreprise: string }
+        Returns: undefined
+      }
       is_admin: { Args: never; Returns: boolean }
+      mes_permissions: {
+        Args: never
+        Returns: {
+          permission: string
+        }[]
+      }
+      permissions_par_defaut: {
+        Args: { _role: Database["public"]["Enums"]["app_role"] }
+        Returns: string[]
+      }
     }
     Enums: {
       app_role:
