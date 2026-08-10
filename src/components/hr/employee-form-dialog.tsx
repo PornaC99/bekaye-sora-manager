@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { Copy, Loader2, RefreshCw, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
   DialogContent,
@@ -20,6 +23,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { creerCompteEmploye } from "@/lib/admin/users.functions";
+import { ROLES_BASE, type RoleBase } from "@/lib/db/utilisateurs";
 import { ajouterEmploye, modifierEmploye } from "@/lib/hr/store";
 import {
   DEPARTEMENTS,
@@ -49,7 +54,18 @@ const VIDE: EmployeFormValues = {
   objectifMensuel: 1000000,
   statut: "actif",
   notes: "",
+  emailConnexion: null,
+  userId: null,
+  compteActif: false,
 };
+
+/** Mot de passe temporaire aléatoire (jamais stocké en base métier). */
+function genererMotDePasse() {
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
+  const octets = crypto.getRandomValues(new Uint32Array(10));
+  return `Bs${[...octets].map((n) => alphabet[n % alphabet.length]).join("")}!`;
+}
+
 
 export function EmployeeFormDialog({
   open,
@@ -61,9 +77,21 @@ export function EmployeeFormDialog({
   employe: Employe | null;
 }) {
   const [values, setValues] = useState<EmployeFormValues>(VIDE);
+  const [acces, setAcces] = useState(false);
+  const [emailConnexion, setEmailConnexion] = useState("");
+  const [motDePasse, setMotDePasse] = useState("");
+  const [roleCompte, setRoleCompte] = useState<RoleBase>("vendeur");
+  const [compteActif, setCompteActif] = useState(true);
+  const [enCours, setEnCours] = useState(false);
+  const creerCompte = useServerFn(creerCompteEmploye);
 
   useEffect(() => {
     if (!open) return;
+    setAcces(false);
+    setEmailConnexion(employe?.emailConnexion ?? "");
+    setMotDePasse("");
+    setRoleCompte("vendeur");
+    setCompteActif(true);
     setValues(
       employe
         ? {
@@ -83,6 +111,9 @@ export function EmployeeFormDialog({
             objectifMensuel: employe.objectifMensuel,
             statut: employe.statut,
             notes: employe.notes,
+            emailConnexion: employe.emailConnexion ?? null,
+            userId: employe.userId ?? null,
+            compteActif: employe.compteActif ?? false,
           }
         : VIDE,
     );
@@ -91,20 +122,82 @@ export function EmployeeFormDialog({
   const set = <K extends keyof EmployeFormValues>(cle: K, valeur: EmployeFormValues[K]) =>
     setValues((v) => ({ ...v, [cle]: valeur }));
 
-  function soumettre() {
+  async function copierMotDePasse() {
+    if (!motDePasse) return;
+    try {
+      await navigator.clipboard.writeText(`${emailConnexion} / ${motDePasse}`);
+      toast.success("Identifiants copiés dans le presse-papiers.");
+    } catch {
+      toast.error("Copie impossible sur cet appareil.");
+    }
+  }
+
+  async function soumettre() {
     if (!values.nom.trim() || !values.fonction.trim()) {
       toast.error("Le nom et la fonction sont obligatoires.");
       return;
     }
-    if (employe) {
-      modifierEmploye(employe.id, values);
-      toast.success("Fiche employé mise à jour.");
-    } else {
-      const cree = ajouterEmploye(values);
-      toast.success(`${cree.nom} a été ajouté (${cree.matricule}).`);
+    if (acces) {
+      if (!/^\S+@\S+\.\S+$/.test(emailConnexion.trim())) {
+        toast.error("Saisissez un e-mail de connexion valide.");
+        return;
+      }
+      if (motDePasse.length < 8) {
+        toast.error("Générez un mot de passe temporaire (8 caractères minimum).");
+        return;
+      }
     }
-    onOpenChange(false);
+
+    setEnCours(true);
+    try {
+      let userId: string | null = values.userId ?? null;
+      if (acces) {
+        // Le compte est créé côté serveur : rôle, tenant, permissions et audit
+        // sont déterminés par le backend, jamais par le frontend.
+        const resultat = (await creerCompte({
+          data: {
+            nomComplet: values.nom.trim(),
+            email: emailConnexion.trim(),
+            motDePasse,
+            telephone: values.telephone.trim() || undefined,
+            role: roleCompte,
+            magasinId: null,
+            actif: compteActif,
+          },
+        })) as { userId: string };
+        userId = resultat.userId;
+      }
+
+      const aEnregistrer: EmployeFormValues = {
+        ...values,
+        emailConnexion: acces ? emailConnexion.trim() : (values.emailConnexion ?? null),
+        userId,
+        compteActif: acces ? compteActif : (values.compteActif ?? false),
+      };
+
+      if (employe) {
+        modifierEmploye(employe.id, aEnregistrer);
+        toast.success("Fiche employé mise à jour.");
+      } else {
+        const cree = ajouterEmploye(aEnregistrer);
+        toast.success(`${cree.nom} a été ajouté (${cree.matricule}).`);
+      }
+      if (acces) {
+        toast.success("Compte de connexion créé", {
+          description: `${emailConnexion.trim()} — mot de passe temporaire à communiquer à l'employé.`,
+          duration: 8000,
+        });
+      }
+      onOpenChange(false);
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "Création du compte refusée par le serveur.",
+      );
+    } finally {
+      setEnCours(false);
+    }
   }
+
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -129,9 +222,10 @@ export function EmployeeFormDialog({
           <Champ label="WhatsApp">
             <Input value={values.whatsapp} onChange={(e) => set("whatsapp", e.target.value)} />
           </Champ>
-          <Champ label="Email">
+          <Champ label="Email professionnel / personnel">
             <Input
               type="email"
+              placeholder="Distinct de l'e-mail de connexion"
               value={values.email}
               onChange={(e) => set("email", e.target.value)}
             />
@@ -237,12 +331,120 @@ export function EmployeeFormDialog({
           </div>
         </div>
 
+        <section className="rounded-xl border border-border bg-muted/30 p-4">
+          <header className="flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-primary" />
+            <h3 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
+              Accès au logiciel
+            </h3>
+          </header>
+
+          <label className="mt-3 flex items-start gap-2.5 text-sm">
+            <Checkbox
+              checked={acces}
+              onCheckedChange={(v) => {
+                const actif = v === true;
+                setAcces(actif);
+                if (actif && !motDePasse) setMotDePasse(genererMotDePasse());
+              }}
+              className="mt-0.5"
+              disabled={Boolean(values.userId)}
+            />
+            <span>
+              Créer un compte de connexion
+              <span className="block text-xs text-muted-foreground">
+                Le compte est créé dans le système d'authentification sécurisé. Aucun mot de passe
+                n'est stocké dans la fiche employé.
+              </span>
+            </span>
+          </label>
+
+          {values.userId && (
+            <p className="mt-3 rounded-lg bg-success/10 p-2.5 text-xs text-foreground">
+              Cet employé possède déjà un compte ({values.emailConnexion}). Gérez-le depuis
+              Administration → Utilisateurs.
+            </p>
+          )}
+
+          {acces && (
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <Champ label="Email de connexion">
+                <Input
+                  type="email"
+                  placeholder="caissier@entreprise.com"
+                  value={emailConnexion}
+                  onChange={(e) => setEmailConnexion(e.target.value)}
+                />
+              </Champ>
+              <Champ label="Rôle (permissions applicatives)">
+                <Select value={roleCompte} onValueChange={(v) => setRoleCompte(v as RoleBase)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {ROLES_BASE.map((r) => (
+                      <SelectItem key={r.value} value={r.value}>
+                        {r.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </Champ>
+              <Champ label="Mot de passe temporaire">
+                <div className="flex gap-2">
+                  <Input readOnly value={motDePasse} className="font-mono text-sm" />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label="Générer un mot de passe"
+                    onClick={() => setMotDePasse(genererMotDePasse())}
+                  >
+                    <RefreshCw className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label="Copier les identifiants"
+                    onClick={copierMotDePasse}
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+              </Champ>
+              <Champ label="Statut du compte">
+                <Select
+                  value={compteActif ? "actif" : "inactif"}
+                  onValueChange={(v) => setCompteActif(v === "actif")}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="actif">Actif</SelectItem>
+                    <SelectItem value="inactif">Désactivé</SelectItem>
+                  </SelectContent>
+                </Select>
+              </Champ>
+              <p className="text-xs text-muted-foreground sm:col-span-2">
+                Le mot de passe temporaire sera utilisé uniquement lors de la première connexion.
+                L'employé devra ensuite définir son propre mot de passe.
+              </p>
+            </div>
+          )}
+        </section>
+
         <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
+          <Button variant="outline" onClick={() => onOpenChange(false)} disabled={enCours}>
             Annuler
           </Button>
-          <Button onClick={soumettre}>{employe ? "Enregistrer" : "Ajouter l'employé"}</Button>
+          <Button onClick={soumettre} disabled={enCours}>
+            {enCours && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {employe ? "Enregistrer" : "Ajouter l'employé"}
+          </Button>
         </DialogFooter>
+
       </DialogContent>
     </Dialog>
   );

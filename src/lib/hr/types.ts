@@ -187,6 +187,16 @@ export type Employe = {
   notes: string;
   /** Permissions surchargées manuellement (sinon héritées du rôle). */
   permissions: Permission[] | null;
+  /**
+   * Accès au logiciel — distinct des informations personnelles :
+   * `email` = e-mail professionnel/personnel, `emailConnexion` = identifiant
+   * du compte d'authentification réellement créé côté backend.
+   */
+  emailConnexion?: string | null;
+  /** Identifiant du compte authentifié associé (auth.users.id). */
+  userId?: string | null;
+  /** Statut du compte de connexion (indépendant du statut RH). */
+  compteActif?: boolean;
 };
 
 export type EmployeFormValues = Omit<

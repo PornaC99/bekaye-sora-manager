@@ -76,6 +76,10 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
         telephone: z.string().trim().max(40).optional(),
         role: z.enum(ROLES),
         magasinId: z.string().uuid().nullable().optional(),
+        /** Matricule de la fiche employé associée (traçabilité RH ↔ compte). */
+        employeMatricule: z.string().trim().max(40).optional(),
+        /** Statut initial du compte (désactivé = connexion refusée). */
+        actif: z.boolean().optional(),
       })
       .parse(data),
   )
@@ -87,7 +91,12 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
       email: data.email,
       password: data.motDePasse,
       email_confirm: true,
-      user_metadata: { nom_complet: data.nomComplet },
+      user_metadata: {
+        nom_complet: data.nomComplet,
+        // Mot de passe temporaire : changement obligatoire à la 1re connexion.
+        doit_changer_mot_de_passe: true,
+        ...(data.employeMatricule ? { employe_matricule: data.employeMatricule } : {}),
+      },
     });
     if (error || !cree.user) throw new Error(error?.message ?? "Création du compte impossible");
 
@@ -101,7 +110,7 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
         nom_complet: data.nomComplet,
         email: data.email,
         telephone: data.telephone ?? null,
-        actif: true,
+        actif: data.actif ?? true,
       },
       { onConflict: "user_id" },
     );
@@ -113,10 +122,16 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
       .insert({ user_id: nouvelId, entreprise_id: entrepriseId, role: data.role });
     if (erreurRole) throw new Error(erreurRole.message);
 
+    if (data.actif === false) {
+      await supabaseAdmin.auth.admin.updateUserById(nouvelId, { ban_duration: "876000h" });
+    }
+
     await auditer(entrepriseId, context.userId, acteur, "users.create", nouvelId, {
       email: data.email,
       role: data.role,
       magasin_id: data.magasinId ?? null,
+      employe_matricule: data.employeMatricule ?? null,
+      actif: data.actif ?? true,
     });
 
     return { userId: nouvelId };
@@ -228,6 +243,8 @@ export const reinitialiserMotDePasseEmploye = createServerFn({ method: "POST" })
 
     const { error } = await supabaseAdmin.auth.admin.updateUserById(data.userId, {
       password: data.motDePasse,
+      // Mot de passe temporaire : l'utilisateur devra en définir un nouveau.
+      user_metadata: { doit_changer_mot_de_passe: true },
     });
     if (error) throw new Error(error.message);
 
