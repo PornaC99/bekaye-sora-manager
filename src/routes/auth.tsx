@@ -36,6 +36,8 @@ export const Route = createFileRoute("/auth")({
 function messageErreurAuth(brut: string): string {
   const m = brut.toLowerCase();
   if (m.includes("invalid login credentials")) return "E-mail ou mot de passe incorrect.";
+  if (m.includes("banned") || m.includes("disabled"))
+    return "Ce compte est désactivé. Contactez votre administrateur.";
   if (m.includes("email not confirmed"))
     return "Votre adresse e-mail n'est pas encore confirmée. Utilisez le lien reçu par e-mail ou demandez un nouvel envoi ci-dessous.";
   if (m.includes("already registered") || m.includes("already been registered"))
@@ -118,7 +120,10 @@ function AuthPage() {
     setErreurLien(null);
     try {
       if (mode === "connexion") {
-        const { error } = await supabase.auth.signInWithPassword({ email, password: motDePasse });
+        const { error } = await supabase.auth.signInWithPassword({
+          email: email.trim(),
+          password: motDePasse,
+        });
         if (error) throw error;
         setConfirme(false);
         toast.success("Connexion réussie", { description: "Bienvenue dans votre espace." });
@@ -133,11 +138,11 @@ function AuthPage() {
         // l'auto-confirmation des e-mails dans les réglages d'authentification.
         const { data, error } = await supabase.auth.signUp({
 
-          email,
+          email: email.trim(),
           password: motDePasse,
           options: {
             emailRedirectTo: urlRetourConfirmation(),
-            data: { nom_complet: nom, full_name: nom },
+            data: { nom_complet: nom.trim(), full_name: nom.trim() },
           },
         });
         if (error) throw error;

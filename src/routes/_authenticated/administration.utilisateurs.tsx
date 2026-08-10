@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { KeyRound, Pencil, Plus, ShieldBan, ShieldCheck } from "lucide-react";
+import { Copy, KeyRound, Pencil, Plus, RefreshCw, ShieldBan, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 
 import { AdminCard, Champ, Pastille } from "@/components/admin/pieces";
@@ -67,6 +67,12 @@ const vide: FormValues = {
   magasinId: "aucun",
 };
 
+function genererMotDePasseTemporaire() {
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
+  const octets = crypto.getRandomValues(new Uint32Array(10));
+  return `Bs${[...octets].map((n) => alphabet[n % alphabet.length]).join("")}!`;
+}
+
 function UtilisateursPage() {
   const queryClient = useQueryClient();
   const { peut } = usePermissions();
@@ -96,6 +102,7 @@ function UtilisateursPage() {
   const [form, setForm] = useState<FormValues>(vide);
   const [motDePasseCible, setMotDePasseCible] = useState<UtilisateurEntreprise | null>(null);
   const [nouveauMotDePasse, setNouveauMotDePasse] = useState("");
+  const [resetEffectue, setResetEffectue] = useState(false);
 
   const gererErreur = (e: unknown) =>
     toast.error(e instanceof Error ? e.message : "Opération refusée par le serveur.");
@@ -154,9 +161,8 @@ function UtilisateursPage() {
         data: { userId: motDePasseCible!.userId, motDePasse: nouveauMotDePasse },
       }),
     onSuccess: () => {
-      toast.success("Mot de passe réinitialisé.");
-      setMotDePasseCible(null);
-      setNouveauMotDePasse("");
+      toast.success("Accès temporaire régénéré.");
+      setResetEffectue(true);
     },
     onError: gererErreur,
   });
@@ -265,7 +271,8 @@ function UtilisateursPage() {
                           disabled={!gestion}
                           onClick={() => {
                             setMotDePasseCible(u);
-                            setNouveauMotDePasse("");
+                            setNouveauMotDePasse(genererMotDePasseTemporaire());
+                            setResetEffectue(false);
                           }}
                         >
                           <KeyRound className="h-4 w-4" />
@@ -494,33 +501,70 @@ function UtilisateursPage() {
 
       <Dialog
         open={motDePasseCible !== null}
-        onOpenChange={(o) => !o && setMotDePasseCible(null)}
+        onOpenChange={(o) => {
+          if (!o) {
+            setMotDePasseCible(null);
+            setNouveauMotDePasse("");
+            setResetEffectue(false);
+          }
+        }}
       >
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Réinitialiser le mot de passe</DialogTitle>
             <DialogDescription>
-              Nouveau mot de passe pour {motDePasseCible?.nomComplet}.
+              Générez un accès temporaire pour {motDePasseCible?.nomComplet}. L'employé devra le
+              remplacer à sa prochaine connexion.
             </DialogDescription>
           </DialogHeader>
-          <Champ label="Nouveau mot de passe">
-            <Input
-              type="password"
-              value={nouveauMotDePasse}
-              onChange={(e) => setNouveauMotDePasse(e.target.value)}
-              placeholder="8 caractères minimum"
-            />
+          <Champ label="Mot de passe temporaire">
+            <div className="flex gap-2">
+              <Input readOnly value={nouveauMotDePasse} className="font-mono" />
+              <Button
+                type="button"
+                variant="outline"
+                size="icon"
+                aria-label="Générer un autre mot de passe"
+                disabled={resetEffectue}
+                onClick={() => setNouveauMotDePasse(genererMotDePasseTemporaire())}
+              >
+                <RefreshCw className="h-4 w-4" />
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                size="icon"
+                aria-label="Copier le mot de passe temporaire"
+                onClick={async () => {
+                  await navigator.clipboard.writeText(nouveauMotDePasse);
+                  toast.success("Mot de passe temporaire copié.");
+                }}
+              >
+                <Copy className="h-4 w-4" />
+              </Button>
+            </div>
           </Champ>
+          {resetEffectue && (
+            <p role="status" className="rounded-lg border border-success/30 bg-success/10 p-3 text-xs text-foreground">
+              Le mot de passe affiché est maintenant actif. Copiez-le avant de fermer cette fenêtre.
+            </p>
+          )}
           <DialogFooter>
-            <Button variant="outline" onClick={() => setMotDePasseCible(null)}>
-              Annuler
-            </Button>
-            <Button
-              disabled={nouveauMotDePasse.length < 8 || mutationMotDePasse.isPending}
-              onClick={() => mutationMotDePasse.mutate()}
-            >
-              Réinitialiser
-            </Button>
+            {resetEffectue ? (
+              <Button onClick={() => setMotDePasseCible(null)}>Terminer</Button>
+            ) : (
+              <>
+                <Button variant="outline" onClick={() => setMotDePasseCible(null)}>
+                  Annuler
+                </Button>
+                <Button
+                  disabled={nouveauMotDePasse.length < 8 || mutationMotDePasse.isPending}
+                  onClick={() => mutationMotDePasse.mutate()}
+                >
+                  Activer ce mot de passe temporaire
+                </Button>
+              </>
+            )}
           </DialogFooter>
         </DialogContent>
       </Dialog>

@@ -83,6 +83,7 @@ export function EmployeeFormDialog({
   const [roleCompte, setRoleCompte] = useState<RoleBase>("vendeur");
   const [compteActif, setCompteActif] = useState(true);
   const [enCours, setEnCours] = useState(false);
+  const [compteCree, setCompteCree] = useState(false);
   const creerCompte = useServerFn(creerCompteEmploye);
 
   useEffect(() => {
@@ -92,6 +93,7 @@ export function EmployeeFormDialog({
     setMotDePasse("");
     setRoleCompte("vendeur");
     setCompteActif(true);
+    setCompteCree(false);
     setValues(
       employe
         ? {
@@ -125,8 +127,8 @@ export function EmployeeFormDialog({
   async function copierMotDePasse() {
     if (!motDePasse) return;
     try {
-      await navigator.clipboard.writeText(`${emailConnexion} / ${motDePasse}`);
-      toast.success("Identifiants copiés dans le presse-papiers.");
+      await navigator.clipboard.writeText(motDePasse);
+      toast.success("Mot de passe temporaire copié.");
     } catch {
       toast.error("Copie impossible sur cet appareil.");
     }
@@ -163,9 +165,17 @@ export function EmployeeFormDialog({
             role: roleCompte,
             magasinId: null,
             actif: compteActif,
+            employe: {
+              email: values.email.trim() || null,
+              adresse: values.adresse.trim() || null,
+              poste: values.fonction.trim(),
+              dateEmbauche: values.dateEmbauche,
+              salaireBase: values.salaireBase,
+            },
           },
-        })) as { userId: string };
+        })) as { userId: string; email: string };
         userId = resultat.userId;
+        setEmailConnexion(resultat.email);
       }
 
       const aEnregistrer: EmployeFormValues = {
@@ -183,12 +193,14 @@ export function EmployeeFormDialog({
         toast.success(`${cree.nom} a été ajouté (${cree.matricule}).`);
       }
       if (acces) {
+        setCompteCree(true);
         toast.success("Compte de connexion créé", {
-          description: `${emailConnexion.trim()} — mot de passe temporaire à communiquer à l'employé.`,
+          description: "Copiez maintenant le mot de passe temporaire affiché avant de fermer.",
           duration: 8000,
         });
+      } else {
+        onOpenChange(false);
       }
-      onOpenChange(false);
     } catch (error) {
       toast.error(
         error instanceof Error ? error.message : "Création du compte refusée par le serveur.",
@@ -366,7 +378,18 @@ export function EmployeeFormDialog({
             </p>
           )}
 
-          {acces && (
+          {compteCree && (
+            <div role="status" className="mt-3 rounded-lg border border-success/30 bg-success/10 p-3 text-sm text-foreground">
+              <p className="font-medium">Compte créé et confirmé</p>
+              <p className="mt-1 break-all text-xs">E-mail Auth : {emailConnexion}</p>
+              <p className="mt-1 font-mono text-sm">Mot de passe temporaire : {motDePasse}</p>
+              <p className="mt-2 text-xs text-muted-foreground">
+                Copiez ce mot de passe maintenant : il ne sera plus affiché après fermeture.
+              </p>
+            </div>
+          )}
+
+          {acces && !compteCree && (
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <Champ label="Email de connexion">
                 <Input
@@ -406,7 +429,7 @@ export function EmployeeFormDialog({
                     type="button"
                     variant="outline"
                     size="icon"
-                    aria-label="Copier les identifiants"
+                    aria-label="Copier le mot de passe temporaire"
                     onClick={copierMotDePasse}
                   >
                     <Copy className="h-4 w-4" />
@@ -436,13 +459,24 @@ export function EmployeeFormDialog({
         </section>
 
         <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)} disabled={enCours}>
-            Annuler
-          </Button>
-          <Button onClick={soumettre} disabled={enCours}>
-            {enCours && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            {employe ? "Enregistrer" : "Ajouter l'employé"}
-          </Button>
+          {compteCree ? (
+            <>
+              <Button variant="outline" onClick={copierMotDePasse}>
+                <Copy className="mr-2 h-4 w-4" /> Copier le mot de passe
+              </Button>
+              <Button onClick={() => onOpenChange(false)}>Terminer</Button>
+            </>
+          ) : (
+            <>
+              <Button variant="outline" onClick={() => onOpenChange(false)} disabled={enCours}>
+                Annuler
+              </Button>
+              <Button onClick={soumettre} disabled={enCours}>
+                {enCours && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {employe ? "Enregistrer" : "Ajouter l'employé"}
+              </Button>
+            </>
+          )}
         </DialogFooter>
 
       </DialogContent>

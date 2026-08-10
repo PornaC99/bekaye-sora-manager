@@ -80,6 +80,16 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
         employeMatricule: z.string().trim().max(40).optional(),
         /** Statut initial du compte (désactivé = connexion refusée). */
         actif: z.boolean().optional(),
+        /** Fiche RH à créer et relier au compte authentifié. */
+        employe: z
+          .object({
+            email: z.string().trim().email().max(255).nullable().optional(),
+            adresse: z.string().trim().max(255).nullable().optional(),
+            poste: z.string().trim().min(1).max(120),
+            dateEmbauche: z.string().date(),
+            salaireBase: z.number().nonnegative(),
+          })
+          .optional(),
       })
       .parse(data),
   )
@@ -101,40 +111,77 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
     if (error || !cree.user) throw new Error(error?.message ?? "Création du compte impossible");
 
     const nouvelId = cree.user.id;
+    try {
+      const { error: erreurProfil } = await supabaseAdmin.from("profiles").upsert(
+        {
+          user_id: nouvelId,
+          entreprise_id: entrepriseId,
+          magasin_id: data.magasinId ?? null,
+          nom_complet: data.nomComplet,
+          email: data.email,
+          telephone: data.telephone ?? null,
+          actif: data.actif ?? true,
+        },
+        { onConflict: "user_id" },
+      );
+      if (erreurProfil) throw new Error(erreurProfil.message);
 
-    const { error: erreurProfil } = await supabaseAdmin.from("profiles").upsert(
-      {
-        user_id: nouvelId,
-        entreprise_id: entrepriseId,
-        magasin_id: data.magasinId ?? null,
-        nom_complet: data.nomComplet,
+      await supabaseAdmin.from("user_roles").delete().eq("user_id", nouvelId);
+      const { error: erreurRole } = await supabaseAdmin
+        .from("user_roles")
+        .insert({ user_id: nouvelId, entreprise_id: entrepriseId, role: data.role });
+      if (erreurRole) throw new Error(erreurRole.message);
+
+      let employeId: string | null = null;
+      if (data.employe) {
+        const matricule =
+          data.employeMatricule ??
+          `BS-${new Date().getFullYear()}-${nouvelId.slice(0, 8).toUpperCase()}`;
+        const { data: employeCree, error: erreurEmploye } = await supabaseAdmin
+          .from("employes")
+          .insert({
+            entreprise_id: entrepriseId,
+            magasin_id: data.magasinId ?? null,
+            user_id: nouvelId,
+            matricule,
+            nom_complet: data.nomComplet,
+            telephone: data.telephone ?? null,
+            email: data.employe.email ?? null,
+            adresse: data.employe.adresse ?? null,
+            poste: data.employe.poste,
+            role: data.role,
+            date_embauche: data.employe.dateEmbauche,
+            salaire_base: data.employe.salaireBase,
+            actif: data.actif ?? true,
+          })
+          .select("id")
+          .single();
+        if (erreurEmploye) throw new Error(erreurEmploye.message);
+        employeId = employeCree.id;
+      }
+
+      if (data.actif === false) {
+        const { error: erreurStatut } = await supabaseAdmin.auth.admin.updateUserById(nouvelId, {
+          ban_duration: "876000h",
+        });
+        if (erreurStatut) throw new Error(erreurStatut.message);
+      }
+
+      await auditer(entrepriseId, context.userId, acteur, "users.create", nouvelId, {
         email: data.email,
-        telephone: data.telephone ?? null,
+        role: data.role,
+        magasin_id: data.magasinId ?? null,
+        employe_id: employeId,
+        employe_matricule: data.employeMatricule ?? null,
         actif: data.actif ?? true,
-      },
-      { onConflict: "user_id" },
-    );
-    if (erreurProfil) throw new Error(erreurProfil.message);
+      });
 
-    await supabaseAdmin.from("user_roles").delete().eq("user_id", nouvelId);
-    const { error: erreurRole } = await supabaseAdmin
-      .from("user_roles")
-      .insert({ user_id: nouvelId, entreprise_id: entrepriseId, role: data.role });
-    if (erreurRole) throw new Error(erreurRole.message);
-
-    if (data.actif === false) {
-      await supabaseAdmin.auth.admin.updateUserById(nouvelId, { ban_duration: "876000h" });
+      return { userId: nouvelId, employeId, email: cree.user.email ?? data.email };
+    } catch (liaisonError) {
+      // Évite tout compte Auth orphelin si une liaison métier échoue.
+      await supabaseAdmin.auth.admin.deleteUser(nouvelId);
+      throw liaisonError;
     }
-
-    await auditer(entrepriseId, context.userId, acteur, "users.create", nouvelId, {
-      email: data.email,
-      role: data.role,
-      magasin_id: data.magasinId ?? null,
-      employe_matricule: data.employeMatricule ?? null,
-      actif: data.actif ?? true,
-    });
-
-    return { userId: nouvelId };
   });
 
 export const modifierCompteEmploye = createServerFn({ method: "POST" })
@@ -241,10 +288,19 @@ export const reinitialiserMotDePasseEmploye = createServerFn({ method: "POST" })
       throw new Response("Forbidden", { status: 403 });
     }
 
+    const { data: utilisateur, error: erreurLecture } =
+      await supabaseAdmin.auth.admin.getUserById(data.userId);
+    if (erreurLecture || !utilisateur.user) {
+      throw new Error(erreurLecture?.message ?? "Compte utilisateur introuvable");
+    }
+
     const { error } = await supabaseAdmin.auth.admin.updateUserById(data.userId, {
       password: data.motDePasse,
       // Mot de passe temporaire : l'utilisateur devra en définir un nouveau.
-      user_metadata: { doit_changer_mot_de_passe: true },
+      user_metadata: {
+        ...utilisateur.user.user_metadata,
+        doit_changer_mot_de_passe: true,
+      },
     });
     if (error) throw new Error(error.message);
 
