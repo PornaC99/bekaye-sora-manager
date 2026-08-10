@@ -21,8 +21,6 @@ const ONGLETS = [
   { to: "/rapports", label: "Vue générale" },
   { to: "/rapports/performance", label: "Centre de performance" },
   { to: "/rapports/comparaison", label: "Comparaison" },
-  { to: "/rapports/previsions", label: "Prévisions" },
-  { to: "/rapports/planification", label: "Rapports automatiques" },
 ] as const;
 
 function RapportsLayout() {

@@ -1043,6 +1043,70 @@ export type Database = {
           },
         ]
       }
+      lots_stock: {
+        Row: {
+          created_at: string
+          date_expiration: string | null
+          entreprise_id: string
+          id: string
+          lot: string
+          magasin_id: string | null
+          prix_achat: number
+          produit_id: string
+          quantite_initiale: number
+          quantite_restante: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          date_expiration?: string | null
+          entreprise_id: string
+          id?: string
+          lot: string
+          magasin_id?: string | null
+          prix_achat?: number
+          produit_id: string
+          quantite_initiale?: number
+          quantite_restante?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          date_expiration?: string | null
+          entreprise_id?: string
+          id?: string
+          lot?: string
+          magasin_id?: string | null
+          prix_achat?: number
+          produit_id?: string
+          quantite_initiale?: number
+          quantite_restante?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lots_stock_entreprise_id_fkey"
+            columns: ["entreprise_id"]
+            isOneToOne: false
+            referencedRelation: "entreprises"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lots_stock_magasin_id_fkey"
+            columns: ["magasin_id"]
+            isOneToOne: false
+            referencedRelation: "magasins"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lots_stock_produit_id_fkey"
+            columns: ["produit_id"]
+            isOneToOne: false
+            referencedRelation: "produits"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       magasins: {
         Row: {
           actif: boolean
@@ -1095,49 +1159,70 @@ export type Database = {
       }
       mouvements_stock: {
         Row: {
+          commentaire: string | null
           created_at: string
           date_mouvement: string
           employe_id: string | null
           entreprise_id: string
           id: string
+          lot: string | null
           magasin_id: string | null
+          motif: string | null
+          numero: string | null
           observation: string | null
           produit_id: string
           quantite: number
           reference: string | null
+          statut: string
           stock_apres: number | null
           stock_avant: number | null
           type: Database["public"]["Enums"]["type_mouvement"]
+          unite: string | null
+          valeur_unitaire: number
         }
         Insert: {
+          commentaire?: string | null
           created_at?: string
           date_mouvement?: string
           employe_id?: string | null
           entreprise_id: string
           id?: string
+          lot?: string | null
           magasin_id?: string | null
+          motif?: string | null
+          numero?: string | null
           observation?: string | null
           produit_id: string
           quantite: number
           reference?: string | null
+          statut?: string
           stock_apres?: number | null
           stock_avant?: number | null
           type: Database["public"]["Enums"]["type_mouvement"]
+          unite?: string | null
+          valeur_unitaire?: number
         }
         Update: {
+          commentaire?: string | null
           created_at?: string
           date_mouvement?: string
           employe_id?: string | null
           entreprise_id?: string
           id?: string
+          lot?: string | null
           magasin_id?: string | null
+          motif?: string | null
+          numero?: string | null
           observation?: string | null
           produit_id?: string
           quantite?: number
           reference?: string | null
+          statut?: string
           stock_apres?: number | null
           stock_avant?: number | null
           type?: Database["public"]["Enums"]["type_mouvement"]
+          unite?: string | null
+          valeur_unitaire?: number
         }
         Relationships: [
           {
@@ -1353,6 +1438,30 @@ export type Database = {
           },
         ]
       }
+      permissions: {
+        Row: {
+          code: string
+          created_at: string
+          libelle: string
+          module: string
+          ordre: number
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          libelle: string
+          module: string
+          ordre?: number
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          libelle?: string
+          module?: string
+          ordre?: number
+        }
+        Relationships: []
+      }
       plans: {
         Row: {
           actif: boolean
@@ -1464,6 +1573,7 @@ export type Database = {
           categorie_id: string | null
           code_barres: string | null
           created_at: string
+          cump: number
           date_expiration: string | null
           description: string | null
           entreprise_id: string
@@ -1486,6 +1596,7 @@ export type Database = {
           categorie_id?: string | null
           code_barres?: string | null
           created_at?: string
+          cump?: number
           date_expiration?: string | null
           description?: string | null
           entreprise_id: string
@@ -1508,6 +1619,7 @@ export type Database = {
           categorie_id?: string | null
           code_barres?: string | null
           created_at?: string
+          cump?: number
           date_expiration?: string | null
           description?: string | null
           entreprise_id?: string
@@ -2057,11 +2169,25 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      a_permission: { Args: { _permission: string }; Returns: boolean }
       creer_entreprise: {
         Args: { _devise?: string; _nom: string; _secteur?: string }
         Returns: string
       }
+      creer_sortie_stock: {
+        Args: {
+          _commentaire?: string
+          _lot?: string
+          _magasin_id?: string
+          _motif: string
+          _produit_id: string
+          _quantite: number
+          _reference?: string
+        }
+        Returns: string
+      }
       current_entreprise_id: { Args: never; Returns: string }
+      generer_numero_sortie: { Args: { _entreprise: string }; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -2069,7 +2195,21 @@ export type Database = {
         }
         Returns: boolean
       }
+      initialiser_permissions: {
+        Args: { _entreprise: string }
+        Returns: undefined
+      }
       is_admin: { Args: never; Returns: boolean }
+      mes_permissions: {
+        Args: never
+        Returns: {
+          permission: string
+        }[]
+      }
+      permissions_par_defaut: {
+        Args: { _role: Database["public"]["Enums"]["app_role"] }
+        Returns: string[]
+      }
     }
     Enums: {
       app_role:

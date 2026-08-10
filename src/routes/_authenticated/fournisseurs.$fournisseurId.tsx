@@ -63,7 +63,7 @@ function Info({
 }
 
 function FicheFournisseur() {
-  const { fournisseurId } = useParams({ from: "/fournisseurs/$fournisseurId" });
+  const { fournisseurId } = useParams({ from: "/_authenticated/fournisseurs/$fournisseurId" });
   const { fournisseurs, commandes } = useSuppliersStore();
   const { produits } = useProductsStore();
   const [formOuvert, setFormOuvert] = useState(false);
