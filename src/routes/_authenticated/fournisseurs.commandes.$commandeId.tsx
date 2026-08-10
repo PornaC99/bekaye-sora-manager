@@ -52,7 +52,7 @@ export const Route = createFileRoute("/_authenticated/fournisseurs/commandes/$co
 });
 
 function DetailCommande() {
-  const { commandeId } = useParams({ from: "/fournisseurs/commandes/$commandeId" });
+  const { commandeId } = useParams({ from: "/_authenticated/fournisseurs/commandes/$commandeId" });
   const { commandes, fournisseurs } = useSuppliersStore();
   const [commentaire, setCommentaire] = useState("");
   const [receptionOuverte, setReceptionOuverte] = useState(false);

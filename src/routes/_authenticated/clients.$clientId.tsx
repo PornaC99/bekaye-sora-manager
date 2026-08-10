@@ -46,7 +46,7 @@ export const Route = createFileRoute("/_authenticated/clients/$clientId")({
 });
 
 function FicheClient() {
-  const { clientId } = useParams({ from: "/clients/$clientId" });
+  const { clientId } = useParams({ from: "/_authenticated/clients/$clientId" });
   const client = useClient(clientId);
   const achats = useAchatsClient(client?.id ?? "");
   const [edition, setEdition] = useState(false);
