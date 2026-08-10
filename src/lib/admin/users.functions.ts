@@ -288,10 +288,19 @@ export const reinitialiserMotDePasseEmploye = createServerFn({ method: "POST" })
       throw new Response("Forbidden", { status: 403 });
     }
 
+    const { data: utilisateur, error: erreurLecture } =
+      await supabaseAdmin.auth.admin.getUserById(data.userId);
+    if (erreurLecture || !utilisateur.user) {
+      throw new Error(erreurLecture?.message ?? "Compte utilisateur introuvable");
+    }
+
     const { error } = await supabaseAdmin.auth.admin.updateUserById(data.userId, {
       password: data.motDePasse,
       // Mot de passe temporaire : l'utilisateur devra en définir un nouveau.
-      user_metadata: { doit_changer_mot_de_passe: true },
+      user_metadata: {
+        ...utilisateur.user.user_metadata,
+        doit_changer_mot_de_passe: true,
+      },
     });
     if (error) throw new Error(error.message);
 
