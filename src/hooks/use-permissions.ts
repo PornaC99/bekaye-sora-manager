@@ -14,7 +14,7 @@ export function usePermissions() {
     queryFn: async (): Promise<string[]> => {
       const { data, error } = await supabase.rpc("mes_permissions");
       if (error) throw error;
-      return (data ?? []) as string[];
+      return (data ?? []).map((p) => p.permission);
     },
   });
 
