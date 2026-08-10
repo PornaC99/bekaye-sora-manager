@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { Copy, Loader2, RefreshCw, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
   DialogContent,
@@ -20,6 +23,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { creerCompteEmploye } from "@/lib/admin/users.functions";
+import { ROLES_BASE, type RoleBase } from "@/lib/db/utilisateurs";
 import { ajouterEmploye, modifierEmploye } from "@/lib/hr/store";
 import {
   DEPARTEMENTS,
@@ -49,7 +54,18 @@ const VIDE: EmployeFormValues = {
   objectifMensuel: 1000000,
   statut: "actif",
   notes: "",
+  emailConnexion: null,
+  userId: null,
+  compteActif: false,
 };
+
+/** Mot de passe temporaire aléatoire (jamais stocké en base métier). */
+function genererMotDePasse() {
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789";
+  const octets = crypto.getRandomValues(new Uint32Array(10));
+  return `Bs${[...octets].map((n) => alphabet[n % alphabet.length]).join("")}!`;
+}
+
 
 export function EmployeeFormDialog({
   open,
