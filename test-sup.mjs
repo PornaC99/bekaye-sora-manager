@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import fs from 'fs'
-const env = Object.fromEntries(fs.readFileSync('.env','utf8').split('\n').filter(Boolean).map(l=>[l.slice(0,l.indexOf('=')),l.slice(l.indexOf('=')+1)]))
+const env = Object.fromEntries(fs.readFileSync('.env','utf8').split('\n').filter(Boolean).map(l=>[l.slice(0,l.indexOf('=')),l.slice(l.indexOf("=")+1).trim().replace(/^["']|["']$/g,"")]))
 const URL = env.SUPABASE_URL, PUB = env.SUPABASE_PUBLISHABLE_KEY, SR = process.env.SUPABASE_SERVICE_ROLE_KEY
 const admin = createClient(URL, SR, { auth:{persistSession:false} })
 const stamp = Date.now()
