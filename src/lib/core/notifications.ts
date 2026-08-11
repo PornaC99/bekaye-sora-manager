@@ -71,7 +71,15 @@ export type EvenementSysteme = {
   message: string;
   lien: string;
   lu: boolean;
+  /** `direction` = notification de supervision (visible par la direction seule). */
+  audience: "tous" | "direction";
+  acteur: string;
+  montant: number | null;
+  quantite: number | null;
+  entite: string | null;
+  entiteId: string | null;
 };
+
 
 type State = { evenements: EvenementSysteme[] };
 
