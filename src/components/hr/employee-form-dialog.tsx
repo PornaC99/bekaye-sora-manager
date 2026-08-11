@@ -427,11 +427,15 @@ export function EmployeeFormDialog({
               <Champ label="Email de connexion">
                 <Input
                   type="email"
+                  name="email-connexion-nouveau"
+                  autoComplete="off"
+                  data-1p-ignore
                   placeholder="caissier@entreprise.com"
                   value={emailConnexion}
                   onChange={(e) => setEmailConnexion(e.target.value)}
                   disabled={enCours}
                 />
+
               </Champ>
               <Champ label="Rôle (permissions applicatives)">
                 <Select
