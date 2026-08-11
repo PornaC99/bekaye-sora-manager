@@ -386,7 +386,10 @@ export function EmployeeFormDialog({
                 const actif = v === true;
                 setAcces(actif);
                 if (actif && !motDePasse) setMotDePasse(genererMotDePasse());
+                // Adresse proposée depuis le nom : jamais un ancien identifiant.
+                if (actif && !emailConnexion.trim()) setEmailConnexion(suggererEmail(values.nom));
               }}
+
               className="mt-0.5"
               disabled={Boolean(values.userId) || enCours}
             />
