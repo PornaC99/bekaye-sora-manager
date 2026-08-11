@@ -66,6 +66,21 @@ function genererMotDePasse() {
   return `Bs${[...octets].map((n) => alphabet[n % alphabet.length]).join("")}!`;
 }
 
+/**
+ * Adresse de connexion proposée à partir du nom de l'employé.
+ * Jamais une ancienne adresse : chaque compte doit avoir un e-mail unique.
+ */
+function suggererEmail(nom: string) {
+  const base = nom
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ".")
+    .replace(/^\.|\.$/g, "");
+  return base ? `${base}@bekayesora.com` : "";
+}
+
+
 
 export function EmployeeFormDialog({
   open,
