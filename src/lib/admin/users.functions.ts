@@ -97,8 +97,19 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
     const { entrepriseId, acteur } = await exigerDroit(context as unknown as Contexte, "users.manage");
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
+    const email = data.email.trim().toLowerCase();
+
+    // Unicité vérifiée AVANT toute écriture : aucune création partielle possible.
+    const { data: existants } = await supabaseAdmin.auth.admin.listUsers({ page: 1, perPage: 1000 });
+    const dejaPris = existants?.users?.some((u) => (u.email ?? "").toLowerCase() === email);
+    if (dejaPris) {
+      throw new Error(
+        `L'adresse ${email} est déjà utilisée par un compte existant. Choisissez une autre adresse de connexion.`,
+      );
+    }
+
     const { data: cree, error } = await supabaseAdmin.auth.admin.createUser({
-      email: data.email,
+      email,
       password: data.motDePasse,
       email_confirm: true,
       user_metadata: {
@@ -108,7 +119,16 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
         ...(data.employeMatricule ? { employe_matricule: data.employeMatricule } : {}),
       },
     });
-    if (error || !cree.user) throw new Error(error?.message ?? "Création du compte impossible");
+    if (error || !cree.user) {
+      const brut = error?.message ?? "";
+      if (/already been registered|already registered|duplicate/i.test(brut)) {
+        throw new Error(
+          `L'adresse ${email} est déjà utilisée par un compte existant. Choisissez une autre adresse de connexion.`,
+        );
+      }
+      throw new Error(brut || "Création du compte impossible");
+    }
+
 
     const nouvelId = cree.user.id;
     try {
@@ -118,7 +138,7 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
           entreprise_id: entrepriseId,
           magasin_id: data.magasinId ?? null,
           nom_complet: data.nomComplet,
-          email: data.email,
+          email: email,
           telephone: data.telephone ?? null,
           actif: data.actif ?? true,
         },
@@ -168,7 +188,7 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
       }
 
       await auditer(entrepriseId, context.userId, acteur, "users.create", nouvelId, {
-        email: data.email,
+        email: email,
         role: data.role,
         magasin_id: data.magasinId ?? null,
         employe_id: employeId,
@@ -176,7 +196,7 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
         actif: data.actif ?? true,
       });
 
-      return { userId: nouvelId, employeId, email: cree.user.email ?? data.email };
+      return { userId: nouvelId, employeId, email: cree.user.email ?? email };
     } catch (liaisonError) {
       // Évite tout compte Auth orphelin si une liaison métier échoue.
       await supabaseAdmin.auth.admin.deleteUser(nouvelId);

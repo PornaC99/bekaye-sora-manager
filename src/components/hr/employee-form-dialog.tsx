@@ -66,6 +66,21 @@ function genererMotDePasse() {
   return `Bs${[...octets].map((n) => alphabet[n % alphabet.length]).join("")}!`;
 }
 
+/**
+ * Adresse de connexion proposée à partir du nom de l'employé.
+ * Jamais une ancienne adresse : chaque compte doit avoir un e-mail unique.
+ */
+function suggererEmail(nom: string) {
+  const base = nom
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ".")
+    .replace(/^\.|\.$/g, "");
+  return base ? `${base}@bekayesora.com` : "";
+}
+
+
 
 export function EmployeeFormDialog({
   open,
@@ -371,7 +386,10 @@ export function EmployeeFormDialog({
                 const actif = v === true;
                 setAcces(actif);
                 if (actif && !motDePasse) setMotDePasse(genererMotDePasse());
+                // Adresse proposée depuis le nom : jamais un ancien identifiant.
+                if (actif && !emailConnexion.trim()) setEmailConnexion(suggererEmail(values.nom));
               }}
+
               className="mt-0.5"
               disabled={Boolean(values.userId) || enCours}
             />
@@ -409,11 +427,15 @@ export function EmployeeFormDialog({
               <Champ label="Email de connexion">
                 <Input
                   type="email"
+                  name="email-connexion-nouveau"
+                  autoComplete="off"
+                  data-1p-ignore
                   placeholder="caissier@entreprise.com"
                   value={emailConnexion}
                   onChange={(e) => setEmailConnexion(e.target.value)}
                   disabled={enCours}
                 />
+
               </Champ>
               <Champ label="Rôle (permissions applicatives)">
                 <Select
