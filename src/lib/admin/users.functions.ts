@@ -138,7 +138,7 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
           entreprise_id: entrepriseId,
           magasin_id: data.magasinId ?? null,
           nom_complet: data.nomComplet,
-          email: data.email,
+          email: email,
           telephone: data.telephone ?? null,
           actif: data.actif ?? true,
         },
@@ -188,7 +188,7 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
       }
 
       await auditer(entrepriseId, context.userId, acteur, "users.create", nouvelId, {
-        email: data.email,
+        email: email,
         role: data.role,
         magasin_id: data.magasinId ?? null,
         employe_id: employeId,
@@ -196,7 +196,7 @@ export const creerCompteEmploye = createServerFn({ method: "POST" })
         actif: data.actif ?? true,
       });
 
-      return { userId: nouvelId, employeId, email: cree.user.email ?? data.email };
+      return { userId: nouvelId, employeId, email: cree.user.email ?? email };
     } catch (liaisonError) {
       // Évite tout compte Auth orphelin si une liaison métier échoue.
       await supabaseAdmin.auth.admin.deleteUser(nouvelId);
