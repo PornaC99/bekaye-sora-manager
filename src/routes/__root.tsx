@@ -17,7 +17,10 @@ import { TenantGate } from "@/components/onboarding/tenant-gate";
 import { reinitialiserTenant } from "@/lib/db/tenant";
 import { initialiserTheme } from "@/hooks/use-theme";
 import { initialiserEtatDemo } from "@/lib/demo/reset";
-import { chargerNotifications } from "@/lib/core/notifications";
+import {
+  chargerNotifications,
+  demarrerTempsReelNotifications,
+} from "@/lib/core/notifications";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Toaster } from "@/components/ui/sonner";
@@ -158,6 +161,7 @@ function RootComponent() {
     initialiserTheme();
     initialiserEtatDemo();
     void chargerNotifications();
+    void demarrerTempsReelNotifications();
     setHydrate(true);
   }, []);
 

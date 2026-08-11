@@ -71,7 +71,15 @@ export type EvenementSysteme = {
   message: string;
   lien: string;
   lu: boolean;
+  /** `direction` = notification de supervision (visible par la direction seule). */
+  audience: "tous" | "direction";
+  acteur: string;
+  montant: number | null;
+  quantite: number | null;
+  entite: string | null;
+  entiteId: string | null;
 };
+
 
 type State = { evenements: EvenementSysteme[] };
 
@@ -104,6 +112,54 @@ const estModule = (v: string | null): v is ModuleSysteme =>
   !!v && (MODULES as string[]).includes(v);
 const estTon = (v: string | null): v is TonEvenement => !!v && (TONS as string[]).includes(v);
 
+const CHAMPS =
+  "id, titre, message, type, priorite, lien, lue, created_at, audience, acteur, montant, quantite, entite, entite_id";
+
+type LigneNotification = {
+  id: string;
+  titre: string;
+  message: string | null;
+  type: string | null;
+  priorite: string | null;
+  lien: string | null;
+  lue: boolean;
+  created_at: string;
+  audience?: string | null;
+  acteur?: string | null;
+  montant?: number | null;
+  quantite?: number | null;
+  entite?: string | null;
+  entite_id?: string | null;
+};
+
+function versEvenement(n: LigneNotification): EvenementSysteme {
+  const module = estModule(n.type) ? n.type : "systeme";
+  return {
+    id: n.id,
+    date: n.created_at,
+    module,
+    ton: estTon(n.priorite) ? n.priorite : "info",
+    titre: n.titre,
+    message: n.message ?? "",
+    lien: n.lien ?? MODULE_LIEN[module],
+    lu: n.lue,
+    audience: n.audience === "direction" ? "direction" : "tous",
+    acteur: n.acteur ?? "",
+    montant: n.montant ?? null,
+    quantite: n.quantite ?? null,
+    entite: n.entite ?? null,
+    entiteId: n.entite_id ?? null,
+  };
+}
+
+function fusionner(distantes: EvenementSysteme[]) {
+  const connus = new Set(distantes.map((e) => e.id));
+  const fusion = [...state.evenements.filter((e) => !connus.has(e.id)), ...distantes].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+  setState({ evenements: fusion.slice(0, 200) });
+}
+
 /** Charge l'historique depuis Supabase (appelé une fois au démarrage). */
 export async function chargerNotifications() {
   try {
@@ -111,35 +167,50 @@ export async function chargerNotifications() {
     if (!entrepriseId) return;
     const { data, error } = await supabase
       .from("notifications")
-      .select("id, titre, message, type, priorite, lien, lue, created_at")
+      .select(CHAMPS)
       .eq("entreprise_id", entrepriseId)
       .order("created_at", { ascending: false })
       .limit(200);
     if (error || !data) return;
-
-    const distantes: EvenementSysteme[] = data.map((n) => {
-      const module = estModule(n.type) ? n.type : "systeme";
-      return {
-        id: n.id,
-        date: n.created_at,
-        module,
-        ton: estTon(n.priorite) ? n.priorite : "info",
-        titre: n.titre,
-        message: n.message ?? "",
-        lien: n.lien ?? MODULE_LIEN[module],
-        lu: n.lue,
-      };
-    });
-
-    const connus = new Set(distantes.map((e) => e.id));
-    const fusion = [...state.evenements.filter((e) => !connus.has(e.id)), ...distantes].sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-    );
-    setState({ evenements: fusion.slice(0, 200) });
+    // Le RLS filtre déjà les notifications de direction : un caissier ne
+    // reçoit jamais les lignes destinées au directeur.
+    fusionner((data as LigneNotification[]).map(versEvenement));
   } catch {
     // Mode hors ligne / non authentifié : le centre reste local.
   }
 }
+
+let canal: ReturnType<typeof supabase.channel> | null = null;
+
+/** Abonnement temps réel : les nouvelles notifications arrivent sans rechargement. */
+export async function demarrerTempsReelNotifications() {
+  if (canal) return;
+  const entrepriseId = await lireEntrepriseId();
+  if (!entrepriseId) return;
+  canal = supabase
+    .channel(`notifications-${entrepriseId}`)
+    .on(
+      "postgres_changes",
+      {
+        event: "*",
+        schema: "public",
+        table: "notifications",
+        filter: `entreprise_id=eq.${entrepriseId}`,
+      },
+      () => {
+        // On relit via l'API : le RLS reste l'unique arbitre de la visibilité.
+        void chargerNotifications();
+      },
+    )
+    .subscribe();
+}
+
+export function arreterTempsReelNotifications() {
+  if (!canal) return;
+  void supabase.removeChannel(canal);
+  canal = null;
+}
+
 
 async function persister(evenement: EvenementSysteme) {
   try {
@@ -193,6 +264,13 @@ export function publier(input: {
     message: input.message,
     lien: input.lien ?? MODULE_LIEN[input.module],
     lu: false,
+    audience: "tous",
+    acteur: "",
+    montant: null,
+    quantite: null,
+    entite: null,
+    entiteId: null,
+
   };
   setState({ evenements: [evenement, ...state.evenements].slice(0, 200) });
   void persister(evenement);

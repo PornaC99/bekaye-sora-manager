@@ -81,6 +81,7 @@ function Page() {
   const [filtre, setFiltre] = useState<ModuleSysteme | "tous">("tous");
   const [recherche, setRecherche] = useState("");
   const [nonLuesSeulement, setNonLuesSeulement] = useState(false);
+  const [supervisionSeulement, setSupervisionSeulement] = useState(false);
 
   const nonLus = evenements.filter((e) => !e.lu).length;
   const alertes = evenements.filter((e) => e.ton === "alerte" || e.ton === "danger").length;
@@ -90,6 +91,7 @@ function Page() {
     return evenements.filter((e) => {
       if (filtre !== "tous" && e.module !== filtre) return false;
       if (nonLuesSeulement && e.lu) return false;
+      if (supervisionSeulement && e.audience !== "direction") return false;
       if (!q) return true;
       return (
         e.titre.toLowerCase().includes(q) ||
@@ -97,7 +99,7 @@ function Page() {
         MODULE_LABEL[e.module].toLowerCase().includes(q)
       );
     });
-  }, [evenements, filtre, recherche, nonLuesSeulement]);
+  }, [evenements, filtre, recherche, nonLuesSeulement, supervisionSeulement]);
 
   const compter = (cle: ModuleSysteme | "tous") =>
     cle === "tous" ? evenements.length : evenements.filter((e) => e.module === cle).length;
@@ -153,10 +155,14 @@ function Page() {
         }
       />
 
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-4">
         <Stat label="Total" valeur={evenements.length} />
         <Stat label="Non lues" valeur={nonLus} />
         <Stat label="Alertes" valeur={alertes} />
+        <Stat
+          label="Supervision"
+          valeur={evenements.filter((e) => e.audience === "direction").length}
+        />
       </div>
 
       <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-card)]">
@@ -176,6 +182,13 @@ function Page() {
             onClick={() => setNonLuesSeulement((v) => !v)}
           >
             Non lues uniquement
+          </Button>
+          <Button
+            type="button"
+            variant={supervisionSeulement ? "default" : "outline"}
+            onClick={() => setSupervisionSeulement((v) => !v)}
+          >
+            Supervision direction
           </Button>
         </div>
 
@@ -240,6 +253,11 @@ function Page() {
                   <p className="truncate text-sm font-semibold text-foreground">
                     {evenement.titre}
                   </p>
+                  {evenement.audience === "direction" && (
+                    <span className="rounded-full border border-primary/40 bg-primary-soft px-2 py-0.5 text-[10px] font-semibold text-primary">
+                      Direction
+                    </span>
+                  )}
                   {!evenement.lu && (
                     <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] font-semibold text-primary-foreground">
                       Non lu
@@ -247,7 +265,14 @@ function Page() {
                   )}
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground">{evenement.message}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{formatDate(evenement.date)}</p>
+                <p className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
+                  <span>{formatDate(evenement.date)}</span>
+                  {evenement.acteur && <span>Par {evenement.acteur}</span>}
+                  {evenement.montant != null && (
+                    <span>Montant : {Math.round(evenement.montant).toLocaleString("fr-FR")} F</span>
+                  )}
+                  {evenement.quantite != null && <span>Quantité : {evenement.quantite}</span>}
+                </p>
               </div>
               <div className="flex shrink-0 items-center gap-2">
                 <Button asChild variant="outline" size="sm" onClick={() => marquerLu(evenement.id)}>

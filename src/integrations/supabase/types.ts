@@ -1257,39 +1257,57 @@ export type Database = {
       }
       notifications: {
         Row: {
+          acteur: string | null
+          audience: string
           created_at: string
+          entite: string | null
+          entite_id: string | null
           entreprise_id: string
           id: string
           lien: string | null
           lue: boolean
           message: string | null
+          montant: number | null
           priorite: string
+          quantite: number | null
           titre: string
           type: string
           updated_at: string
           user_id: string | null
         }
         Insert: {
+          acteur?: string | null
+          audience?: string
           created_at?: string
+          entite?: string | null
+          entite_id?: string | null
           entreprise_id: string
           id?: string
           lien?: string | null
           lue?: boolean
           message?: string | null
+          montant?: number | null
           priorite?: string
+          quantite?: number | null
           titre: string
           type?: string
           updated_at?: string
           user_id?: string | null
         }
         Update: {
+          acteur?: string | null
+          audience?: string
           created_at?: string
+          entite?: string | null
+          entite_id?: string | null
           entreprise_id?: string
           id?: string
           lien?: string | null
           lue?: boolean
           message?: string | null
+          montant?: number | null
           priorite?: string
+          quantite?: number | null
           titre?: string
           type?: string
           updated_at?: string
@@ -2205,6 +2223,23 @@ export type Database = {
         Returns: {
           permission: string
         }[]
+      }
+      notifier_direction: {
+        Args: {
+          _action?: string
+          _details?: Json
+          _entite: string
+          _entite_id: string
+          _entreprise: string
+          _lien: string
+          _message: string
+          _module: string
+          _montant?: number
+          _quantite?: number
+          _titre: string
+          _ton: string
+        }
+        Returns: undefined
       }
       permissions_par_defaut: {
         Args: { _role: Database["public"]["Enums"]["app_role"] }
