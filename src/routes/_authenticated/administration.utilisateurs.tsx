@@ -424,11 +424,15 @@ function UtilisateursPage() {
             <Champ label="Email">
               <Input
                 type="email"
+                name="email-connexion-nouveau"
+                autoComplete="off"
+                data-1p-ignore
                 value={form.email}
                 disabled={!!edition}
                 onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
               />
             </Champ>
+
             {!edition && (
               <Champ label="Mot de passe provisoire">
                 <Input
