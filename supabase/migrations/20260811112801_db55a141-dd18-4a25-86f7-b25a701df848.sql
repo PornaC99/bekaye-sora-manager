@@ -1,0 +1,2 @@
+revoke all on function public.notifier_direction(uuid,text,text,text,text,text,text,uuid,numeric,numeric,text,jsonb) from public, anon, authenticated;
+revoke all on function public.trg_supervision() from public, anon, authenticated;
