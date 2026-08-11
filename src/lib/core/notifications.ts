@@ -264,6 +264,13 @@ export function publier(input: {
     message: input.message,
     lien: input.lien ?? MODULE_LIEN[input.module],
     lu: false,
+    audience: "tous",
+    acteur: "",
+    montant: null,
+    quantite: null,
+    entite: null,
+    entiteId: null,
+
   };
   setState({ evenements: [evenement, ...state.evenements].slice(0, 200) });
   void persister(evenement);
