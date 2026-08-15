@@ -1,5 +1,5 @@
-import logoAsset from "@/assets/logo-bekaye-sora.png.asset.json";
-import bouteilleAsset from "@/assets/lotion-501.png.asset.json";
+import logoUrl from "@/assets/logo-bekaye-sora.png";
+import bouteilleUrl from "@/assets/lotion-501.png";
 
 /**
  * Identité visuelle officielle Bekaye Sora Collection.
@@ -7,10 +7,8 @@ import bouteilleAsset from "@/assets/lotion-501.png.asset.json";
  */
 /** URL absolue : nécessaire pour les fenêtres d'impression (PDF) ouvertes en blank. */
 export const LOGO_URL =
-  typeof window !== "undefined"
-    ? new URL(logoAsset.url, window.location.origin).href
-    : logoAsset.url;
-export const BOUTEILLE_501_URL = bouteilleAsset.url;
+  typeof window !== "undefined" ? new URL(logoUrl, window.location.origin).href : logoUrl;
+export const BOUTEILLE_501_URL = bouteilleUrl;
 
 
 export const MARQUE = {
